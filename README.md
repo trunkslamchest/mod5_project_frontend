@@ -1,7 +1,7 @@
 Mod 5 Final Project
 
 Built with:
-	 | CSS
+	 CSS
 	 | HTML
 	 | Javascript
 	 | React

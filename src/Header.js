@@ -27,7 +27,7 @@ onClickFunctionsDashboard = () => {
 
 	render(){
 
-		console.log(this.props)
+		// console.log(this.props)
 
 		const logged_in_links = [
 				<span className="header_greeting">Logged In As: { this.props.user_name }</span>,

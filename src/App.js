@@ -42,11 +42,11 @@ export default class App extends React.Component {
     birth_month: null,
     birth_year: null,
     // ~~~~~~~~~~~~~~~~~~~~
-    // house_number: null,
-    // street_name: null,
-    // city_town: null,
-    // state: null,
-    // zip_code: null,
+    house_number: null,
+    street_name: null,
+    city_town: null,
+    state: null,
+    zip_code: null,
     // ~~~~~~~~~~~~~~~~~~~~
     // join_day: null,
     // join_month: null,
@@ -75,11 +75,11 @@ export default class App extends React.Component {
         birth_month: localStorage.birth_month,
         birth_year: localStorage.birth_year,
         // ~~~~~~~~~~~~~~~~~~~~
-        // house_number: null,
-        // street_name: null,
-        // city_town: null,
-        // state: null,
-        // zip_code: null,
+        house_number: localStorage.house_number,
+        street_name: localStorage.street_name,
+        city_town: localStorage.city_town,
+        state: localStorage.state,
+        zip_code: localStorage.zip_code,
         // ~~~~~~~~~~~~~~~~~~~~
         // join_day: null,
         // join_month: null,
@@ -102,17 +102,28 @@ export default class App extends React.Component {
     .then(res => res.json())
     .then(res_obj => {
       let current_user = res_obj.data.attributes.user
-      console.log("current user", current_user)
+
+      // console.log("current user", current_user)
+
       localStorage.user_name = current_user.user_name
       localStorage.email = current_user.email
       localStorage.access = current_user.access
+      // ~~~~~~~~~~~~~~~~~~~~
       localStorage.first_name = current_user.first_name
       localStorage.last_name = current_user.last_name
       localStorage.gender = current_user.gender
+      // ~~~~~~~~~~~~~~~~~~~~
       localStorage.birth_day = current_user.birth_day
       localStorage.birth_month = current_user.birth_month
       localStorage.birth_year = current_user.birth_year
-      
+      // ~~~~~~~~~~~~~~~~~~~~
+      localStorage.house_number = current_user.house_number
+      localStorage.street_name = current_user.street_name
+      localStorage.city_town = current_user.city_town
+      localStorage.state = current_user.state
+      localStorage.zip_code = current_user.zip_code
+
+      // ~~~~~~~~~~~~~~~~~~~~
 
       this.setState({
         user_id: user_id,
@@ -128,6 +139,11 @@ export default class App extends React.Component {
         birth_month: current_user.birth_month,
         birth_year: current_user.birth_year,
         // ~~~~~~~~~~~~~~~~~~~~
+        house_number: current_user.house_number,
+        street_name: current_user.street_name,
+        city_town: current_user.city_town,
+        state: current_user.state,
+        zip_code: current_user.zip_code
       })
     })
 
@@ -160,11 +176,11 @@ export default class App extends React.Component {
       birth_month: null,
       birth_year: null,
     // ~~~~~~~~~~~~~~~~~~~~
-    // house_number: null,
-    // street_name: null,
-    // city_town: null,
-    // state: null,
-    // zip_code: null,
+      house_number: null,
+      street_name: null,
+      city_town: null,
+      state: null,
+      zip_code: null,
     // ~~~~~~~~~~~~~~~~~~~~
     // join_day: null,
     // join_month: null,
@@ -172,11 +188,30 @@ export default class App extends React.Component {
     })
   }
 
+  formatted_birth_day = () => {
+    const number_ends = [ "st", "nd", "rd", "th" ]
+    const number_split = localStorage.birth_day.split('').pop()
+      if (parseInt(localStorage.birth_day, 10) > 10) {
+        return `${localStorage.birth_day}` + number_ends[3]
+      } else {
+    		if ((number_split === '1')) {
+					return `${localStorage.birth_day}` + number_ends[0]
+				} else if (number_split === '2') {
+					return `${localStorage.birth_day}` + number_ends[1]
+				} else if (number_split === '3') {
+					return `${localStorage.birth_day}` + number_ends[2]
+				} else {
+					return `${localStorage.birth_day}` + number_ends[3]
+				}
+      }
+  }
+
   render(){
     // console.log("UserID", this.state.loggedInUserID)
     // console.log("token", this.state.token)
     // console.log("logged in", this.state.loggedIn)
-    console.log("state", this.state)
+    // console.log("state", this.state)
+    // console.log((this.state.birth_day) ? this.format_birthday() : "" )
     // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
     const showHeader =
@@ -220,9 +255,15 @@ export default class App extends React.Component {
                 gender={ this.state.gender }
                 // ~~~~~~~~~~~~~~~~~~~~
                 birth_day={ this.state.birth_day }
+                formatted_birth_day={(this.state.birth_day) ? this.formatted_birth_day() : "" }
                 birth_month={ this.state.birth_month }
                 birth_year={ this.state.birth_year }
-
+                // ~~~~~~~~~~~~~~~~~~~~
+                house_number={ this.state.house_number }
+                street_name={ this.state.street_name }
+                city_town={ this.state.city_town }
+                state={ this.state.state }
+                zip_code={ this.state.zip_code }
               />
             </Route>
             <Route exact path='/edit_profile'>

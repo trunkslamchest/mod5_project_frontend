@@ -37,7 +37,7 @@ export default class LogIn extends React.Component {
     })
     .then(response => response.json())
     .then(res_obj => {
-      console.log(res_obj)
+      // console.log(res_obj)
       if (res_obj.errors) {
         this.setState({
           errors: res_obj.errors

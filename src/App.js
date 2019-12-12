@@ -2,6 +2,7 @@ import React from 'react'
 
 import Header from './Header'
 import Home from './Home'
+import Footer from './Footer'
 
 import LogIn from './user/LogIn'
 import SignUp from './user/SignUp'
@@ -11,13 +12,13 @@ import EditProfile from './user/EditProfile'
 import Error from './Error'
 
 import {
-         NavLink,
-         Link,
-         Redirect,
+        //  NavLink,
+        //  Link,
+        //  Redirect,
          Route,
          Switch,
-         useRouteMatch,
-         useParams
+        //  useRouteMatch,
+        //  useParams
         } from 'react-router-dom'
 
 import './App.css'
@@ -48,9 +49,9 @@ export default class App extends React.Component {
     state: null,
     zip_code: null,
     // ~~~~~~~~~~~~~~~~~~~~
-    // join_day: null,
-    // join_month: null,
-    // join_year: null,
+    join_day: null,
+    join_month: null,
+    join_year: null,
   }
 
   componentDidMount(){
@@ -81,9 +82,9 @@ export default class App extends React.Component {
         state: localStorage.state,
         zip_code: localStorage.zip_code,
         // ~~~~~~~~~~~~~~~~~~~~
-        // join_day: null,
-        // join_month: null,
-        // join_year: null,
+        join_day: localStorage.join_day,
+        join_month: localStorage.join_month,
+        join_year: localStorage.join_year,
       })
     }
   }
@@ -122,8 +123,10 @@ export default class App extends React.Component {
       localStorage.city_town = current_user.city_town
       localStorage.state = current_user.state
       localStorage.zip_code = current_user.zip_code
-
       // ~~~~~~~~~~~~~~~~~~~~
+      localStorage.join_day = current_user.join_day
+      localStorage.join_month = current_user.join_month
+      localStorage.join_year = current_user.join_year
 
       this.setState({
         user_id: user_id,
@@ -143,7 +146,11 @@ export default class App extends React.Component {
         street_name: current_user.street_name,
         city_town: current_user.city_town,
         state: current_user.state,
-        zip_code: current_user.zip_code
+        zip_code: current_user.zip_code,
+        // ~~~~~~~~~~~~~~~~~~~~
+        join_day: current_user.join_day,
+        join_month: current_user.join_month,
+        join_year: current_user.join_year,
       })
     })
 
@@ -159,19 +166,19 @@ export default class App extends React.Component {
   logOut = () => {
     localStorage.clear()
       this.setState({
-      // ~~~~~~~~~~~~~~~~~~~~
+    // ~~~~~~~~~~~~~~~~~~~~
       token: null,
       loggedIn: null,
-      // ~~~~~~~~~~~~~~~~~~~~
+    // ~~~~~~~~~~~~~~~~~~~~
       user_id: null,
       user_name: null,
       email: null,
       access: "guest",
-      // ~~~~~~~~~~~~~~~~~~~~
+    // ~~~~~~~~~~~~~~~~~~~~
       first_name: null,
       last_name: null,
       gender: null,
-      // ~~~~~~~~~~~~~~~~~~~~
+    // ~~~~~~~~~~~~~~~~~~~~
       birth_day: null,
       birth_month: null,
       birth_year: null,
@@ -182,28 +189,48 @@ export default class App extends React.Component {
       state: null,
       zip_code: null,
     // ~~~~~~~~~~~~~~~~~~~~
-    // join_day: null,
-    // join_month: null,
-    // join_year: null,
+      join_day: null,
+      join_month: null,
+      join_year: null,
     })
   }
 
   formatted_birth_day = () => {
     const number_ends = [ "st", "nd", "rd", "th" ]
     const number_split = localStorage.birth_day.split('').pop()
-      if (parseInt(localStorage.birth_day, 10) > 10) {
-        return `${localStorage.birth_day}` + number_ends[3]
-      } else {
-    		if ((number_split === '1')) {
-					return `${localStorage.birth_day}` + number_ends[0]
-				} else if (number_split === '2') {
-					return `${localStorage.birth_day}` + number_ends[1]
-				} else if (number_split === '3') {
-					return `${localStorage.birth_day}` + number_ends[2]
-				} else {
-					return `${localStorage.birth_day}` + number_ends[3]
-				}
-      }
+
+    if ((parseInt(this.state.birth_day, 10) > 10) && (parseInt(this.state.birth_day, 10) < 19)) {
+      return `${this.state.birth_day}` + number_ends[3]
+    } else {
+  		if ((number_split === '1')) {
+				return `${this.state.birth_day}` + number_ends[0]
+			} else if (number_split === '2') {
+				return `${this.state.birth_day}` + number_ends[1]
+			} else if (number_split === '3') {
+				return `${this.state.birth_day}` + number_ends[2]
+			} else {
+				return `${this.state.birth_day}` + number_ends[3]
+			}
+    }
+  }
+
+  formatted_join_day = () => {
+    const number_ends = [ "st", "nd", "rd", "th" ]
+    const number_split = localStorage.join_day.split('').pop()
+
+    if ((parseInt(this.state.join_day, 10) > 10) && (parseInt(this.state.join_day, 10) < 19)) {
+      return `${this.state.join_day}` + number_ends[3]
+    } else {
+  		if ((number_split === '1')) {
+				return `${this.state.join_day}` + number_ends[0]
+			} else if (number_split === '2') {
+				return `${this.state.join_day}` + number_ends[1]
+			} else if (number_split === '3') {
+				return `${this.state.join_day}` + number_ends[2]
+			} else {
+				return `${this.state.join_day}` + number_ends[3]
+			}
+    }
   }
 
   render(){
@@ -221,9 +248,14 @@ export default class App extends React.Component {
         logOut={ this.logOut }
       />
 
+    const showFooter =
+      <Footer
+        
+      />
+
     return (
       <>
-        <div className="Header">
+        <div className="header">
           { showHeader }
         </div>
     		<div className="main_wrapper">
@@ -249,21 +281,26 @@ export default class App extends React.Component {
                 user_name={ this.state.user_name }
                 email={ this.state.email }
                 access={ this.state.access }
-                // ~~~~~~~~~~~~~~~~~~~~
+              // ~~~~~~~~~~~~~~~~~~~~
                 first_name={ this.state.first_name }
                 last_name={ this.state.last_name }
                 gender={ this.state.gender }
-                // ~~~~~~~~~~~~~~~~~~~~
+              // ~~~~~~~~~~~~~~~~~~~~
                 birth_day={ this.state.birth_day }
-                formatted_birth_day={(this.state.birth_day) ? this.formatted_birth_day() : "" }
+                formatted_birth_day={ (this.state.birth_day) ? this.formatted_birth_day() : "" }
                 birth_month={ this.state.birth_month }
                 birth_year={ this.state.birth_year }
-                // ~~~~~~~~~~~~~~~~~~~~
+              // ~~~~~~~~~~~~~~~~~~~~
                 house_number={ this.state.house_number }
                 street_name={ this.state.street_name }
                 city_town={ this.state.city_town }
                 state={ this.state.state }
                 zip_code={ this.state.zip_code }
+              // ~~~~~~~~~~~~~~~~~~~~
+                join_day={ this.state.join_day }
+                formatted_join_day={ (this.state.join_day) ? this.formatted_join_day() : "" }
+                join_month={ this.state.join_month }
+                join_year={ this.state.join_year }
               />
             </Route>
             <Route exact path='/edit_profile'>
@@ -271,11 +308,29 @@ export default class App extends React.Component {
                 setToken={ this.setToken }
                 user_id= {this.state.user_id }
                 user_name={ this.state.user_name }
+                email={ this.state.email }
+              // ~~~~~~~~~~~~~~~~~~~~
+                first_name={ this.state.first_name }
+                last_name={ this.state.last_name }
+                gender={ this.state.gender }
+              // ~~~~~~~~~~~~~~~~~~~~
+                birth_day={ this.state.birth_day }
+                birth_month={ this.state.birth_month }
+                birth_year={ this.state.birth_year }
+              // ~~~~~~~~~~~~~~~~~~~~
+                house_number={ this.state.house_number }
+                street_name={ this.state.street_name }
+                city_town={ this.state.city_town }
+                state={ this.state.state }
+                zip_code={ this.state.zip_code }
               />
             </Route>
             <Route component={ Error } />
           </Switch>
     		</div>
+        <div className="footer">
+            { showFooter }
+        </div>
       </>
     )
   }

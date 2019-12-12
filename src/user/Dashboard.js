@@ -27,29 +27,27 @@ export default class Dashboard extends React.Component{
 	// 	}
 	
 	render(){
-		
-	// const birth_day_format_return  = !!(this.props.birth_day) ? ( this.birth_day_format() ) : ""
-		// console.log(this.props.birth_day.split('', 1))
-		// console.log(birth_day_format_return)
-		// console.log(this.birth_day_format())
-		// console.log(!!this.props.birth_day === true)
-		
-		// console.log(number_ends[0])
-	const age = 2019 - this.props.birth_year
-	const birthday = `${this.props.birth_month} ${this.props.birth_day}`
-	const address = `${this.props.house_number} ${this.props.street_name}, ${this.props.city_town} ${this.props.state}, ${this.props.zip_code}`
+		const age = 2019 - this.props.birth_year
+		const address = `${this.props.house_number} ${this.props.street_name}, ${this.props.city_town} ${this.props.state}, ${this.props.zip_code}`
+
 		return(
 			<div className="dashboard_container">
 				<div className="dashboard_greeting">
 					<h2>Welcome, {this.props.first_name}!</h2>
-					<Link to='/edit_profile' className="edit_profile_link">Edit Profile</Link>
+				</div>
+				<div className="dashboard_options">
+					<ul>
+						<li><Link to='/edit_profile' className="default_link">Edit Profile</Link></li>
+						<li><Link to='/delete_account' className="default_link">Delete Account</Link></li>
+					</ul>
 				</div>
 				<div className="dashboard_info">
+					<h3>My Info</h3>
 					<ul>
 						<li>User ID: { this.props.user_id }</li>
 						<li>User Name: { this.props.user_name }</li>
 						<li>Email Address: { this.props.email }</li>
-						<li>Access: { this.props.access }</li>
+						<li>Access Level: { this.props.access }</li>
 					<hr />
 						<li>First Name: { this.props.first_name }</li>
 						<li>Last Name: { this.props.last_name }</li>
@@ -57,10 +55,11 @@ export default class Dashboard extends React.Component{
 					<hr />
 						<li>Age: { age }</li>
 						{/* { (!!this.props.birth_day) ? (this.birth_day_format()) : ("") } */}
-	<li>Birthday: {this.props.birth_month } { this.props.formatted_birth_day}</li>
+						<li>Birthday: {this.props.birth_month } { this.props.formatted_birth_day}</li>
 					<hr />
 						<li>Address: { address }</li>
-					
+					<hr />
+					<li>Join Date: { this.props.join_month } { this.props.formatted_join_day }, { this.props.join_year }</li>
 					</ul>
 				</div>
 				<div className="dashboard_votes">

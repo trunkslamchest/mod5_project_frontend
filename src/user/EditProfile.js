@@ -6,48 +6,61 @@ import './EditProfile.css'
 export default class EditProfile extends React.Component {
 
 	state = {
-		new_user_name: "",
+		edit_user_name: "",
+		edit_email: "",
+		edit_first_name: "",
+		edit_last_name: "",
 		updateSuccess: false,
 		errors: []
 	}
 
 	componentDidMount(){
-		this.setState({
-			new_user_name: this.props.user_name
-		})
+		if (this.props.user_id) {
+			this.setState({
+				edit_user_name: this.props.user_name,
+				edit_email: this.props.email,
+				edit_first_name: this.props.first_name,
+				edit_last_name: this.props.last_name
+			})
+		}
 	}
 
-	onChange = (event) => {
+	onChange = async (event) => {
+		event.persist()
+		try {
+			const update_fields = await this.update_selected_fields(event)
+		} catch(e) {
+    		console.error("Problem", e)
+  		}
+	}
+
+	update_selected_fields = async (event) => {
 		this.setState({
 			[event.target.name]: event.target.value
 		})
 	}
 
-	onSubmitEditProfileFunctions = (event) => {
-		this.EditProfileSubmitted(event)
-	}
-
-	onResetFunctions = (event) => {
-		this.setState({
-			new_user_name: this.props.user_name
-		})
-		console.log(this.state.new_user_name)
-	}
-	
-	onCancelFunctions = (event) => {
-		// <Redirect to='./dashboard' />
+	onSubmitEditProfileFunctions = async (event) => {
+		event.persist()
+		event.preventDefault()
+		try {
+			this.EditProfileSubmitted(event)
+		} catch(e) {
+    		console.error("Problem", e)
+  		}
 	}
 
 	EditProfileSubmitted = (event) => {
-		event.preventDefault()
-
 		fetch(`http://localhost:3001/users/${this.props.user_id}`, {
 			method: "PATCH",
 			headers: {
 				"content-type":"application/json"
 			},
 			body: JSON.stringify({
-				user_name: this.state.new_user_name
+				user_name: event.target["edit_user_name"].value,
+				email: event.target["edit_email"].value,
+				first_name: event.target["edit_first_name"].value,
+				last_name: event.target["edit_last_name"].value
 			})
 		})
 		.then(res => res.json())
@@ -65,7 +78,26 @@ export default class EditProfile extends React.Component {
 		})
 	}
 
+	onResetFunctions = (event) => {
+		this.setState({
+			edit_user_name: this.props.user_name,
+			edit_email: this.props.email,
+			edit_first_name: this.props.first_name,
+			edit_last_name: this.props.last_name
+		}, console.log("reset functions", this.state))
+	}
+
+	// onCancelFunctions = (event) => {
+	// 	// <Redirect to='./dashboard' />
+	// }
+
 	render(){
+
+		// console.log("props", this.props)
+		// console.log("props load test", !!(this.props.user_id))
+		// console.log("current state", this.state)
+		// console.log("current state test", this.state.edit_user_name === false)
+
 		return(
 			<>
 				{
@@ -89,20 +121,43 @@ export default class EditProfile extends React.Component {
 					!(this.state.updateSuccess) ?
 						<div className="default_container">
 							<h3>Edit Profile</h3>
-							{ this.props.username }
 								<form className="default_form" onSubmit={ this.onSubmitEditProfileFunctions }>
-									<label htmlFor="edit_username">Username</label>
+									<label htmlFor="edit_user_name">Username</label>
 									<input id="edit_user_name"
 										type="text"
 										onChange={ this.onChange }
-										name="new_user_name"
+										name="edit_user_name"
 										placeholder={ this.props.user_name }
-										value={ this.state.new_user_name }
+										value={ (this.state.edit_user_name === "") ? (this.props.user_name) : (this.state.edit_user_name) }
 									/>
-
+									<label htmlFor="edit_email">Email</label>
+									<input id="edit_email"
+										type="text"
+										onChange={ this.onChange }
+										name="edit_email"
+										placeholder={ this.props.email }
+										value={ (this.state.edit_email === "") ? (this.props.email) : (this.state.edit_email) }
+									/>
+									<hr />
+									<label htmlFor="edit_first_name">First Name</label>
+									<input id="edit_first_name"
+										type="text"
+										onChange={ this.onChange }
+										name="edit_first_name"
+										placeholder={ this.props.first_name }
+										value={ (this.state.edit_first_name === "") ? (this.props.first_name) : (this.state.edit_first_name) }
+									/>
+									<label htmlFor="edit_last_name">Last Name</label>
+									<input id="edit_last_name"
+										type="text"
+										onChange={ this.onChange }
+										name="edit_last_name"
+										placeholder={ this.props.last_name }
+										value={ (this.state.edit_last_name === "") ? (this.props.last_name) : (this.state.edit_last_name) }
+									/>
 									<input className="default_button" type="submit" value="Update Profile" />
 									<input className="default_button" type="reset" onClick={ this.onResetFunctions } value="Reset" />
-									<input className="default_button" type="reset" onClick={ this.onCancelFunctions } value="Cancel" />
+									{/* <input className="default_button" type="reset" onClick={ this.onCancelFunctions } value="Cancel" /> */}
 								</form>
 						</div>
 					:

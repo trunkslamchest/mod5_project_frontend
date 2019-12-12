@@ -1,46 +1,42 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Lato|PT+Sans);
-
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-}
-
-.App-link {
-  color: #09d3ac;
-}
-
-section {
-  margin: auto;
-  max-width: 250px;
-}
-
-/* form input {
-  display: block;
-  margin-bottom: 10px;
-} */
+@import url('./animation.css');
 
 .main_wrapper {
 	width: 80%;
 	margin: 0 auto 0 auto;
 	padding: 5px;
 	background-color: #fffdf7;
+	min-height: 100vh;
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
+	animation: fade_in .1s ease-in-out 1, blur_in .05s ease-in-out 1;
 }
 
 .default_container {
-  padding: 5px;
-  margin: 5px;
+	padding: 5px;
+	margin: 5px;
+	animation: fade_in .2s ease-in-out 1, blur_in .1s ease-in-out 1;
 }
 
 .default_header {
   	text-align: center;
 	font-size: 15pt;
 	font-weight: bold;
-	/* padding: 10px; */
 	margin: 0 auto 0 auto;
+	animation: fade_in .1s ease-in-out 1, blur_in .05s ease-in-out 1;
+}
+
+.default_link {
+	font-family: Lato;
+	color: #000;
+	text-decoration: none;
+	animation: fade_in .2s ease-in-out 1, blur_in .1s ease-in-out 1;
+}
+
+.default_link:hover {
+	text-shadow: 0 0 2px #000;
+	transition-property: text-shadow;
+	transition-duration: .1s, .1s;
+	transition-timing-function: ease-in-out;
 }
 
 .default_button {
@@ -51,19 +47,14 @@ section {
 	text-decoration: none;
 	font-size: 1rem;
 	border-radius: 5px;
-	margin: 0 auto 0 auto;
+	margin: 12.5px auto 12.5px auto;
+	padding: 5px;
 	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
 }
 
 .default_button:hover {
-	border: none;
 	color: #fff;
 	background: radial-gradient(rgba(158, 158, 158, 1), rgba(66, 66, 66, 1));
-	text-align: center;
-	text-decoration: none;
-	font-size: 1rem;
-	border-radius: 25px;
-	margin: 0 auto 0 auto;
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
 
 	transition-property: color, background,border-radius, box-shadow;
@@ -74,13 +65,16 @@ section {
 .default_form {
   	text-align: center;
 	margin: 0 auto 0 auto;
+	animation: fade_in .3s ease-in-out 1, blur_in .15s ease-in-out 1;
 }
 
 .default_form label {
 	font-family: Lato;
+	animation: fade_in .4s ease-in-out 1, blur_in .2s ease-in-out 1;
 }
 
 .default_form input {
 	display: block;
 	margin: 0 auto 0 auto;
+	animation: fade_in .5s ease-in-out 1, blur_in .25s ease-in-out 1;
 }

@@ -6,15 +6,42 @@ import './EditProfile.css'
 export default class EditProfile extends React.Component {
 
 	state = {
-		new_user_name: "",
+		edit_user_name: "",
+		edit_email: "",
+		edit_first_name: "",
+		edit_last_name: "",
+		edit_gender: "",
+		edit_birth_day: "",
+		edit_birth_month: "",
+		edit_birth_year: "",
+		edit_house_number: "",
+		edit_street_name: "",
+		edit_city_town: "",
+		edit_state: "",
+		edit_zip_code: "",
 		updateSuccess: false,
+		cancel: false,
 		errors: []
 	}
 
 	componentDidMount(){
-		this.setState({
-			new_user_name: this.props.user_name
-		})
+		if (this.props.user_id) {
+			this.setState({
+				edit_user_name: this.props.user_name,
+				edit_email: this.props.email,
+				edit_first_name: this.props.first_name,
+				edit_last_name: this.props.last_name,
+				edit_gender: this.props.gender,
+				edit_birth_day: this.props.birth_day,
+				edit_birth_month: this.props.birth_month,
+				edit_birth_year: this.props.birth_year,
+				edit_house_number: this.props.house_number,
+				edit_street_name: this.props.street_name,
+				edit_city_town: this.props.city_town,
+				edit_state: this.props.state,
+				edit_zip_code: this.props.zip_code
+			})
+		}
 	}
 
 	onChange = (event) => {
@@ -23,31 +50,36 @@ export default class EditProfile extends React.Component {
 		})
 	}
 
-	onSubmitEditProfileFunctions = (event) => {
-		this.EditProfileSubmitted(event)
-	}
-
-	onResetFunctions = (event) => {
-		this.setState({
-			new_user_name: this.props.user_name
-		})
-		console.log(this.state.new_user_name)
-	}
-	
-	onCancelFunctions = (event) => {
-		// <Redirect to='./dashboard' />
+	onSubmitEditProfileFunctions = async (event) => {
+		event.persist()
+		event.preventDefault()
+		try {
+			this.EditProfileSubmitted(event)
+		} catch(error) {
+    		console.error("Error", error)
+  		}
 	}
 
 	EditProfileSubmitted = (event) => {
-		event.preventDefault()
-
 		fetch(`http://localhost:3001/users/${this.props.user_id}`, {
 			method: "PATCH",
 			headers: {
 				"content-type":"application/json"
 			},
 			body: JSON.stringify({
-				user_name: this.state.new_user_name
+				user_name: event.target["edit_user_name"].value,
+				email: event.target["edit_email"].value,
+				first_name: event.target["edit_first_name"].value,
+				last_name: event.target["edit_last_name"].value,
+				gender: event.target["edit_gender"].value,
+				birth_day: event.target["edit_birth_day"].value,
+				birth_month: event.target["edit_birth_month"].value,
+				birth_year: event.target["edit_birth_year"].value,
+				house_number: event.target["edit_house_number"].value,
+				street_name: event.target["edit_street_name"].value,
+				city_town: event.target["edit_city_town"].value,
+				state: event.target["edit_state"].value,
+				zip_code: event.target["edit_zip_code"].value
 			})
 		})
 		.then(res => res.json())
@@ -65,50 +97,252 @@ export default class EditProfile extends React.Component {
 		})
 	}
 
+	onResetFunctions = (event) => {
+		event.persist()
+		event.preventDefault()
+
+		this.setState({
+			edit_user_name: this.props.user_name,
+			edit_email: this.props.email,
+			edit_first_name: this.props.first_name,
+			edit_last_name: this.props.last_name,
+			edit_gender: this.props.gender,
+			edit_birth_day: this.props.birth_day,
+			edit_birth_month: this.props.birth_month,
+			edit_birth_year: this.props.birth_year,
+			edit_house_number: this.props.house_number,
+			edit_street_name: this.props.street_name,
+			edit_city_town: this.props.city_town,
+			edit_state: this.props.state,
+			edit_zip_code: this.props.zip_code
+		})
+	}
+
+	onCancelFunctions = (event) => {
+		this.setState({
+			cancel: true
+		})
+	}
+
 	render(){
 		return(
-			<>
+			<div className="default_container">
 				{
 					(!!this.state.errors) ? (
 						<div className="default_error_report">
-							{
-							 this.state.errors.map( error =>
-									<>
-										{ error }
-									</>
-								)
-							}
+							{ this.state.errors.map( error => <> { error } </> ) }
   						</div>
 					)
-						:
-					(
-						""
-					)
+					:
+					( "" )
 				}
 				{
 					!(this.state.updateSuccess) ?
-						<div className="default_container">
-							<h3>Edit Profile</h3>
-							{ this.props.username }
-								<form className="default_form" onSubmit={ this.onSubmitEditProfileFunctions }>
-									<label htmlFor="edit_username">Username</label>
-									<input id="edit_user_name"
-										type="text"
-										onChange={ this.onChange }
-										name="new_user_name"
-										placeholder={ this.props.user_name }
-										value={ this.state.new_user_name }
-									/>
-
-									<input className="default_button" type="submit" value="Update Profile" />
-									<input className="default_button" type="reset" onClick={ this.onResetFunctions } value="Reset" />
-									<input className="default_button" type="reset" onClick={ this.onCancelFunctions } value="Cancel" />
+						<>
+							<div className="default_container_header">
+								<h3>Edit Profile</h3>
+							</div>
+								<form className="edit_profile_form" onSubmit={ this.onSubmitEditProfileFunctions }>
+									<div className="edit_profile_basics">
+										<label htmlFor="edit_user_name">Username</label>
+										<input id="edit_user_name"
+											type="text"
+											onChange={ this.onChange }
+											name="edit_user_name"
+											placeholder={ this.props.user_name }
+											value={ (this.state.edit_user_name === "") ? (this.props.user_name) : (this.state.edit_user_name) }
+										/>
+										<br />
+										<label htmlFor="edit_email">Email</label>
+										<input id="edit_email"
+											type="text"
+											onChange={ this.onChange }
+											name="edit_email"
+											placeholder={ this.props.email }
+											value={ (this.state.edit_email === "") ? (this.props.email) : (this.state.edit_email) }
+										/>
+									<hr />
+									</div>
+									<div className="edit_profile_name">
+										<label htmlFor="edit_name">Name</label>
+										<input id="edit_first_name"
+											type="text"
+											onChange={ this.onChange }
+											name="edit_first_name"
+											placeholder={ this.props.first_name }
+											value={ (this.state.edit_first_name === "") ? (this.props.first_name) : (this.state.edit_first_name) }
+										/>
+										<input id="edit_last_name"
+											type="text"
+											onChange={ this.onChange }
+											name="edit_last_name"
+											placeholder={ this.props.last_name }
+											value={ (this.state.edit_last_name === "") ? (this.props.last_name) : (this.state.edit_last_name) }
+										/>
+										<hr />
+										</div>
+										<div className="edit_profile_gender">
+											<label htmlFor="edit_gender">Gender</label>
+											<select id="edit_gender"
+												name="edit_gender"
+												onChange={ this.onChange }
+												value={ (this.state.edit_gender === "") ? (this.props.gender) : (this.state.edit_gender) }
+												>
+												<option value="Male">Male</option>
+												<option value="Female">Female</option>
+												<option value="Non-Binary">Non-Binary</option>
+											</select>
+											<hr />
+										</div>
+										<div className="edit_birth">
+											<label htmlFor="edit_birth">Birth Day</label>
+											<select id="edit_birth_month"
+												name="edit_birth_month"
+												onChange={ this.onChange }
+												value={ (this.state.edit_birth_month === "") ? (this.props.birth_month) : (this.state.edit_birth_month) }
+												>
+												<option value="January">January</option>
+												<option value="Februrary">Februrary</option>
+												<option value="March">March</option>
+												<option value="April">April</option>
+												<option value="May">May</option>
+												<option value="June">June</option>
+												<option value="July">July</option>
+												<option value="August">August</option>
+												<option value="September">September</option>
+												<option value="October">October</option>
+												<option value="November">November</option>
+												<option value="December">December</option>
+											</select>
+											<input id="edit_birth_day"
+												type="number"
+												min="1"
+												max="31"
+												onChange={ this.onChange }
+												name="edit_birth_day"
+												placeholder={ this.props.birth_day }
+												value={ (this.state.edit_birth_day === "") ? (this.props.birth_day) : (this.state.edit_birth_day) }
+											/>
+											<input id="edit_birth_year"
+												type="text"
+												minLength="4"
+												maxLength="4"
+												onChange={ this.onChange }
+												name="edit_birth_year"
+												placeholder={ this.props.birth_year }
+												value={ (this.state.edit_birth_year === "") ? (this.props.birth_year) : (this.state.edit_birth_year) }
+										/>
+										<hr />
+										</div>
+										<div className="edit_address">
+											<label htmlFor="edit_address">Address</label>
+											<input id="edit_house_number"
+												type="number"
+												min="1"
+												max="9999"
+												onChange={ this.onChange }
+												name="edit_house_number"
+												placeholder={ this.props.house_number }
+												value={ (this.state.edit_house_number === "") ? (this.props.house_number) : (this.state.edit_house_number) }
+											/>
+											<input id="edit_street_name"
+												type="text"
+												onChange={ this.onChange }
+												name="edit_street_name"
+												placeholder={ this.props.street_name }
+												value={ (this.state.edit_street_name === "") ? (this.props.street_name) : (this.state.edit_street_name) }
+											/>
+											<input id="edit_city_town"
+												type="text"
+												onChange={ this.onChange }
+												name="edit_city_town"
+												placeholder={ this.props.city_town }
+												value={ (this.state.edit_city_town === "") ? (this.props.city_town) : (this.state.edit_city_town) }
+											/>
+											<select id="edit_state"
+												name="edit_state"
+												onChange={ this.onChange }
+												value={ (this.state.edit_state === "") ? (this.props.state) : (this.state.edit_state) }
+												>
+												<option value="Alabama">Alabama</option>
+												<option value="Alaska">Alaska</option>
+												<option value="Arizona">Arizona</option>
+												<option value="Arkansa">Arkansas</option>
+												<option value="California">California</option>
+												<option value="Colorado">Colorado</option>
+												<option value="Connecticut">Connecticut</option>
+												<option value="Delaware">Delaware</option>
+												<option value="Florida">Florida</option>
+												<option value="Georgia">Georgia</option>
+												<option value="Hawaii">Hawaii</option>
+												<option value="Idaho">Idaho</option>
+												<option value="Illinois">Illinois</option>
+												<option value="Indiana">Indiana</option>
+												<option value="Iowa">Iowa</option>
+												<option value="Kansas">Kansas</option>
+												<option value="Kentucky">Kentucky</option>
+												<option value="Louisiana">Louisiana</option>
+												<option value="Maine">Maine</option>
+												<option value="Maryland">Maryland</option>
+												<option value="Massachusetts">Massachusetts</option>
+												<option value="Michigan">Michigan</option>
+												<option value="Minnesota">Minnesota</option>
+												<option value="Mississippi">Mississippi</option>
+												<option value="Missouri">Missouri</option>
+												<option value="Montana">Montana</option>
+												<option value="Nebraska">Nebraska</option>
+												<option value="Nevada">Nevada</option>
+												<option value="New Hampshire">New Hampshire</option>
+												<option value="New Jersey">New Jersey</option>
+												<option value="New Mexico">New Mexico</option>
+												<option value="New York">New York</option>
+												<option value="North Carolina">North Carolina</option>
+												<option value="North Dakota">North Dakota</option>
+												<option value="Ohio">Ohio</option>
+												<option value="Oklahoma">Oklahoma</option>
+												<option value="Oregon">Oregon</option>
+												<option value="Pennsylvania">Pennsylvania</option>
+												<option value="Rhode Island">Rhode Island</option>
+												<option value="South Carolina">South Carolina</option>
+												<option value="South Dakota">South Dakota</option>
+												<option value="Tennessee">Tennessee</option>
+												<option value="Texas">Texas</option>
+												<option value="Utah">Utah</option>
+												<option value="Vermont">Vermont</option>
+												<option value="Virginia">Virginia</option>
+												<option value="Washington">Washington</option>
+												<option value="West Virginia">West Virginia</option>
+												<option value="Wisconsin">Wisconsin</option>
+												<option value="Wyoming">Wyoming</option>
+											</select>
+											<input id="edit_zip_code"
+												type="number"
+												min="1"
+												max="99999"
+												onChange={ this.onChange }
+												name="edit_zip_code"
+												placeholder={ this.props.zip_code }
+												value={ (this.state.edit_zip_code === "") ? (this.props.zip_code) : (this.state.edit_zip_code) }
+											/>
+										</div>
+										<div className="edit_profile_form_buttons">
+											<input className="default_button" type="submit" value="Update Profile" />
+											<button className="default_button" onClick={ this.onResetFunctions } >Reset</button>
+											{ !(this.state.cancel) ? (
+												<input className="default_button" type="reset" onClick={ this.onCancelFunctions } value="Cancel" />
+											)
+											:
+											(
+												<Redirect to="/dashboard" />
+											)
+										}
+										</div>
 								</form>
-						</div>
+						</>
 					:
 						<Redirect to='./dashboard' />
 				}
-			</>
+			</div>
 		)
 	}
 }

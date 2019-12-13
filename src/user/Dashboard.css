@@ -26,11 +26,17 @@
 .dashboard_options ul {
 	list-style: none;
 	margin: 0;
-	padding: 0;
+	padding: 0 2.5px 0 2.5px;
 }
 
 .dashboard_info {
 	animation: fade_in .4s ease-in-out 1, blur_in .2s ease-in-out 1;
+}
+
+.dashboard_info ul {
+	list-style: none;
+	margin: 0;
+	padding: 0 5px 0 5px;
 }
 
 .dashboard_votes {

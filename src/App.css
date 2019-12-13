@@ -17,6 +17,10 @@
 	animation: fade_in .2s ease-in-out 1, blur_in .1s ease-in-out 1;
 }
 
+.default_container_header {
+	text-align: center;
+}
+
 .default_header {
   	text-align: center;
 	font-size: 15pt;
@@ -47,18 +51,21 @@
 	text-decoration: none;
 	font-size: 1rem;
 	border-radius: 5px;
-	margin: 12.5px auto 12.5px auto;
+	margin: 5px;
 	padding: 5px;
 	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+.default_button:active {
+	animation: header_click_effects .2s linear 1;
 }
 
 .default_button:hover {
 	color: #fff;
 	background: radial-gradient(rgba(158, 158, 158, 1), rgba(66, 66, 66, 1));
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
-
 	transition-property: color, background,border-radius, box-shadow;
-	transition-duration: .25s, .25s;
+	transition-duration: .1s, .1s;
 	transition-timing-function: ease-in-out;
 }
 
@@ -75,6 +82,17 @@
 
 .default_form input {
 	display: block;
+	margin: 0 auto 0 auto;
+	border-radius: 0px 0px 0px 0px;
+	animation: fade_in .5s ease-in-out 1, blur_in .25s ease-in-out 1;
+}
+
+.default_form select {
+	margin: 0 auto 0 auto;
+	animation: fade_in .5s ease-in-out 1, blur_in .25s ease-in-out 1;
+}
+
+.default_form select option {
 	margin: 0 auto 0 auto;
 	animation: fade_in .5s ease-in-out 1, blur_in .25s ease-in-out 1;
 }

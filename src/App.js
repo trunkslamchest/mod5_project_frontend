@@ -8,6 +8,8 @@ import LogIn from './user/LogIn'
 import SignUp from './user/SignUp'
 import Dashboard from './user/Dashboard'
 import EditProfile from './user/EditProfile'
+import DeleteProfile from './user/DeleteProfile'
+
 
 import Error from './Error'
 
@@ -323,6 +325,13 @@ export default class App extends React.Component {
                 city_town={ this.state.city_town }
                 state={ this.state.state }
                 zip_code={ this.state.zip_code }
+              />
+            </Route>
+            <Route exact path='/delete_profile'>
+              <DeleteProfile
+                setToken={ this.setToken }
+                user_id={this.state.user_id }
+                log_out={ this.logOut }
               />
             </Route>
             <Route component={ Error } />

@@ -6,26 +6,7 @@ import {
 import './Dashboard.css'
 
 export default class Dashboard extends React.Component{
-	
-	
-	// birth_day_format = () => {
-	// 	const number_ends = [ "st", "nd", "rd", "th" ]
-	// 	// let number_split = 0
-	// 	if (this.props.birth_day) {
-	// 		const number_split = this.props.birth_day.split('').pop()
-	// 			// if ((number_split === '1')) {
-	// 			// 	return `${this.props.birth_day}` + number_ends[0]
-	// 			// } else if (number_split === '2') {
-	// 			// 	return `${this.props.birth_day}` + number_ends[1]
-	// 			// } else if (number_split === '3') {
-	// 			// 	return `${this.props.birth_day}` + number_ends[2]
-	// 			// } else {
-	// 			// 	return `${this.props.birth_day}` + number_ends[3]
-	// 			// }
-	// 	}
-	// 			return number_split
-	// 	}
-	
+
 	render(){
 		const age = 2019 - this.props.birth_year
 		const address = `${this.props.house_number} ${this.props.street_name}, ${this.props.city_town} ${this.props.state}, ${this.props.zip_code}`
@@ -38,7 +19,7 @@ export default class Dashboard extends React.Component{
 				<div className="dashboard_options">
 					<ul>
 						<li><Link to='/edit_profile' className="default_link">Edit Profile</Link></li>
-						<li><Link to='/delete_account' className="default_link">Delete Account</Link></li>
+						<li><Link to='/delete_profile' className="default_link">Delete Profile</Link></li>
 					</ul>
 				</div>
 				<div className="dashboard_info">

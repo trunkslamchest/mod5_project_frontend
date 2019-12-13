@@ -9,10 +9,10 @@ export default class Footer extends React.Component {
 		return(
 			<>
 				<div className="footer_left">
-					"Footer Left"
+					Footer Left
 				</div>
 				<div className="footer_right">
-					"Footer Right"
+					Footer Right
 				</div>
 			</>
 		)

@@ -12,3 +12,11 @@
 	min-height: 150px;
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
 }
+
+.footer_left {
+	border: 1px solid #000;
+}
+
+.footer_right {
+	border: 1px solid #000;
+}

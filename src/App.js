@@ -10,6 +10,7 @@ import Dashboard from './user/Dashboard'
 import EditProfile from './user/EditProfile'
 import DeleteProfile from './user/DeleteProfile'
 
+import Backroom from './admin/Backroom'
 
 import Error from './Error'
 
@@ -54,6 +55,13 @@ export default class App extends React.Component {
     join_day: null,
     join_month: null,
     join_year: null,
+    // ~~~~~~~~~~~~~~~~~~~~
+    traffic_data: {
+      user_id: null,
+      action: "",
+      element: ""
+    },
+    temp: []
   }
 
   componentDidMount(){
@@ -105,8 +113,6 @@ export default class App extends React.Component {
     .then(res => res.json())
     .then(res_obj => {
       let current_user = res_obj.data.attributes.user
-
-      // console.log("current user", current_user)
 
       localStorage.user_name = current_user.user_name
       localStorage.email = current_user.email
@@ -235,19 +241,70 @@ export default class App extends React.Component {
     }
   }
 
+  from_app = (res_obj) => {
+    // this.setState({
+    //   traffic_data: {
+    //     user_id: res_obj.user_id,
+    //     interaction: res_obj.interaction,
+    //     element: res_obj.element
+    //   }
+    // })
+	fetch("http://localhost:3001/traffics", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				user_id: res_obj.user_id,
+				interaction: res_obj.interaction,
+				element: res_obj.element
+			})
+		})
+	  .then(response => response.json())
+	  .then(res_obj => {
+			this.setState({
+				traffic_data: {
+					user_id: res_obj.user_id,
+					interaction: res_obj.interaction,
+					element: res_obj.element
+				}
+			}, this.get_traffic())
+		})
+	}
+
+  get_traffic = () => {
+    	fetch("http://localhost:3001/traffics")
+    .then(res => res.json())
+    .then(res_obj =>
+				this.setState({
+            temp: res_obj.data.map(traffic_obj => traffic_obj.attributes)
+				})
+    )
+  }
+
+  reset_transmission = () => {
+        this.setState({
+      traffic_data: {
+        sent: false,
+        received: false,
+      }
+    })
+  }
+
   render(){
-    // console.log("UserID", this.state.loggedInUserID)
-    // console.log("token", this.state.token)
-    // console.log("logged in", this.state.loggedIn)
-    // console.log("state", this.state)
-    // console.log((this.state.birth_day) ? this.format_birthday() : "" )
+    console.log("get_traffic", this.state.temp)
+    
     // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
     const showHeader =
       <Header
         token={ this.state.token }
+        user_id={ this.state.user_id }
 		    user_name={ this.state.user_name }
+        access={ this.state.access }
         logOut={ this.logOut }
+        update_msg={ this.from_app }
+        reset_transmission={ this.reset_transmission }
       />
 
     const showFooter =
@@ -271,6 +328,16 @@ export default class App extends React.Component {
                 updateLogin={ this.updateLogin }
               />
             </Route>
+            <Route exact path='/backroom'>
+              <Backroom
+                token={ this.state.token }
+          	    user_name={ this.state.user_name }
+                access={ this.state.access }
+                // traffic_data={ this.state.traffic_data }
+                reset_transmission={ this.reset_transmission }
+                get_traffic={ this.get_traffic }
+              />
+              </Route>
             <Route exact path='/signup'>
               <SignUp
                 setToken={ this.setToken }

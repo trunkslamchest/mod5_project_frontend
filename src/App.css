@@ -57,7 +57,7 @@
 }
 
 .default_button:active {
-	animation: header_click_effects .2s linear 1;
+	animation: click_effects .2s linear 1;
 }
 
 .default_button:hover {

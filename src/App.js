@@ -56,12 +56,6 @@ export default class App extends React.Component {
     join_month: null,
     join_year: null,
     // ~~~~~~~~~~~~~~~~~~~~
-    traffic_data: {
-      user_id: null,
-      action: "",
-      element: ""
-    },
-    temp: []
   }
 
   componentDidMount(){
@@ -170,7 +164,6 @@ export default class App extends React.Component {
     })
   }
 
-
   logOut = () => {
     localStorage.clear()
       this.setState({
@@ -241,14 +234,7 @@ export default class App extends React.Component {
     }
   }
 
-  from_app = (res_obj) => {
-    // this.setState({
-    //   traffic_data: {
-    //     user_id: res_obj.user_id,
-    //     interaction: res_obj.interaction,
-    //     element: res_obj.element
-    //   }
-    // })
+  update_traffic_data = (res_obj) => {
 	fetch("http://localhost:3001/traffics", {
 			method: "POST",
 			headers: {
@@ -260,56 +246,28 @@ export default class App extends React.Component {
 				element: res_obj.element
 			})
 		})
-	  .then(response => response.json())
-	  .then(res_obj => {
-			this.setState({
-				traffic_data: {
-					user_id: res_obj.user_id,
-					interaction: res_obj.interaction,
-					element: res_obj.element
-				}
-			}, this.get_traffic())
-		})
 	}
 
-  get_traffic = () => {
-    	fetch("http://localhost:3001/traffics")
-    .then(res => res.json())
-    .then(res_obj =>
-				this.setState({
-            temp: res_obj.data.map(traffic_obj => traffic_obj.attributes)
-				})
-    )
-  }
-
-  reset_transmission = () => {
-        this.setState({
-      traffic_data: {
-        sent: false,
-        received: false,
-      }
-    })
-  }
-
   render(){
-    console.log("get_traffic", this.state.temp)
-    
+    // console.log("get_traffic", this.state.temp)
+
     // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
     const showHeader =
       <Header
+        update_traffic_data={ this.update_traffic_data }
+      // ~~~~~~~~~~~~~~~~~~~~
         token={ this.state.token }
         user_id={ this.state.user_id }
 		    user_name={ this.state.user_name }
         access={ this.state.access }
         logOut={ this.logOut }
-        update_msg={ this.from_app }
-        reset_transmission={ this.reset_transmission }
       />
 
     const showFooter =
       <Footer
-        
+        update_traffic_data={ this.update_traffic_data }
+      // ~~~~~~~~~~~~~~~~~~~~
       />
 
     return (
@@ -320,11 +278,16 @@ export default class App extends React.Component {
     		<div className="main_wrapper">
           <Switch>
             <Route exact path='/'>
-              <Home />
+              <Home
+                update_traffic_data={ this.update_traffic_data }
+              // ~~~~~~~~~~~~~~~~~~~~
+              />
             </Route>
             <Route exact path='/login'>
               <LogIn
                 setToken={ this.setToken }
+                update_traffic_data={ this.update_traffic_data }
+              // ~~~~~~~~~~~~~~~~~~~~
                 updateLogin={ this.updateLogin }
               />
             </Route>
@@ -333,19 +296,20 @@ export default class App extends React.Component {
                 token={ this.state.token }
           	    user_name={ this.state.user_name }
                 access={ this.state.access }
-                // traffic_data={ this.state.traffic_data }
-                reset_transmission={ this.reset_transmission }
-                get_traffic={ this.get_traffic }
               />
               </Route>
             <Route exact path='/signup'>
               <SignUp
                 setToken={ this.setToken }
+                update_traffic_data={ this.update_traffic_data }
+              // ~~~~~~~~~~~~~~~~~~~~
                 updateLogin={ this.updateLogin }
                />
              </Route>
             <Route exact path='/dashboard'>
               <Dashboard
+                update_traffic_data={ this.update_traffic_data }
+              // ~~~~~~~~~~~~~~~~~~~~
                 user_id={ this.state.user_id }
                 user_name={ this.state.user_name }
                 email={ this.state.email }
@@ -375,6 +339,8 @@ export default class App extends React.Component {
             <Route exact path='/edit_profile'>
               <EditProfile
                 setToken={ this.setToken }
+                update_traffic_data={ this.update_traffic_data }
+              // ~~~~~~~~~~~~~~~~~~~~
                 user_id= {this.state.user_id }
                 user_name={ this.state.user_name }
                 email={ this.state.email }
@@ -397,6 +363,8 @@ export default class App extends React.Component {
             <Route exact path='/delete_profile'>
               <DeleteProfile
                 setToken={ this.setToken }
+                update_traffic_data={ this.update_traffic_data }
+              // ~~~~~~~~~~~~~~~~~~~~
                 user_id={this.state.user_id }
                 log_out={ this.logOut }
               />

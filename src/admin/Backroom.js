@@ -14,7 +14,11 @@ export default class Backroom extends React.Component{
 
 	componentDidMount(){
 		this.updateRTV()
-		this.interval = setInterval(this.updateRTV, 1000);
+		this.RTVinterval = setInterval(this.updateRTV, 1000);
+	}
+
+	componentWillUnmount(){
+		clearInterval(this.RTVinterval)
 	}
 
 	updateRTV = () => {

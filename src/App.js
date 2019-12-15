@@ -250,7 +250,6 @@ export default class App extends React.Component {
 
   render(){
     // console.log("get_traffic", this.state.temp)
-
     // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
     const showHeader =

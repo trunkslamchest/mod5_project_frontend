@@ -51,8 +51,7 @@ export default class EditProfile extends React.Component {
 	}
 
 	onSubmitEditProfileFunctions = async (event) => {
-		event.persist()
-		event.preventDefault()
+
 		try {
 			this.EditProfileSubmitted(event)
 		} catch(error) {
@@ -61,6 +60,8 @@ export default class EditProfile extends React.Component {
 	}
 
 	EditProfileSubmitted = (event) => {
+		event.persist()
+		event.preventDefault()
 		fetch(`http://localhost:3001/users/${this.props.user_id}`, {
 			method: "PATCH",
 			headers: {
@@ -89,6 +90,7 @@ export default class EditProfile extends React.Component {
 					errors: res_obj.errors
 				})
 			} else {
+        		this.onSubmitUpdateTrafficFunctions(event, res_obj)
 				this.props.setToken(res_obj)
 				this.setState({
 					updateSuccess: true
@@ -100,7 +102,7 @@ export default class EditProfile extends React.Component {
 	onResetFunctions = (event) => {
 		event.persist()
 		event.preventDefault()
-
+		this.onClickUpdateTrafficFunctions(event)
 		this.setState({
 			edit_user_name: this.props.user_name,
 			edit_email: this.props.email,
@@ -119,8 +121,25 @@ export default class EditProfile extends React.Component {
 	}
 
 	onCancelFunctions = (event) => {
+		this.onClickUpdateTrafficFunctions(event)
 		this.setState({
 			cancel: true
+		})
+	}
+
+	onClickUpdateTrafficFunctions = (event) => {
+		this.props.update_traffic_data({
+			user_id: this.props.user_id,
+			interaction: event.target.attributes.interaction.value,
+			element: event.target.name
+		})
+	}
+
+	onSubmitUpdateTrafficFunctions = (event, res_obj) => {
+		this.props.update_traffic_data({
+			user_id: res_obj.user_id,
+			interaction: event.target.attributes.interaction.value,
+			element: event.target.name
 		})
 	}
 
@@ -142,7 +161,12 @@ export default class EditProfile extends React.Component {
 							<div className="default_container_header">
 								<h3>Edit Profile</h3>
 							</div>
-								<form className="edit_profile_form" onSubmit={ this.onSubmitEditProfileFunctions }>
+								<form
+								    name="edit_profile_form"
+				      				interaction="submit"
+									className="edit_profile_form"
+									onSubmit={ this.onSubmitEditProfileFunctions }
+								>
 									<div className="edit_profile_basics">
 										<label htmlFor="edit_user_name">Username</label>
 										<input id="edit_user_name"
@@ -326,10 +350,28 @@ export default class EditProfile extends React.Component {
 											/>
 										</div>
 										<div className="edit_profile_form_buttons">
-											<input className="default_button" type="submit" value="Update Profile" />
-											<button className="default_button" onClick={ this.onResetFunctions } >Reset</button>
+											<input
+												className="default_button"
+												type="submit"
+												value="Update Profile"
+											/>
+											<button
+												name="edit_profile_form"
+			      								interaction="reset"
+												className="default_button"
+												onClick={ this.onResetFunctions }
+											>
+												Reset
+											</button>
 											{ !(this.state.cancel) ? (
-												<input className="default_button" type="reset" onClick={ this.onCancelFunctions } value="Cancel" />
+												<input
+													name="edit_profile_form"
+				      								interaction="cancel"
+													className="default_button"
+													type="reset"
+													onClick={ this.onCancelFunctions }
+													value="Cancel"
+												/>
 											)
 											:
 											(

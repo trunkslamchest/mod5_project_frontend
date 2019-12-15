@@ -7,6 +7,24 @@ import './Dashboard.css'
 
 export default class Dashboard extends React.Component{
 
+
+	onClickEditProfileFunctions = (event) => {
+		this.onClickUpdateTrafficFunctions(event)
+	}
+
+	onClickDeleteProfileFunctions = (event) => {
+		this.onClickUpdateTrafficFunctions(event)
+	}
+
+	onClickUpdateTrafficFunctions = (event) => {
+		this.props.update_traffic_data({
+			user_id: this.props.user_id,
+			interaction: event.target.attributes.interaction.value,
+			element: event.target.name
+		})
+	}
+
+
 	render(){
 		const age = 2019 - this.props.birth_year
 		const address = `${this.props.house_number} ${this.props.street_name}, ${this.props.city_town} ${this.props.state}, ${this.props.zip_code}`
@@ -18,8 +36,28 @@ export default class Dashboard extends React.Component{
 				</div>
 				<div className="dashboard_options">
 					<ul>
-						<li><Link to='/edit_profile' className="default_link">Edit Profile</Link></li>
-						<li><Link to='/delete_profile' className="default_link">Delete Profile</Link></li>
+						<li>
+							<Link
+								to='/edit_profile'
+								name="edit_profile_button"
+								interaction="click"
+								className="default_link"
+								onClick={ this.onClickEditProfileFunctions }
+							>
+								Edit Profile
+							</Link>
+						</li>
+						<li>
+							<Link
+								to='/delete_profile'
+								name="delete_profile_button"
+								interaction="click"
+								className="default_link"
+								onClick={ this.onClickDeleteProfileFunctions }
+							>
+								Delete Profile
+							</Link>
+						</li>
 					</ul>
 				</div>
 				<div className="dashboard_info">
@@ -35,7 +73,6 @@ export default class Dashboard extends React.Component{
 						<li>Gender: { this.props.gender }</li>
 					<hr />
 						<li>Age: { age }</li>
-						{/* { (!!this.props.birth_day) ? (this.birth_day_format()) : ("") } */}
 						<li>Birthday: {this.props.birth_month } { this.props.formatted_birth_day}</li>
 					<hr />
 						<li>Address: { address }</li>

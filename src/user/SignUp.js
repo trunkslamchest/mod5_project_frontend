@@ -42,11 +42,20 @@ export default class SignUp extends React.Component {
 					errors: res_obj.errors
 				})
 			} else {
+				this.onClickUpdateTrafficFunctions(event, res_obj)
 				this.props.setToken(res_obj)
 				this.setState({
 					loggedIn: true
 				})
 			}
+		})
+	}
+
+	onClickUpdateTrafficFunctions = (event, res_obj) => {
+		this.props.update_traffic_data({
+			user_id: res_obj.user_id,
+			interaction: event.target.attributes.interaction.value,
+			element: event.target.name
 		})
 	}
 
@@ -57,9 +66,9 @@ export default class SignUp extends React.Component {
 		  				<div className="default_error_report">
 		  					{
 		              this.state.errors.map( error =>
-		                <>
+		                <div className="default_error_item">
 		                  { error }
-		                </>
+		                </div>
 		              )
 		            }
 		  				</div>
@@ -72,16 +81,21 @@ export default class SignUp extends React.Component {
 			{
 				!(this.state.loggedIn) ?
 					<div className="default_container">
-						<form className="default_form" onSubmit={ this.onSubmitSignUpFunctions }>
+						<form
+							name="sign_up_form"
+							interaction="submit"
+							className="default_form"
+							onSubmit={ this.onSubmitSignUpFunctions }
+						>
 							<h2>Sign Up</h2>
-							<label htmlFor="log_in_username">Username</label>
+							<label htmlFor="sign_up_username">Username</label>
 							<input id="log_in_username"
 								type="text"
 								onChange={ this.onChange }
 								name="username"
 								value={ this.state.username }
 							/>
-							<label htmlFor="log_in_password">Password</label>
+							<label htmlFor="sign_up_password">Password</label>
 							<input id="log_in_password"
 								type="password"
 								onChange={ this.onChange }

@@ -7,18 +7,18 @@ import './Backroom.css'
 
 export default class RTVitem extends React.Component{
 	render(){
+		console.log(this.props.RTV_obj.attributes)
+		const RTV_timestamp = this.props.RTV_obj.attributes.timestamp
 		const RTV_item = this.props.RTV_obj.attributes
 		return(
-			<>
-				id: { RTV_item.id }
+			<div className="RTV_item">
+				id: { RTV_item.id } | user_id: { (RTV_item.user_id === null) ? ("guest") : (RTV_item.user_id) }
 				<br />
-				user_id: { RTV_item.user_id }
+				interaction: { RTV_item.interaction } | element: { RTV_item.element }
 				<br />
-				interaction: { RTV_item.interaction }
-				<br />
-				element: { RTV_item.element }
+				timestamp: { RTV_timestamp.month }/{ RTV_timestamp.day }/{ RTV_timestamp.year } { RTV_timestamp.hour }:{ RTV_timestamp.minute }:{ RTV_timestamp.second } { RTV_timestamp.day_night }
 				<hr />
-			</>
+			</div>
 		)
 	}
 }

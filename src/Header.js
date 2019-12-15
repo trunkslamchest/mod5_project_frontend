@@ -46,16 +46,18 @@ export default class Header extends React.Component {
 
 		const test_buttons = [
 			<button
+				key={"t1"}
 				name="test_button1"
-				interaction="click1"
+				interaction="click"
 				className="default_button"
 				onClick={ this.onClickTestFunctions }
 			>
 				Test Button 1
 			</button>,
 			<button
+				key={"t2"}
 				name="test_button2"
-				interaction="click2"
+				interaction="click"
 				className="default_button"
 				onClick={ this.onClickTestFunctions }
 			>
@@ -66,7 +68,8 @@ export default class Header extends React.Component {
 		const home_link = [
 			<NavLink
 				exact to="/"
-				name="home"
+				key={"h1"}
+				name="home_button"
 				interaction="click"
 				className="default_button"
 				onClick={this.onClickFunctionsHome }
@@ -86,7 +89,7 @@ export default class Header extends React.Component {
 		const logged_in_links = [
 			<NavLink
 				to="/dashboard"
-				name="dashboard"
+				name="dashboard_button"
 				interaction="click"
 				className="default_button"
 				onClick={ this.onClickFunctionsDashboard }
@@ -96,7 +99,7 @@ export default class Header extends React.Component {
 			<NavLink
 				to="/"
 				name="logged_out"
-				interaction="logged_out"
+				interaction="click"
 				className="default_button"
 				onClick={this.onClickFunctionsLogOut }
 			>
@@ -106,8 +109,9 @@ export default class Header extends React.Component {
 
 		const logged_out_links = [
 			<NavLink
+				key={"h2"}
 				to="/login"
-				name="log_in"
+				name="log_in_button"
 				interaction="click"
 				className="default_button"
 				onClick={this.onClickFunctionsLogIn }
@@ -115,9 +119,10 @@ export default class Header extends React.Component {
 				Login
 			</NavLink>,
 			<NavLink
+				key={"h3"}
 				to="/signup"
-				name="sign_up"
-				interaction="clicked"
+				name="sign_up_button"
+				interaction="click"
 				className="default_button"
 				onClick={this.onClickFunctionsSignUp }
 			>
@@ -131,14 +136,15 @@ export default class Header extends React.Component {
 
 		const normal_header = [
 			user_greeting,
-			test_buttons,
+			// test_buttons,
 			logged_in_links
 		]
 
 		const admin_header = [
 			user_greeting,
-			test_buttons,
+			// test_buttons,
 			<NavLink
+				key={"h4"}
 				to="/backroom"
 				className="default_button"
 				onClick={ this.onClickFunctionsBackroom }

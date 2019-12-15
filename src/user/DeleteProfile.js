@@ -17,20 +17,29 @@ export default class DeleteProfile extends React.Component {
 		})
 	}
 
-	onClickYes = () => {
+	onClickYes = (event) => {
 		fetch(`http://localhost:3001/users/${this.props.user_id}`, {
 			method: "DELETE"
 		})
 		.then(
 			this.setState({
 				deleteSuccess: true
-			}, this.props.log_out())
+			}, this.props.log_out(), this.onClickUpdateTrafficFunctions(event))
 		)
 	}
 
-	onClickNo = () => {
+	onClickNo = (event) => {
+		this.onClickUpdateTrafficFunctions(event)
 		this.setState({
 			cancel: true
+		})
+	}
+
+	onClickUpdateTrafficFunctions = (event) => {
+		this.props.update_traffic_data({
+			user_id: this.props.user_id,
+			interaction: event.target.attributes.interaction.value,
+			element: event.target.name
 		})
 	}
 
@@ -40,8 +49,24 @@ export default class DeleteProfile extends React.Component {
 		const redirect_to_index = <Redirect to="/" />
 
 		const confirmation_buttons = [
-			<button className="default_button" onClick={ this.onClickYes }>Yes</button>,
-			<button className="default_button" onClick={ this.onClickNo }>No</button>
+			<button
+				key={"b1"}
+				name="delete_profile_form"
+				interaction="submit"
+				className="default_button"
+				onClick={ this.onClickYes }
+			>
+				Yes
+			</button>,
+			<button
+				key={"b2"}
+				name="delete_profile_form"
+				interaction="cancel"
+				className="default_button"
+				onClick={ this.onClickNo }
+			>
+				No
+			</button>
 		]
 
 		return(

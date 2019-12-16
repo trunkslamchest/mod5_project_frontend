@@ -1,22 +1,22 @@
 import React from 'react'
-import RTVitem from './RTVitem'
+import RTVusersItem from './RTVusersItem'
 import {
 		//  Link
 		} from 'react-router-dom'
 
-import './Backroom.css'
+import './RTV.css'
 
-export default class RTVcontainer extends React.Component{
+export default class RTVusersList extends React.Component{
 	render(){
-		const distribute_RTV_data = this.props.RTV_data.map( RTV_obj =>
-			<RTVitem
-				key={RTV_obj.id}
-				RTV_obj={RTV_obj}
+		const distribute_RTV_data = this.props.RTV_users_data.map( RTV_users_obj =>
+			<RTVusersItem
+				key={RTV_users_obj.id}
+				RTV_users_obj={RTV_users_obj}
 			/>
 		)
 		return(
 			<>
-				<h3>Real Time Traffic Viewer</h3>
+				<h3>Real Time User Traffic</h3>
 					<div className="RTV_sub_header">
 						<div className="RTV_sub_header_item">
 							User ID

@@ -4,6 +4,27 @@ import './Home.css'
 
 export default class Home extends React.Component {
 
+	componentDidMount(){
+		this.onMountAsync()
+	}
+
+	onMountAsync = async () => {
+		try {
+			await this.props
+			await this.props.user_id;
+			this.onPageLoadFunctions()
+		} catch(errors) {
+			console.log(errors);
+		}
+	}
+
+	onPageLoadFunctions = (user_id) => {
+		this.props.update_page_data({
+			user_id: this.props.user_id,
+			page_name: "index"
+		})
+	}
+
 	onClickUpdateTrafficFunctions = (event) => {
 		this.props.update_traffic_data({
 			user_id: this.props.user_id,

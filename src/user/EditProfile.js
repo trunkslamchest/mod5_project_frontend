@@ -42,6 +42,24 @@ export default class EditProfile extends React.Component {
 				edit_zip_code: this.props.zip_code
 			})
 		}
+		this.onMountAsync()
+	}
+
+	onMountAsync = async () => {
+		try {
+			await this.props
+			let user_id = await this.props.user_id;
+			await this.onPageLoadFunctions(user_id)
+		} catch(errors) {
+			console.log(errors);
+		}
+	}
+
+	onPageLoadFunctions = (user_id) => {
+		this.props.update_page_data({
+			user_id: user_id,
+			page_name: "edit_profile"
+		})
 	}
 
 	onChange = (event) => {

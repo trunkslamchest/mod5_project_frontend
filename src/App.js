@@ -26,6 +26,7 @@ import {
         } from 'react-router-dom'
 
 import './App.css'
+import './Response.css'
 
 export default class App extends React.Component {
 
@@ -57,6 +58,7 @@ export default class App extends React.Component {
     join_month: null,
     join_year: null,
     // ~~~~~~~~~~~~~~~~~~~~
+    backroom_display: null
   }
 
   componentDidMount(){
@@ -249,8 +251,26 @@ export default class App extends React.Component {
 		})
 	}
 
+  update_page_data = (res_obj) => {
+	fetch("http://localhost:3001/pages", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				user_id: res_obj.user_id,
+				page_name: res_obj.page_name,
+			})
+		})
+	}
+
+  update_backroom_from_header = (index_msg) => {
+    this.setState({
+      backroom_display: index_msg
+    })
+  }
+
   render(){
-    // console.log("get_traffic", this.state.temp)
     // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
     const showHeader =
@@ -262,6 +282,7 @@ export default class App extends React.Component {
 		    user_name={ this.state.user_name }
         access={ this.state.access }
         logOut={ this.logOut }
+        update_backroom_from_header={ this.update_backroom_from_header }
       />
 
     const showFooter =
@@ -280,13 +301,16 @@ export default class App extends React.Component {
               <Route exact path='/'>
                 <Home
                   update_traffic_data={ this.update_traffic_data }
+                  update_page_data={ this.update_page_data }
                 // ~~~~~~~~~~~~~~~~~~~~
+                  user_id={ this.state.user_id }
                 />
               </Route>
               <Route exact path='/login'>
                 <LogIn
                   setToken={ this.setToken }
                   update_traffic_data={ this.update_traffic_data }
+                  update_page_data={ this.update_page_data }
                 // ~~~~~~~~~~~~~~~~~~~~
                   updateLogin={ this.updateLogin }
                 />
@@ -295,6 +319,7 @@ export default class App extends React.Component {
                 <SignUp
                   setToken={ this.setToken }
                   update_traffic_data={ this.update_traffic_data }
+                  update_page_data={ this.update_page_data }
                 // ~~~~~~~~~~~~~~~~~~~~
                   updateLogin={ this.updateLogin }
                  />
@@ -302,6 +327,7 @@ export default class App extends React.Component {
               <Route exact path='/dashboard'>
                 <Dashboard
                   update_traffic_data={ this.update_traffic_data }
+                  update_page_data={ this.update_page_data }
                 // ~~~~~~~~~~~~~~~~~~~~
                   user_id={ this.state.user_id }
                   user_name={ this.state.user_name }
@@ -333,6 +359,7 @@ export default class App extends React.Component {
                 <EditProfile
                   setToken={ this.setToken }
                   update_traffic_data={ this.update_traffic_data }
+                  update_page_data={ this.update_page_data }
                 // ~~~~~~~~~~~~~~~~~~~~
                   user_id= {this.state.user_id }
                   user_name={ this.state.user_name }
@@ -357,6 +384,7 @@ export default class App extends React.Component {
                 <DeleteProfile
                   setToken={ this.setToken }
                   update_traffic_data={ this.update_traffic_data }
+                  update_page_data={ this.update_page_data }
                 // ~~~~~~~~~~~~~~~~~~~~
                   user_id={this.state.user_id }
                   log_out={ this.logOut }
@@ -365,6 +393,7 @@ export default class App extends React.Component {
               <Route exact path='/log_out'>
               <LogOut
                 update_traffic_data={ this.update_traffic_data }
+                update_page_data={ this.update_page_data }
               // ~~~~~~~~~~~~~~~~~~~~
                 token={ this.state.token }
                 user_id={ this.state.user_id }
@@ -378,6 +407,7 @@ export default class App extends React.Component {
                   token={ this.state.token }
             	    user_name={ this.state.user_name }
                   access={ this.state.access }
+                  update_backroom_from_header={ this.state.backroom_display }
                 />
               </Route>
               <Route component={ Error } />

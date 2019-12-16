@@ -25,6 +25,27 @@ export default class SignUp extends React.Component {
 		errors: []
 	}
 
+	componentDidMount(){
+		this.onMountAsync()
+	}
+
+	onMountAsync = async () => {
+		try {
+			await !!this.props
+			let user_id = await this.props.user_id;
+			await this.onPageLoadFunctions(user_id)
+		} catch(errors) {
+			console.log(errors);
+		}
+	}
+
+	onPageLoadFunctions = (user_id) => {
+		this.props.update_page_data({
+			user_id: user_id,
+			page_name: "sign_up"
+		})
+	}
+
 	onChange = (event) => {
 		this.setState({
 			[event.target.name]: event.target.value

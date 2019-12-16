@@ -7,6 +7,23 @@ import './Dashboard.css'
 
 export default class Dashboard extends React.Component{
 
+	componentDidMount(){
+		this.onMountAsync()
+	}
+
+	onMountAsync = async () => {
+		try {
+			let props = await this.props
+			await this.props.user_id;
+			this.onPageLoadFunctions(props)
+		} catch(errors) {
+			console.log(errors);
+		}
+	}
+
+	UNSAFE_componentWillReceiveProps(nextProps){
+		this.onPageLoadFunctions(nextProps)
+	}
 
 	onClickEditProfileFunctions = (event) => {
 		this.onClickUpdateTrafficFunctions(event)
@@ -21,6 +38,13 @@ export default class Dashboard extends React.Component{
 			user_id: this.props.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
+		})
+	}
+
+	onPageLoadFunctions = (props) => {
+		this.props.update_page_data({
+			user_id: props.user_id,
+			page_name: "user_dashboard"
 		})
 	}
 

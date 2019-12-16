@@ -12,12 +12,21 @@ export default class RTVitem extends React.Component{
 		const RTV_item = this.props.RTV_obj.attributes
 		return(
 			<div className="RTV_item">
-				id: { RTV_item.id } | user_id: { (RTV_item.user_id === null) ? ("guest") : (RTV_item.user_id) }
-				<br />
-				interaction: { RTV_item.interaction } | element: { RTV_item.element }
-				<br />
-				timestamp: { RTV_timestamp.month }/{ RTV_timestamp.day }/{ RTV_timestamp.year } { RTV_timestamp.hour }:{ RTV_timestamp.minute }:{ RTV_timestamp.second } { RTV_timestamp.day_night }
-				<hr />
+				{/* <div className="RTV_sub_item">
+					id: { RTV_item.id }
+				</div> */}
+				<div className="RTV_sub_item">
+					{ (RTV_item.user_id === null) ? ("guest") : (RTV_item.user_id) }
+				</div>
+				<div className="RTV_sub_item">
+					{ RTV_item.interaction }
+				</div>
+				<div className="RTV_sub_item">
+					{ RTV_item.element }
+				</div>
+				<div className="RTV_sub_item">
+					{ RTV_timestamp.month }/{ RTV_timestamp.day }/{ RTV_timestamp.year } { RTV_timestamp.hour }:{ RTV_timestamp.minute }:{ RTV_timestamp.second } { RTV_timestamp.day_night }
+				</div>
 			</div>
 		)
 	}

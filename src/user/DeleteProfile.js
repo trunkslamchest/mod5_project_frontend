@@ -70,7 +70,7 @@ export default class DeleteProfile extends React.Component {
 		]
 
 		return(
-			<div className="default_container">
+			<div className="delete_profile_wrapper">
 				<div className="default_container_header">
 					<h3>Are you sure you want to delete your profile?</h3>
 				</div>

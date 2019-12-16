@@ -144,10 +144,10 @@ export default class SignUp extends React.Component {
 				}
 				{
 					!(this.state.loggedIn) ?
-						<div className="default_container">
-							<div className="default_container_header">
+						<div className="sign_up_wrapper">
+							{/* <div className="default_container_header"> */}
 								<h3>Sign Up</h3>
-							</div>
+							{/* </div> */}
 							<form
 								name="sign_up_form"
 								interaction="submit"

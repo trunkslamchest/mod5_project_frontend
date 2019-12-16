@@ -1,20 +1,30 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Lato|PT+Sans);
 @import url('./animation.css');
 
-.main_wrapper {
-	width: 80%;
+.main_container {
+	width: 100%;
 	margin: 0 auto 0 auto;
-	padding: 5px;
-	background-color: #fffdf7;
-	min-height: 100vh;
+	background-color: #fff;
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
 	animation: fade_in .1s ease-in-out 1, blur_in .05s ease-in-out 1;
 }
 
-.default_container {
+.default_wrapper {
+	width: 80%;
+	margin: 0 auto 0 auto;
 	padding: 5px;
-	margin: 5px;
-	animation: fade_in .2s ease-in-out 1, blur_in .1s ease-in-out 1;
+	background-color: #fffdf7;
+	min-height: 70vh;
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
+	animation: fade_in .1s ease-in-out 1, blur_in .05s ease-in-out 1;
+}
+
+.default_wrapper h3 {
+	
+}
+
+.default_error_report {
+	
 }
 
 .default_container_header {

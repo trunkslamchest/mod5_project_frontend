@@ -15,12 +15,24 @@ export default class RTVcontainer extends React.Component{
 			/>
 		)
 		return(
-			<div className="default_container">
-				<div className="default_container_header">
-					<h3>Real Time Traffic Viewer</h3>
-				</div>
+			<>
+				<h3>Real Time Traffic Viewer</h3>
+					<div className="RTV_sub_header">
+						<div className="RTV_sub_header_item">
+							User ID
+						</div>
+						<div className="RTV_sub_header_item">
+							Interaction
+						</div>
+						<div className="RTV_sub_header_item">
+							Element
+						</div>
+						<div className="RTV_sub_header_item">
+							Timestamp
+						</div>
+					</div>
 				{ distribute_RTV_data }
-			</div>
+			</>
 		)
 	}
 }

@@ -1,9 +1,13 @@
-.log_in_container {
+.log_in_wrapper {
+	width: 80%;
 	display: flex;
-	flex-direction: column;
+	/* flex-direction: column; */
 	justify-content: space-around;
-	align-items: baseline;
+	align-items: flex-start;
 	margin: 0 auto 0 auto;
+	background-color: #fffdf7;
+	min-height: 75vh;
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
 	animation: fade_in .3s ease-in-out 1, blur_in .15s ease-in-out 1;
 }
 

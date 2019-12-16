@@ -164,7 +164,7 @@ export default class EditProfile extends React.Component {
 				}
 				{
 					!(this.state.updateSuccess) ?
-						<div className="default_container">
+						<div className="edit_profile_wrapper">
 							<div className="default_container_header">
 								<h3>Edit Profile</h3>
 							</div>

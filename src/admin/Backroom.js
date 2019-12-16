@@ -1,5 +1,6 @@
 import React from 'react'
 import RTVcontainer from './RTVcontainer'
+import RTVsidebar from './RTVsidebar'
 import {
         //  Link
         } from 'react-router-dom'
@@ -33,10 +34,16 @@ export default class Backroom extends React.Component{
 
 	render(){
 		return(
-			<div className="default_container">
-				<RTVcontainer
-					RTV_data={this.state.RTV_data}
-				/>
+			<div className="backroom_wrapper">
+				<div className="RTV_side_window">
+					<RTVsidebar
+					/>
+				</div>
+				<div className="RTV_main_window">
+					<RTVcontainer
+						RTV_data={this.state.RTV_data}
+					/>
+				</div>
 			</div>
 		)
 	}

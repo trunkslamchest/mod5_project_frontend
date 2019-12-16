@@ -30,7 +30,7 @@ export default class Dashboard extends React.Component{
 		const address = `${this.props.house_number} ${this.props.street_name}, ${this.props.city_town} ${this.props.state}, ${this.props.zip_code}`
 
 		return(
-			<div className="dashboard_container">
+			<div className="dashboard_wrapper">
 				<div className="dashboard_greeting">
 					<h2>Welcome, {this.props.first_name}!</h2>
 				</div>

@@ -31,7 +31,7 @@ export default class LogOut extends React.Component {
 			cancel: true
 		})
 	}
-	
+
 	onClickFunctionsLogOut = (event) => {
 		this.onClickUpdateTrafficFunctions(event)
 		this.props.logOut(this.props.token)
@@ -72,7 +72,7 @@ export default class LogOut extends React.Component {
 		]
 
 		return(
-			<div className="default_container">
+			<div className="log_out_wrapper">
 				<div className="default_container_header">
 					<h3>Are you sure you want to log out?</h3>
 				</div>

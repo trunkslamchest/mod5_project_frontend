@@ -83,7 +83,7 @@ export default class LogIn extends React.Component {
   render(){
     
     const login_form =
-  		<div className="log_in_container">
+  		<div className="log_in_wrapper">
 				<form
         			name="log_in_form"
 		     		interaction="submit"

@@ -9,6 +9,7 @@ import SignUp from './user/SignUp'
 import Dashboard from './user/Dashboard'
 import EditProfile from './user/EditProfile'
 import DeleteProfile from './user/DeleteProfile'
+import LogOut from './user/LogOut'
 
 import Backroom from './admin/Backroom'
 
@@ -366,6 +367,17 @@ export default class App extends React.Component {
               // ~~~~~~~~~~~~~~~~~~~~
                 user_id={this.state.user_id }
                 log_out={ this.logOut }
+              />
+            </Route>
+            <Route exact path='/log_out'>
+              <LogOut
+                update_traffic_data={ this.update_traffic_data }
+              // ~~~~~~~~~~~~~~~~~~~~
+                token={ this.state.token }
+                user_id={ this.state.user_id }
+        		    user_name={ this.state.user_name }
+                access={ this.state.access }
+                logOut={ this.logOut }
               />
             </Route>
             <Route component={ Error } />

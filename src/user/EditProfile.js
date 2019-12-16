@@ -6,6 +6,8 @@ import './EditProfile.css'
 export default class EditProfile extends React.Component {
 
 	state = {
+		updateSuccess: false,
+		cancel: false,
 		edit_user_name: "",
 		edit_email: "",
 		edit_first_name: "",
@@ -19,8 +21,6 @@ export default class EditProfile extends React.Component {
 		edit_city_town: "",
 		edit_state: "",
 		edit_zip_code: "",
-		updateSuccess: false,
-		cancel: false,
 		errors: []
 	}
 
@@ -51,7 +51,6 @@ export default class EditProfile extends React.Component {
 	}
 
 	onSubmitEditProfileFunctions = async (event) => {
-
 		try {
 			this.EditProfileSubmitted(event)
 		} catch(error) {
@@ -145,19 +144,27 @@ export default class EditProfile extends React.Component {
 
 	render(){
 		return(
-			<div className="default_container">
+			<>
 				{
-					(!!this.state.errors) ? (
-						<div className="default_error_report">
-							{ this.state.errors.map( error => <> { error } </> ) }
-  						</div>
-					)
-					:
-					( "" )
+			        (!!this.state.errors) ? (
+		  				<div className="default_error_report">
+		  					{
+								this.state.errors.map( error =>
+									<div className="default_error_item">
+										{ error }
+									</div>
+								)
+		           			}
+		  				</div>
+			        )
+			        :
+			        (
+			          ""
+			        )
 				}
 				{
 					!(this.state.updateSuccess) ?
-						<>
+						<div className="default_container">
 							<div className="default_container_header">
 								<h3>Edit Profile</h3>
 							</div>
@@ -363,28 +370,29 @@ export default class EditProfile extends React.Component {
 											>
 												Reset
 											</button>
-											{ !(this.state.cancel) ? (
-												<input
-													name="edit_profile_form"
-				      								interaction="cancel"
-													className="default_button"
-													type="reset"
-													onClick={ this.onCancelFunctions }
-													value="Cancel"
-												/>
-											)
-											:
-											(
-												<Redirect to="/dashboard" />
-											)
-										}
+											{
+												!(this.state.cancel) ? (
+													<input
+														name="edit_profile_form"
+					      								interaction="cancel"
+														className="default_button"
+														type="reset"
+														onClick={ this.onCancelFunctions }
+														value="Cancel"
+													/>
+												)
+												:
+												(
+													<Redirect to="/dashboard" />
+												)
+											}
 										</div>
 								</form>
-						</>
+						</div>
 					:
 						<Redirect to='./dashboard' />
 				}
-			</div>
+			</>
 		)
 	}
 }

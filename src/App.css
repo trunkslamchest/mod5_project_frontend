@@ -76,6 +76,8 @@
 }
 
 .default_form label {
+	padding: 5px;
+	margin: 5px;
 	font-family: Lato;
 	animation: fade_in .4s ease-in-out 1, blur_in .2s ease-in-out 1;
 }

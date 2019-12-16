@@ -19,7 +19,7 @@ export default class Header extends React.Component {
 
 	onClickFunctionsLogOut = (event) => {
 		this.onClickUpdateTrafficFunctions(event)
-		this.props.logOut(this.props.token)
+		// this.props.logOut(this.props.token)
 	}
 
 	onClickFunctionsDashboard = (event) => {
@@ -96,8 +96,17 @@ export default class Header extends React.Component {
 			>
 				Dashboard
 			</NavLink>,
+			// <NavLink
+			// 	to="/"
+			// 	name="logged_out"
+			// 	interaction="click"
+			// 	className="default_button"
+			// 	onClick={this.onClickFunctionsLogOut }
+			// >
+			// 	Log Out
+			// </NavLink>
 			<NavLink
-				to="/"
+				to="/log_out"
 				name="logged_out"
 				interaction="click"
 				className="default_button"

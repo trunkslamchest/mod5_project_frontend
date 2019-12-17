@@ -17,16 +17,25 @@
 		margin-bottom: 0px;
 		margin-left: 0px;
 		margin-right: 0px;
+		min-height: 70vh;
 		background-color: #fffdf7;
 		box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
 	}
+
 	.main_window {
 		width: 100%;
-		padding: 0px;
-		margin: 0px;
-		flex-grow: 1;
-		flex-shrink: 2;
-		z-index: 1
+		background-color: #fffdf7;
+		padding-top: 0px;
+		padding-bottom: 0px;
+		padding-left: 0px;
+		padding-right: 0px;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		margin-left: 0px;
+		margin-right: 0px;
+		flex-grow: 2;
+		min-height: 70vh;
+		box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25);
 	}
 	.RTV_main_window {
 		width: 100%;
@@ -40,6 +49,7 @@
 		margin-left: 0px;
 		margin-right: 0px;
 		flex-grow: 2;
+		min-height: 70vh;
 		box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25);
 	}
 
@@ -117,20 +127,20 @@
 
 @media only screen and (max-width: 750px) {
 
+	.default_wrapper{
+		min-height: 75vh;
+	}
+
+	.RTV_main_window{
+		min-height: 75vh;
+	}
+
 	.main_window {
 		width: 100%;
-		/* background-color: #dbdbdb;
-		padding-top: 0px;
-		padding-bottom: 0px;
-		padding-left: 5px;
-		padding-right: 5px;
-		margin-top: 0px;
-		margin-bottom: 0px;
-		margin-left: 0px;
-		margin-right: 0px;*/
 		flex-grow: 1;
 		flex-shrink: 2;
 		z-index: 1;
+		min-height: 70vh;
 	}
 
 	.default_header_link {

@@ -1,5 +1,9 @@
 import React from 'react'
-import DBeditUsersList from './DBeditUsersList'
+import DBeditUsersTable from './DBeditUsersTable'
+import DBeditAddUser from './DBeditAddUser'
+import DBeditEditUser from './DBeditEditUser'
+
+
 import {
         //  Link
         } from 'react-router-dom'
@@ -9,11 +13,20 @@ import './DBedit.css'
 export default class DBeditUsersContainer extends React.Component{
 
 	state = {
-		users: []
+		users: [],
+		user: {},
+		user_id: '',
+		display: "index"
 	}
 
 	componentDidMount(){
 		this.getUserDB()
+	}
+
+	UNSAFE_componentWillReceiveProps(nextProps){
+		this.setState({
+			display: "index"
+		})
 	}
 
 	getUserDB = () => {
@@ -26,15 +39,97 @@ export default class DBeditUsersContainer extends React.Component{
 		)
 	}
 
+	displaySwitch = (user) => {
+		this.setState({
+			display: "user_info",
+			user: user
+		})
+	}
+
+	displaySwitchToIndex = (index) => {
+		this.setState({
+			display: 'index',
+		}, this.getUserDB())
+	}
+
+	addUserFunctions = () => {
+		this.setState({
+			display: "add_user"
+		})
+	}
+
+	editUserFunctions = (user_id) => {
+		this.setState({
+			display: "edit_user",
+			user_id: user_id
+		})
+	}
+
+	deleteUserFunctions = (event) => {
+		console.log("delete", event.target.value)
+	}
+
 	render(){
-		// console.log("user container state", this.state)
-		// console.log("user container props", this.props)
+		// console.log("user container state", this.state.user)
+
+		const distribute_users_data = this.state.users.map( user_obj =>
+			<DBeditUsersTable
+				key={user_obj.id}
+				user={user_obj}
+				displaySwitch={ this.displaySwitch }
+				showDBusers={ this.props.showDBusers }
+				editUser={ this.editUserFunctions }
+				deleteUser={ this.deleteUserFunctions }
+			/>
+		)
+
+		const DBedit_table_frame =
+	 		<table className="DBedit_table">
+				<tbody>
+	 			<tr>
+					<th></th>
+	 				<th>User ID</th>
+	 				<th>User Name</th>
+	 				<th>Email</th>
+	 				<th>First Name</th>
+	 				<th>Last Name</th>
+	 				<th>Gender</th>
+	 				<th>Birth Day</th>
+	 				<th>Birth Month</th>
+	 				<th>Birth Year</th>
+	 				<th>House Number</th>
+	 				<th>Street Name</th>
+	 				<th>City/Town</th>
+	 				<th>State</th>
+	 				<th>Zip Code</th>
+	 				<th>Join Date</th>
+	 			</tr>
+	 				{ distribute_users_data }
+	 			</tbody>
+	 		</table>
+
 		return(
 			<>
-				<DBeditUsersList
-					users={ this.state.users }
-					showDBusers={ this.props.showDBusers }
-				/>
+				<button className="default_button" value="Add User" onClick={ this.addUserFunctions }>
+					Add User
+				</button>
+				<button className="default_button" value="Edit User" onClick={ this.editUserFunctions }>
+					Edit User
+				</button>
+				<button className="default_button" value="Delete User" onClick={ this.deleteUserFunctions }>
+					Delete User
+				</button>
+					{
+						(() => {
+							switch(this.state.display) {
+							case 'add_user': return <DBeditAddUser displaySwitchToIndex={this.displaySwitchToIndex} />;
+							case 'edit_user': return <DBeditEditUser displaySwitchToIndex={this.displaySwitchToIndex} user_id={this.state.user_id} />;
+							// case 'delete_user':
+							case 'index': return DBedit_table_frame;
+							default: return null;
+							}
+						})()
+					}
 			</>
 		)
 	}

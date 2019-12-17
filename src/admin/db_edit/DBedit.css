@@ -92,7 +92,7 @@
 	background-image: linear-gradient(rgb(255, 255, 255, 1),  rgb(219, 219, 219, 1) );
 }
 
-.DBedit_table tr:hover {
+/* .DBedit_table tr:hover {
 	color: #dbdbdb;
 	background-image: linear-gradient(rgb(81, 88, 102, 1),  rgb(40, 44, 52, 1) );
 	transition-property: color;
@@ -103,7 +103,7 @@
 .DBedit_table tr:active {
 	color: rgb(40, 44, 52, 1);
 	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57, 1) );
-}
+} */
 
 .DBedit_table td {
 	cursor: pointer;
@@ -113,4 +113,28 @@
 	font-weight: 400;
 	padding: 3px;
 	margin: 0px 0px 0px 0px;
+}
+
+
+.DBedit_user_wrapper {
+	width:90%;
+	background-color: #fff;
+	padding: 10px;
+	margin: 0 auto 0 auto;
+}
+
+.DBedit_default_box {
+	
+}
+
+.DBedit_names {
+	
+}
+
+.DBedit_birth {
+	
+}
+
+.DBedit_basics {
+	
 }

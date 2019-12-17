@@ -1,5 +1,4 @@
 import React from 'react'
-// import RTVitem from './RTVitem'
 import {
 		//  Link,
 		//  NavLink
@@ -33,16 +32,16 @@ export default class RTVsidebar extends React.Component{
 				<div className="side_bar">
 					<ul>
 						<li onClick={ this.onClickRTVusersFunctions }>
-							RTV Users
+							Real Time User Traffic
 						</li>
 						<li onClick={ this.onClickRTVpagesFunctions }>
-							RTV Pages
+							Real Time Page Traffic
 						</li>
 						<li onClick={ this.onClickDBeditFunctions }>
-							DB Editor
+							Database Editor
 						</li>
 						<li onClick={ this.onClickAnalyticsFunctions }>
-							Analytics
+							Statistical Analytics
 						</li>
 					</ul>
 				</div>

@@ -60,3 +60,12 @@
 		background-image: linear-gradient(rgb(81, 88, 102, 1),  rgb(40, 44, 52, 1) );
 	}
 }
+
+@keyframes white_to_orange {
+	0% {
+		background-image: linear-gradient(rgb(255, 255, 255, 1),  rgb(219, 219, 219, 1) );
+	}
+	100% {
+		background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57, 1) );
+	}
+}

@@ -16,7 +16,7 @@ import './DBedit.css'
 export default class DBeditMainContainer extends React.Component{
 
 	state = {
-		display: 'index'
+		display: 'index',
 	}
 
 	componentDidMount(){
@@ -37,10 +37,12 @@ export default class DBeditMainContainer extends React.Component{
 		})
 	}
 
-	showDBusers = () => {
-		this.setState({
-			display: 'users'
-		})
+	showDBusers = (signal) => {
+		if(signal !== "signal") {
+			this.setState({
+				display: 'users',
+			})
+		}
 	}
 
 	showDBthings = () => {
@@ -62,28 +64,31 @@ export default class DBeditMainContainer extends React.Component{
 	}
 
 	render(){
+		// console.log("main container state", this.state)
+		// console.log("main container props", this.props)
 		return(
-				<div className="DBedit_main_window">
-					<h3>Database Editor</h3>
-					<div className="DBedit_cat_bar">
-						<div className="DBedit_cat_bar_item">
-							<p onClick={ this.showDBusers }>Users</p>
+				<>
+					<div className="DBedit_navbar">
+						<div className="DBedit_navbar_item" onClick={ this.showDBusers }>
+							<p>Users</p>
 						</div>
-						<div className="DBedit_cat_bar_item">
-							<p onClick={ this.showDBthings }>Things</p>
+						<div className="DBedit_navbar_item" onClick={ this.showDBthings }>
+							<p>Things</p>
 						</div>
-						<div className="DBedit_cat_bar_item">
-							<p onClick={ this.showDBvotes }>Votes</p>
+						<div className="DBedit_navbar_item" onClick={ this.showDBvotes }>
+							<p>Votes</p>
 						</div>
-						<div className="DBedit_cat_bar_item">
-							<p onClick={ this.showDBcomments }>Comments</p>
+						<div className="DBedit_navbar_item" onClick={ this.showDBcomments }>
+							<p>Comments</p>
 						</div>
 					</div>
 					{
 						(() => {
 							switch(this.state.display) {
 							case 'index': return <DBeditIndex />;
-							case 'users': return <DBeditUsersContainer />;
+							case 'users': return <DBeditUsersContainer
+													showDBusers={ this.showDBusers }
+												/>;
 							case 'things': return <DBeditThings />;
 							case 'votes': return <DBeditVotes />;
 							case 'comments': return <DBeditComments />;
@@ -91,7 +96,7 @@ export default class DBeditMainContainer extends React.Component{
 							}
 						})()
 					}
-				</div>
+				</>
 		)
 	}
 }

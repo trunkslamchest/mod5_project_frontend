@@ -33,13 +33,11 @@ export default class RTVusersContainer extends React.Component{
 
 	render(){
 		return(
-			<div className="backroom_wrapper">
-				<div className="RTV_main_window">
+				<>
 					<RTVusersList
 						RTV_users_data={this.state.RTV_users_data}
 					/>
-				</div>
-			</div>
+				</>
 		)
 	}
 }

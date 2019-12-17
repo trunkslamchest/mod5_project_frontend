@@ -9,8 +9,7 @@
 	margin-right: 0px;
 	flex-grow: 0;
 	flex-shrink: 2;
-	/* min-width: 100px;
-	min-height: 50vh; */
+	z-index: 2;
 }
 
 .side_bar {
@@ -37,7 +36,6 @@
 }
 
 .side_bar li {
-	transform: scale(1.0);
 	text-align: center;
 	font-size: 12pt;
 	cursor: pointer;
@@ -55,9 +53,8 @@
 
 .side_bar li:hover {
 	color: #FFF;
-	transform: scale(1.05);
 	background-image: linear-gradient(rgb(81, 88, 102, 1),  rgb(40, 44, 52, 1) );
-	transition-property: scale;
+	transition-property: color;
 	transition-duration: .2s, .2s;
 	transition-timing-function: ease-in-out;
 }

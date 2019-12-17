@@ -12,7 +12,7 @@ export default class DBeditIndex extends React.Component{
 	render(){
 		return(
 			<>
-			DB edit index test
+			<h3> Database Index Template </h3>
 			</>
 		)
 	}

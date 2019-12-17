@@ -1,5 +1,5 @@
 import React from 'react'
-import RTVpagesItem from './RTVpagesItem'
+import RTVpagesRow from './RTVpagesRow'
 import {
 		//  Link
 		} from 'react-router-dom'
@@ -9,26 +9,27 @@ import './RTV.css'
 export default class RTVpagesList extends React.Component{
 	render(){
 		const distribute_RTV_page_data = this.props.RTV_page_data.map( RTV_page_obj =>
-			<RTVpagesItem
+			<RTVpagesRow
 				key={RTV_page_obj.id}
 				RTV_page_obj={RTV_page_obj}
 			/>
 		)
+
+		const RTVpages_table =
+		<table className="RTVpages_table">
+			<tbody>
+				<tr>
+					<th>User ID</th>
+					<th>Page</th>
+					<th>Timestamp</th>
+				</tr>
+					{ distribute_RTV_page_data }
+			</tbody>
+		</table>
+
 		return(
 			<>
-				<h3>Real Time Page Traffic</h3>
-					<div className="RTV_sub_header">
-						<div className="RTV_sub_header_item">
-							User ID
-						</div>
-						<div className="RTV_sub_header_item">
-							Page
-						</div>
-						<div className="RTV_sub_header_item">
-							Timestamp
-						</div>
-					</div>
-				{ distribute_RTV_page_data }
+					{ RTVpages_table }
 			</>
 		)
 	}

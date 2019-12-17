@@ -6,8 +6,7 @@ import RTVsidebar from './rtv/RTVsidebar'
 import RTVusersContainer from './rtv/RTVusersContainer'
 import RTVpagesContainer from './rtv/RTVpagesContainer'
 import DBeditMainContainer from './db_edit/DBeditMainContainer'
-import BRanalytics from './BRanalytics/BRanalytics'
-
+import STanalyticsIndex from './stats/STanalyticsIndex'
 
 import {
 		// Route,
@@ -23,13 +22,6 @@ export default class Backroom extends React.Component{
 		display: "index",
 		db_display: null
 	}
-
-	// UNSAFE_componentWillReceiveProps(nextProps){
-	// 	console.log(nextProps)
-	// 	this.setState({
-	// 		display: nextProps.update_dbedit_from_sidebar,
-	// 	})
-	// }
 
 	showRTVusers = () => {
 		this.setState({
@@ -73,7 +65,7 @@ export default class Backroom extends React.Component{
 						update_db_view_from_sidebar={ this.update_db_view_from_sidebar }
 					/>
 				</div>
-				<div className="RTV_main_window">
+				<div className="main_window">
 					{
 						(() => {
 							switch(this.state.display) {
@@ -81,7 +73,7 @@ export default class Backroom extends React.Component{
 							case 'RTVusers': return <RTVusersContainer />;
 							case 'RTVpages': return <RTVpagesContainer />;
 							case 'DBedit': return <DBeditMainContainer update_db_display={ this.state.db_display } />;
-							case 'BRanalytics': return <BRanalytics />;
+							case 'BRanalytics': return <STanalyticsIndex />;
 							default: return <BackroomIndex />;
 							}
 						})()

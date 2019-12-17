@@ -7,6 +7,7 @@
 	background-color: #fff;
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
 	animation: fade_in .1s ease-in-out 1, blur_in .05s ease-in-out 1;
+	z-index: 0;
 }
 
 .default_wrapper {
@@ -17,6 +18,7 @@
 	min-height: 70vh;
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
 	animation: fade_in .1s ease-in-out 1, blur_in .05s ease-in-out 1;
+	z-index: 1;
 }
 
 .default_wrapper h3 {

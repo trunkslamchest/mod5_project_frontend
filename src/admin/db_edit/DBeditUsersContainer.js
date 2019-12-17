@@ -27,11 +27,14 @@ export default class DBeditUsersContainer extends React.Component{
 	}
 
 	render(){
+		// console.log("user container state", this.state)
+		// console.log("user container props", this.props)
 		return(
 			<>
-			<DBeditUsersList
-				users={ this.state.users }
-			/>
+				<DBeditUsersList
+					users={ this.state.users }
+					showDBusers={ this.props.showDBusers }
+				/>
 			</>
 		)
 	}

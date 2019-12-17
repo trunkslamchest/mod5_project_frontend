@@ -49,7 +49,7 @@ export default class Header extends React.Component {
 				key={"h1"}
 				name="header_home_button"
 				interaction="click"
-				className="default_button"
+				className="default_header_link"
 				onClick={this.onClickFunctionsHome }
 			>
 				Home
@@ -57,10 +57,8 @@ export default class Header extends React.Component {
 		]
 
 		const user_greeting = [
-			<span
-				className="header_greeting"
-			>
-				Logged In As: { this.props.user_name }
+			<span className="header_greeting">
+				Logged In: { this.props.user_name }
 			</span>
 		]
 
@@ -69,7 +67,7 @@ export default class Header extends React.Component {
 				to="/dashboard"
 				name="header_dashboard_button"
 				interaction="click"
-				className="default_button"
+				className="default_header_link"
 				onClick={ this.onClickFunctionsDashboard }
 			>
 				Dashboard
@@ -78,7 +76,7 @@ export default class Header extends React.Component {
 				to="/log_out"
 				name="header_log_out_button"
 				interaction="click"
-				className="default_button"
+				className="default_header_link"
 				onClick={this.onClickFunctionsLogOut }
 			>
 				Log Out
@@ -91,7 +89,7 @@ export default class Header extends React.Component {
 				to="/login"
 				name="header_log_in_button"
 				interaction="click"
-				className="default_button"
+				className="default_header_link"
 				onClick={this.onClickFunctionsLogIn }
 			>
 				Login
@@ -101,7 +99,7 @@ export default class Header extends React.Component {
 				to="/signup"
 				name="header_sign_up_button"
 				interaction="click"
-				className="default_button"
+				className="default_header_link"
 				onClick={this.onClickFunctionsSignUp }
 			>
 				Sign Up
@@ -122,7 +120,7 @@ export default class Header extends React.Component {
 			<NavLink
 				key={"h4"}
 				to="/backroom"
-				className="default_button"
+				className="default_header_link"
 				onClick={ this.onClickFunctionsBackroom }
 			>
 				Admin Panel

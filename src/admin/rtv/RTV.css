@@ -26,6 +26,129 @@
 	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25);
 }
 
+.RTVusers_table {
+	width: 100%;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 10px 0px;
+    border-spacing: 0px;
+}
+
+.RTVusers_table th {
+	color: #dbdbdb;
+	text-align:center;
+	font-size: 12pt;
+	font-weight: 400;
+	padding: 10px;
+	background-image: linear-gradient(rgb(81, 88, 102, 1),  rgb(40, 44, 52, 1) );
+}
+
+.RTVusers_table tr {
+	width: 100%;
+	text-align:center;
+	padding: 5px;
+	margin: 0px 0px 0px 0px;
+	box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.25), 0 0 1px 0 rgba(0, 0, 0, 0.25), 0 0 1px 0 rgba(0, 0, 0, 0.25);
+	background-image: linear-gradient(rgb(255, 255, 255, 1),  rgb(219, 219, 219, 1) );
+}
+
+.RTVusers_table td {
+	text-align:center;
+	font-size: 10pt;
+	font-family: Roboto;
+	font-weight: 400;
+	padding: 5px;
+	margin: 0px 0px 0px 0px;
+}
+
+/* .RTVusers_table td:hover {
+	cursor: pointer;
+	color: #dbdbdb;
+	background-image: linear-gradient(rgb(81, 88, 102, 1),  rgb(40, 44, 52, 1) );
+	transition-property: color;
+	transition-duration: .1s, .1s;
+	transition-timing-function: ease-in-out;
+} */
+
+/* .RTVusers_table td:active {
+	color: rgb(40, 44, 52, 1);
+	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57, 1) );
+	transition-property: color;
+	transition-duration: .2s, .2s;
+	transition-timing-function: ease-in-out;
+} */
+
+.RTVpages_table {
+	width: 100%;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 10px 0px;
+    border-spacing: 0px;
+}
+
+.RTVpages_table th {
+	color: #dbdbdb;
+	text-align:center;
+	font-size: 12pt;
+	font-weight: 400;
+	padding: 10px;
+	background-image: linear-gradient(rgb(81, 88, 102, 1),  rgb(40, 44, 52, 1) );
+}
+
+.RTVpages_table tr {
+	width: 100%;
+	text-align:center;
+	padding: 5px;
+	margin: 0px 0px 0px 0px;
+	box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.25), 0 0 1px 0 rgba(0, 0, 0, 0.25), 0 0 1px 0 rgba(0, 0, 0, 0.25);
+	background-image: linear-gradient(rgb(255, 255, 255, 1),  rgb(219, 219, 219, 1) );
+}
+
+.RTVpages_table td {
+	text-align:center;
+	font-size: 10pt;
+	font-family: Roboto;
+	font-weight: 400;
+	padding: 5px;
+	margin: 0px 0px 0px 0px;
+}
+
+/* .RTVpages_table td:hover {
+	cursor: pointer;
+	color: #dbdbdb;
+	background-image: linear-gradient(rgb(81, 88, 102, 1),  rgb(40, 44, 52, 1) );
+	transition-property: color;
+	transition-duration: .1s, .1s;
+	transition-timing-function: ease-in-out;
+} */
+
+/* .RTVpages_table td:active {
+	color: rgb(40, 44, 52, 1);
+	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57, 1) ); */
+	/* transition-property: color;
+	transition-duration: .2s, .2s;
+	transition-timing-function: ease-in-out; */
+/* } */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .RTV_item {
 	background-image: linear-gradient(rgb(255, 255, 255, 1),  rgb(219, 219, 219, 1) );
 	display: flex;

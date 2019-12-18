@@ -5,7 +5,7 @@ import {
 
 import DBeditIndex from './DBeditIndex'
 import DBeditUsersContainer from './DBeditUsersContainer'
-import DBeditThings from './DBeditThings'
+import DBeditQuestions from './DBeditQuestions'
 import DBeditVotes from './DBeditVotes'
 import DBeditComments from './DBeditComments'
 
@@ -73,7 +73,7 @@ export default class DBeditMainContainer extends React.Component{
 							<p>Users</p>
 						</div>
 						<div className="DBedit_navbar_item" onClick={ this.showDBthings }>
-							<p>Things</p>
+							<p>Questions</p>
 						</div>
 						<div className="DBedit_navbar_item" onClick={ this.showDBvotes }>
 							<p>Votes</p>
@@ -85,14 +85,12 @@ export default class DBeditMainContainer extends React.Component{
 					{
 						(() => {
 							switch(this.state.display) {
-							case 'index': return <DBeditIndex />;
-							case 'users': return <DBeditUsersContainer
-													showDBusers={ this.showDBusers }
-												/>;
-							case 'things': return <DBeditThings />;
-							case 'votes': return <DBeditVotes />;
-							case 'comments': return <DBeditComments />;
-							default: return <DBeditIndex />;
+								case 'index': return <DBeditIndex />;
+								case 'users': return <DBeditUsersContainer showDBusers={ this.showDBusers } />;
+								case 'things': return <DBeditQuestions />;
+								case 'votes': return <DBeditVotes />;
+								case 'comments': return <DBeditComments />;
+								default: return <DBeditIndex />;
 							}
 						})()
 					}

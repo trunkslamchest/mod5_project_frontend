@@ -12,7 +12,7 @@ export default class DBeditComments extends React.Component{
 	render(){
 		return(
 			<>
-			DB edit comments test
+			DB Edit Comments Template
 			</>
 		)
 	}

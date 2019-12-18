@@ -12,7 +12,7 @@ export default class DBeditThings extends React.Component{
 	render(){
 		return(
 			<>
-			DB edit things test
+				DB Edit Questions Template
 			</>
 		)
 	}

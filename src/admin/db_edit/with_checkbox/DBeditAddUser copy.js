@@ -70,7 +70,7 @@ export default class DBeditAddUser extends React.Component {
 					errors: res_obj.errors
 				})
 			} else {
-				this.props.displaySwitchToIndex(res_obj)
+				this.props.displaySwitchToIndex('index')
 			}
 		})
 	}
@@ -117,6 +117,7 @@ export default class DBeditAddUser extends React.Component {
 			        )
 				}
 				{
+					!(this.state.loggedIn) ?
 						<div className="DBedit_default_wrapper">
 								<h3>Add New User</h3>
 							<form
@@ -346,6 +347,8 @@ export default class DBeditAddUser extends React.Component {
 								</div>
 							</form>
 						</div>
+					:
+						""
 				}
 			</>
 		)

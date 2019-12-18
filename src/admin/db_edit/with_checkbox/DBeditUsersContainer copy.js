@@ -1,6 +1,5 @@
 import React from 'react'
 import DBeditUsersTable from './DBeditUsersTable'
-import DBeditUsersInfo from './DBeditUsersInfo'
 import DBeditAddUser from './DBeditAddUser'
 import DBeditEditUser from './DBeditEditUser'
 import DBeditDeleteUser from './DBeditDeleteUser'
@@ -54,42 +53,45 @@ export default class DBeditUsersContainer extends React.Component{
 		}, this.getUserDB())
 	}
 
-	displaySwitchToUserInfo = (user) => {
-		this.setState({
-			display: "user_info",
-			user: user
-		})
-	}
-
-	displaySwitchtoAdd = () => {
+	addUserFunctions = () => {
 		this.setState({
 			display: "add_user"
 		})
 	}
 
-	displaySwitchtoEdit = (user_id) => {
+	editUserFunctions = (user_id) => {
 		this.setState({
 			display: "edit_user",
 			user_id: user_id
 		})
 	}
-
-	displaySwitchToDelete = (user_id) => {
+	
+	displaySwitchDelete = (user_id) => {
 		this.setState({
-			display: "delete_user",
+			// display: "delete_user",
+			user_id: user_id
+		})
+	}
+
+
+	deleteUserFunctions = (user_id) => {
+		this.setState({
+			// display: "delete_user",
 			user_id: user_id
 		})
 	}
 
 	render(){
-		// console.log("user container state", this.state.user_id)
-		// console.log("user container state display", this.state.display)
+		console.log("user container state", this.state.user_id)
 
 		const distribute_users_data = this.state.users.map( user_obj =>
 			<DBeditUsersTable
 				key={user_obj.id}
 				user={user_obj}
-				displaySwitchToUserInfo={ this.displaySwitchToUserInfo }
+				displaySwitch={ this.displaySwitch }
+				showDBusers={ this.props.showDBusers }
+				editUser={ this.editUserFunctions }
+				deleteUser={ this.deleteUserFunctions }
 			/>
 		)
 
@@ -97,6 +99,7 @@ export default class DBeditUsersContainer extends React.Component{
 	 		<table className="DBedit_table">
 				<tbody>
 	 			<tr>
+					<th></th>
 	 				<th>User ID</th>
 	 				<th>User Name</th>
 	 				<th>Email</th>
@@ -118,8 +121,14 @@ export default class DBeditUsersContainer extends React.Component{
 	 		</table>
 
 		const index_buttons = [
-				<button className="default_button" value="Add User" onClick={ this.displaySwitchtoAdd }>
+				<button className="default_button" value="Add User" onClick={ this.addUserFunctions }>
 					Add User
+				</button>,
+				<button className="default_button" value="Edit User" onClick={ this.editUserFunctions }>
+					Edit User
+				</button>,
+				<button className="default_button" value="Delete User" onClick={ this.deleteUserFunctions }>
+					Delete User
 				</button>
 		]
 
@@ -130,32 +139,17 @@ export default class DBeditUsersContainer extends React.Component{
 
 		return(
 			<>
-				{
-					(() => {
-						switch(this.state.display) {
-							case 'user_info': return <DBeditUsersInfo
-														displaySwitchToIndex={ this.displaySwitchToIndex }
-														displaySwitchToEdit={ this.displaySwitchToEdit }
-														displaySwitchToDelete={ this.displaySwitchToDelete }
-														user={ this.state.user }
-													/>;
-							case 'add_user': return <DBeditAddUser
-														displaySwitchToIndex={ this.displaySwitchToIndex }
-													/>;
-							case 'edit_user': return <DBeditEditUser
-														displaySwitchToUserInfo={ this.displaySwitchToUserInfo }
-														user={ this.state.user }
-													/>;
-							case 'delete_user': return <DBeditDeleteUser
-														displaySwitchToIndex={ this.displaySwitchToIndex }
-														displaySwitchToUserInfo={ this.displaySwitchToUserInfo }
-														user={ this.state.user }
-													/>;
+					{
+						(() => {
+							switch(this.state.display) {
+							case 'add_user': return <DBeditAddUser displaySwitchToIndex={this.displaySwitchToIndex} />;
+							case 'edit_user': return <DBeditEditUser displaySwitchToIndex={this.displaySwitchToIndex} user_id={this.state.user_id} />;
+							case 'delete_user': return <DBeditDeleteUser displaySwitchToIndex={this.displaySwitchToIndex} user_id={this.state.user_id} />;
 							case 'index': return DBedit_index;
-						default: return null;
-						}
-					})()
-				}
+							default: return null;
+							}
+						})()
+					}
 			</>
 		)
 	}

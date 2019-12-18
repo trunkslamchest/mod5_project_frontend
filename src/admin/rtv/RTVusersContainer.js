@@ -14,7 +14,7 @@ export default class RTVusersContainer extends React.Component{
 
 	componentDidMount(){
 		this.updateRTVusers()
-		// this.RTVinterval = setInterval(this.updateRTVusers, 1000);
+		this.RTVinterval = setInterval(this.updateRTVusers, 1000);
 	}
 
 	componentWillUnmount(){

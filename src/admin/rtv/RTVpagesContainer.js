@@ -14,7 +14,7 @@ export default class RTVpagesContainer extends React.Component{
 
 	componentDidMount(){
 		this.updateRTVpages()
-		// this.RTVinterval = setInterval(this.updateRTVpages, 1000);
+		this.RTVinterval = setInterval(this.updateRTVpages, 1000);
 	}
 
 	componentWillUnmount(){

@@ -5,37 +5,46 @@ import './DBedit.css'
 export default class DBeditEditUser extends React.Component {
 
 	state = {
-		EditUserSuccess: false,
-		cancel: false,
-		add_user_name: "",
-		add_password: "",
-		add_email: "",
-		add_first_name: "",
-		add_last_name: "",
-		add_gender: "",
-		add_birth_day: "",
-		add_birth_month: "",
-		add_birth_year: "",
-		add_house_number: "",
-		add_street_name: "",
-		add_city_town: "",
-		add_state: "",
-		add_zip_code: "",
+		edit_user_name: "",
+		edit_email: "",
+		edit_first_name: "",
+		edit_last_name: "",
+		edit_gender: "",
+		edit_birth_day: "",
+		edit_birth_month: "",
+		edit_birth_year: "",
+		edit_house_number: "",
+		edit_street_name: "",
+		edit_city_town: "",
+		edit_state: "",
+		edit_zip_code: "",
 		errors: []
 	}
 
 	componentDidMount(){
-		// this.onMountAsync()
+		
+		this.onMountAsync()
+		if (this.props.user.id) {
+			let user = this.props.user
+			this.setState({
+				edit_user_name: user.user_name,
+				edit_email: user.email,
+				edit_first_name: user.first_name,
+				edit_last_name: user.last_name,
+				edit_gender: user.gender,
+				edit_birth_day: user.birth_day,
+				edit_birth_month: user.birth_month,
+				edit_birth_year: user.birth_year,
+				edit_house_number: user.house_number,
+				edit_street_name: user.street_name,
+				edit_city_town: user.city_town,
+				edit_state: user.state,
+				edit_zip_code: user.zip_code
+			})
+		}
 	}
 
 	onMountAsync = async () => {
-		// try {
-		// 	await !!this.props
-		// 	let user_id = await this.props.user_id;
-		// 	await this.onPageLoadFunctions(user_id)
-		// } catch(errors) {
-		// 	console.log(errors);
-		// }
 	}
 
 	onChange = (event) => {
@@ -44,33 +53,35 @@ export default class DBeditEditUser extends React.Component {
 		})
 	}
 
-	onSubmitaddUserFunctions = (event) => {
-		this.addUserSubmitted(event)
+	onSubmitEditUserFunctions = (event) => {
+		this.EditUserSubmitted(event)
 	}
 
-	addUserSubmitted = (event) => {
+	EditUserSubmitted = (event) => {
 		event.persist()
 		event.preventDefault()
-		fetch("http://localhost:3001/users", {
-			method: "POST",
+		
+		let user = this.props.user
+		
+		fetch(`http://localhost:3001/users/${user.id}`, {
+			method: "PATCH",
 			headers: {
-				"Content-Type": "application/json"
+				"content-type":"application/json"
 			},
 			body: JSON.stringify({
-				user_name: this.state.add_user_name,
-				password: this.state.add_password,
-				email: this.state.add_email,
-				first_name: this.state.add_first_name,
-				last_name: this.state.add_last_name,
-				gender: this.state.add_gender,
-				birth_month: this.state.add_birth_month,
-				birth_day: this.state.add_birth_day,
-				birth_year: this.state.add_birth_year,
-				house_number: this.state.add_house_number,
+				user_name: this.state.edit_user_name,
+				email: this.state.edit_email,
+				first_name: this.state.edit_first_name,
+				last_name: this.state.edit_last_name,
+				gender: this.state.edit_gender,
+				birth_month: this.state.edit_birth_month,
+				birth_day: this.state.edit_birth_day,
+				birth_year: this.state.edit_birth_year,
+				house_number: this.state.edit_house_number,
 				street_name: this.state.add_street_name,
 				city_town: this.state.add_city_town,
-				state: this.state.add_state,
-				zip_code: this.state.add_zip_code,
+				state: this.state.edit_state,
+				zip_code: this.state.edit_zip_code,
 			})
 		})
 	    .then(response => response.json())
@@ -88,25 +99,30 @@ export default class DBeditEditUser extends React.Component {
 	onResetFunctions = (event) => {
 		event.persist()
 		event.preventDefault()
+		
+		let user = this.props.user
+		
 		this.setState({
-			add_user_name: "",
-			add_password: "",
-			add_email: "",
-			add_first_name: "",
-			add_last_name: "",
-			add_gender: "",
-			add_birth_day: "",
-			add_birth_month: "",
-			add_birth_year: "",
-			add_house_number: "",
-			add_street_name: "",
-			add_city_town: "",
-			add_state: "",
-			add_zip_code: "",
+			edit_user_name: user.user_name,
+			edit_email: user.email,
+			edit_first_name: user.first_name,
+			edit_last_name: user.last_name,
+			edit_gender: user.gender,
+			edit_birth_day: user.birth_day,
+			edit_birth_month: user.birth_month,
+			edit_birth_year: user.birth_year,
+			edit_house_number: user.house_number,
+			edit_street_name: user.street_name,
+			edit_city_town: user.city_town,
+			edit_state: user.state,
+			edit_zip_code: user.zip_code
 		})
 	}
 
 	render(){
+		
+		// console.log("props", this.props)
+		console.log("state", this.state)
 		return (
 				<div className="DBedit_default_wrapper">
 					<h3>Edit User</h3>
@@ -128,69 +144,59 @@ export default class DBeditEditUser extends React.Component {
 				        )
 					}
 					<form
-						name="add_form"
+						name="edit_form"
 						interaction="submit"
 						className="add_form"
-						onSubmit={ this.onSubmitaddUserFunctions }
+						onSubmit={ this.onSubmitEditUserFunctions }
 					>
-						<div className="add_basics">
-							<label htmlFor="add_user_name">User Name</label>
+						<div className="edit_basics">
+							<label htmlFor="edit_user_name">User Name</label>
 							<input
-								id="add_user_name"
+								id="edit_user_name"
 								type="text"
-								name="add_user_name"
+								name="edit_user_name"
 								placeholder="User Name..."
 								onChange={ this.onChange }
-								value={ this.state.add_user_name }
+								value={ this.state.edit_user_name }
 							/>
 							<br />
-							<label htmlFor="add_password">Password</label>
+							<label htmlFor="edit_email">Email</label>
 							<input
-								id="add_password"
-								type="password"
-								name="add_password"
-								placeholder="Password..."
-								onChange={ this.onChange }
-								value={ this.state.add_password }
-							/>
-							<br />
-							<label htmlFor="add_email">Email</label>
-							<input
-								id="add_email"
+								id="edit_email"
 								type="text"
-								name="add_email"
+								name="edit_email"
 								placeholder="Email Address..."
 								onChange={ this.onChange }
-								value={ this.state.add_email }
+								value={ this.state.edit_email }
 							/>
 						</div>
-						<div className="add_profile_name">
-							<label htmlFor="add_name">Name</label>
+						<div className="edit_profile_name">
+							<label htmlFor="edit_name">Name</label>
 							<input
-								id="add_first_name"
+								id="edit_first_name"
 								type="text"
-								name="add_first_name"
+								name="edit_first_name"
 								placeholder="First Name..."
 								onChange={ this.onChange }
-								value={ this.state.add_first_name }
+								value={ this.state.edit_first_name }
 							/>
 							<input
-								id="add_last_name"
+								id="edit_last_name"
 								type="text"
-								name="add_last_name"
+								name="edit_last_name"
 								placeholder="Last Name..."
 								onChange={ this.onChange }
-								value={ this.state.add_last_name }
+								value={ this.state.edit_last_name }
 							/>
 							<hr />
 						</div>
-						<div className="add_gender">
-							<label htmlFor="add_gender">Gender</label>
+						<div className="edit_gender">
+							<label htmlFor="edit_gender">Gender</label>
 							<select
-								id="add_gender"
-								name="add_gender"
+								id="edit_gender"
+								name="edit_gender"
 								onChange={ this.onChange }
-								value={ this.state.add_gender }
+								value={ this.state.edit_gender }
 							>
 								<option value="Non-Binary">Non-Binary</option>
 								<option value="Male">Male</option>
@@ -198,13 +204,13 @@ export default class DBeditEditUser extends React.Component {
 							</select>
 							<hr />
 						</div>
-						<div className="add_birth">
-							<label htmlFor="add_birth">Birth Day</label>
+						<div className="edit_birth">
+							<label htmlFor="edit_birth">Birth Day</label>
 							<select
-								id="add_birth_month"
-								name="add_birth_month"
+								id="edit_birth_month"
+								name="edit_birth_month"
 								onChange={ this.onChange }
-								value={ this.state.add_month }
+								value={ this.state.edit_birth_month }
 							>
 								<option value="January">January</option>
 								<option value="Februrary">Februrary</option>
@@ -220,61 +226,61 @@ export default class DBeditEditUser extends React.Component {
 								<option value="December">December</option>
 							</select>
 							<input
-								id="add_birth_day"
+								id="edit_birth_day"
 								type="number"
 								min="1"
 								max="31"
-								name="add_birth_day"
+								name="edit_birth_day"
 								placeholder="1"
 								onChange={ this.onChange }
-								value={ this.state.add_birth_day }
+								value={ this.state.edit_birth_day }
 							/>
 							<input
-								id="add_birth_year"
+								id="edit_birth_year"
 								type="number"
 								min="1900"
 								max="2019"
-								name="add_birth_year"
+								name="edit_birth_year"
 								onChange={ this.onChange }
 								placeholder="1900"
-								value={ this.state.add_birth_year }
+								value={ this.state.edit_birth_year }
 						/>
 						<hr />
 						</div>
-						<div className="add_address">
-							<label htmlFor="sadd_address">Address</label>
+						<div className="edit_address">
+							<label htmlFor="edit_address">Address</label>
 							<input
-								id="add_house_number"
+								id="edit_house_number"
 								type="number"
 								min="1"
 								max="9999"
-								name="add_house_number"
+								name="edit_house_number"
 								placeholder="Apt./House Number..."
 								onChange={ this.onChange }
-								value={ this.state.add_house_number }
+								value={ this.state.edit_house_number }
 							/>
 							<input
-								id="add_street_name"
+								id="edit_street_name"
 								type="text"
-								name="add_street_name"
+								name="edit_street_name"
 								placeholder="Steet..."
 								onChange={ this.onChange }
-								value={ this.state.add_street_name }
+								value={ this.state.edit_street_name }
 							/>
 							<input
-								id="add_city_town"
+								id="edit_city_town"
 								type="text"
-								name="add_city_town"
+								name="edit_city_town"
 								placeholder="City/Town..."
 								onChange={ this.onChange }
-								value={ this.state.add_city_town }
+								value={ this.state.edit_city_town }
 							/>
 							<select
-								id="add_state"
-								name="add_state"
+								id="edit_state"
+								name="edit_state"
 								placeholder="State..."
 								onChange={ this.onChange }
-								value={ this.state.add_state }
+								value={ this.state.edit_state }
 								>
 								<option value="Alabama">Alabama</option>
 								<option value="Alaska">Alaska</option>
@@ -327,24 +333,24 @@ export default class DBeditEditUser extends React.Component {
 								<option value="Wisconsin">Wisconsin</option>
 								<option value="Wyoming">Wyoming</option>
 							</select>
-							<input id="add_zip_code"
+							<input id="edit_zip_code"
 								type="number"
 								min="10000"
 								max="99999"
 								onChange={ this.onChange }
-								name="add_zip_code"
+								name="edit_zip_code"
 								placeholder="Zip Code..."
-								value={ this.state.add_zip_code }
+								value={ this.state.edit_zip_code }
 							/>
 						</div>
-						<div className="add_form_buttons">
+						<div className="edit_form_buttons">
 							<input
 								className="default_button"
 								type="submit"
 								value="Edit New User"
 							/>
 							<button
-								name="add_form"
+								name="edit_form"
   								interaction="reset"
 								className="default_button"
 								onClick={ this.onResetFunctions }

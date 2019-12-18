@@ -135,7 +135,7 @@ export default class DBeditUsersContainer extends React.Component{
 						switch(this.state.display) {
 							case 'user_info': return <DBeditUsersInfo
 														displaySwitchToIndex={ this.displaySwitchToIndex }
-														displaySwitchToEdit={ this.displaySwitchToEdit }
+														displaySwitchtoEdit={ this.displaySwitchtoEdit }
 														displaySwitchToDelete={ this.displaySwitchToDelete }
 														user={ this.state.user }
 													/>;
@@ -143,7 +143,7 @@ export default class DBeditUsersContainer extends React.Component{
 														displaySwitchToIndex={ this.displaySwitchToIndex }
 													/>;
 							case 'edit_user': return <DBeditEditUser
-														displaySwitchToUserInfo={ this.displaySwitchToUserInfo }
+														displaySwitchToIndex={ this.displaySwitchToIndex }
 														user={ this.state.user }
 													/>;
 							case 'delete_user': return <DBeditDeleteUser

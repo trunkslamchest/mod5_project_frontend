@@ -1,16 +1,13 @@
 import React from 'react'
 
-import {
-		//  Link
-	} from 'react-router-dom'
-
 import './DBedit.css'
 
-
-
-
 export default class DBeditUsersInfo extends React.Component{
-	componentDidMount(){
+
+	componentDidMount(){}
+
+	editUserFunctions = () => {
+		this.props.displaySwitchtoEdit(this.props.user)
 	}
 
 	deleteUserFunctions = () => {
@@ -18,15 +15,16 @@ export default class DBeditUsersInfo extends React.Component{
 	}
 
 	render(){
+		console.log("edit user info", this.props)
 		const user = this.props.user
 
 		const index_buttons = [
-				<button className="default_button" value="Edit User" onClick={ this.editFieldFunctions }>
-					Edit User
-				</button>,
-				<button className="default_button" value="Delete User" onClick={ this.deleteUserFunctions }>
-					Delete User
-				</button>
+			<button className="default_button" value="Edit User" onClick={ this.editUserFunctions }>
+				Edit User
+			</button>,
+			<button className="default_button" value="Delete User" onClick={ this.deleteUserFunctions }>
+				Delete User
+			</button>
 		]
 
 		const user_info_list =

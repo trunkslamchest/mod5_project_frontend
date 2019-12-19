@@ -122,11 +122,12 @@ export default class DBeditAddUser extends React.Component {
 							<form
 								name="add_form"
 								interaction="submit"
-								className="add_form"
+								className="DBedit_edit_form"
 								onSubmit={ this.onSubmitaddUserFunctions }
 							>
-								<div className="add_basics">
+								<div className="DBedit_basic_div">
 									<label htmlFor="add_user_name">User Name</label>
+									<br />
 									<input
 										id="add_user_name"
 										type="text"
@@ -135,8 +136,11 @@ export default class DBeditAddUser extends React.Component {
 										onChange={ this.onChange }
 										value={ this.state.add_user_name }
 									/>
-									<br />
+								</div>
+								<br />
+								<div className="DBedit_basic_div">
 									<label htmlFor="add_password">Password</label>
+									<br />
 									<input
 										id="add_password"
 										type="password"
@@ -145,8 +149,11 @@ export default class DBeditAddUser extends React.Component {
 										onChange={ this.onChange }
 										value={ this.state.add_password }
 									/>
-									<br />
+								</div>
+								<br />
+								<div className="DBedit_basic_div">
 									<label htmlFor="add_email">Email</label>
+									<br />
 									<input
 										id="add_email"
 										type="text"
@@ -156,8 +163,10 @@ export default class DBeditAddUser extends React.Component {
 										value={ this.state.add_email }
 									/>
 								</div>
-								<div className="add_profile_name">
+								<br />
+								<div className="DBedit_basic_div">
 									<label htmlFor="add_name">Name</label>
+									<br />
 									<input
 										id="add_first_name"
 										type="text"
@@ -166,6 +175,7 @@ export default class DBeditAddUser extends React.Component {
 										onChange={ this.onChange }
 										value={ this.state.add_first_name }
 									/>
+									<br />
 									<input
 										id="add_last_name"
 										type="text"
@@ -174,10 +184,11 @@ export default class DBeditAddUser extends React.Component {
 										onChange={ this.onChange }
 										value={ this.state.add_last_name }
 									/>
-									<hr />
 								</div>
-								<div className="add_gender">
+								<br />
+								<div className="DBedit_basic_div">
 									<label htmlFor="add_gender">Gender</label>
+									<br />
 									<select
 										id="add_gender"
 										name="add_gender"
@@ -188,10 +199,11 @@ export default class DBeditAddUser extends React.Component {
 										<option value="Male">Male</option>
 										<option value="Female">Female</option>
 									</select>
-									<hr />
 								</div>
-								<div className="add_birth">
+								<br />
+								<div className="DBedit_basic_div">
 									<label htmlFor="add_birth">Birth Day</label>
+									<br />
 									<select
 										id="add_birth_month"
 										name="add_birth_month"
@@ -211,6 +223,7 @@ export default class DBeditAddUser extends React.Component {
 										<option value="November">November</option>
 										<option value="December">December</option>
 									</select>
+									<br />
 									<input
 										id="add_birth_day"
 										type="number"
@@ -221,6 +234,7 @@ export default class DBeditAddUser extends React.Component {
 										onChange={ this.onChange }
 										value={ this.state.add_birth_day }
 									/>
+									<br />
 									<input
 										id="add_birth_year"
 										type="number"
@@ -231,10 +245,11 @@ export default class DBeditAddUser extends React.Component {
 										placeholder="1900"
 										value={ this.state.add_birth_year }
 								/>
-								<hr />
 								</div>
-								<div className="add_address">
-									<label htmlFor="sadd_address">Address</label>
+								<br />
+								<div className="DBedit_basic_div">
+									<label htmlFor="add_address">Address</label>
+									<br />
 									<input
 										id="add_house_number"
 										type="number"
@@ -245,6 +260,7 @@ export default class DBeditAddUser extends React.Component {
 										onChange={ this.onChange }
 										value={ this.state.add_house_number }
 									/>
+									<br />
 									<input
 										id="add_street_name"
 										type="text"
@@ -253,6 +269,7 @@ export default class DBeditAddUser extends React.Component {
 										onChange={ this.onChange }
 										value={ this.state.add_street_name }
 									/>
+									<br />
 									<input
 										id="add_city_town"
 										type="text"
@@ -261,6 +278,7 @@ export default class DBeditAddUser extends React.Component {
 										onChange={ this.onChange }
 										value={ this.state.add_city_town }
 									/>
+									<br />
 									<select
 										id="add_state"
 										name="add_state"
@@ -319,6 +337,7 @@ export default class DBeditAddUser extends React.Component {
 										<option value="Wisconsin">Wisconsin</option>
 										<option value="Wyoming">Wyoming</option>
 									</select>
+									<br />
 									<input id="add_zip_code"
 										type="number"
 										min="10000"
@@ -329,16 +348,17 @@ export default class DBeditAddUser extends React.Component {
 										value={ this.state.add_zip_code }
 									/>
 								</div>
-								<div className="add_form_buttons">
+								<hr />
+								<div className="DBedit_default_buttons_container">
 									<input
-										className="default_button"
+										className="alt_button"
 										type="submit"
 										value="Add New User"
 									/>
 									<button
 										name="add_form"
 	      								interaction="reset"
-										className="default_button"
+										className="alt_button"
 										onClick={ this.onResetFunctions }
 									>
 										Reset

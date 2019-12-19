@@ -19,10 +19,10 @@ export default class DBeditQuestionInfo extends React.Component{
 		const question = this.props.question
 
 		const buttons = [
-			<button className="default_button" value="Edit Question" onClick={ this.editQuestionFunctions }>
+			<button className="alt_button" value="Edit Question" onClick={ this.editQuestionFunctions }>
 				Edit Question
 			</button>,
-			<button className="default_button" value="Delete Question" onClick={ this.deleteQuestionFunctions }>
+			<button className="alt_button" value="Delete Question" onClick={ this.deleteQuestionFunctions }>
 				Delete Question
 			</button>
 		]
@@ -52,13 +52,22 @@ export default class DBeditQuestionInfo extends React.Component{
 
 		const question_info = [
 			question_info_list,
-			buttons,
+			// buttons,
 		]
 
 		return(
 			<div className="DBedit_default_wrapper">
 				<h3>Question Info</h3>
 				{ question_info }
+				<hr />
+				<div className="DBedit_default_buttons_container">
+					<button className="alt_button" value="Edit Question" onClick={ this.editQuestionFunctions }>
+						Edit Question
+					</button>
+					<button className="alt_button" value="Delete Question" onClick={ this.deleteQuestionFunctions }>
+						Delete Question
+					</button>
+				</div>
 			</div>
 		)
 	}

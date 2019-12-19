@@ -15,17 +15,7 @@ export default class DBeditUsersInfo extends React.Component{
 	}
 
 	render(){
-		console.log("edit user info", this.props)
 		const user = this.props.user
-
-		const index_buttons = [
-			<button className="default_button" value="Edit User" onClick={ this.editUserFunctions }>
-				Edit User
-			</button>,
-			<button className="default_button" value="Delete User" onClick={ this.deleteUserFunctions }>
-				Delete User
-			</button>
-		]
 
 		const user_info_list =
 			<ul>
@@ -54,13 +44,22 @@ export default class DBeditUsersInfo extends React.Component{
 			</ul>
 
 		const user_info = [
-			index_buttons,
 			user_info_list
 		]
 
 		return(
-			<div className="DBedit_user_wrapper">
-					{ user_info }
+			<div className="DBedit_default_wrapper">
+				<h3>User Info</h3>
+				{ user_info }
+				<hr />
+				<div className="DBedit_default_buttons_container">
+					<button className="alt_button" value="Edit User" onClick={ this.editUserFunctions }>
+						Edit User
+					</button>
+					<button className="alt_button" value="Delete User" onClick={ this.deleteUserFunctions }>
+						Delete User
+					</button>
+				</div>
 			</div>
 		)
 	}

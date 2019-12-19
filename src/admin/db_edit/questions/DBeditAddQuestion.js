@@ -100,17 +100,17 @@ export default class DBeditAddUser extends React.Component {
 					<div className="DBedit_default_wrapper">
 							<h3>Add New Question</h3>
 						<form
-							name="edit_question_form"
+							name="add_question_form"
 							interaction="submit"
-							className="DBedit_form"
+							className="DBedit_edit_form"
 							onSubmit={ this.onSubmitaddQuestionFunctions }
 						>
-							<div className="DBedit_question_desc">
+							<div className="DBedit_basic_div">
 								<label htmlFor="add_question_desc">Question</label>
 								<br />
-								<input
+								<textarea
+									rows="2"
 									id="add_question_desc"
-									type="text"
 									name="add_question_desc"
 									placeholder="Question..."
 									onChange={ this.onChange }
@@ -118,7 +118,7 @@ export default class DBeditAddUser extends React.Component {
 								/>
 							</div>
 							<br />
-							<div className="DBedit_question_difficulty">
+							<div className="DBedit_basic_div">
 								<label htmlFor="add_difficulty">Difficulty</label>
 								<br />
 								<select
@@ -134,7 +134,7 @@ export default class DBeditAddUser extends React.Component {
 								</select>
 							</div>
 							<br />
-							<div className="DBedit_question_category">
+							<div className="DBedit_basic_div">
 								<label htmlFor="add_category">Category</label>
 								<br />
 								<select
@@ -166,7 +166,7 @@ export default class DBeditAddUser extends React.Component {
 								<br />
 							</div>
 							<br />
-							<div className="DBedit_question_correct_answer">
+							<div className="DBedit_basic_div">
 								<label htmlFor="add_name">Correct Answer</label>
 								<br />
 								<input
@@ -179,7 +179,7 @@ export default class DBeditAddUser extends React.Component {
 								/>
 							</div>
 							<br />
-							<div className="DBedit_incorrect_answers">
+							<div className="DBedit_basic_div">
 								<label htmlFor="add_name">Incorrect Answers</label>
 								<br />
 								<input
@@ -210,16 +210,16 @@ export default class DBeditAddUser extends React.Component {
 								/>
 							</div>
 							<hr />
-							<div className="DBedit_form_buttons">
+							<div className="DBedit_default_buttons_container">
 								<input
-									className="default_button"
+									className="alt_button"
 									type="submit"
 									value="Add New Question"
 								/>
 								<button
 									name="add_form"
       								interaction="reset"
-									className="default_button"
+									className="alt_button"
 									onClick={ this.onResetFunctions }
 								>
 									Reset

@@ -125,7 +125,7 @@ export default class DBeditEditUser extends React.Component {
 						className="DBedit_edit_form"
 						onSubmit={ this.onSubmitEditQuestionFunctions }
 					>
-						<div className="DBedit_question_desc">
+						<div className="DBedit_basic_div">
 							<label htmlFor="edit_quesion_desc">Question</label>
 							<br />
 							<textarea
@@ -147,7 +147,7 @@ export default class DBeditEditUser extends React.Component {
 								onChange={ this.onChange }
 								value={ this.state.edit_difficulty }
 							>
-								<option value="">Select...</option>
+								<option className="test option" value="">Select...</option>
 								<option value="easy">Easy</option>
 								<option value="medium">Medium</option>
 								<option value="hard">Hard</option>
@@ -186,7 +186,7 @@ export default class DBeditEditUser extends React.Component {
 								<br />
 							</div>
 						<br />
-						<div className="DBedit_question_correct_answer">
+						<div className="DBedit_basic_div">
 							<label htmlFor="edit_correct_answer">Correct Answer</label>
 							<br />
 							<input
@@ -199,7 +199,7 @@ export default class DBeditEditUser extends React.Component {
 							/>
 						</div>
 						<br />
-						<div className="DBedit_question_incorrect_answers">
+						<div className="DBedit_basic_div">
 							<label htmlFor="edit_incorrect_answers">Incorrect Answers</label>
 							<br />
 							<input
@@ -230,16 +230,16 @@ export default class DBeditEditUser extends React.Component {
 							/>
 						</div>
 						<hr />
-						<div className="DBedit_form_buttons">
+						<div className="DBedit_default_buttons_container">
 							<input
-								className="default_button"
+								className="alt_button"
 								type="submit"
-								value="Edit Question"
+								value="Submit Changes"
 							/>
 							<button
 								name="edit_question_form"
   								interaction="reset"
-								className="default_button"
+								className="alt_button"
 								onClick={ this.onResetFunctions }
 							>
 								Reset

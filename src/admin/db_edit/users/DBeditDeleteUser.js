@@ -34,7 +34,7 @@ export default class DBeditDeleteUser extends React.Component {
 				key={"b1"}
 				name="delete_profile_form"
 				interaction="submit"
-				className="default_button"
+				className="alt_button"
 				onClick={ this.onClickYes }
 			>
 				Yes
@@ -43,7 +43,7 @@ export default class DBeditDeleteUser extends React.Component {
 				key={"b2"}
 				name="delete_profile_form"
 				interaction="cancel"
-				className="default_button"
+				className="alt_button"
 				onClick={ this.onClickNo }
 			>
 				No

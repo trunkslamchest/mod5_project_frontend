@@ -118,7 +118,7 @@ export default class DBeditUsersContainer extends React.Component{
 	 		</table>
 
 		const index_buttons = [
-				<button className="default_button" value="Add User" onClick={ this.displaySwitchtoAdd }>
+				<button className="alt_button2" value="Add User" onClick={ this.displaySwitchtoAdd }>
 					Add User
 				</button>
 		]

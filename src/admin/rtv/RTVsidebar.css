@@ -54,9 +54,11 @@
 }
 
 .side_bar li:active {
-	color: rgb(40, 44, 52, 1);
+	color:rgb(40, 44, 52, 1);
 	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57, 1) );
 	transition-property: color;
 	transition-duration: .2s, .2s;
 	transition-timing-function: ease-in-out;
+	animation: scale_out .1s ease-in-out 1, blur_out .1s ease-in-out 1;
+
 }

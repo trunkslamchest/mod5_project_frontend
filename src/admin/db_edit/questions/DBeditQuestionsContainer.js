@@ -115,7 +115,7 @@ export default class DBeditQuestionsContainer extends React.Component{
 	 		</table>
 
 		const index_buttons = [
-				<button className="default_button" value="Add Question" onClick={ this.displaySwitchtoAdd }>
+				<button className="alt_button2" value="Add Question" onClick={ this.displaySwitchtoAdd }>
 					Add Question
 				</button>
 		]

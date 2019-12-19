@@ -4,9 +4,9 @@ import {
 		//  Link
 		} from 'react-router-dom'
 
-import './DBedit.css'
+import '../DBedit.css'
 
-export default class DBeditUsersList extends React.Component{
+export default class DBeditUsersTable extends React.Component{
 
 	onClickTableRowFunctions = () => {
 		this.props.displaySwitchToUserInfo(this.props.user.attributes.user)

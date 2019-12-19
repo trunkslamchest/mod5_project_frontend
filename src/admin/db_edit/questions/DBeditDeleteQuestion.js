@@ -1,15 +1,15 @@
 import React from 'react'
 
-import './DBedit.css'
+import '../DBedit.css'
 
-export default class DBeditDeleteUser extends React.Component {
+export default class DBeditDeleteQuestion extends React.Component {
 
 	state = {
 	}
 
 	onClickYes = () => {
-		let user = this.props.user
-		fetch(`http://localhost:3001/users/${user.id}`, {
+		let question = this.props.question
+		fetch(`http://localhost:3001/questions/${question.id}`, {
 			method: "DELETE"
 		})
 		.then(res_obj => {
@@ -24,15 +24,18 @@ export default class DBeditDeleteUser extends React.Component {
 	}
 
 	onClickNo = () => {
-		let user = this.props.user
-		this.props.displaySwitchToUserInfo(user)
+		let question = this.props.question
+		this.props.displaySwitchToQuestionInfo(question)
 	}
 
 	render(){
+
+		console.log(this.props.question.id)
+
 		const confirm_buttons = [
 			<button
 				key={"b1"}
-				name="delete_profile_form"
+				name="delete_question_form"
 				interaction="submit"
 				className="default_button"
 				onClick={ this.onClickYes }
@@ -41,7 +44,7 @@ export default class DBeditDeleteUser extends React.Component {
 			</button>,
 			<button
 				key={"b2"}
-				name="delete_profile_form"
+				name="delete_question_form"
 				interaction="cancel"
 				className="default_button"
 				onClick={ this.onClickNo }
@@ -52,7 +55,7 @@ export default class DBeditDeleteUser extends React.Component {
 
 		const confirm = [
 			<div className="DBedit_default_wrapper">
-				<h3>Are you sure you want to delete {this.props.user.user_name}'s account?</h3>
+				<h3>Are you sure you want to delete this question?</h3>
 				<div className="delete_profile_buttons_container">
 					{ confirm_buttons }
 				</div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import DBeditUsersContainer from './DBeditUsersContainer'
-import './DBedit.css'
+
+import '../DBedit.css'
 
 export default class DBeditEditUser extends React.Component {
 
@@ -361,10 +362,6 @@ export default class DBeditEditUser extends React.Component {
 								(() => {
 									switch(this.state.EditUserSuccess) {
 									case true: return <DBeditUsersContainer />;
-									// case 'edit': return <DBeditUsersContainer
-									// 						showDBusers={ this.showDBusers }
-									// 					/>;
-									// case 'delete': return <DBeditThings />;
 									default: return null;
 									}
 								})()

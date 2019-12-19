@@ -153,3 +153,44 @@
 	margin: 0px 0px 0px 0px;
 	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25);
 }
+
+.DBedit_default_wrapper ul {
+	list-style: none;
+	padding: 10px;
+}
+
+.DBedit_default_wrapper li {
+	font-size: 10pt;
+}
+
+.DBedit_basic_div {
+	
+}
+
+.DBedit_basic_div input {
+	width: 50%;
+}
+
+.DBedit_edit_form {
+	padding: 10px;
+}
+
+.DBedit_question_desc {
+
+}
+
+.DBedit_question_desc input {
+	width: 50%;
+}
+
+.DBedit_question_desc textarea {
+	width: 50%;
+}
+
+.DBedit_question_correct_answer input {
+	width: 25%;
+}
+
+.DBedit_question_incorrect_answers input {
+	width: 25%;
+}

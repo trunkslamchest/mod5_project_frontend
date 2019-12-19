@@ -10,7 +10,7 @@ import {
         //  Link
         } from 'react-router-dom'
 
-import './DBedit.css'
+import '../DBedit.css'
 
 export default class DBeditUsersContainer extends React.Component{
 

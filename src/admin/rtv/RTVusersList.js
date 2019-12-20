@@ -1,8 +1,5 @@
 import React from 'react'
 import RTVusersRow from './RTVusersRow'
-import {
-		//  Link
-		} from 'react-router-dom'
 
 import './RTV.css'
 
@@ -30,7 +27,7 @@ export default class RTVusersList extends React.Component{
 
 		return(
 			<>
-					{ RTVusers_table }
+				{ RTVusers_table }
 			</>
 		)
 	}

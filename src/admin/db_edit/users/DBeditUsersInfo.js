@@ -15,6 +15,7 @@ export default class DBeditUsersInfo extends React.Component{
 	}
 
 	render(){
+
 		const user = this.props.user
 
 		const user_info_list =
@@ -43,22 +44,32 @@ export default class DBeditUsersInfo extends React.Component{
 				<li>Join Year: {user.join_year}</li>
 			</ul>
 
-		const user_info = [
-			user_info_list
+		const buttons = [
+				<button
+					key={"DBe_edit_user"}
+					className="alt_button"
+					value="Edit User"
+					onClick={ this.editUserFunctions }
+				>
+					Edit User
+				</button>,
+				<button
+					key={"DBe_delete_user"}
+					className="alt_button"
+					value="Delete User"
+					onClick={ this.deleteUserFunctions }
+				>
+					Delete User
+				</button>
 		]
 
 		return(
 			<div className="DBedit_default_wrapper">
 				<h3>User Info</h3>
-				{ user_info }
+					{ user_info_list }
 				<hr />
 				<div className="DBedit_default_buttons_container">
-					<button className="alt_button" value="Edit User" onClick={ this.editUserFunctions }>
-						Edit User
-					</button>
-					<button className="alt_button" value="Delete User" onClick={ this.deleteUserFunctions }>
-						Delete User
-					</button>
+					{ buttons }
 				</div>
 			</div>
 		)

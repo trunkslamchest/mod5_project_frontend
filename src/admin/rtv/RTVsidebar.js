@@ -1,8 +1,4 @@
 import React from 'react'
-import {
-		//  Link,
-		//  NavLink
-		} from 'react-router-dom'
 
 import './RTVsidebar.css'
 
@@ -29,22 +25,22 @@ export default class RTVsidebar extends React.Component{
 
 	render(){
 		return(
-				<div className="side_bar">
-					<ul>
-						<li onClick={ this.onClickRTVusersFunctions }>
-							Real Time User Traffic
-						</li>
-						<li onClick={ this.onClickRTVpagesFunctions }>
-							Real Time Page Traffic
-						</li>
-						<li onClick={ this.onClickDBeditFunctions }>
-							Database Editor
-						</li>
-						<li onClick={ this.onClickAnalyticsFunctions }>
-							Statistical Analytics
-						</li>
-					</ul>
-				</div>
+			<div className="side_bar">
+				<ul>
+					<li onClick={ this.onClickRTVusersFunctions }>
+						Real Time User Traffic
+					</li>
+					<li onClick={ this.onClickRTVpagesFunctions }>
+						Real Time Page Traffic
+					</li>
+					<li onClick={ this.onClickDBeditFunctions }>
+						Database Editor
+					</li>
+					<li onClick={ this.onClickAnalyticsFunctions }>
+						Statistical Analytics
+					</li>
+				</ul>
+			</div>
 		)
 	}
 }

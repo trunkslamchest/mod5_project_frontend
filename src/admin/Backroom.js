@@ -1,18 +1,11 @@
 import React from 'react'
 
 import BackroomIndex from './BackroomIndex'
-
 import RTVsidebar from './rtv/RTVsidebar'
 import RTVusersContainer from './rtv/RTVusersContainer'
 import RTVpagesContainer from './rtv/RTVpagesContainer'
 import DBeditMainContainer from './db_edit/DBeditMainContainer'
 import STanalyticsIndex from './stats/STanalyticsIndex'
-
-import {
-		// Route,
-		// Switch,
-        //  Link
-        } from 'react-router-dom'
 
 import './Backroom.css'
 
@@ -47,11 +40,11 @@ export default class Backroom extends React.Component{
 		})
 	}
 
-  update_db_view_from_sidebar = (db_index_msg) => {
-    this.setState({
-      db_display: db_index_msg
-    })
-  }
+	update_db_view_from_sidebar = (db_index_msg) => {
+		this.setState({
+			db_display: db_index_msg
+		})
+	}
 
 	render(){
 		return(

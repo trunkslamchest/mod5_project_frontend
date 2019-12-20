@@ -46,7 +46,7 @@ export default class Header extends React.Component {
 		const home_link = [
 			<NavLink
 				exact to="/"
-				key={"h1"}
+				key={"h_home_link"}
 				name="header_home_button"
 				interaction="click"
 				className="default_header_link"
@@ -57,13 +57,16 @@ export default class Header extends React.Component {
 		]
 
 		const user_greeting = [
-			<span className="header_greeting">
+			<span
+				key={"h_user_greeting"}
+				className="header_greeting">
 				Logged In: { this.props.user_name }
 			</span>
 		]
 
 		const logged_in_links = [
 			<NavLink
+				key={"h_dashboard"}
 				to="/dashboard"
 				name="header_dashboard_button"
 				interaction="click"
@@ -73,6 +76,7 @@ export default class Header extends React.Component {
 				Dashboard
 			</NavLink>,
 			<NavLink
+				key={"h_log_out"}
 				to="/log_out"
 				name="header_log_out_button"
 				interaction="click"
@@ -85,7 +89,7 @@ export default class Header extends React.Component {
 
 		const logged_out_links = [
 			<NavLink
-				key={"h2"}
+				key={"h_login"}
 				to="/login"
 				name="header_log_in_button"
 				interaction="click"
@@ -95,7 +99,7 @@ export default class Header extends React.Component {
 				Login
 			</NavLink>,
 			<NavLink
-				key={"h3"}
+				key={"h_signup"}
 				to="/signup"
 				name="header_sign_up_button"
 				interaction="click"
@@ -118,7 +122,7 @@ export default class Header extends React.Component {
 		const admin_header = [
 			user_greeting,
 			<NavLink
-				key={"h4"}
+				key={"h_backroom"}
 				to="/backroom"
 				className="default_header_link"
 				onClick={ this.onClickFunctionsBackroom }

@@ -1,8 +1,5 @@
 import React from 'react'
 import RTVusersList from './RTVusersList'
-import {
-        //  Link
-        } from 'react-router-dom'
 
 import './RTV.css'
 
@@ -33,11 +30,9 @@ export default class RTVusersContainer extends React.Component{
 
 	render(){
 		return(
-				<>
-					<RTVusersList
-						RTV_users_data={this.state.RTV_users_data}
-					/>
-				</>
+			<RTVusersList
+				RTV_users_data={this.state.RTV_users_data}
+			/>
 		)
 	}
 }

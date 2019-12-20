@@ -15,14 +15,24 @@ export default class DBeditQuestionInfo extends React.Component{
 	}
 
 	render(){
-		// console.log("edit user info", this.props)
+
 		const question = this.props.question
 
 		const buttons = [
-			<button className="alt_button" value="Edit Question" onClick={ this.editQuestionFunctions }>
+			<button
+				key={"DBe_edit_question"}
+				className="alt_button"
+				value="Edit Question"
+				onClick={ this.editQuestionFunctions }
+			>
 				Edit Question
 			</button>,
-			<button className="alt_button" value="Delete Question" onClick={ this.deleteQuestionFunctions }>
+			<button
+				key={"DBe_delete_question"}
+				className="alt_button"
+				value="Delete Question"
+				onClick={ this.deleteQuestionFunctions }
+			>
 				Delete Question
 			</button>
 		]
@@ -50,23 +60,13 @@ export default class DBeditQuestionInfo extends React.Component{
 				<li>{question.incorrect_answers[2]}</li>
 			</ul>
 
-		const question_info = [
-			question_info_list,
-			// buttons,
-		]
-
 		return(
 			<div className="DBedit_default_wrapper">
 				<h3>Question Info</h3>
-				{ question_info }
+				{ question_info_list }
 				<hr />
 				<div className="DBedit_default_buttons_container">
-					<button className="alt_button" value="Edit Question" onClick={ this.editQuestionFunctions }>
-						Edit Question
-					</button>
-					<button className="alt_button" value="Delete Question" onClick={ this.deleteQuestionFunctions }>
-						Delete Question
-					</button>
+					{ buttons }
 				</div>
 			</div>
 		)

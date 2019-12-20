@@ -29,9 +29,10 @@ export default class DBeditDeleteUser extends React.Component {
 	}
 
 	render(){
+
 		const confirm_buttons = [
 			<button
-				key={"b1"}
+				key={"DBe_delete_user_yes"}
 				name="delete_profile_form"
 				interaction="submit"
 				className="alt_button"
@@ -40,7 +41,7 @@ export default class DBeditDeleteUser extends React.Component {
 				Yes
 			</button>,
 			<button
-				key={"b2"}
+				key={"DBe_delete_user_no"}
 				name="delete_profile_form"
 				interaction="cancel"
 				className="alt_button"
@@ -50,35 +51,25 @@ export default class DBeditDeleteUser extends React.Component {
 			</button>
 		]
 
-		const confirm = [
+		return(
 			<div className="DBedit_default_wrapper">
 				<h3>Are you sure you want to delete {this.props.user.user_name}'s account?</h3>
+				{
+					(!!this.state.errors) ?
+						( <div className="default_error_report">
+								{ this.state.errors.map( error =>
+									<div className="default_error_item">
+										{ error }
+									</div>
+								)}
+						  </div> )
+					:
+						( "" )
+				}
 				<div className="delete_profile_buttons_container">
 					{ confirm_buttons }
 				</div>
 			</div>
-		]
-
-		return(
-			<>
-				{
-					(!!this.state.errors) ? (
-						<div className="default_error_report">
-							{
-								this.state.errors.map( error =>
-									<div className="default_error_item">
-										{ error }
-									</div>
-								)
-							}
-						</div>
-					)
-					:
-					(
-						confirm
-					)
-				}
-			</>
 		)
 	}
 }

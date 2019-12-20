@@ -5,11 +5,6 @@ import DBeditAddUser from './DBeditAddUser'
 import DBeditEditUser from './DBeditEditUser'
 import DBeditDeleteUser from './DBeditDeleteUser'
 
-
-import {
-        //  Link
-        } from 'react-router-dom'
-
 import '../DBedit.css'
 
 export default class DBeditUsersContainer extends React.Component{
@@ -82,8 +77,6 @@ export default class DBeditUsersContainer extends React.Component{
 	}
 
 	render(){
-		// console.log("user container state", this.state.user_id)
-		// console.log("user container state display", this.state.display)
 
 		const distribute_users_data = this.state.users.map( user_obj =>
 			<DBeditUsersTable
@@ -94,7 +87,10 @@ export default class DBeditUsersContainer extends React.Component{
 		)
 
 		const DBedit_table_frame =
-	 		<table className="DBedit_table">
+	 		<table
+			 	key={"DBe_users_table"}
+			 	className="DBedit_table"
+			>
 				<tbody>
 	 			<tr>
 	 				<th>User ID</th>
@@ -118,7 +114,12 @@ export default class DBeditUsersContainer extends React.Component{
 	 		</table>
 
 		const index_buttons = [
-				<button className="alt_button2" value="Add User" onClick={ this.displaySwitchtoAdd }>
+				<button
+					key={"DBe_add_user"}
+					className="alt_button2"
+					value="Add User"
+					onClick={ this.displaySwitchtoAdd }
+				>
 					Add User
 				</button>
 		]

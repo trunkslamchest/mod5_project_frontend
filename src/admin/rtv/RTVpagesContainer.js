@@ -1,8 +1,5 @@
 import React from 'react'
 import RTVpagesList from './RTVpagesList'
-import {
-        //  Link
-        } from 'react-router-dom'
 
 import './RTV.css'
 

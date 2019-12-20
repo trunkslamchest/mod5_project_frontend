@@ -100,7 +100,10 @@ export default class DBeditQuestionsContainer extends React.Component{
 		)
 
 		const DBedit_table_frame =
-	 		<table className="DBedit_table">
+	 		<table
+			 	key={"DBe_questions_table"}
+				className="DBedit_table"
+			>
 				<tbody>
 	 			<tr>
 					<th>ID</th>
@@ -115,7 +118,12 @@ export default class DBeditQuestionsContainer extends React.Component{
 	 		</table>
 
 		const index_buttons = [
-				<button className="alt_button2" value="Add Question" onClick={ this.displaySwitchtoAdd }>
+				<button
+					key={"DBe_add_question"}
+					className="alt_button2"
+					value="Add Question"
+					onClick={ this.displaySwitchtoAdd }
+				>
 					Add Question
 				</button>
 		]

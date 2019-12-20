@@ -1,14 +1,13 @@
 import React from 'react'
-import {
-		//  Link
-		} from 'react-router-dom'
 
 import './RTV.css'
 
 export default class RTVusersRow extends React.Component{
 	render(){
+
 		const RTV_timestamp = this.props.RTV_users_obj.attributes.timestamp
 		const RTV_item = this.props.RTV_users_obj.attributes
+
 		return(
 			<tr>
 				<td>

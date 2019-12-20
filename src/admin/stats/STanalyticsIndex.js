@@ -1,22 +1,16 @@
 import React from 'react'
-import {
-        //  Link
-        } from 'react-router-dom'
 
 import './STanalytics.css'
 
 export default class STanalyticsIndex extends React.Component{
 
 	state = {
-
 	}
 
 	componentDidMount(){
-
 	}
 
 	componentWillUnmount(){
-
 	}
 
 	render(){

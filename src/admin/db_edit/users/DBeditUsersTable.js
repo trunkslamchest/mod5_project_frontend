@@ -1,9 +1,5 @@
 import React from 'react'
 
-import {
-		//  Link
-		} from 'react-router-dom'
-
 import '../DBedit.css'
 
 export default class DBeditUsersTable extends React.Component{
@@ -13,6 +9,7 @@ export default class DBeditUsersTable extends React.Component{
 	}
 
 	render(){
+
 		const user = this.props.user.attributes.user
 
 		const DBedit_table =

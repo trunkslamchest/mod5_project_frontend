@@ -1,9 +1,5 @@
 import React from 'react'
 
-import {
-		//  Link
-		} from 'react-router-dom'
-
 import '../DBedit.css'
 
 export default class DBeditQuestionsTable extends React.Component{
@@ -13,7 +9,7 @@ export default class DBeditQuestionsTable extends React.Component{
 	}
 
 	render(){
-		// console.log(this.props.question.attributes)
+
 		const question = this.props.question.attributes
 
 		const DBedit_table =

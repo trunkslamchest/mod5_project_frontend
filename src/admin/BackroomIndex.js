@@ -10,11 +10,7 @@ export default class BackroomIndex extends React.Component{
 
 	render(){
 		return(
-			<div className="backroom_wrapper">
-				<div className="main_window">
-					<h3>Backroom Dashboard</h3>
-				</div>
-			</div>
+			<h3> Backroom Dashboard </h3>
 		)
 	}
 }

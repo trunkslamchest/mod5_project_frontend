@@ -1,8 +1,5 @@
 import React from 'react'
 import RTVpagesRow from './RTVpagesRow'
-import {
-		//  Link
-		} from 'react-router-dom'
 
 import './RTV.css'
 
@@ -29,7 +26,7 @@ export default class RTVpagesList extends React.Component{
 
 		return(
 			<>
-					{ RTVpages_table }
+				{ RTVpages_table }
 			</>
 		)
 	}

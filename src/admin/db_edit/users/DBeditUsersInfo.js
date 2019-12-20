@@ -18,7 +18,7 @@ export default class DBeditUsersInfo extends React.Component{
 
 		const user = this.props.user
 
-		const user_info_list =
+		const user_info =
 			<ul>
 				<li>User ID: {user.id}</li>
 				<li>User Name: {user.user_name}</li>
@@ -66,7 +66,7 @@ export default class DBeditUsersInfo extends React.Component{
 		return(
 			<div className="DBedit_default_wrapper">
 				<h3>User Info</h3>
-					{ user_info_list }
+					{ user_info }
 				<hr />
 				<div className="DBedit_default_buttons_container">
 					{ buttons }

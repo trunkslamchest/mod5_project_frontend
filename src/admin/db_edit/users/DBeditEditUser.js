@@ -342,7 +342,7 @@ export default class DBeditEditUser extends React.Component {
 					<input
 						className="alt_button"
 						type="submit"
-						value="Edit New User"
+						value="Submit Changes"
 					/>
 					<button
 						name="edit_form"

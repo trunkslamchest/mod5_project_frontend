@@ -1,0 +1,33 @@
+.STAT_table {
+	width: 100%;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 10px 0px;
+    border-spacing: 0px;
+}
+
+.STAT_table th {
+	color: #dbdbdb;
+	text-align:center;
+	font-size: 12pt;
+	font-weight: 400;
+	padding: 10px;
+	background-image: linear-gradient(rgb(81, 88, 102, 1),  rgb(40, 44, 52, 1) );
+}
+
+.STAT_table tr {
+	width: 100%;
+	text-align:center;
+	padding: 5px;
+	margin: 0px 0px 0px 0px;
+	box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.25), 0 0 1px 0 rgba(0, 0, 0, 0.25), 0 0 1px 0 rgba(0, 0, 0, 0.25);
+	background-image: linear-gradient(rgb(255, 255, 255, 1),  rgb(219, 219, 219, 1) );
+}
+
+.STAT_table td {
+	text-align:center;
+	font-size: 10pt;
+	font-family: Roboto;
+	font-weight: 400;
+	padding: 5px;
+	margin: 0px 0px 0px 0px;
+}

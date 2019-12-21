@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router'
 
-import './LogIn.css'
+import '../css/LogIn.css'
 
 export default class LogIn extends React.Component {
 

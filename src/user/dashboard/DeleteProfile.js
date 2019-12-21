@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router'
 
-import './DeleteProfile.css'
+// import './DeleteProfile.css'
 
 export default class DeleteProfile extends React.Component {
 

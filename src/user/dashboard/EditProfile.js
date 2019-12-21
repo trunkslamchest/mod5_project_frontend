@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router'
 
-import './EditProfile.css'
+// import './EditProfile.css'
 
 export default class EditProfile extends React.Component {
 

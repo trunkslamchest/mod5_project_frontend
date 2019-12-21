@@ -22,14 +22,6 @@
 	z-index: 1;
 }
 
-.default_wrapper h3 {
-	
-}
-
-.default_error_report {
-	
-}
-
 .default_container_header {
 	text-align: center;
 }
@@ -82,10 +74,6 @@
 	transition-timing-function: ease-in-out;
 }
 
-.default_div {
-	
-}
-
 .default_edit_form {
 	width: 100%;
 	padding: 10px;
@@ -99,7 +87,6 @@
     text-transform: none;
     text-indent: 0px;
     text-shadow: none;
-    display: inline;
     text-align: start;
     box-sizing: unset;
     align-items: center;
@@ -184,7 +171,7 @@
 
 .alt_button {
 	-webkit-appearance: none;
-    -webkit-writing-mode: horizontal-tb !important;
+    /* -webkit-writing-mode: horizontal-tb !important; */
     text-rendering: auto;
     color: #FFF;
 	background-image: linear-gradient(rgb(81, 88, 102, 1),  rgb(40, 44, 52, 1) );
@@ -228,7 +215,7 @@
 
 .alt_button2 {
 	-webkit-appearance: none;
-    -webkit-writing-mode: horizontal-tb !important;
+    /* -webkit-writing-mode: horizontal-tb !important; */
     text-rendering: auto;
 	color: rgb(40, 44, 52, 1);
 	background-image: linear-gradient(rgb(255, 255, 255, 1),  rgb(219, 219, 219, 1) );

@@ -10,7 +10,7 @@ import {
 		//  useParams
 	} from 'react-router-dom'
 
-	var shuffle = require('shuffle-array')
+var shuffle = require('shuffle-array')
 
 export default class QuestionDisplay extends React.Component{
 
@@ -28,7 +28,12 @@ export default class QuestionDisplay extends React.Component{
 	}
 
 	randomizeAnswerOrder = (question) => {
-		const question_answers = [question.correct_answer, question.incorrect_answers[0], question.incorrect_answers[1], question.incorrect_answers[2]]
+		const question_answers = [
+			question.correct_answer,
+			question.incorrect_answers[0],
+			question.incorrect_answers[1],
+			question.incorrect_answers[2]
+		]
 
 		const shuffled_answers = shuffle(question_answers)
 
@@ -38,17 +43,48 @@ export default class QuestionDisplay extends React.Component{
 	}
 
 	onClickSelectAnswerFunctions = (event) => {
+		event.persist()
 		if (event.target.value === this.props.question.correct_answer) {
-			this.setState({
-				user_answer: event.target.value,
-				user_result: 'correct!',
-				display: 'answered'
+			fetch("http://localhost:3001/answers", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({
+					user_id: this.props.user.id,
+					question_id: this.props.question.id,
+					user_answer: event.target.value,
+					user_result: "correct"
+				})
+			})
+			.then(response => response.json())
+			.then(res_obj => {
+				this.setState({
+					user_answer: event.target.value,
+					user_result: 'correct!',
+					display: 'answered'
+				})
 			})
 		} else {
-			this.setState({
-				user_answer: event.target.value,
-				user_result: 'incorrect!',
-				display: 'answered'
+			fetch("http://localhost:3001/answers", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({
+					user_id: this.props.user.id,
+					question_id: this.props.question.id,
+					user_answer: event.target.value,
+					user_result: "incorrect"
+				})
+			})
+			.then(response => response.json())
+			.then(res_obj => {
+				this.setState({
+					user_answer: event.target.value,
+					user_result: 'incorrect!',
+					display: 'answered'
+				})
 			})
 		}
 	}
@@ -70,7 +106,7 @@ export default class QuestionDisplay extends React.Component{
 			<button
 				key={"answer_button1"}
 				value={ this.state.answers[0] }
-				className="question_answer_button"
+				className="alt_button"
 				onClick={ this.onClickSelectAnswerFunctions }
 			>
 				{ this.state.answers[0] }
@@ -78,7 +114,7 @@ export default class QuestionDisplay extends React.Component{
 			<button
 				key={"answer_button2"}
 				value={ this.state.answers[1] }
-				className="question_answer_button"
+				className="alt_button"
 				onClick={ this.onClickSelectAnswerFunctions }
 			>
 				{ this.state.answers[1] }
@@ -86,7 +122,7 @@ export default class QuestionDisplay extends React.Component{
 			<button
 				key={"answer_button3"}
 				value={ this.state.answers[2] }
-				className="question_answer_button"
+				className="alt_button"
 				onClick={ this.onClickSelectAnswerFunctions }
 			>
 				{ this.state.answers[2] }
@@ -94,7 +130,7 @@ export default class QuestionDisplay extends React.Component{
 			<button
 				key={"answer_button4"}
 				value={ this.state.answers[3] }
-				className="question_answer_button"
+				className="alt_button"
 				onClick={ this.onClickSelectAnswerFunctions }
 			>
 				{ this.state.answers[3] }
@@ -116,14 +152,16 @@ export default class QuestionDisplay extends React.Component{
 
 		const answered =
 			<>
-			<h3>{ this.state.user_result }</h3>
-			<button
-				key={"next_question_button"}
-				className="question_answer_button"
-				onClick={ this.onClickNextQuestionFunctions }
-			>
-				Next Question
-			</button>
+				<h3>{ this.state.user_result }</h3>
+				<div className="default_centered_buttons_container">
+					<button
+						key={"next_question_button"}
+						className="alt_button"
+						onClick={ this.onClickNextQuestionFunctions }
+					>
+						Next Question
+					</button>
+				</div>
 			</>
 
 		return(

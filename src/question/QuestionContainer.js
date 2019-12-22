@@ -66,7 +66,7 @@ export default class QuestionContainer extends React.Component{
 	nextQuestion = (question) => {
 		this.setState({
 			display: question
-		}, this.getQuestion())
+		})
 	}
 
 	onClickUpdateTrafficFunctions = (event) => {
@@ -93,6 +93,7 @@ export default class QuestionContainer extends React.Component{
 					question={ this.state.question }
 					user={ this.state.user }
 					nextQuestion={ this.nextQuestion }
+					getQuestion={ this.getQuestion }
 				/>
 
 		return(

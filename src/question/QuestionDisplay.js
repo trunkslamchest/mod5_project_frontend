@@ -23,11 +23,11 @@ export default class QuestionDisplay extends React.Component{
 
 	UNSAFE_componentWillReceiveProps(nextProps){
 		if (nextProps.question.id) {
-			this.randomizeQuestionOrder(nextProps.question)
+			this.randomizeAnswerOrder(nextProps.question)
 		}
 	}
 
-	randomizeQuestionOrder = (question) => {
+	randomizeAnswerOrder = (question) => {
 		const question_answers = [question.correct_answer, question.incorrect_answers[0], question.incorrect_answers[1], question.incorrect_answers[2]]
 
 		const shuffled_answers = shuffle(question_answers)
@@ -57,7 +57,7 @@ export default class QuestionDisplay extends React.Component{
 		this.props.nextQuestion('question')
 		this.setState({
 			display: 'question'
-		})
+		}, this.props.getQuestion())
 	}
 
 	render(){

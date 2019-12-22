@@ -16,6 +16,8 @@ import '../../css/Dashboard.css'
 export default class Dashboard extends React.Component{
 
 	state = {
+		// questions: {},
+		// answers: {},
 		display: '',
 	}
 
@@ -27,13 +29,15 @@ export default class Dashboard extends React.Component{
 		try {
 			let props = await this.props
 			await this.props.user_id;
-			this.onPageLoadFunctions(props)
+			await this.onPageLoadFunctions(props)
+			this.getAnswers(props)
 		} catch(errors) {
 			console.log(errors);
 		}
 	}
 
 	UNSAFE_componentWillReceiveProps(nextProps){
+		// this.getAnswers(nextProps)
 		this.onPageLoadFunctions(nextProps)
 	}
 
@@ -73,6 +77,18 @@ export default class Dashboard extends React.Component{
 		})
 	}
 
+	getAnswers = () => {
+		// console.log(this.props)
+		// fetch(`http://localhost:3001/users/${this.props.user_id}`)
+		// .then(res => res.json())
+		// .then(res_obj =>
+		// 	this.setState({
+		// 		answers: res_obj.data.attributes.answers,
+		// 		questions: res_obj.data.attributes.questions
+		// 	})
+		// )
+	}
+
 	onClickEditProfileFunctions = (event) => {
 		this.onClickUpdateTrafficFunctions(event)
 	}
@@ -97,6 +113,10 @@ export default class Dashboard extends React.Component{
 	}
 
 	render(){
+
+		// console.log(this.props)
+		// console.log(this.state)
+		
 
 		const dashboard_tabs = [
 			<li
@@ -173,7 +193,14 @@ export default class Dashboard extends React.Component{
 															join_year={ this.props.join_year }
 														/>;
 								case 'stats': return <DashboardStats />;
-								case 'answers': return <DashboardAnswers />;
+								case 'answers': return <DashboardAnswers
+															user_id={ this.props.user_id }
+															update_traffic_data={this.props.update_traffic_data }
+															update_page_data={this.props.update_page_data}
+															// ~~~~~~~~~~~~~~~~~~~~
+															// questions={ this.state.questions }
+															// answers={ this.state.answers }
+														/>;
 								case 'votes': return <DashboardVotes />;
 								case 'comments': return <DashboardComments />;
 								default: return <DashboardIndex

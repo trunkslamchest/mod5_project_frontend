@@ -177,7 +177,7 @@ export default class EditProfile extends React.Component {
 				}
 				{
 					!(this.state.updateSuccess) ?
-						<div className="edit_profile_wrapper">
+						<div className="default_wrapper">
 							<div className="default_container_header">
 								<h3>Edit Profile</h3>
 							</div>
@@ -221,6 +221,7 @@ export default class EditProfile extends React.Component {
 											placeholder={ this.props.first_name }
 											value={ (this.state.edit_first_name === "") ? (this.props.first_name) : (this.state.edit_first_name) }
 										/>
+										<br />
 										<input id="edit_last_name"
 											type="text"
 											onChange={ this.onChange }
@@ -265,6 +266,7 @@ export default class EditProfile extends React.Component {
 											<option value="November">November</option>
 											<option value="December">December</option>
 										</select>
+										<br />
 										<input id="edit_birth_day"
 											type="number"
 											min="1"
@@ -274,6 +276,7 @@ export default class EditProfile extends React.Component {
 											placeholder={ this.props.birth_day }
 											value={ (this.state.edit_birth_day === "") ? (this.props.birth_day) : (this.state.edit_birth_day) }
 										/>
+										<br />
 										<input id="edit_birth_year"
 											type="text"
 											minLength="4"
@@ -297,6 +300,7 @@ export default class EditProfile extends React.Component {
 											placeholder={ this.props.house_number }
 											value={ (this.state.edit_house_number === "") ? (this.props.house_number) : (this.state.edit_house_number) }
 										/>
+										<br />
 										<input id="edit_street_name"
 											type="text"
 											onChange={ this.onChange }
@@ -312,6 +316,7 @@ export default class EditProfile extends React.Component {
 											placeholder={ this.props.city_town }
 											value={ (this.state.edit_city_town === "") ? (this.props.city_town) : (this.state.edit_city_town) }
 										/>
+										<br />
 										<select id="edit_state"
 											name="edit_state"
 											onChange={ this.onChange }
@@ -379,7 +384,8 @@ export default class EditProfile extends React.Component {
 											value={ (this.state.edit_zip_code === "") ? (this.props.zip_code) : (this.state.edit_zip_code) }
 										/>
 									</div>
-									<div className="dashboard_buttons_container">
+									<hr />
+									<div className="default_centered_buttons_container">
 											<input
 												className="alt_button"
 												type="submit"

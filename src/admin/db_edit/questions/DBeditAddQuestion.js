@@ -188,7 +188,7 @@ export default class DBeditAddUser extends React.Component {
 					/>
 				</div>
 				<hr />
-				<div className="DBedit_default_buttons_container">
+				<div className="default_centered_buttons_container">
 					<input
 						className="alt_button"
 						type="submit"

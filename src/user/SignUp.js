@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router'
 
-import '../css/SignUp.css'
+// import '../css/SignUp.css'
 
 export default class SignUp extends React.Component {
 
@@ -165,18 +165,19 @@ export default class SignUp extends React.Component {
 				}
 				{
 					!(this.state.loggedIn) ?
-						<div className="sign_up_wrapper">
-							{/* <div className="default_container_header"> */}
+						<div className="default_wrapper">
+							<div className="default_container_header">
 								<h3>Sign Up</h3>
-							{/* </div> */}
+							</div>
 							<form
 								name="sign_up_form"
 								interaction="submit"
-								className="sign_up_form"
+								className="default_edit_form"
 								onSubmit={ this.onSubmitSignUpFunctions }
 							>
-								<div className="sign_up_basics">
+								<div className="default_div">
 									<label htmlFor="sign_up_user_name">Username</label>
+									<br />
 									<input
 										id="sign_up_user_name"
 										type="text"
@@ -185,8 +186,11 @@ export default class SignUp extends React.Component {
 										onChange={ this.onChange }
 										value={ this.state.sign_up_user_name }
 									/>
-									<br />
+								</div>
+								<br />
+								<div className="default_div">
 									<label htmlFor="sign_up_password">Password</label>
+									<br />
 									<input
 										id="sign_up_password"
 										type="password"
@@ -195,8 +199,11 @@ export default class SignUp extends React.Component {
 										onChange={ this.onChange }
 										value={ this.state.sign_up_password }
 									/>
-									<br />
+								</div>
+								<br />
+								<div className="default_div">
 									<label htmlFor="sign_up_email">Email</label>
+									<br />
 									<input
 										id="sign_up_email"
 										type="text"
@@ -206,8 +213,10 @@ export default class SignUp extends React.Component {
 										value={ this.state.sign_up_email }
 									/>
 								</div>
-								<div className="sign_up_profile_name">
+								<br />
+								<div className="default_div">
 									<label htmlFor="sign_up_name">Name</label>
+									<br />
 									<input
 										id="sign_up_first_name"
 										type="text"
@@ -216,6 +225,7 @@ export default class SignUp extends React.Component {
 										onChange={ this.onChange }
 										value={ this.state.sign_up_first_name }
 									/>
+									<br />
 									<input
 										id="sign_up_last_name"
 										type="text"
@@ -224,30 +234,34 @@ export default class SignUp extends React.Component {
 										onChange={ this.onChange }
 										value={ this.state.sign_up_last_name }
 									/>
-									<hr />
 								</div>
-								<div className="sign_up_gender">
+								<br />
+								<div className="default_div">
 									<label htmlFor="sign_up_gender">Gender</label>
+									<br />
 									<select
 										id="sign_up_gender"
 										name="sign_up_gender"
 										onChange={ this.onChange }
 										value={ this.state.sign_up_gender }
 									>
+										<option value="">Select...</option>
 										<option value="Non-Binary">Non-Binary</option>
 										<option value="Male">Male</option>
 										<option value="Female">Female</option>
 									</select>
-									<hr />
 								</div>
-								<div className="sign_up_birth">
+								<br />
+								<div className="default_div">
 									<label htmlFor="sign_up_birth">Birth Day</label>
+									<br />
 									<select
 										id="sign_up_birth_month"
 										name="sign_up_birth_month"
 										onChange={ this.onChange }
 										value={ this.state.sign_up_month }
 									>
+										<option value="">Month...</option>
 										<option value="January">January</option>
 										<option value="Februrary">Februrary</option>
 										<option value="March">March</option>
@@ -261,16 +275,18 @@ export default class SignUp extends React.Component {
 										<option value="November">November</option>
 										<option value="December">December</option>
 									</select>
+									<br />
 									<input
 										id="sign_up_birth_day"
 										type="number"
 										min="1"
 										max="31"
 										name="sign_up_birth_day"
-										placeholder="1"
+										placeholder="Day..."
 										onChange={ this.onChange }
 										value={ this.state.sign_up_birth_day }
 									/>
+									<br />
 									<input
 										id="sign_up_birth_year"
 										type="number"
@@ -278,13 +294,14 @@ export default class SignUp extends React.Component {
 										max="2019"
 										name="sign_up_birth_year"
 										onChange={ this.onChange }
-										placeholder="1900"
+										placeholder="Year..."
 										value={ this.state.sign_up_birth_year }
 								/>
-								<hr />
 								</div>
-								<div className="sign_up_address">
+								<br />
+								<div className="default_div">
 									<label htmlFor="sign_up_address">Address</label>
+									<br />
 									<input
 										id="sign_up_house_number"
 										type="number"
@@ -295,6 +312,7 @@ export default class SignUp extends React.Component {
 										onChange={ this.onChange }
 										value={ this.state.sign_up_house_number }
 									/>
+									<br />
 									<input
 										id="sign_up_street_name"
 										type="text"
@@ -303,6 +321,7 @@ export default class SignUp extends React.Component {
 										onChange={ this.onChange }
 										value={ this.state.sign_up_street_name }
 									/>
+									<br />
 									<input
 										id="sign_up_city_town"
 										type="text"
@@ -311,13 +330,15 @@ export default class SignUp extends React.Component {
 										onChange={ this.onChange }
 										value={ this.state.sign_up_city_town }
 									/>
+									<br />
 									<select
 										id="sign_up_state"
 										name="sign_up_state"
 										placeholder="State..."
 										onChange={ this.onChange }
 										value={ this.state.sign_up_state }
-										>
+									>
+										<option value="">State...</option>
 										<option value="Alabama">Alabama</option>
 										<option value="Alaska">Alaska</option>
 										<option value="Arizona">Arizona</option>
@@ -369,6 +390,7 @@ export default class SignUp extends React.Component {
 										<option value="Wisconsin">Wisconsin</option>
 										<option value="Wyoming">Wyoming</option>
 									</select>
+									<br />
 									<input id="sign_up_zip_code"
 										type="number"
 										min="10000"
@@ -379,16 +401,17 @@ export default class SignUp extends React.Component {
 										value={ this.state.sign_up_zip_code }
 									/>
 								</div>
-								<div className="sign_up_form_buttons">
+								<hr />
+								<div className="default_centered_buttons_container">
 									<input
-										className="default_button"
+										className="alt_button"
 										type="submit"
 										value="Create Account"
 									/>
 									<button
 										name="sign_up_form"
 	      								interaction="reset"
-										className="default_button"
+										className="alt_button"
 										onClick={ this.onResetFunctions }
 									>
 										Reset
@@ -398,7 +421,7 @@ export default class SignUp extends React.Component {
 											<input
 												name="sign_up_form"
 												interaction="cancel"
-												className="default_button"
+												className="alt_button"
 												type="reset"
 												onClick={ this.onCancelFunctions }
 												value="Cancel"

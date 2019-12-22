@@ -73,7 +73,7 @@ export default class LogOut extends React.Component {
 				key={"lo1"}
 				name="log_out_form"
 				interaction="submit"
-				className="default_button"
+				className="alt_button"
 				onClick={ this.onClickYes }
 			>
 				Yes
@@ -82,7 +82,7 @@ export default class LogOut extends React.Component {
 				key={"lo2"}
 				name="log_out_form"
 				interaction="cancel"
-				className="default_button"
+				className="alt_button"
 				onClick={ this.onClickNo }
 			>
 				No
@@ -90,11 +90,11 @@ export default class LogOut extends React.Component {
 		]
 
 		return(
-			<div className="log_out_wrapper">
+			<div className="default_wrapper">
 				<div className="default_container_header">
 					<h3>Are you sure you want to log out?</h3>
 				</div>
-				<div className="log_out_buttons_container">
+				<div className="default_centered_buttons_container">
 					{
 						{
 							true: redirect_to_dash,

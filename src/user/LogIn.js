@@ -100,43 +100,48 @@ export default class LogIn extends React.Component {
 
 	render(){
 	const login_form =
-		<div className="log_in_wrapper">
+		<div className="default_wrapper">
+			<div className="default_container_header">
+				<h3>Log In</h3>
+			</div>
 			<form
 				name="log_in_form"
 				interaction="submit"
 				className="log_in_form"
 				onSubmit={ this.onSubmitLoginFunctions }
 			>
-				<h2>Log In</h2>
-				<label htmlFor="log_in_user_name">User Name</label>
-			<br />
-				<input
-					id="log_in_user_name"
-					type="text"
-					name="user_name"
-					onChange={ this.onChange }
-					value={ this.state.user_name }
-				/>
-			<br />
-				<label htmlFor="log_in_password">Password</label>
-			<br />
-				<input
-					id="log_in_password"
-					type="password"
-					name="password"
-					onChange={ this.onChange }
-					value={ this.state.password }
-				/>
-				<div className="log_in_form_buttons">
+				<div className="login_div">
+					<label htmlFor="log_in_user_name">User Name</label>
+					<br />
 					<input
-						className="default_button"
+						id="log_in_user_name"
+						type="text"
+						name="user_name"
+						onChange={ this.onChange }
+						value={ this.state.user_name }
+					/>
+					<br />
+					<label htmlFor="log_in_password">Password</label>
+					<br />
+					<input
+						id="log_in_password"
+						type="password"
+						name="password"
+						onChange={ this.onChange }
+						value={ this.state.password }
+					/>
+				</div>
+				<br />
+				<div className="log_in_centered_buttons_container">
+					<input
+						className="alt_button"
 						type="submit"
 					/>
 					<input
 						type="reset"
 						name="Log In Form"
 						interaction="Cancel"
-						className="default_button"
+						className="alt_button"
 						onClick={ this.onCancelFunctions }
 						value="Cancel"
 					/>

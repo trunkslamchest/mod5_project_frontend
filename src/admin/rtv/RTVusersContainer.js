@@ -1,7 +1,7 @@
 import React from 'react'
 import RTVusersList from './RTVusersList'
 
-import './RTV.css'
+import '../../css/RTV.css'
 
 export default class RTVusersContainer extends React.Component{
 

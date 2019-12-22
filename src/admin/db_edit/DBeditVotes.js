@@ -1,7 +1,5 @@
 import React from 'react'
 
-import './DBedit.css'
-
 export default class DBeditVotes extends React.Component{
 	render(){
 		return(

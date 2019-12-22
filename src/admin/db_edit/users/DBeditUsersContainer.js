@@ -5,8 +5,6 @@ import DBeditAddUser from './DBeditAddUser'
 import DBeditEditUser from './DBeditEditUser'
 import DBeditDeleteUser from './DBeditDeleteUser'
 
-import '../DBedit.css'
-
 export default class DBeditUsersContainer extends React.Component{
 
 	state = {

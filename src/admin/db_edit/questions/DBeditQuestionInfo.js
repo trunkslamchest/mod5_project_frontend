@@ -1,7 +1,5 @@
 import React from 'react'
 
-import '../DBedit.css'
-
 export default class DBeditQuestionInfo extends React.Component{
 
 	componentDidMount(){}

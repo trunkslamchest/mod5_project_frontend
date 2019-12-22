@@ -1,13 +1,16 @@
 import React from 'react'
 
 import BackroomIndex from './BackroomIndex'
+
 import RTVsidebar from './rtv/RTVsidebar'
 import RTVusersContainer from './rtv/RTVusersContainer'
 import RTVpagesContainer from './rtv/RTVpagesContainer'
+
 import DBeditMainContainer from './db_edit/DBeditMainContainer'
+
 import STanalyticsIndex from './stats/STanalyticsIndex'
 
-import './Backroom.css'
+import '../css/Backroom.css'
 
 export default class Backroom extends React.Component{
 

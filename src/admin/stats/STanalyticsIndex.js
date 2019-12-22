@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './STanalytics.css'
+import '../../css/STanalytics.css'
 
 export default class STanalyticsIndex extends React.Component{
 

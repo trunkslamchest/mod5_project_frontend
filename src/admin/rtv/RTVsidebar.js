@@ -1,7 +1,6 @@
 import React from 'react'
 
-import './RTVsidebar.css'
-
+import '../../css/RTVsidebar.css'
 
 export default class RTVsidebar extends React.Component{
 

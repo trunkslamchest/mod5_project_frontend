@@ -1,7 +1,5 @@
 import React from 'react'
 
-import '../DBedit.css'
-
 export default class DBeditDeleteQuestion extends React.Component {
 
 	state = {
@@ -66,7 +64,7 @@ export default class DBeditDeleteQuestion extends React.Component {
 					:
 						( "" )
 				}
-				<div className="delete_profile_buttons_container">
+				<div className="default_centered_buttons_container">
 					{ confirm_buttons }
 				</div>
 			</div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import RTVpagesList from './RTVpagesList'
 
-import './RTV.css'
+import '../../css/RTV.css'
 
 export default class RTVpagesContainer extends React.Component{
 

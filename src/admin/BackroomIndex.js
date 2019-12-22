@@ -4,8 +4,6 @@ import {
         //  Link
         } from 'react-router-dom'
 
-import './Backroom.css'
-
 export default class BackroomIndex extends React.Component{
 
 	render(){

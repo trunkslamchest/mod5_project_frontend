@@ -6,7 +6,7 @@ import DBeditQuestionsContainer from './questions/DBeditQuestionsContainer'
 import DBeditVotes from './DBeditVotes'
 import DBeditComments from './DBeditComments'
 
-import './DBedit.css'
+import '../../css/DBedit.css'
 
 export default class DBeditMainContainer extends React.Component{
 

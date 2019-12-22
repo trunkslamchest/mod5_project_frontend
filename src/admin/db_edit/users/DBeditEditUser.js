@@ -1,8 +1,6 @@
 import React from 'react'
 import DBeditUsersContainer from './DBeditUsersContainer'
 
-import '../DBedit.css'
-
 export default class DBeditEditUser extends React.Component {
 
 	state = {

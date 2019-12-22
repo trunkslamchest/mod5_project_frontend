@@ -1,7 +1,5 @@
 import React from 'react'
 
-import './RTV.css'
-
 export default class RTVusersRow extends React.Component{
 	render(){
 

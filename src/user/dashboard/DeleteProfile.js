@@ -1,8 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router'
 
-// import './DeleteProfile.css'
-
 export default class DeleteProfile extends React.Component {
 
 	state = {
@@ -71,7 +69,7 @@ export default class DeleteProfile extends React.Component {
 				key={"b1"}
 				name="delete_profile_form"
 				interaction="submit"
-				className="default_button"
+				className="alt_button"
 				onClick={ this.onClickYes }
 			>
 				Yes
@@ -80,7 +78,7 @@ export default class DeleteProfile extends React.Component {
 				key={"b2"}
 				name="delete_profile_form"
 				interaction="cancel"
-				className="default_button"
+				className="alt_button"
 				onClick={ this.onClickNo }
 			>
 				No
@@ -88,11 +86,11 @@ export default class DeleteProfile extends React.Component {
 		]
 
 		return(
-			<div className="delete_profile_wrapper">
-				<div className="default_container_header">
+			<div className="default_wrapper">
+				<div className="default_header">
 					<h3>Are you sure you want to delete your profile?</h3>
 				</div>
-				<div className="delete_profile_buttons_container">
+				<div className="default_centered_buttons_container">
 					{
 						{
 							true: redirect_to_dash,

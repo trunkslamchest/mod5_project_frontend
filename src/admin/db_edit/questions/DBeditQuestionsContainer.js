@@ -10,8 +10,6 @@ import {
         //  Link
         } from 'react-router-dom'
 
-import '../DBedit.css'
-
 export default class DBeditQuestionsContainer extends React.Component{
 
 	state = {

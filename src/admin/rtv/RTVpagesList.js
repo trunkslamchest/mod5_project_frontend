@@ -1,8 +1,6 @@
 import React from 'react'
 import RTVpagesRow from './RTVpagesRow'
 
-import './RTV.css'
-
 export default class RTVpagesList extends React.Component{
 	render(){
 		const distribute_RTV_page_data = this.props.RTV_page_data.map( RTV_page_obj =>

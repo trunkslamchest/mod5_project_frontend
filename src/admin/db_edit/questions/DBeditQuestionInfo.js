@@ -59,6 +59,7 @@ export default class DBeditQuestionInfo extends React.Component{
 			</ul>
 
 		return(
+			<>
 			<div className="DBedit_default_wrapper">
 				<h3>Question Info</h3>
 				{ question_info_list }
@@ -67,6 +68,7 @@ export default class DBeditQuestionInfo extends React.Component{
 					{ buttons }
 				</div>
 			</div>
+			</>
 		)
 	}
 }

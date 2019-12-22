@@ -5,33 +5,33 @@ import './css/Header.css'
 
 export default class Header extends React.Component {
 
-	onClickFunctionsHome = (event) => {
+	onClickHomeFunctions = (event) => {
 		this.onClickUpdateTrafficFunctions(event)
 	}
 
-	onClickFunctionsSignUp = (event) => {
+	onClickSignUpFunctions = (event) => {
 		this.onClickUpdateTrafficFunctions(event)
 	}
 
-	onClickFunctionsLogIn = (event) => {
+	onClickLogInFunctions = (event) => {
 		this.onClickUpdateTrafficFunctions(event)
 	}
 
-	onClickFunctionsLogOut = (event) => {
+	onClickLogOutFunctions = (event) => {
 		this.onClickUpdateTrafficFunctions(event)
 	}
 
-	onClickFunctionsDashboard = (event) => {
+	onClickDashboardFunctions = (event) => {
 		this.onClickUpdateTrafficFunctions(event)
 	}
 
-	onClickFunctionsBackroom = (event) => {
+	onClickQuestionFunctions = (event) => {
+		this.onClickUpdateTrafficFunctions(event)
+	}
+
+	onClickBackroomFunctions = (event) => {
 		let index_msg = "index"
 		this.props.update_backroom_from_header(index_msg)
-	}
-
-	onClickTestFunctions = (event) => {
-		this.onClickUpdateTrafficFunctions(event)
 	}
 
 	onClickUpdateTrafficFunctions = (event) => {
@@ -50,7 +50,7 @@ export default class Header extends React.Component {
 				name="header_home_button"
 				interaction="click"
 				className="default_header_link"
-				onClick={this.onClickFunctionsHome }
+				onClick={this.onClickHomeFunctions }
 			>
 				Home
 			</NavLink>
@@ -66,12 +66,22 @@ export default class Header extends React.Component {
 
 		const logged_in_links = [
 			<NavLink
+				key={"h_question"}
+				to="/question"
+				name="header_dashboard_question"
+				interaction="click"
+				className="default_header_link"
+				onClick={ this.onClickQuestionFunctions }
+			>
+				Question
+			</NavLink>,
+			<NavLink
 				key={"h_dashboard"}
 				to="/dashboard"
 				name="header_dashboard_button"
 				interaction="click"
 				className="default_header_link"
-				onClick={ this.onClickFunctionsDashboard }
+				onClick={ this.onClickDashboardFunctions }
 			>
 				Dashboard
 			</NavLink>,
@@ -81,7 +91,7 @@ export default class Header extends React.Component {
 				name="header_log_out_button"
 				interaction="click"
 				className="default_header_link"
-				onClick={this.onClickFunctionsLogOut }
+				onClick={this.onClickLogOutFunctions }
 			>
 				Log Out
 			</NavLink>
@@ -94,7 +104,7 @@ export default class Header extends React.Component {
 				name="header_log_in_button"
 				interaction="click"
 				className="default_header_link"
-				onClick={this.onClickFunctionsLogIn }
+				onClick={this.onClickLogInFunctions }
 			>
 				Login
 			</NavLink>,
@@ -104,7 +114,7 @@ export default class Header extends React.Component {
 				name="header_sign_up_button"
 				interaction="click"
 				className="default_header_link"
-				onClick={this.onClickFunctionsSignUp }
+				onClick={this.onClickSignUpFunctions }
 			>
 				Sign Up
 			</NavLink>
@@ -125,7 +135,7 @@ export default class Header extends React.Component {
 				key={"h_backroom"}
 				to="/backroom"
 				className="default_header_link"
-				onClick={ this.onClickFunctionsBackroom }
+				onClick={ this.onClickBackroomFunctions }
 			>
 				Admin Panel
 			</NavLink>,

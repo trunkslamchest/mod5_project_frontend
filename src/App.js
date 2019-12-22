@@ -12,6 +12,8 @@ import Dashboard from './user/dashboard/Dashboard'
 import EditProfile from './user/dashboard/EditProfile'
 import DeleteProfile from './user/dashboard/DeleteProfile'
 
+import QuestionContainer from './question/QuestionContainer'
+
 import Backroom from './admin/Backroom'
 
 import Error from './Error'
@@ -349,6 +351,15 @@ export default class App extends React.Component {
 								// ~~~~~~~~~~~~~~~~~~~~
 								user_id={this.state.user_id }
 								log_out={ this.logOut }
+							/>
+						</Route>
+						<Route exact path='/question'>
+							<QuestionContainer
+								update_traffic_data={ this.update_traffic_data }
+								update_page_data={ this.update_page_data }
+								// ~~~~~~~~~~~~~~~~~~~~
+								user_id={ this.state.user_id }
+								first_name={ this.state.first_name }
 							/>
 						</Route>
 						<Route exact path='/log_out'>

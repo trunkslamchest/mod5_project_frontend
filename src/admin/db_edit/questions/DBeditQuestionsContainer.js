@@ -72,7 +72,6 @@ export default class DBeditQuestionsContainer extends React.Component{
 	}
 
 	displaySwitchtoEdit = (question) => {
-		// console.log(question)
 		this.setState({
 			display: "edit_question",
 			question: question
@@ -87,7 +86,6 @@ export default class DBeditQuestionsContainer extends React.Component{
 	}
 
 	render(){
-		// console.log(this.state)
 
 		const distribute_questions_data = this.state.questions.map( question_obj =>
 			<DBeditQuestionsTable

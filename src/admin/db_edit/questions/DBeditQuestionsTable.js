@@ -3,12 +3,12 @@ import React from 'react'
 export default class DBeditQuestionsTable extends React.Component{
 
 	onClickTableRowFunctions = () => {
-		this.props.displaySwitchToQuestionInfo(this.props.question.attributes)
+		this.props.displaySwitchToQuestionInfo(this.props.question.attributes.question)
 	}
 
 	render(){
 
-		const question = this.props.question.attributes
+		const question = this.props.question.attributes.question
 
 		const DBedit_table =
 			<tr onClick={ this.onClickTableRowFunctions } className="DBedit_sub_row">

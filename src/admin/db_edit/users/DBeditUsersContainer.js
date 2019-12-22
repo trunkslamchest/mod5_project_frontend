@@ -26,8 +26,8 @@ export default class DBeditUsersContainer extends React.Component{
 
 	getUserDB = () => {
 		fetch("http://localhost:3001/users")
-	    .then(res => res.json())
-	    .then(res_obj =>
+		.then(res => res.json())
+		.then(res_obj =>
 			this.setState({
 				users: res_obj.data
 			})

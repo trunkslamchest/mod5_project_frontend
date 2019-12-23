@@ -1,5 +1,7 @@
 import React from 'react'
 
+// import QuestionCard from './QuestionCard.js'
+
 import {
 		//  NavLink,
 		//  Link,
@@ -21,25 +23,8 @@ export default class QuestionDisplay extends React.Component{
 		display: 'question'
 	}
 
-	UNSAFE_componentWillReceiveProps(nextProps){
-		if (nextProps.question.id) {
-			this.randomizeAnswerOrder(nextProps.question)
-		}
-	}
-
-	randomizeAnswerOrder = (question) => {
-		const question_answers = [
-			question.correct_answer,
-			question.incorrect_answers[0],
-			question.incorrect_answers[1],
-			question.incorrect_answers[2]
-		]
-
-		const shuffled_answers = shuffle(question_answers)
-
-		this.setState({
-			answers: shuffled_answers
-		})
+	componentDidMount(){
+		this.randomizeAnswerOrder(this.props.question)
 	}
 
 	onClickSelectAnswerFunctions = (event) => {
@@ -51,7 +36,7 @@ export default class QuestionDisplay extends React.Component{
 					"Content-Type": "application/json"
 				},
 				body: JSON.stringify({
-					user_id: this.props.user.id,
+					user_id: this.props.user_id,
 					question_id: this.props.question.id,
 					user_answer: event.target.value,
 					user_result: "correct"
@@ -72,7 +57,7 @@ export default class QuestionDisplay extends React.Component{
 					"Content-Type": "application/json"
 				},
 				body: JSON.stringify({
-					user_id: this.props.user.id,
+					user_id: this.props.user_id,
 					question_id: this.props.question.id,
 					user_answer: event.target.value,
 					user_result: "incorrect"
@@ -89,14 +74,31 @@ export default class QuestionDisplay extends React.Component{
 		}
 	}
 
+	randomizeAnswerOrder = (question) => {
+		const question_answers = [
+			question.correct_answer,
+			question.incorrect_answers[0],
+			question.incorrect_answers[1],
+			question.incorrect_answers[2]
+		]
+
+		const shuffled_answers = shuffle(question_answers)
+
+		this.setState({
+			answers: shuffled_answers
+		})
+	}
+
 	onClickNextQuestionFunctions = () => {
-		this.props.nextQuestion('question')
+		this.props.nextQuestion(this.props.user_id)
 		this.setState({
 			display: 'question'
-		}, this.props.getQuestion())
+		})
 	}
 
 	render(){
+		// console.log("props", this.props)
+		// console.log("shuffled_answers", this.state.answers)
 
 		const question = this.props.question
 
@@ -178,5 +180,67 @@ export default class QuestionDisplay extends React.Component{
 			</>
 		)
 	}
-
 }
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+// export default class QuestionDisplay extends React.Component{
+// 	// state = {
+// 	// 	questions: {},
+// 	// 	question: {},
+// 	// 	question_id: {},
+// 	// 	user: {},
+// 	// 	found_question: null,
+// 	// 	display: 'question'
+// 	// }
+
+// 	// onClickUpdateTrafficFunctions = (event) => {
+// 	// 	this.props.update_traffic_data({
+// 	// 		user_id: this.props.user_id,
+// 	// 		interaction: event.target.attributes.interaction.value,
+// 	// 		element: event.target.name
+// 	// 	})
+// 	// }
+
+// 	// onPageLoadFunctions = (props) => {
+// 	// 	this.props.update_page_data({
+// 	// 		user_id: props.user_id,
+// 	// 		page_name: "user_dashboard"
+// 	// 	})
+// 	// }
+
+// 	render(){
+// 		console.log(this.props)
+// 		// let n = Math.floor(Math.random() * 6) + 1
+
+// 		// const select_random_question = this.props.question.filter(question => question.id === n)
+// 		// console.log(select_random_question)
+
+// 		// const blank = <></>
+
+// 		// const displayQuestion =
+// 		// 		<QuestionDisplay
+// 		// 			question={ this.state.question }
+// 		// 			user={ this.state.user }
+// 		// 			nextQuestion={ this.nextQuestion }
+// 		// 			getQuestion={ this.getQuestion }
+// 		// 			initNewQuestion={ this.initNewQuestion }
+// 		// 			questions={this.state.questions}
+// 		// 		/>
+
+// 		return(
+// 			<div className="question_wrapper">
+// 			{/* {
+// 				(() => {
+// 					switch(this.state.display) {
+// 						case 'question': return displayQuestion;
+// 						default: return blank;
+// 					}
+// 				})()
+// 			} */}
+// 			</div>
+// 		)
+// 	}
+// }

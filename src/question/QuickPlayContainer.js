@@ -1,6 +1,6 @@
 import React from 'react'
 
-import QuestionDisplay from './QuestionDisplay'
+import QuickPlayDisplay from './QuickPlayDisplay'
 
 import '../css/Questions.css'
 
@@ -69,7 +69,7 @@ state={
 
 		let randomQuestion = filtered_questions.map(question_obj =>
 			(question_obj.id === rng.id) ?
-			<QuestionDisplay
+			<QuickPlayDisplay
 				key={ question_obj.id }
 				question={ question_obj }
 				user_id={ this.props.user_id }
@@ -88,7 +88,7 @@ state={
 	}
 
 	render(){
-		console.log(this.state.answered_questions_ids.length === 50)
+		// console.log(this.state.answered_questions_ids.length === 50)
 		const blank = <></>
 
 		// const error = <h3>Error. Big Oof.</h3>

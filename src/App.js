@@ -12,7 +12,7 @@ import Dashboard from './user/dashboard/Dashboard'
 import EditProfile from './user/dashboard/EditProfile'
 import DeleteProfile from './user/dashboard/DeleteProfile'
 
-import QuestionContainer from './question/QuestionContainer'
+import QuickPlayContainer from './question/QuickPlayContainer'
 
 import Backroom from './admin/Backroom'
 
@@ -354,7 +354,7 @@ export default class App extends React.Component {
 							/>
 						</Route>
 						<Route exact path='/quick_play'>
-							<QuestionContainer
+							<QuickPlayContainer
 								update_traffic_data={ this.update_traffic_data }
 								update_page_data={ this.update_page_data }
 								// ~~~~~~~~~~~~~~~~~~~~

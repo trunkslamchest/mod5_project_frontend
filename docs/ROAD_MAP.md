@@ -1,9 +1,6 @@
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-|-timer for question display
-|	-add timer to answers table
-
 |-personal stats page
 
 |-votes for questions

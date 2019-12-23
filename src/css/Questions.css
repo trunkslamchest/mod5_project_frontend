@@ -16,10 +16,10 @@
 
 .question_wrapper h3 {
 	text-align: center;
-	background-image: linear-gradient(rgb(255, 255, 255, 1),  rgb(219, 219, 219, 1) );
+	/* background-image: linear-gradient(rgb(255, 255, 255, 1),  rgb(219, 219, 219, 1) ); */
 	padding: 10px;
 	margin: 0px;
-	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25);
+	/* box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25); */
 }
 
 .question_card {
@@ -28,6 +28,10 @@
 	padding: 0px;
 	margin: 0px;
 	font-size: 20pt;
+}
+
+.question_header {
+	margin: 10px;
 }
 
 .question_desc {
@@ -70,13 +74,21 @@
 	flex-shrink: 2;
 }
 
+.question_time {
+	margin: 10px;
+}
+
+.question_correct_answer {
+	margin: 10px;
+}
+
 .question_answer_button {
 	width: 100%;
 	text-align: center;
 	font-size: 15pt;
 	cursor: pointer;
 	padding: 10px;
-	margin: 0px;
+	margin: 10px;
 	border-width: 0px;
 	background-image: linear-gradient(rgb(255, 255, 255, 1),  rgb(219, 219, 219, 1) );
 	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25);

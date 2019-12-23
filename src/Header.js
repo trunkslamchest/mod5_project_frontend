@@ -67,13 +67,13 @@ export default class Header extends React.Component {
 		const logged_in_links = [
 			<NavLink
 				key={"h_question"}
-				to="/question"
+				to="/quck_play"
 				name="header_dashboard_question"
 				interaction="click"
 				className="default_header_link"
 				onClick={ this.onClickQuestionFunctions }
 			>
-				Question
+				Quick Play
 			</NavLink>,
 			<NavLink
 				key={"h_dashboard"}

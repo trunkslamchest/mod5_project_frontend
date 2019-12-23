@@ -353,7 +353,7 @@ export default class App extends React.Component {
 								log_out={ this.logOut }
 							/>
 						</Route>
-						<Route exact path='/question'>
+						<Route exact path='/quick_play'>
 							<QuestionContainer
 								update_traffic_data={ this.update_traffic_data }
 								update_page_data={ this.update_page_data }

@@ -28,10 +28,6 @@ state={
 		this.onMountAsync()
 	}
 
-	// UNSAFE_componentWillReceiveProps(nextProps){
-	// 	this.getAnsweredQuestions(nextProps.user_id)
-	// }
-
 	onMountAsync = async () => {
 		try {
 			await this.props.user_id;
@@ -70,7 +66,7 @@ state={
 		)
 
 		const rng = filtered_questions[Math.floor(Math.random() * filtered_questions.length - 1) + 1]
-			// console.log(filtered_questions.length === 0)
+
 		let randomQuestion = filtered_questions.map(question_obj =>
 			(question_obj.id === rng.id) ?
 			<QuestionDisplay
@@ -97,8 +93,6 @@ state={
 
 		// const error = <h3>Error. Big Oof.</h3>
 
-		// const all_questions_answered = <h3 key={"all_questions_answered"}> You Have Answered All Available Questions! </h3>
-		// 	filtered_questions.length === 0 ? all_questions_answered : randomQuestion
 		return(
 			<div className="question_wrapper">
 				{

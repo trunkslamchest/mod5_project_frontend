@@ -38,7 +38,7 @@ export default class QuickPlayDisplay extends React.Component{
 		this.randomizeAnswerOrder(this.props.question)
 		this.timerFunctions()
 		this.timerTimeout = setTimeout(() => { this.setState({ showTimer: true })}, 1000)
-		this.startTimer = setTimeout(() => { this.timerInterval = setInterval(this.timerFunctions, 10)}, 4500)
+		this.startTimer = setTimeout(() => { this.timerInterval = setInterval(this.timerFunctions, 10)}, 4000)
 		this.headerTimeout = setTimeout(() => { this.setState({ showHeader: true })}, 2000)
 		this.questionTimeout = setTimeout(() => { this.setState({ showQuestion: true })}, 3000)
 		this.choicesTimeout = setTimeout(() => { this.setState({ showChoices: true })}, 4000)
@@ -71,7 +71,7 @@ export default class QuickPlayDisplay extends React.Component{
 			.then(res_obj => {
 				this.setState({
 					user_answer: event.target.value,
-					user_result: 'correct!',
+					user_result: 'Correct!',
 					display: 'answered',
 				})
 			})

@@ -196,6 +196,7 @@ export default class QuickPlayDisplay extends React.Component{
 		clearTimeout(this.timerTimeout)
 		clearInterval(this.startTimer)
 		clearTimeout(this.answeredHeaderTimeout)
+		clearTimeout(this.correctAnswerTimeout)
 		clearTimeout(this.showAnsweredButtons)
 	}
 
@@ -246,9 +247,15 @@ export default class QuickPlayDisplay extends React.Component{
 
 		const answered_header = <h3> { this.state.time === 0 ? this.outtaTime() : this.state.user_result } </h3>
 
+		const correct_answer_text =
+		<>
+			<h3>The correct answer was:</h3>
+			<p>{ this.props.question.correct_answer }</p>
+		</>
+
 		const correct_answer =
 			<>
-				{ this.state.user_result === 'Incorrect!' ? `The correct answer was: ${this.props.question.correct_answer }` : ""}
+				{ this.state.user_result === 'Incorrect!' ? correct_answer_text : ""}
 			</>
 
 		const next_question_button =
@@ -284,7 +291,7 @@ export default class QuickPlayDisplay extends React.Component{
 				<div className="question_correct_answer">
 					{ this.state.showCorrectAnswer ? correct_answer : ""}
 				</div>
-				<div className="default_centered_buttons_container">
+				<div className="question_next_question_button_container">
 					{ this.state.showAnsweredButtons ? next_question_button : "" }
 				</div>
 			</div>

@@ -16,8 +16,6 @@ import '../../css/Dashboard.css'
 export default class Dashboard extends React.Component{
 
 	state = {
-		// questions: {},
-		// answers: {},
 		display: '',
 	}
 
@@ -30,14 +28,12 @@ export default class Dashboard extends React.Component{
 			let props = await this.props
 			await this.props.user_id;
 			await this.onPageLoadFunctions(props)
-			this.getAnswers(props)
 		} catch(errors) {
 			console.log(errors);
 		}
 	}
 
 	UNSAFE_componentWillReceiveProps(nextProps){
-		// this.getAnswers(nextProps)
 		this.onPageLoadFunctions(nextProps)
 	}
 
@@ -77,18 +73,6 @@ export default class Dashboard extends React.Component{
 		})
 	}
 
-	getAnswers = () => {
-		// console.log(this.props)
-		// fetch(`http://localhost:3001/users/${this.props.user_id}`)
-		// .then(res => res.json())
-		// .then(res_obj =>
-		// 	this.setState({
-		// 		answers: res_obj.data.attributes.answers,
-		// 		questions: res_obj.data.attributes.questions
-		// 	})
-		// )
-	}
-
 	onClickEditProfileFunctions = (event) => {
 		this.onClickUpdateTrafficFunctions(event)
 	}
@@ -116,7 +100,6 @@ export default class Dashboard extends React.Component{
 
 		// console.log(this.props)
 		// console.log(this.state)
-		
 
 		const dashboard_tabs = [
 			<li
@@ -152,7 +135,6 @@ export default class Dashboard extends React.Component{
 		]
 
 		return(
-
 			<div className="dashboard_wrapper">
 				<div className="dashboard_tabs">
 					<ul>
@@ -192,14 +174,15 @@ export default class Dashboard extends React.Component{
 															join_month={ this.props.join_month }
 															join_year={ this.props.join_year }
 														/>;
-								case 'stats': return <DashboardStats />;
+								case 'stats': return <DashboardStats
+															user_id={ this.props.user_id }
+															update_traffic_data={this.props.update_traffic_data }
+															update_page_data={this.props.update_page_data}
+														/>;
 								case 'answers': return <DashboardAnswers
 															user_id={ this.props.user_id }
 															update_traffic_data={this.props.update_traffic_data }
 															update_page_data={this.props.update_page_data}
-															// ~~~~~~~~~~~~~~~~~~~~
-															// questions={ this.state.questions }
-															// answers={ this.state.answers }
 														/>;
 								case 'votes': return <DashboardVotes />;
 								case 'comments': return <DashboardComments />;

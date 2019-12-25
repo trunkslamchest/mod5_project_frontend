@@ -1,18 +1,29 @@
 
+		// user_questions_geography: 0,
+		// user_questions_history: 0,
+		// user_questions_music: 0,
+		// user_questions_mythology: 0,
+		// user_questions_nature: 0,
+		// user_questions_politics: 0,
+		// user_questions_science: 0,
+		// user_questions_sports: 0,
+		// user_questions_technology: 0,
+		// user_questions_television: 0,
+		// user_questions_theatre: 0,
+		// user_questions_vehicles: 0,
+		// user_questions_video_games: 0,
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 |-personal stats page
-|	-total questions answered
-|	-total questions answered by difficulty
-|	-total questions answered by category
-|	-number of questions correct
-|		-with percentage
-|	-number of questions incorrect
-|		-with -percentage
+|		-questions incorrect(with percentage)
+
+|	-total questions answered by category(with percentage)
+|		-correct/incorrect by category(with percentage)
+
 |	-time
 |		-average time to answer question
 |		-fastest correct question answered
-|		-total questions with no answer
+|		-total questions with no answer(with percentage)
 
 
 |-votes for questions

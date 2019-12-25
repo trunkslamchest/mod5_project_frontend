@@ -200,6 +200,17 @@ export default class QuickPlayDisplay extends React.Component{
 		clearTimeout(this.showAnsweredButtons)
 	}
 
+	componentWillDidmount(){
+		clearTimeout(this.headerTimeout)
+		clearTimeout(this.questionTimeout)
+		clearTimeout(this.choicesTimeout)
+		clearTimeout(this.timerTimeout)
+		clearInterval(this.startTimer)
+		clearTimeout(this.answeredHeaderTimeout)
+		clearTimeout(this.correctAnswerTimeout)
+		clearTimeout(this.showAnsweredButtons)
+	}
+
 	render(){
 
 		const blank = <></>

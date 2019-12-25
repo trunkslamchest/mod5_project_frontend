@@ -178,9 +178,7 @@ export default class EditProfile extends React.Component {
 				{
 					!(this.state.updateSuccess) ?
 						<div className="default_wrapper">
-							<div className="default_container_header">
 								<h3>Edit Profile</h3>
-							</div>
 								<form
 								    name="edit_profile_form"
 				      				interaction="submit"

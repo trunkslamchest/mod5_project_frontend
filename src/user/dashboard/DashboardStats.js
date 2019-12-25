@@ -64,13 +64,35 @@ export default class DashboardStats extends React.Component{
 		return ((this.state.user_answers.filter(answer => answer.user_result === "correct").length / Object.keys(this.state.user_answers).length) * 100).toFixed(2)
 	}
 
+	totalQuestionsWithNoAnswers = () => {
+		let questionsWithNoAnswer = this.state.user_answers.filter(answer => answer.user_time === "0.0")
+		return questionsWithNoAnswer.length
+	}
+
+	averageTimeToAnswer = () => {
+		let sum = 0
+		let questionTimes = this.state.user_answers.map(answer => parseFloat(answer.user_time))
+
+		questionTimes.forEach((time) => {
+			sum += (10 - time)
+		})
+
+		let averageTime = (sum / this.state.user_answers.length).toFixed(2)
+
+		return averageTime
+	}
+
 	render(){
+
+		// console.log(this.state.user_answers.map(answer => parseFloat(answer.user_time)))
 
 		const total_questions_answered =
 			<ul>
 				<li>All Questions:</li>
-				<li>{ this.totalQuestionsAnswered() } out of {Object.keys(this.state.all_questions).length} answered ({this.totalQuestionsAnsweredPercent()}%)</li>
-				<li>{ this.totalQuestionsCorrect() } out of {Object.keys(this.state.user_answers).length} correct ({this.totalQuestionsCorrectPercent()}%)</li>
+				<li>{ this.totalQuestionsAnswered() }/{Object.keys(this.state.all_questions).length} answered ({this.totalQuestionsAnsweredPercent()}%)</li>
+				<li>{ this.totalQuestionsCorrect() }/{Object.keys(this.state.user_answers).length} correct ({this.totalQuestionsCorrectPercent()}%)</li>
+				<li>Average Time To Answer: { this.averageTimeToAnswer() } seconds</li>
+				<li>Outta Times: { this.totalQuestionsWithNoAnswers() }</li>
 			</ul>
 
 		const questionsAnsweredByDifficulty =

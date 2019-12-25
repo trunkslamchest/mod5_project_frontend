@@ -26,23 +26,23 @@ export default class DashboardStatsCategory extends React.Component{
 		user_questions_vehicles: 0,
 		user_questions_video_games: 0,
 		user_correct_anime: 0,
-		// user_correct_books: 0,
-		// user_correct_computers: 0,
-		// user_correct_film: 0,
-		// user_correct_general_knowledge: 0,
-		// user_correct_geography: 0,
-		// user_correct_history: 0,
-		// user_correct_music: 0,
-		// user_correct_mythology: 0,
-		// user_correct_nature: 0,
-		// user_correct_politics: 0,
-		// user_correct_science: 0,
-		// user_correct_sports: 0,
-		// user_correct_technology: 0,
-		// user_correct_television: 0,
-		// user_correct_theatre: 0,
-		// user_correct_vehicles: 0,
-		// user_correct_video_games: 0,
+		user_correct_books: 0,
+		user_correct_computers: 0,
+		user_correct_film: 0,
+		user_correct_general_knowledge: 0,
+		user_correct_geography: 0,
+		user_correct_history: 0,
+		user_correct_music: 0,
+		user_correct_mythology: 0,
+		user_correct_nature: 0,
+		user_correct_politics: 0,
+		user_correct_science: 0,
+		user_correct_sports: 0,
+		user_correct_technology: 0,
+		user_correct_television: 0,
+		user_correct_theatre: 0,
+		user_correct_vehicles: 0,
+		user_correct_video_games: 0,
 		all_questions: 0,
 		all_filtered_anime: 0,
 		all_filtered_books: 0,
@@ -217,8 +217,6 @@ export default class DashboardStatsCategory extends React.Component{
 	}
 
 	render(){
-
-		console.log(this.state)
 
 		const no_questions_answered = <> No questions answered! </>
 
@@ -482,34 +480,3 @@ export default class DashboardStatsCategory extends React.Component{
 		)
 	}
 }
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-// let sorted = this.props.user.questions.map(question => question.category).sort()
-
-// let user_filtered_anime = sorted.filter(question => question === "Anime")
-// let user_filtered_books = sorted.filter(question => question === "Books")
-// let user_filtered_computers = sorted.filter(question => question === "Computers")
-// let user_filtered_film = sorted.filter(question => question === "Film")
-// let user_filtered_general_knowledge = sorted.filter(question => question === "General Knowledge")
-// let user_filtered_geography = sorted.filter(question => question === "Geography")
-// let user_filtered_history = sorted.filter(question => question === "History")
-// let user_filtered_music = sorted.filter(question => question === "Music")
-// let user_filtered_mythology = sorted.filter(question => question === "Mythology")
-// let user_filtered_nature = sorted.filter(question => question === "Nature")
-// let user_filtered_politics = sorted.filter(question => question === "Politics")
-// let user_filtered_science = sorted.filter(question => question === "Science")
-// let user_filtered_sports = sorted.filter(question => question === "Sports")
-// let user_filtered_technology = sorted.filter(question => question === "Technology")
-// let user_filtered_television = sorted.filter(question => question === "Television")
-// let user_filtered_theatre = sorted.filter(question => question === "Theatre")
-// let user_filtered_vehicles = sorted.filter(question => question === "Vehicles")
-// let user_filtered_video_games = sorted.filter(question => question === "Video Games")
-
-			// let user_filtered_easy = sorted.filter(question => question === "Easy" || question === "easy")
-			// let user_filtered_medium = sorted.filter(question => question === "Medium" || question === "medium")
-			// let user_filtered_hard = sorted.filter(question => question === "Hard" || question === "hard")
-
-			// let user_questions_easy = this.props.user.questions.filter(question => question.difficulty === "Easy" || question.difficulty === "easy")
-			// let user_questions_medium = this.props.user.questions.filter(question => question.difficulty === "Medium" || question.difficulty === "medium")
-			// let user_questions_hard = this.props.user.questions.filter(question => question.difficulty === "Hard" || question.difficulty === "hard")

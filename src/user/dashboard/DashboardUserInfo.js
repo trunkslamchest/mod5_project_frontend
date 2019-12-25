@@ -117,7 +117,7 @@ export default class DashboardUserInfo extends React.Component{
 					<li>Join Date: {this.props.join_month } {this.formatted_join_day() }, { this.props.join_year }</li>
 				</ul>
 				<hr />
-				<div className="dashboard_buttons_container">
+				<div className="default_centered_buttons_container">
 					{ dashboard_edit_buttons }
 				</div>
 			</>

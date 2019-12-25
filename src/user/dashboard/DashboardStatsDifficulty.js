@@ -24,7 +24,9 @@ export default class DashboardStatsDifficulty extends React.Component{
 
 	componentDidMount(){
 		this.setState({
-			mounted: true
+			mounted: true,
+			updatedAllQuestions : false,
+			updatedDifficulties: false,
 		})
 	}
 
@@ -107,6 +109,7 @@ export default class DashboardStatsDifficulty extends React.Component{
 
 		const medium_questions =
 			<ul>
+				<li>Medium Questions:</li>
 				<li>
 					{this.state.user_medium_questions ? `${ this.state.user_medium_questions }/${ this.state.all_medium_questions } answered` : no_questions_answered }
 					{this.state.user_medium_questions ? ` (${((this.state.user_medium_questions / this.state.all_medium_questions) * 100).toFixed(2)}%)` : "" }

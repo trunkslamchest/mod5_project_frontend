@@ -1,6 +1,7 @@
 import React from 'react'
 // import ReactTimeout from 'react-timeout'
 
+// import QuickPlayVotes from './QuickPlayVotes'
 
 import {
 		//  NavLink,
@@ -23,6 +24,8 @@ export default class QuickPlayDisplay extends React.Component{
 		time: 10.01,
 		stopTime: false,
 		getTime: false,
+		voted: false,
+		votes: [],
 		display: 'question',
 		showHeader: null,
 		showQuestion: null,
@@ -31,6 +34,7 @@ export default class QuickPlayDisplay extends React.Component{
 		startTimer: null,
 		showAnsweredHeader: null,
 		showCorrectAnswer: null,
+		showVoteButtons: null,
 		showAnsweredButtons: null,
 	}
 
@@ -47,7 +51,8 @@ export default class QuickPlayDisplay extends React.Component{
 	displayAnswered = () => {
 		this.answeredHeaderTimeout = setTimeout(() => { this.setState({ showAnsweredHeader: true })}, 1000)
 		this.correctAnswerTimeout = setTimeout(() => { this.setState({ showCorrectAnswer: true })}, 2000)
-		this.answeredButtonsTimeout = setTimeout(() => { this.setState({ showAnsweredButtons: true })}, 3000)
+		this.voteButtonsTimeout = setTimeout(() => { this.setState({ showVoteButtons: true })}, 3000)
+		this.answeredButtonsTimeout = setTimeout(() => { this.setState({ showAnsweredButtons: true })}, 4000)
 	}
 
 	onClickSelectAnswerFunctions = (event) => {
@@ -182,6 +187,121 @@ export default class QuickPlayDisplay extends React.Component{
 		}
 	}
 
+	onClickUpVoteFunctions = (event) => {
+		event.persist()
+		fetch("http://localhost:3001/votes", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				user_id: this.props.user_id,
+				question_id: this.props.question.id,
+				vote_num: 1
+			})
+		})
+		.then(response => response.json())
+		.then(res_obj => {
+			this.setState({
+				voted: true,
+				showVoteButtons: false
+			})
+			this.getVotes()
+		})
+	}
+
+	onClickNoVoteFunctions = (event) => {
+		event.persist()
+		fetch("http://localhost:3001/votes", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				user_id: this.props.user_id,
+				question_id: this.props.question.id,
+				vote_num: 0
+			})
+		})
+		.then(response => response.json())
+		.then(res_obj => {
+			this.setState({
+				voted: true,
+				showVoteButtons: false
+			})
+			this.getVotes()
+		})
+	}
+
+	onClickDownVoteFunctions = (event) => {
+		event.persist()
+		fetch("http://localhost:3001/votes", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				user_id: this.props.user_id,
+				question_id: this.props.question.id,
+				vote_num: -1
+			})
+		})
+		.then(response => response.json())
+		.then(res_obj => {
+			this.setState({
+				voted: true,
+				showVoteButtons: false
+			})
+			this.getVotes()
+		})
+	}
+
+	getVotes = () => {
+		fetch(`http://localhost:3001/questions/${this.props.question.id}`)
+		.then(res => res.json())
+		.then(res_obj =>
+			this.setState({
+				votes: res_obj.data.attributes.votes.map(vote => vote.vote_num)
+			})
+		)
+	}
+
+	calculateUpVotes = () => {
+		let total_votes = this.state.votes.length
+		let up_votes = this.state.votes.filter(vote => vote === 1 )
+		let total_up_votes = up_votes.length
+		let up_vote_percent = (total_up_votes / total_votes) * 100
+		if (up_votes.length === 0) {
+			return "0%"
+		} else {
+			return `${up_vote_percent}%`
+		}
+	}
+
+	calculateNoVotes = () => {
+		let total_votes = this.state.votes.length
+		let no_votes = this.state.votes.filter(vote => vote === 0 )
+		let total_no_votes = no_votes.length
+		let no_vote_percent = (total_no_votes / total_votes) * 100
+		if (no_votes.length === 0) {
+			return "0%"
+		} else {
+			return `${no_vote_percent}%`
+		}
+	}
+
+	calculateDownVotes = () => {
+		let total_votes = this.state.votes.length
+		let down_votes = this.state.votes.filter(vote => vote === -1 )
+		let total_down_votes = down_votes.length
+		let down_vote_percent = (total_down_votes / total_votes) * 100
+		if (down_votes.length === 0) {
+			return "0%"
+		} else {
+			return `${down_vote_percent}%`
+		}
+	}
+
 	onClickNextQuestionFunctions = () => {
 		this.props.nextQuestion(this.props.user_id)
 		this.setState({
@@ -197,6 +317,7 @@ export default class QuickPlayDisplay extends React.Component{
 		clearInterval(this.startTimer)
 		clearTimeout(this.answeredHeaderTimeout)
 		clearTimeout(this.correctAnswerTimeout)
+		clearTimeout(this.voteButtonsTimeout)
 		clearTimeout(this.showAnsweredButtons)
 	}
 
@@ -208,10 +329,13 @@ export default class QuickPlayDisplay extends React.Component{
 		clearInterval(this.startTimer)
 		clearTimeout(this.answeredHeaderTimeout)
 		clearTimeout(this.correctAnswerTimeout)
+		clearTimeout(this.voteButtonsTimeout)
 		clearTimeout(this.showAnsweredButtons)
 	}
 
 	render(){
+
+		console.log(this.state.votes)
 
 		const blank = <></>
 
@@ -269,6 +393,37 @@ export default class QuickPlayDisplay extends React.Component{
 				{ this.state.user_result === 'Incorrect!' ? correct_answer_text : ""}
 			</>
 
+		const vote_for_question_buttons = [
+			<button
+				key={"up_vote_button"}
+				className="alt_button"
+				onClick={ this.onClickUpVoteFunctions }
+			>
+				Up Vote
+			</button>,
+			<button
+				key={"no_vote_button"}
+				className="alt_button"
+				onClick={ this.onClickNoVoteFunctions }
+			>
+				No Vote
+			</button>,
+			<button
+			key={"down_vote_button"}
+			className="alt_button"
+			onClick={ this.onClickDownVoteFunctions }
+			>
+				Down Vote
+			</button>
+		]
+
+		const vote_total =
+			<ul>
+				<li>Up Votes: { this.calculateUpVotes() }</li>
+				<li>No Votes: { this.calculateNoVotes() }</li>
+				<li>Down Votes: { this.calculateDownVotes() }</li>
+			</ul>
+
 		const next_question_button =
 			<button
 				key={"next_question_button"}
@@ -301,6 +456,10 @@ export default class QuickPlayDisplay extends React.Component{
 				</div>
 				<div className="question_correct_answer">
 					{ this.state.showCorrectAnswer ? correct_answer : ""}
+				</div>
+				<div className="question_vote">
+					{ this.state.showVoteButtons ? vote_for_question_buttons : ""}
+					{ this.state.voted ? vote_total : "" }
 				</div>
 				<div className="question_next_question_button_container">
 					{ this.state.showAnsweredButtons ? next_question_button : "" }

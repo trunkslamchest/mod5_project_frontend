@@ -9,36 +9,67 @@ import {
 export default class DashboardAnswers extends React.Component{
 
 	state = {
+		allQuestions: [],
 		questions: null,
-		answers: null
+		userAnswers: [],
+		userQuestions: [],
+		mounted: false,
+		updatedAnswers: false,
+		updatedAllQuestions: false,
+		updatedUserQuestions: false
 	}
 
 	componentDidMount(){
-		this.onMountAsync()
+		this.setState({
+			mounted: true
+		})
 	}
 
-	UNSAFE_componentWillReceiveProps(nextProps){
-	}
-
-	onMountAsync = async () => {
-		try {
-			let props = await this.props
-			await this.props.user_id;
-			this.getAnswers(props)
-		} catch(errors) {
-			console.log(errors);
+	componentDidUpdate(){
+		if (this.state.mounted) {
+			this.getAnswers()
+			this.getAllQuestions()
+			this.getUserQuestions()
 		}
 	}
 
-	getAnswers = (props) => {
-		fetch(`http://localhost:3001/users/${props.user_id}`)
-		.then(res => res.json())
-		.then(res_obj =>
+	getAnswers = () => {
+		if (this.props.user_id && this.state.updatedAnswers !== true ) {
+			fetch(`http://localhost:3001/users/${this.props.user_id}`)
+			.then(res => res.json())
+			.then(res_obj =>
+				this.setState({
+					userAnswers: res_obj.data.attributes.answers,
+					// questions: res_obj.data.attributes.questions,
+					updatedAnswers: true
+				})
+			)
+		}
+	}
+
+	getAllQuestions = () => {
+		if (this.props.user_id && this.state.updatedAllQuestions !== true ) {
+			fetch(`http://localhost:3001/questions/`)
+			.then(res => res.json())
+			.then(res_obj =>
+				this.setState({
+					allQuestions: res_obj.data.map(question_obj => question_obj.attributes.question),
+					updatedAllQuestions: true
+				})
+			)
+		}
+	}
+
+	getUserQuestions = () => {
+		if (this.state.updatedAllQuestions && this.state.updatedUserQuestions !== true ) {
+			let userAnswerIDs = this.state.userAnswers.map(answer => answer.question_id)
+			let userQuestions = this.state.allQuestions.filter(question => userAnswerIDs.includes(question.id))
+			// console.log(userQuestions)
 			this.setState({
-				answers: res_obj.data.attributes.answers,
-				questions: res_obj.data.attributes.questions
+				userQuestions: userQuestions,
+				updatedUserQuestions: true
 			})
-		)
+		}
 	}
 
 	onPageLoadFunctions = (props) => {
@@ -49,10 +80,12 @@ export default class DashboardAnswers extends React.Component{
 	}
 
 	render(){
+		// console.log(this.props)
+		// console.log(this.state)
 
 		const distributeCombineQuestionsAnswers =
-		(this.state.questions) ? this.state.questions.map(question =>
-				this.state.answers.map(answer =>
+		(this.state.updatedUserQuestions) ? this.state.userQuestions.map(question =>
+				this.state.userAnswers.map(answer =>
 					(question.id === answer.question_id) ?
 						<DashboardAnswersCard
 							key={answer.id}

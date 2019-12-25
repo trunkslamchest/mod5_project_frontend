@@ -24,17 +24,17 @@ export default class Dashboard extends React.Component{
 	}
 
 	onMountAsync = async () => {
-		try {
-			let props = await this.props
-			await this.props.user_id;
-			await this.onPageLoadFunctions(props)
-		} catch(errors) {
-			console.log(errors);
-		}
+		// try {
+		// 	let props = await this.props
+		// 	await this.props.user_id;
+		// 	// await this.onPageLoadFunctions(props)
+		// } catch(errors) {
+		// 	console.log(errors);
+		// }
 	}
 
 	UNSAFE_componentWillReceiveProps(nextProps){
-		this.onPageLoadFunctions(nextProps)
+		// this.onPageLoadFunctions(nextProps)
 	}
 
 	displaySwitchToDashboard = () => {

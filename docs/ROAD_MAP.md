@@ -3,9 +3,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 |-votes
-	-add vote buttons to answered question card
-	-display votes after user has voted
-	-add votes to user dashboard
+	-fix vote display on answer display
 
 
 |-comments

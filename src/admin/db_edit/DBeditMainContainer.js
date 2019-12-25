@@ -20,12 +20,6 @@ export default class DBeditMainContainer extends React.Component{
 		})
 	}
 
-	UNSAFE_componentWillReceiveProps(nextProps){
-		this.setState({
-			display: nextProps.update_db_display,
-		})
-	}
-
 	showDBIndex = () => {
 		this.setState({
 			display: 'index'

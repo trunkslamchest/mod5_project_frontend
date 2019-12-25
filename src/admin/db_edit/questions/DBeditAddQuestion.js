@@ -16,9 +16,6 @@ export default class DBeditAddUser extends React.Component {
 	componentDidMount(){
 	}
 
-	onMountAsync = async () => {
-	}
-
 	onChange = (event) => {
 		this.setState({
 			[event.target.name]: event.target.value

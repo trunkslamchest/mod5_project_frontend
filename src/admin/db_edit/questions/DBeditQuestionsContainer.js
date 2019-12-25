@@ -16,17 +16,31 @@ export default class DBeditQuestionsContainer extends React.Component{
 		questions: [],
 		question: {},
 		question_id: '',
-		display: "index"
+		display: "index",
+		mounted: false,
+		displayUpdated: false
 	}
 
 	componentDidMount(){
 		this.getQuestionDB()
+		this.setState({
+			mounted: true
+		})
 	}
 
-	UNSAFE_componentWillReceiveProps(nextProps){
-		this.setState({
-			display: "index"
-		})
+	componentDidUpdate(){
+		if (this.state.mounted) {
+			this.setDisplayOnUpdate()
+		}
+	}
+
+	setDisplayOnUpdate(){
+		if (this.props.showDBquestions && this.state.displayUpdated !== true ) {
+			this.setState({
+				display: "index",
+				displayUpdated: true
+			})
+		}
 	}
 
 	getQuestionDB = () => {

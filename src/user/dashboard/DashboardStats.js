@@ -19,11 +19,22 @@ export default class DashboardStats extends React.Component{
 	}
 
 	componentDidMount(){
-		this.getUser()
+		// this.getUser()
 		this.getAllQuestions()
-		this.setState({
-			mounted: true
-		})
+		// this.setState({
+		// 	mounted: true
+		// })
+		this.onMountAsync()
+	
+	}
+
+	onMountAsync = async () => {
+		try {
+			await this.props.user_id;
+			this.getUser(this.props.user_id);
+		} catch(errors) {
+			console.log(errors);
+		}
 	}
 
 	getAllQuestions = () => {
@@ -36,24 +47,23 @@ export default class DashboardStats extends React.Component{
 		)
 	}
 
-	getUser = () => {
-		fetch(`http://localhost:3001/users/${this.props.user_id}`)
+	getUser = (user_id) => {
+		fetch(`http://localhost:3001/users/${user_id}`)
 		.then(res => res.json())
 		.then(res_obj =>
 			this.setState({
 				user: res_obj.data.attributes,
-				user_questions: res_obj.data.attributes.questions,
-				user_answers: res_obj.data.attributes.answers
+				user_answers: [...new Set(res_obj.data.attributes.answers.map(question_obj => question_obj))].sort()
 			})
 		)
 	}
 
 	totalQuestionsAnswered = () => {
-		return this.state.user_questions.length
+		return this.state.user_answers.length
 	}
 
 	totalQuestionsAnsweredPercent = () => {
-		return ((this.state.user_questions.length / 50.00) * 100).toFixed(2)
+		return ((this.state.user_answers.length / this.state.all_questions.length) * 100).toFixed(2)
 	}
 
 	totalQuestionsCorrect = () => {
@@ -61,7 +71,7 @@ export default class DashboardStats extends React.Component{
 	}
 
 	totalQuestionsCorrectPercent = () => {
-		return ((this.state.user_answers.filter(answer => answer.user_result === "correct").length / Object.keys(this.state.user_answers).length) * 100).toFixed(2)
+		return ((this.state.user_answers.filter(answer => answer.user_result === "correct").length / this.state.user_answers.length) * 100).toFixed(2)
 	}
 
 	totalQuestionsWithNoAnswers = () => {
@@ -83,7 +93,7 @@ export default class DashboardStats extends React.Component{
 	}
 
 	render(){
-
+		// console.log(this.state)
 		// console.log(this.state.user_answers.map(answer => parseFloat(answer.user_time)))
 
 		const total_questions_answered =

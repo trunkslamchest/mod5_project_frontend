@@ -14,18 +14,18 @@ export default class LogIn extends React.Component {
 	}
 
 	componentDidMount(){
-		this.onMountAsync()
+		// this.onMountAsync()
 	}
 
-	onMountAsync = async () => {
-		try {
-			await !!this.props
-			await this.props.user_id;
-			await this.onPageLoadFunctions()
-		} catch(errors) {
-			console.log(errors);
-		}
-	}
+	// onMountAsync = async () => {
+	// 	try {
+	// 		await !!this.props
+	// 		await this.props.user_id;
+	// 		await this.onPageLoadFunctions()
+	// 	} catch(errors) {
+	// 		console.log(errors);
+	// 	}
+	// }
 
 	onChange = (event) => {
 		this.setState({

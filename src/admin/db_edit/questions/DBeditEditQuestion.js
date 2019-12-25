@@ -14,7 +14,6 @@ export default class DBeditEditUser extends React.Component {
 	}
 
 	componentDidMount(){
-		this.onMountAsync()
 		if (this.props.question.id) {
 			let question = this.props.question
 			this.setState({
@@ -27,9 +26,6 @@ export default class DBeditEditUser extends React.Component {
 				edit_incorrect_answer3: question.incorrect_answers[2],
 			})
 		}
-	}
-
-	onMountAsync = async () => {
 	}
 
 	onChange = (event) => {

@@ -104,3 +104,36 @@
 .question_next_question_button_container button {
 	animation: fade_in .2s ease-in-out 1, blur_in .2s ease-in-out 1;
 }
+
+.question_vote {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: baseline;
+	margin: 0 auto 0 auto;
+}
+
+.question_vote button {
+	animation: fade_in .25s ease-in-out 1, blur_in .25s ease-in-out 1;
+}
+
+.question_vote ul {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: baseline;
+	margin: 0 auto 0 auto;
+	list-style: none;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	animation: fade_in .25s ease-in-out 1, blur_in .25s ease-in-out 1;
+}
+
+.question_vote li {
+	background-image: linear-gradient(rgb(255, 255, 255, 1),  rgb(219, 219, 219, 1) );
+	font-size: 12pt;
+	padding: 15px;
+	margin: 0px;
+}

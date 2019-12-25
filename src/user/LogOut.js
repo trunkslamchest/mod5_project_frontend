@@ -15,25 +15,25 @@ export default class LogOut extends React.Component {
 		this.setState({
 			user_id: this.props.user_id
 		})
-		this.onMountAsync()
+		// this.onMountAsync()
 	}
 
-	onMountAsync = async () => {
-		try {
-			await this.props
-			let user_id = await this.props.user_id;
-			await this.onPageLoadFunctions(user_id)
-		} catch(errors) {
-			console.log(errors);
-		}
-	}
+	// onMountAsync = async () => {
+	// 	try {
+	// 		await this.props
+	// 		let user_id = await this.props.user_id;
+	// 		await this.onPageLoadFunctions(user_id)
+	// 	} catch(errors) {
+	// 		console.log(errors);
+	// 	}
+	// }
 
-	onPageLoadFunctions = (user_id) => {
-		this.props.update_page_data({
-			user_id: user_id,
-			page_name: "log_out"
-		})
-	}
+	// onPageLoadFunctions = (user_id) => {
+	// 	this.props.update_page_data({
+	// 		user_id: user_id,
+	// 		page_name: "log_out"
+	// 	})
+	// }
 
 	onClickYes = (event) => {
 		this.onClickUpdateTrafficFunctions(event)

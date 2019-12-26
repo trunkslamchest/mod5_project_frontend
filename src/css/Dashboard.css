@@ -30,7 +30,7 @@
 
 .dashboard_wrapper ul {
 	width: 100%;
-	background-color: #fff;
+	/* background-color: #fff; */
 	list-style: none;
 	padding: 10px 0px 10px;
 	margin: 0px;
@@ -43,7 +43,7 @@
 }
 
 .dashboard_wrapper li {
-	background-color: #fff;
+	/* background-color: #fff; */
 	padding: 0px 0px 0px 10px;
 	font-size: 10pt;
 }

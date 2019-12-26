@@ -270,7 +270,7 @@ export default class QuickPlayDisplay extends React.Component{
 		let total_votes = this.state.votes.length
 		let up_votes = this.state.votes.filter(vote => vote === 1 )
 		let total_up_votes = up_votes.length
-		let up_vote_percent = (total_up_votes / total_votes) * 100
+		let up_vote_percent = ((total_up_votes / total_votes) * 100).toFixed(2)
 		if (up_votes.length === 0) {
 			return "0%"
 		} else {
@@ -282,7 +282,7 @@ export default class QuickPlayDisplay extends React.Component{
 		let total_votes = this.state.votes.length
 		let no_votes = this.state.votes.filter(vote => vote === 0 )
 		let total_no_votes = no_votes.length
-		let no_vote_percent = (total_no_votes / total_votes) * 100
+		let no_vote_percent = ((total_no_votes / total_votes) * 100).toFixed(2)
 		if (no_votes.length === 0) {
 			return "0%"
 		} else {
@@ -294,7 +294,7 @@ export default class QuickPlayDisplay extends React.Component{
 		let total_votes = this.state.votes.length
 		let down_votes = this.state.votes.filter(vote => vote === -1 )
 		let total_down_votes = down_votes.length
-		let down_vote_percent = (total_down_votes / total_votes) * 100
+		let down_vote_percent = ((total_down_votes / total_votes) * 100).toFixed(2)
 		if (down_votes.length === 0) {
 			return "0%"
 		} else {
@@ -335,7 +335,7 @@ export default class QuickPlayDisplay extends React.Component{
 
 	render(){
 
-		console.log(this.state.votes)
+		// console.log(this.state)
 
 		const blank = <></>
 

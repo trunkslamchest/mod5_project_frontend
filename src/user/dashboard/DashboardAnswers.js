@@ -40,7 +40,6 @@ export default class DashboardAnswers extends React.Component{
 			.then(res_obj =>
 				this.setState({
 					userAnswers: res_obj.data.attributes.answers,
-					// questions: res_obj.data.attributes.questions,
 					updatedAnswers: true
 				})
 			)
@@ -64,7 +63,6 @@ export default class DashboardAnswers extends React.Component{
 		if (this.state.updatedAllQuestions && this.state.updatedUserQuestions !== true ) {
 			let userAnswerIDs = this.state.userAnswers.map(answer => answer.question_id)
 			let userQuestions = this.state.allQuestions.filter(question => userAnswerIDs.includes(question.id))
-			// console.log(userQuestions)
 			this.setState({
 				userQuestions: userQuestions,
 				updatedUserQuestions: true

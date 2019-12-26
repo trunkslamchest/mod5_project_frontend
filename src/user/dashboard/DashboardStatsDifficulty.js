@@ -7,16 +7,16 @@ import {
 export default class DashboardStatsDifficulty extends React.Component{
 
 	state = {
-		user_easy_questions: 0,
-		user_medium_questions: 0,
-		user_hard_questions: 0,
-		user_correct_easy_questions: 0,
-		user_correct_medium_questions: 0,
-		user_correct_hard_questions: 0,
-		all_questions: 0,
-		all_easy_questions: 0,
-		all_hard_questions: 0,
-		all_medium_questions: 0,
+		all_easy_questions: [],
+		all_medium_questions: [],
+		all_hard_questions: [],
+		user_answers_correct: 0,
+		user_answers_easy: 0,
+		user_answers_easy_correct: 0,
+		user_answers_medium: 0,
+		user_answers_medium_correct: 0,
+		user_answers_hard: 0,
+		user_answers_hard_correct: 0,
 		mounted: false,
 		updatedAllQuestions : false,
 		updatedDifficulties: false,
@@ -40,43 +40,45 @@ export default class DashboardStatsDifficulty extends React.Component{
 	sortAllQuestionsByDifficulty = () => {
 		if (Object.keys(this.props.all_questions).length > 0 && this.state.updatedAllQuestions !== true ) {
 
-			let sorted = this.props.all_questions.map(question => question.difficulty).sort()
-			let all_filtered_easy = sorted.filter(question => question === "Easy" || question === "easy")
-			let all_filtered_medium = sorted.filter(question => question === "Medium" || question === "medium")
-			let all_filtered_hard = sorted.filter(question => question === "Hard" || question === "hard")
+			let all_easy_questions = this.props.all_questions.filter(question => question.difficulty === "Easy" || question.difficulty === "easy")
+			let all_medium_questions = this.props.all_questions.filter(question => question.difficulty === "Medium" || question.difficulty === "medium")
+			let all_hard_questions = this.props.all_questions.filter(question => question.difficulty === "Hard" || question.difficulty === "hard")
 
 			this.setState({
-				all_questions: Object.keys(this.props.all_questions).length,
-				all_easy_questions: all_filtered_easy.length,
-				all_medium_questions: all_filtered_medium.length,
-				all_hard_questions: all_filtered_hard.length,
+				all_easy_questions: all_easy_questions,
+				all_medium_questions: all_medium_questions,
+				all_hard_questions: all_hard_questions,
 				updatedAllQuestions: true
 			})
 		}
 	}
 
 	questionsAnsweredByDifficulty = () => {
-		if (Object.keys(this.props.user).length > 0 && this.state.updatedDifficulties !== true ) {
+		if (this.state.updatedAllQuestions && this.state.updatedDifficulties !== true ) {
+
+			let user_answers = this.props.user.answers.filter(answer => answer)
+			let user_answers_ids = user_answers.map(answer => answer.question_id)
 
 			let user_answers_correct = this.props.user.answers.filter(answer => answer.user_result === "correct")
 			let user_answers_correct_ids = user_answers_correct.map(answer => answer.question_id)
 
-			let user_questions_easy = this.props.user.questions.filter(question => question.difficulty === "Easy" || question.difficulty === "easy")
-			let user_questions_medium = this.props.user.questions.filter(question => question.difficulty === "Medium" || question.difficulty === "medium")
-			let user_questions_hard = this.props.user.questions.filter(question => question.difficulty === "Hard" || question.difficulty === "hard")
+			let user_answers_easy = this.state.all_easy_questions.filter(answer => user_answers_ids.includes(answer.id))
+			let user_answers_easy_correct = user_answers_easy.filter(answer => user_answers_correct_ids.includes(answer.id))
 
-			let user_filtered_correct_easy = user_questions_easy.filter(answer => user_answers_correct_ids.includes(answer.id))
-			let user_filtered_correct_medium = user_questions_medium.filter(answer => user_answers_correct_ids.includes(answer.id))
-			let user_filtered_correct_hard = user_questions_hard.filter(answer => user_answers_correct_ids.includes(answer.id))
+			let user_answers_medium = this.state.all_medium_questions.filter(answer => user_answers_ids.includes(answer.id))
+			let user_answers_medium_correct = user_answers_medium.filter(answer => user_answers_correct_ids.includes(answer.id))
+
+			let user_answers_hard = this.state.all_hard_questions.filter(answer => user_answers_ids.includes(answer.id))
+			let user_answers_hard_correct = user_answers_hard.filter(answer => user_answers_correct_ids.includes(answer.id))
 
 			this.setState({
-				user_questions: this.props.user.questions.length,
-				user_easy_questions: user_questions_easy.length,
-				user_medium_questions: user_questions_medium.length,
-				user_hard_questions: user_questions_hard.length,
-				user_correct_easy_questions: user_filtered_correct_easy.length,
-				user_correct_medium_questions: user_filtered_correct_medium.length,
-				user_correct_hard_questions: user_filtered_correct_hard.length,
+				user_answers_correct: user_answers_correct.length,
+				user_answers_easy: user_answers_easy.length,
+				user_answers_easy_correct: user_answers_easy_correct.length,
+				user_answers_medium: user_answers_medium.length,
+				user_answers_medium_correct: user_answers_medium_correct.length,
+				user_answers_hard: user_answers_hard.length,
+				user_answers_hard_correct: user_answers_hard_correct.length,
 				updatedDifficulties: true
 			})
 		}
@@ -90,6 +92,8 @@ export default class DashboardStatsDifficulty extends React.Component{
 		// {/* { this.state.user_correct_easy_questions }/{ this.state.user_easy_questions } correct
 		// ({((this.state.user_correct_easy_questions / this.state.user_easy_questions) * 100).toFixed(2)}%) */}
 
+		// console.log(this.state)
+
 		const no_questions_answered = <> No questions answered! </>
 
 		const no_correct_answers = <> No correct answers! </>
@@ -98,12 +102,12 @@ export default class DashboardStatsDifficulty extends React.Component{
 			<ul>
 				<li>Easy Questions:</li>
 				<li>
-					{this.state.user_easy_questions ? `${ this.state.user_easy_questions }/${ this.state.all_easy_questions } answered` : no_questions_answered }
-					{this.state.user_easy_questions ? ` (${((this.state.user_easy_questions / this.state.all_easy_questions) * 100).toFixed(2)}%)` : "" }
+					{this.state.updatedDifficulties ? `${ this.state.user_answers_easy }/${ this.state.all_easy_questions.length } answered` : no_questions_answered }
+					{this.state.updatedDifficulties ? ` (${((this.state.user_answers_easy / this.state.all_easy_questions.length) * 100).toFixed(2)}%)` : "" }
 				</li>
 				<li>
-					{this.state.user_correct_easy_questions ? `${ this.state.user_correct_easy_questions }/${ this.state.user_easy_questions } correct` : no_correct_answers }
-					{this.state.user_correct_easy_questions ? ` (${((this.state.user_correct_easy_questions / this.state.user_easy_questions) * 100).toFixed(2)}%)` : "" }
+					{this.state.updatedDifficulties ? `${ this.state.user_answers_easy_correct }/${ this.state.user_answers_easy } correct` : no_correct_answers }
+					{this.state.updatedDifficulties ? ` (${((this.state.user_answers_easy_correct / this.state.user_answers_easy ) * 100).toFixed(2)}%)` : "" }
 				</li>
 			</ul>
 
@@ -111,12 +115,12 @@ export default class DashboardStatsDifficulty extends React.Component{
 			<ul>
 				<li>Medium Questions:</li>
 				<li>
-					{this.state.user_medium_questions ? `${ this.state.user_medium_questions }/${ this.state.all_medium_questions } answered` : no_questions_answered }
-					{this.state.user_medium_questions ? ` (${((this.state.user_medium_questions / this.state.all_medium_questions) * 100).toFixed(2)}%)` : "" }
+					{this.state.updatedDifficulties ? `${ this.state.user_answers_medium }/${ this.state.all_medium_questions.length } answered` : no_questions_answered }
+					{this.state.updatedDifficulties ? ` (${((this.state.user_answers_medium / this.state.all_medium_questions.length) * 100).toFixed(2)}%)` : "" }
 				</li>
 				<li>
-					{this.state.user_correct_medium_questions ? `${ this.state.user_correct_medium_questions }/${ this.state.user_medium_questions } correct` : no_correct_answers }
-					{this.state.user_correct_medium_questions ? ` (${((this.state.user_correct_medium_questions / this.state.user_medium_questions) * 100).toFixed(2)}%)` : "" }
+					{this.state.updatedDifficulties ? `${ this.state.user_answers_medium_correct }/${ this.state.user_answers_medium } correct` : no_correct_answers }
+					{this.state.updatedDifficulties ? ` (${((this.state.user_answers_medium_correct / this.state.user_answers_medium ) * 100).toFixed(2)}%)` : "" }
 				</li>
 			</ul>
 
@@ -124,12 +128,12 @@ export default class DashboardStatsDifficulty extends React.Component{
 			<ul>
 				<li>Hard Questions:</li>
 				<li>
-					{this.state.user_hard_questions ? `${ this.state.user_hard_questions }/${ this.state.all_hard_questions } answered` : no_questions_answered }
-					{this.state.user_hard_questions ? ` (${((this.state.user_hard_questions / this.state.all_hard_questions) * 100).toFixed(2)}%)` : "" }
+					{this.state.updatedDifficulties ? `${ this.state.user_answers_hard }/${ this.state.all_hard_questions.length } answered` : no_questions_answered }
+					{this.state.updatedDifficulties ? ` (${((this.state.user_answers_hard / this.state.all_hard_questions.length) * 100).toFixed(2)}%)` : "" }
 				</li>
 				<li>
-					{this.state.user_correct_hard_questions ? `${ this.state.user_correct_hard_questions }/${ this.state.user_hard_questions } correct` : no_correct_answers }
-					{this.state.user_correct_hard_questions ? ` (${((this.state.user_correct_hard_questions / this.state.user_hard_questions) * 100).toFixed(2)}%)` : "" }
+					{this.state.updatedDifficulties ? `${ this.state.user_answers_hard_correct }/${ this.state.user_answers_hard } correct` : no_correct_answers }
+					{this.state.updatedDifficulties ? ` (${((this.state.user_answers_hard_correct / this.state.user_answers_hard ) * 100).toFixed(2)}%)` : "" }
 				</li>
 			</ul>
 

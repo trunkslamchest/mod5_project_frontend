@@ -359,6 +359,7 @@ export default class App extends React.Component {
 								update_page_data={ this.update_page_data }
 								// ~~~~~~~~~~~~~~~~~~~~
 								user_id={ this.state.user_id }
+								user_name={ this.state.user_name }
 								first_name={ this.state.first_name }
 							/>
 						</Route>

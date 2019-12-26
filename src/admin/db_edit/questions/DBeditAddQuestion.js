@@ -45,8 +45,8 @@ export default class DBeditAddUser extends React.Component {
 				incorrect_answers: incorrect_answers,
 			})
 		})
-	    .then(response => response.json())
-	    .then(res_obj => {
+		.then(response => response.json())
+		.then(res_obj => {
 			if (res_obj.errors) {
 				this.setState({
 					errors: res_obj.errors

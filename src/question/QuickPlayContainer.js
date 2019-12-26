@@ -84,6 +84,7 @@ onMountAsync = async () => {
 				key={ question_obj.id }
 				question={ question_obj }
 				user_id={ this.props.user_id }
+				user_name={ this.props.user_name }
 				nextQuestion={ this.nextQuestion }
 			/>
 			:

@@ -2,6 +2,7 @@ import React from 'react'
 // import ReactTimeout from 'react-timeout'
 
 // import QuickPlayVotes from './QuickPlayVotes'
+import QuickPlayDisplayComments from './QuickPlayDisplayComments.js'
 
 import {
 		//  NavLink,
@@ -35,6 +36,10 @@ export default class QuickPlayDisplay extends React.Component{
 		showAnsweredHeader: null,
 		showCorrectAnswer: null,
 		showVoteButtons: null,
+		showCommentButton: null,
+		showCommentText:null,
+		showAllComments:null,
+		comments: [],
 		showAnsweredButtons: null,
 	}
 
@@ -52,7 +57,8 @@ export default class QuickPlayDisplay extends React.Component{
 		this.answeredHeaderTimeout = setTimeout(() => { this.setState({ showAnsweredHeader: true })}, 1000)
 		this.correctAnswerTimeout = setTimeout(() => { this.setState({ showCorrectAnswer: true })}, 2000)
 		this.voteButtonsTimeout = setTimeout(() => { this.setState({ showVoteButtons: true })}, 3000)
-		this.answeredButtonsTimeout = setTimeout(() => { this.setState({ showAnsweredButtons: true })}, 4000)
+		this.commentButtonTimeout = setTimeout(() => { this.setState({ showCommentButton: true })}, 4000)
+		this.answeredButtonsTimeout = setTimeout(() => { this.setState({ showAnsweredButtons: true })}, 5000)
 	}
 
 	onClickSelectAnswerFunctions = (event) => {
@@ -187,6 +193,16 @@ export default class QuickPlayDisplay extends React.Component{
 		}
 	}
 
+	getVotes = () => {
+		fetch(`http://localhost:3001/questions/${this.props.question.id}`)
+		.then(res => res.json())
+		.then(res_obj =>
+			this.setState({
+				votes: res_obj.data.attributes.votes.map(vote => vote.vote_num)
+			})
+		)
+	}
+
 	onClickUpVoteFunctions = (event) => {
 		event.persist()
 		fetch("http://localhost:3001/votes", {
@@ -256,16 +272,6 @@ export default class QuickPlayDisplay extends React.Component{
 		})
 	}
 
-	getVotes = () => {
-		fetch(`http://localhost:3001/questions/${this.props.question.id}`)
-		.then(res => res.json())
-		.then(res_obj =>
-			this.setState({
-				votes: res_obj.data.attributes.votes.map(vote => vote.vote_num)
-			})
-		)
-	}
-
 	calculateUpVotes = () => {
 		let total_votes = this.state.votes.length
 		let up_votes = this.state.votes.filter(vote => vote === 1 )
@@ -302,6 +308,67 @@ export default class QuickPlayDisplay extends React.Component{
 		}
 	}
 
+	getComments = () => {
+		fetch(`http://localhost:3001/questions/${this.props.question.id}`)
+		.then(res => res.json())
+		.then(res_obj =>
+			this.setState({
+				comments: res_obj.data.attributes.comments.map(comment => comment)
+			})
+		)
+	}
+
+
+	onClickCommentFunctions = (event) => {
+		event.persist()
+			this.setState({
+				showCommentButton: false,
+				showCommentText: true,
+			})
+	}
+
+	onChangeComment = (event) => {
+		this.setState({
+			[event.target.name]: event.target.value
+		})
+	}
+
+	onSubmitCommentFunctions = (event) => {
+		this.addCommentSubmitted(event)
+	}
+
+	addCommentSubmitted = (event) => {
+		event.persist()
+		event.preventDefault()
+
+		fetch("http://localhost:3001/comments", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				user_id: this.props.user_id,
+				user_name: this.props.user_name,
+				question_id: this.props.question.id,
+				comment_text: this.state.comment_text
+			})
+		})
+		.then(response => response.json())
+		.then(res_obj => {
+			if (res_obj.errors) {
+				this.setState({
+					errors: res_obj.errors
+				})
+			} else {
+				this.setState({
+					showCommentText:false,
+					showAllComments:true,
+				})
+				this.getComments()
+			}
+		})
+	}
+
 	onClickNextQuestionFunctions = () => {
 		this.props.nextQuestion(this.props.user_id)
 		this.setState({
@@ -318,6 +385,7 @@ export default class QuickPlayDisplay extends React.Component{
 		clearTimeout(this.answeredHeaderTimeout)
 		clearTimeout(this.correctAnswerTimeout)
 		clearTimeout(this.voteButtonsTimeout)
+		clearTimeout(this.commentButtonTimeout)
 		clearTimeout(this.showAnsweredButtons)
 	}
 
@@ -330,6 +398,7 @@ export default class QuickPlayDisplay extends React.Component{
 		clearTimeout(this.answeredHeaderTimeout)
 		clearTimeout(this.correctAnswerTimeout)
 		clearTimeout(this.voteButtonsTimeout)
+		clearTimeout(this.commentButtonTimeout)
 		clearTimeout(this.showAnsweredButtons)
 	}
 
@@ -337,13 +406,7 @@ export default class QuickPlayDisplay extends React.Component{
 
 		// console.log(this.state)
 
-		const blank = <></>
-
-		const header = <h3>In { this.props.question.category }...</h3>
-
-		const question_desc = <h2>{ this.props.question.question_desc }</h2>
-
-		const question_choices = [
+		const question_buttons = [
 			<button
 				key={"answer_button1"}
 				value={ this.state.answers[0] }
@@ -378,56 +441,109 @@ export default class QuickPlayDisplay extends React.Component{
 			</button>
 		]
 
-		const time = this.state.time
-
-		const answered_header = <h3> { this.state.time === 0 ? this.outtaTime() : this.state.user_result } </h3>
-
 		const correct_answer_text =
 		<>
 			<h3>The correct answer was:</h3>
 			<p>{ this.props.question.correct_answer }</p>
 		</>
 
-		const correct_answer =
-			<>
-				{ this.state.user_result === 'Incorrect!' ? correct_answer_text : ""}
-			</>
-
 		const vote_for_question_buttons = [
 			<button
 				key={"up_vote_button"}
-				className="alt_button"
+				className="up_vote_button"
 				onClick={ this.onClickUpVoteFunctions }
 			>
-				Up Vote
+				+
 			</button>,
 			<button
 				key={"no_vote_button"}
-				className="alt_button"
+				className="no_vote_button"
 				onClick={ this.onClickNoVoteFunctions }
 			>
-				No Vote
+				o
 			</button>,
 			<button
 			key={"down_vote_button"}
-			className="alt_button"
+			className="down_vote_button"
 			onClick={ this.onClickDownVoteFunctions }
 			>
-				Down Vote
+				-
 			</button>
 		]
 
+		const blank = <></>
+
+		const header = <h3> { this.props.question ? `In ${ this.props.question.category }...` : blank }</h3>
+
+		const question_desc = <h2>{ this.props.question ? `${this.props.question.question_desc}`: blank }</h2>
+
+		const question_choices = <>{ this.state.answers ? question_buttons : blank }</>
+
+		const time = <>{ this.state.time ? this.state.time : blank }</>
+
+		const answered_header = <h3> { this.state.time === 0 ? this.outtaTime() : this.state.user_result } </h3>
+
+		const correct_answer = <>{ this.state.showCorrectAnswer ? correct_answer_text : blank }</>
+
+		const answer = <>{ this.state.user_result === 'Incorrect!' ? correct_answer : blank }</>
+
 		const vote_total =
 			<ul>
-				<li>Up Votes: { this.calculateUpVotes() }</li>
-				<li>No Votes: { this.calculateNoVotes() }</li>
-				<li>Down Votes: { this.calculateDownVotes() }</li>
+				<li>Up Votes: { this.state.votes.length > 0 ? this.calculateUpVotes() : blank }</li>
+				<li>No Votes: { this.state.votes.length > 0 ?this.calculateNoVotes() : blank }</li>
+				<li>Down Votes: { this.state.votes.length > 0 ? this.calculateDownVotes() : blank }</li>
 			</ul>
+
+		const comment_button =
+		<div className="comment_button_container">
+			<button
+				key={"comment_button"}
+				name="comment_button_name"
+				value="comment_button_value"
+				className="comment_button"
+				onClick={ this.onClickCommentFunctions }
+			>
+				Comment
+			</button>
+		</div>
+
+		const comment_form =
+		<form
+			name="add_comment_form"
+			interaction="submit"
+			className="comment_form"
+			onSubmit={ this.onSubmitCommentFunctions }
+		>
+			{/* <div className="comment_div"> */}
+				<textarea
+					rows="5"
+					id="add_comment"
+					name="comment_text"
+					placeholder="Add A Comment..."
+					onChange={ this.onChangeComment }
+					value={ this.state.comment_text }
+				/>
+			{/* </div> */}
+			<div className="comment_button_container">
+				<input
+					className="comment_button"
+					type="submit"
+					value="Add Comment"
+				/>
+			</div>
+		</form>
+
+		const all_comments = this.state.comments.map(comment =>
+		<QuickPlayDisplayComments
+			key={comment.id}
+			comment={comment}
+		/>
+		)
 
 		const next_question_button =
 			<button
 				key={"next_question_button"}
-				className="alt_button"
+				className="next_question_button"
 				onClick={ this.onClickNextQuestionFunctions }
 			>
 				Next Question
@@ -455,11 +571,16 @@ export default class QuickPlayDisplay extends React.Component{
 					{ this.state.showAnsweredHeader ? answered_header : ""}
 				</div>
 				<div className="question_correct_answer">
-					{ this.state.showCorrectAnswer ? correct_answer : ""}
+					{ this.state.showCorrectAnswer ? answer : ""}
 				</div>
 				<div className="question_vote">
 					{ this.state.showVoteButtons ? vote_for_question_buttons : ""}
 					{ this.state.voted ? vote_total : "" }
+				</div>
+				<div className="question_comments">
+					{ this.state.showCommentButton ? comment_button : ""}
+					{ this.state.showCommentText ? comment_form : "" }
+					{ this.state.showAllComments ? all_comments : "" }
 				</div>
 				<div className="question_next_question_button_container">
 					{ this.state.showAnsweredButtons ? next_question_button : "" }

@@ -25,6 +25,11 @@
 	appearance: none;
 }
 
+::placeholder {
+	color: #000;
+	opacity: 1;
+}
+
 .main_container {
 	width: 100%;
 	margin: 0 auto 0 auto;
@@ -123,6 +128,37 @@
 	animation: fade_in .25s ease-in-out 1, blur_in .25s ease-in-out 1, slide_in_from_bottom.25s ease-in-out 1;
 }
 
+.default_form {
+	text-align: center;
+  margin: 0 auto 0 auto;
+  animation: fade_in .3s ease-in-out 1, blur_in .15s ease-in-out 1;
+}
+
+.default_form label {
+  padding: 5px;
+  margin: 5px;
+  font-family: Lato;
+  animation: fade_in .4s ease-in-out 1, blur_in .2s ease-in-out 1;
+}
+
+.default_form input {
+  display: block;
+  margin: 0 auto 0 auto;
+  border-radius: 0px 0px 0px 0px;
+  animation: fade_in .5s ease-in-out 1, blur_in .25s ease-in-out 1;
+}
+
+.default_form select {
+  margin: 0 auto 0 auto;
+  animation: fade_in .5s ease-in-out 1, blur_in .25s ease-in-out 1;
+  border: 2px solid rgb(200, 200, 200, 1)
+}
+
+.default_form select option {
+  margin: 0 auto 0 auto;
+  animation: fade_in .5s ease-in-out 1, blur_in .25s ease-in-out 1;
+}
+
 .default_div select {
 	width: 25%;
 	text-rendering: auto;
@@ -145,11 +181,6 @@
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
-}
-
-::placeholder {
-	color: #000;
-	opacity: 1;
 }
 
 .default_div textarea {
@@ -311,35 +342,4 @@
 	transition-duration: .2s, .2s;
 	transition-timing-function: ease-in-out;
 	animation: scale_out .1s ease-in-out 1, blur_out .1s ease-in-out 1;
-}
-
-.default_form {
-  	text-align: center;
-	margin: 0 auto 0 auto;
-	animation: fade_in .3s ease-in-out 1, blur_in .15s ease-in-out 1;
-}
-
-.default_form label {
-	padding: 5px;
-	margin: 5px;
-	font-family: Lato;
-	animation: fade_in .4s ease-in-out 1, blur_in .2s ease-in-out 1;
-}
-
-.default_form input {
-	display: block;
-	margin: 0 auto 0 auto;
-	border-radius: 0px 0px 0px 0px;
-	animation: fade_in .5s ease-in-out 1, blur_in .25s ease-in-out 1;
-}
-
-.default_form select {
-	margin: 0 auto 0 auto;
-	animation: fade_in .5s ease-in-out 1, blur_in .25s ease-in-out 1;
-	border: 2px solid rgb(200, 200, 200, 1)
-}
-
-.default_form select option {
-	margin: 0 auto 0 auto;
-	animation: fade_in .5s ease-in-out 1, blur_in .25s ease-in-out 1;
 }

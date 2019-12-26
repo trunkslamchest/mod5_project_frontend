@@ -1,14 +1,6 @@
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-|-comments
-|	-add comment button to answered question card
-|	-display comments after user has voted
-|	-add comments to user dashboard
-
-~
-
-|-quick play
 |-play by difficulty
 |-play by category
 
@@ -22,13 +14,17 @@
 
 |-terms of service agreement for sign up
 
+|-add route restrictions
+
+|-basic client side validation
+
 |-comments
 |	-add ability to remove comments from dashboard
 
 |-answers/votes
 | 	-add filters/search bar
 
-|-add route restrictions
+|-refactor dashboard tabs
 
 |-leaderboards/site wide stats
 

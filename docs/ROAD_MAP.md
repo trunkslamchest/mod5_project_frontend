@@ -1,5 +1,4 @@
 
-
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 |-comments
@@ -21,20 +20,20 @@
 
 ~
 
-|-add route restrictions
-
 |-terms of service agreement for sign up
-
-|-leaderboards/site wide stats
-
-|-personal stats page
-|	-questions incorrect(with percentage)
 
 |-comments
 |	-add ability to remove comments from dashboard
 
 |-answers/votes
 | 	-add filters/search bar
+
+|-add route restrictions
+
+|-leaderboards/site wide stats
+
+|-personal stats page
+|	-questions incorrect(with percentage)
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -72,7 +72,7 @@ export default class DashboardVotes extends React.Component{
 
 	render(){
 
-		console.log(this.state)
+		// console.log(this.state)
 
 		const distributeCombineQuestionsVotes =
 		(this.state.updatedUserQuestions) ? this.state.userQuestions.map(question =>

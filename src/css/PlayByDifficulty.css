@@ -1,52 +1,17 @@
-.logo_container {
-	width: 75%;
-	margin: 0 auto 0 auto;
-	animation: fade_in .3s ease-in-out 1, blur_in .15s ease-in-out 1;
-}
 
-.logo_container img{
-	max-width: 100%;
-	height: auto;
-}
 
-.play_buttons_container {
-	width: 75%;
-	min-width: 75%;
-	max-width: 75%;
+.select_buttons_container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	flex-wrap: nowrap;
+	align-content: center;
 	align-items: baseline;
 	margin: 0 auto 0 auto;
 	animation: fade_in .3s ease-in-out 1, blur_in .15s ease-in-out 1;
 }
 
-.quick_play_container {
-	width: 75%;
-	min-width: 75%;
-	max-width: 75%;
-	display: flex;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: baseline;
-	margin: 0 auto 0 auto;
-	animation: fade_in .3s ease-in-out 1, blur_in .15s ease-in-out 1;
-}
-
-.other_play_container {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: baseline;
-	margin: 0 auto 0 auto;
-	animation: fade_in .3s ease-in-out 1, blur_in .15s ease-in-out 1;
-}
-
-.quick_play_button {
-	width: 75%;
-	min-width: 75%;
-	max-width: 75%;
+.easy_button {
 	-webkit-appearance: none;
     /* -webkit-writing-mode: horizontal-tb !important; */
     text-rendering: auto;
@@ -65,14 +30,14 @@
     cursor: pointer;
     background-color: buttonface;
     box-sizing: border-box;
-    margin: 5px 0px 5px 0px;
+    margin: 10px auto 0 auto;
     font: 400 15px Roboto;
     padding: 15px 30px 15px 30px;
     border: 0px solid;
 
 }
 
-.quick_play_button:hover {
+.easy_button:hover {
 	color: rgb(40, 44, 52, 1);
 	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57, 1) );
 	transition-property: color;
@@ -81,7 +46,7 @@
 	animation: scale_in .1s ease-in-out 1;
 }
 
-.quick_play_button:active {
+.easy_button:active {
 	color: rgb(40, 44, 52, 1);
 	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57, 1) );
 	transition-property: color;
@@ -90,7 +55,7 @@
 	animation: scale_out .1s ease-in-out 1, blur_out .1s ease-in-out 1;
 }
 
-.play_by_difficulty_button {
+.medium_button {
 	-webkit-appearance: none;
     /* -webkit-writing-mode: horizontal-tb !important; */
     text-rendering: auto;
@@ -109,14 +74,14 @@
     cursor: pointer;
     background-color: buttonface;
     box-sizing: border-box;
-    margin: 5px 0px 5px 0px;
+    margin: 10px auto 0 auto;
     font: 400 15px Roboto;
     padding: 15px 30px 15px 30px;
     border: 0px solid;
 
 }
 
-.play_by_difficulty_button:hover {
+.medium_button:hover {
 	color: rgb(40, 44, 52, 1);
 	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57, 1) );
 	transition-property: color;
@@ -125,7 +90,7 @@
 	animation: scale_in .1s ease-in-out 1;
 }
 
-.play_by_difficulty_button:active {
+.medium_button:active {
 	color: rgb(40, 44, 52, 1);
 	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57, 1) );
 	transition-property: color;
@@ -134,7 +99,7 @@
 	animation: scale_out .1s ease-in-out 1, blur_out .1s ease-in-out 1;
 }
 
-.play_by_category_button {
+.hard_button {
 	-webkit-appearance: none;
     /* -webkit-writing-mode: horizontal-tb !important; */
     text-rendering: auto;
@@ -153,14 +118,14 @@
     cursor: pointer;
     background-color: buttonface;
     box-sizing: border-box;
-    margin: 5px 0px 5px 0px;
+    margin: 10px auto 0 auto;
     font: 400 15px Roboto;
     padding: 15px 30px 15px 30px;
     border: 0px solid;
 
 }
 
-.play_by_category_button:hover {
+.hard_button:hover {
 	color: rgb(40, 44, 52, 1);
 	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57, 1) );
 	transition-property: color;
@@ -169,7 +134,7 @@
 	animation: scale_in .1s ease-in-out 1;
 }
 
-.play_by_category_button:active {
+.hard_button:active {
 	color: rgb(40, 44, 52, 1);
 	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57, 1) );
 	transition-property: color;

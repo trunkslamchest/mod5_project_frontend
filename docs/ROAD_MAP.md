@@ -1,7 +1,6 @@
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-|-play by difficulty
 |-play by category
 
 |-index page

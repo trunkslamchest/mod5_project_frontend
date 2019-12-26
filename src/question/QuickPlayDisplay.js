@@ -35,6 +35,7 @@ export default class QuickPlayDisplay extends React.Component{
 		startTimer: null,
 		showAnsweredHeader: null,
 		showCorrectAnswer: null,
+		showDifficulty: null,
 		showVoteButtons: null,
 		showCommentButton: null,
 		showCommentText:null,
@@ -55,10 +56,11 @@ export default class QuickPlayDisplay extends React.Component{
 
 	displayAnswered = () => {
 		this.answeredHeaderTimeout = setTimeout(() => { this.setState({ showAnsweredHeader: true })}, 1000)
-		this.correctAnswerTimeout = setTimeout(() => { this.setState({ showCorrectAnswer: true })}, 2000)
-		this.voteButtonsTimeout = setTimeout(() => { this.setState({ showVoteButtons: true })}, 3000)
-		this.commentButtonTimeout = setTimeout(() => { this.setState({ showCommentButton: true })}, 4000)
-		this.answeredButtonsTimeout = setTimeout(() => { this.setState({ showAnsweredButtons: true })}, 5000)
+		this.correctAnswerTimeout = setTimeout(() => { this.setState({ showCorrectAnswer: true })}, 1500)
+		this.difficultyTimeout = setTimeout(() => { this.setState({ showDifficulty: true })}, 2000)
+		this.voteButtonsTimeout = setTimeout(() => { this.setState({ showVoteButtons: true })}, 2500)
+		this.commentButtonTimeout = setTimeout(() => { this.setState({ showCommentButton: true })}, 3000)
+		this.answeredButtonsTimeout = setTimeout(() => { this.setState({ showAnsweredButtons: true })}, 3500)
 	}
 
 	onClickSelectAnswerFunctions = (event) => {
@@ -318,7 +320,6 @@ export default class QuickPlayDisplay extends React.Component{
 		)
 	}
 
-
 	onClickCommentFunctions = (event) => {
 		event.persist()
 			this.setState({
@@ -384,6 +385,7 @@ export default class QuickPlayDisplay extends React.Component{
 		clearInterval(this.startTimer)
 		clearTimeout(this.answeredHeaderTimeout)
 		clearTimeout(this.correctAnswerTimeout)
+		clearTimeout(this.difficultyTimeout)
 		clearTimeout(this.voteButtonsTimeout)
 		clearTimeout(this.commentButtonTimeout)
 		clearTimeout(this.showAnsweredButtons)
@@ -397,6 +399,7 @@ export default class QuickPlayDisplay extends React.Component{
 		clearInterval(this.startTimer)
 		clearTimeout(this.answeredHeaderTimeout)
 		clearTimeout(this.correctAnswerTimeout)
+		clearTimeout(this.difficultyTimeout)
 		clearTimeout(this.voteButtonsTimeout)
 		clearTimeout(this.commentButtonTimeout)
 		clearTimeout(this.showAnsweredButtons)
@@ -405,6 +408,8 @@ export default class QuickPlayDisplay extends React.Component{
 	render(){
 
 		// console.log(this.state)
+		console.log(this.props)
+
 
 		const question_buttons = [
 			<button
@@ -447,6 +452,12 @@ export default class QuickPlayDisplay extends React.Component{
 			<p>{ this.props.question.correct_answer }</p>
 		</>
 
+	const difficulty_text =
+	<>
+		<h3>Question Difficulty:</h3>
+		<p>{ this.props.question.difficulty }</p>
+	</>
+
 		const vote_for_question_buttons = [
 			<button
 				key={"up_vote_button"}
@@ -486,6 +497,8 @@ export default class QuickPlayDisplay extends React.Component{
 		const correct_answer = <>{ this.state.showCorrectAnswer ? correct_answer_text : blank }</>
 
 		const answer = <>{ this.state.user_result === 'Incorrect!' ? correct_answer : blank }</>
+
+		const difficulty = <>{ this.state.showDifficulty ? difficulty_text : blank }</>
 
 		const vote_total =
 			<ul>
@@ -572,6 +585,9 @@ export default class QuickPlayDisplay extends React.Component{
 				</div>
 				<div className="question_correct_answer">
 					{ this.state.showCorrectAnswer ? answer : ""}
+				</div>
+				<div className="question_difficulty">
+					{ this.state.showDifficulty ? difficulty : ""}
 				</div>
 				<div className="question_vote">
 					{ this.state.showVoteButtons ? vote_for_question_buttons : ""}

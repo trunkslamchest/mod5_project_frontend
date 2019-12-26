@@ -88,6 +88,32 @@
 	animation: fade_in .5s ease-in-out 1, blur_in .5s ease-in-out 1, slide_in_from_bottom .5s ease-in-out 1;
 }
 
+.question_difficulty {
+	margin: 0px 10px 20px 10px;
+	animation: fade_in .5s ease-in-out 1, blur_in .5s ease-in-out 1, slide_in_from_bottom .5s ease-in-out 1;
+}
+
+.question_difficulty h3 {
+    font-size: 15pt;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+	margin-inline-end: 0px;
+    padding: 0px 10px 0px 10px;
+    font-weight: 300;
+	animation: fade_in .25s ease-in-out 1, blur_in .25s ease-in-out 1, slide_in_from_bottom .25s ease-in-out 1;
+}
+
+.question_difficulty p {
+    font-size: 10pt;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+	margin-inline-end: 0px;
+    font-weight: 300;
+	animation: fade_in .5s ease-in-out 1, blur_in .5s ease-in-out 1, slide_in_from_bottom .5s ease-in-out 1;
+}
+
 .question_time {
 	margin: 10px;
 	animation: fade_in 1.5s ease-in-out 1, blur_in 1.5s ease-in-out 1, slide_in_from_bottom 1.5s ease-in-out 1;

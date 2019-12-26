@@ -1,5 +1,17 @@
 import React from 'react'
 
+import logo_temp1 from './art_assets/logo_temp1.png'
+
+import {
+	 NavLink,
+	//  Link,
+	//  Redirect,
+	// Route,
+	// Switch,
+	//  useRouteMatch,
+	//  useParams
+} from 'react-router-dom'
+
 import './css/Home.css'
 
 export default class Home extends React.Component {
@@ -34,10 +46,59 @@ export default class Home extends React.Component {
 	}
 
 	render(){
+
+		const quick_play_button = [
+			<NavLink
+				exact to="/quick_play"
+				key={"quick_play_link"}
+				name="quick_play_button"
+				interaction="click"
+				className="quick_play_button"
+				onClick={this.onClickQuickPlayFunctions }
+			>
+				Quick Play
+			</NavLink>
+		]
+
+		const play_by_difficulty = [
+			<NavLink
+				exact to="/play_by_difficulty"
+				key={"play_by_difficulty_link"}
+				name="play_by_difficulty_button"
+				interaction="click"
+				className="play_by_difficulty_button"
+				onClick={this.onClickPlayByDifficultyFunctions }
+			>
+				Play By Difficulty
+			</NavLink>
+		]
+
+		const play_by_category = [
+			<NavLink
+				exact to="/play_by_category"
+				key={"play_by_category_link"}
+				name="play_by_category_button"
+				interaction="click"
+				className="play_by_category_button"
+				onClick={this.onClickPlayByCategoryFunctions }
+			>
+				Play By Category
+			</NavLink>
+		]
+
 		return(
 			<div className="default_wrapper">
-				<div className="default_header">
-					Index Page Template
+				<div className="logo_container">
+					<img src={logo_temp1} alt={"logo"}/>
+				</div>
+				<div className="play_buttons_container">
+					<div className="quick_play_container">
+						{ quick_play_button }
+					</div>
+					<div className="other_play_container">
+						{ play_by_difficulty }
+						{ play_by_category }
+					</div>
 				</div>
 			</div>
 		)

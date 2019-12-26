@@ -184,7 +184,11 @@ export default class Dashboard extends React.Component{
 															update_traffic_data={this.props.update_traffic_data }
 															update_page_data={this.props.update_page_data}
 														/>;
-								case 'votes': return <DashboardVotes />;
+								case 'votes': return <DashboardVotes
+															user_id={ this.props.user_id }
+															update_traffic_data={this.props.update_traffic_data }
+															update_page_data={this.props.update_page_data}
+														/>;
 								case 'comments': return <DashboardComments />;
 								default: return <DashboardIndex
 												first_name={ this.props.first_name }

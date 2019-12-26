@@ -33,6 +33,9 @@
 |-comments
 |	-add ability to remove comments from dashboard
 
+|-answers/votes
+| 	-add filters/search bar
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 |-sort by column for DBe

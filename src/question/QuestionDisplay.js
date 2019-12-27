@@ -1,8 +1,6 @@
 import React from 'react'
-// import ReactTimeout from 'react-timeout'
 
-// import QuickPlayVotes from './QuickPlayVotes'
-import QuickPlayDisplayComments from './QuickPlayDisplayComments.js'
+import QuestionDisplayComments from './QuestionDisplayComments.js'
 
 import {
 		//  NavLink,
@@ -16,7 +14,7 @@ import {
 
 var shuffle = require('shuffle-array')
 
-export default class QuickPlayDisplay extends React.Component{
+export default class QuestionDisplay extends React.Component{
 
 	state = {
 		answers: [],
@@ -408,7 +406,7 @@ export default class QuickPlayDisplay extends React.Component{
 	render(){
 
 		// console.log(this.state)
-		console.log(this.props)
+		// console.log(this.props)
 
 
 		const question_buttons = [
@@ -547,7 +545,7 @@ export default class QuickPlayDisplay extends React.Component{
 		</form>
 
 		const all_comments = this.state.comments.map(comment =>
-		<QuickPlayDisplayComments
+		<QuestionDisplayComments
 			key={comment.id}
 			comment={comment}
 		/>

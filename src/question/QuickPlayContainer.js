@@ -1,6 +1,6 @@
 import React from 'react'
 
-import QuickPlayDisplay from './QuickPlayDisplay'
+import QuestionDisplay from './QuestionDisplay'
 
 import '../css/Questions.css'
 
@@ -14,7 +14,7 @@ import {
 		//  useParams
 	} from 'react-router-dom'
 
-export default class QuestionContainer extends React.Component{
+export default class QuickPlayContainer extends React.Component{
 
 
 state={
@@ -80,7 +80,7 @@ onMountAsync = async () => {
 
 		let randomQuestion = filtered_questions.map(question_obj =>
 			(question_obj.id === rng.id) ?
-			<QuickPlayDisplay
+			<QuestionDisplay
 				key={ question_obj.id }
 				question={ question_obj }
 				user_id={ this.props.user_id }

@@ -1,13 +1,15 @@
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-|-play by category
-
 |-index page
 
 |-logo/icon/graphic design elements
 
 |-update element and page trackers
+
+~
+
+|-port to laptop
 
 ~
 
@@ -17,8 +19,17 @@
 
 |-basic client side validation
 
+~
+
+|-add more questions
+
 |-comments
 |	-add ability to remove comments from dashboard
+
+|-personal stats page
+|	-questions incorrect(with percentage)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 |-answers/votes
 | 	-add filters/search bar
@@ -26,9 +37,6 @@
 |-refactor dashboard tabs
 
 |-leaderboards/site wide stats
-
-|-personal stats page
-|	-questions incorrect(with percentage)
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 

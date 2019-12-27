@@ -1,6 +1,6 @@
 import React from 'react'
 
-import logo_temp1 from './art_assets/logo_temp1.png'
+import logo_temp1 from './assets/logo_temp1.png'
 
 import {
 	 NavLink,

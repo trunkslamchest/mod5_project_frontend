@@ -13,7 +13,7 @@ import {
 		//  useParams
 	} from 'react-router-dom'
 
-export default class QuickPlayDisplay extends React.Component{
+export default class QuestionDisplayComments extends React.Component{
 
 	render(){
 

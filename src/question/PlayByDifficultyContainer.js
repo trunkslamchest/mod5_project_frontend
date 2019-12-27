@@ -1,19 +1,9 @@
 import React from 'react'
 
-import QuickPlayDisplay from './QuickPlayDisplay'
+import QuestionDisplay from './QuestionDisplay'
 
 import '../css/Questions.css'
 import '../css/PlayByDifficulty.css'
-
-import {
-		//  NavLink,
-		//  Link,
-		//  Redirect,
-		// Route,
-		// Switch,
-		//  useRouteMatch,
-		//  useParams
-	} from 'react-router-dom'
 
 export default class PlayByDifficultyContainer extends React.Component{
 
@@ -36,7 +26,7 @@ export default class PlayByDifficultyContainer extends React.Component{
 	}
 
 	componentDidUpdate(){
-		if (!this.state.displaySelect && !this.state.questionsUpdated) {
+		if ((!this.state.displaySelect && !this.state.questionsUpdated)) {
 			this.getSortedQuestions()
 		}
 		if (this.state.questionsUpdated && !this.state.updatedAnsweredQuestions) {
@@ -71,7 +61,19 @@ export default class PlayByDifficultyContainer extends React.Component{
 
 	getRandomQuestion = () => {
 
-		const all_questions_answered = <h3 key={"all_questions_answered"}> You Have Answered All the {this.state.difficulty } Questions! </h3>
+		const all_questions_answered =
+			<>
+				<h3 key={"all_questions_answered"}> You Have Answered All the { this.state.difficulty } Questions! </h3>
+				<button
+					key={"reselect_button"}
+					className="reselect_button"
+					onClick={ this.onClickReSelectFunctions }
+				>
+					Select Another Difficulty
+				</button>
+			</>
+
+		const headerCheck = this.state.displaySelect ? "" : all_questions_answered
 
 		const filtered_questions = this.state.sortedQuestions.filter( question =>
 			!this.state.answeredQuestionsIDs.includes(parseInt(question.id))
@@ -81,7 +83,7 @@ export default class PlayByDifficultyContainer extends React.Component{
 
 		let randomQuestion = filtered_questions.map(question_obj =>
 			(question_obj.id === rng.id) ?
-			<QuickPlayDisplay
+			<QuestionDisplay
 				key={ question_obj.id }
 				question={ question_obj.attributes.question }
 				user_id={ this.props.user_id }
@@ -92,7 +94,7 @@ export default class PlayByDifficultyContainer extends React.Component{
 			""
 		)
 
-		return filtered_questions.length === 0 ? all_questions_answered : randomQuestion
+		return filtered_questions.length === 0 ? headerCheck : randomQuestion
 	}
 
 	nextQuestion = (user_id) => {
@@ -120,6 +122,18 @@ export default class PlayByDifficultyContainer extends React.Component{
 		this.setState({
 			difficulty: event.target.value,
 			displaySelect: false
+		})
+	}
+
+	onClickReSelectFunctions = (event) => {
+		this.setState({
+			mounted: true,
+			category: "",
+			sortedQuestions: [],
+			answeredQuestionsIDs: [],
+			displaySelect: true,
+			questionsUpdated: false,
+			updatedAnsweredQuestions: false,
 		})
 	}
 

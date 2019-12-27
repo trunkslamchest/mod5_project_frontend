@@ -1,6 +1,6 @@
 import React from 'react'
 
-import logo_temp1 from './assets/logo_temp1.png'
+import index_logo from './assets/index_logo_blue3.png'
 
 import {
 	 NavLink,
@@ -89,7 +89,7 @@ export default class Home extends React.Component {
 		return(
 			<div className="default_wrapper">
 				<div className="logo_container">
-					<img src={logo_temp1} alt={"logo"}/>
+					<img src={index_logo} alt={"logo"}/>
 				</div>
 				<div className="play_buttons_container">
 					<div className="quick_play_container">

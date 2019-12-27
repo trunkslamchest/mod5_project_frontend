@@ -1,8 +1,6 @@
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-|-index page
-
 |-logo/icon/graphic design elements
 
 |-update element and page trackers

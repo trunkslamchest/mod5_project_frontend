@@ -3,10 +3,37 @@ import { NavLink } from 'react-router-dom'
 
 import './css/Header.css'
 
+import header_logo from './assets/header_logo.png'
+import header_logo_hover from './assets/header_logo_hover.png'
+
+
+
 export default class Header extends React.Component {
 
+	state={
+		hover: false
+	}
+
+	hoverOn = () => {
+		this.setState({
+			hover: true
+		})
+	}
+
+	hoverOff = () => {
+		this.setState({
+			hover: false
+		})
+	}
+
+	homeLinkClicked = () => {
+		this.setState({
+			hover: false
+		})
+	}
+
 	onClickHomeFunctions = (event) => {
-		this.onClickUpdateTrafficFunctions(event)
+		// this.onClickUpdateTrafficFunctions(event)
 	}
 
 	onClickSignUpFunctions = (event) => {
@@ -49,10 +76,10 @@ export default class Header extends React.Component {
 				key={"h_home_link"}
 				name="header_home_button"
 				interaction="click"
-				className="default_header_link"
+				// className="home_link"
 				onClick={this.onClickHomeFunctions }
 			>
-				Home
+				<img src={ this.state.hover ? header_logo_hover : header_logo } onMouseEnter={this.hoverOn}  onMouseLeave={this.hoverOff} alt="Link To Home Page"/>
 			</NavLink>
 		]
 

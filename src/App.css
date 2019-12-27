@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Lato|PT+Sans);
+/* @import url(https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Lato|PT+Sans|Anton|Baloo|Carter+One|Fredoka+One|Oxygen|Russo+One); */
 @import url('./css/Animation.css');
 
 .input:-internal-autofill-selected {
@@ -261,7 +261,7 @@
     /* -webkit-writing-mode: horizontal-tb !important; */
     text-rendering: auto;
     color: #FFF;
-	background-image: linear-gradient(rgb(81, 88, 102, 1),  rgb(40, 44, 52, 1) );
+	background-image: linear-gradient(rgb(81, 88, 102, 1),  rgb(40, 44, 52) );
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
     letter-spacing: normal;
     word-spacing: normal;
@@ -284,7 +284,7 @@
 
 .alt_button:hover {
 	color: rgb(40, 44, 52, 1);
-	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57, 1) );
+	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57) );
 	transition-property: color;
 	transition-duration: .1s, .1s;
 	transition-timing-function: ease-in-out;

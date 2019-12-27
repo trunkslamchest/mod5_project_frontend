@@ -1,13 +1,53 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto|Lato|Baloo|Oxygen|Russo+One|Abel|Barlow+Semi+Condensed|Pathway+Gothic+One);
+
 body {
+  margin: 0;
+  font-family:  "Lato", "Roboto",
+    "Oxygen", "Tahoma",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.input:-internal-autofill-selected {
+	width: 25%;
+	text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: start;
+    box-sizing: unset;
+    align-items: center;
+    white-space: normal;
+    background-color: #fff;
+    cursor: default;
+    margin: 0em;
+	color: #000;
+	line-height: 1.3;
+	padding: 5px;
+	border: 1px solid rgb(175, 175, 175, 1);
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+::placeholder {
+	color: #000;
+	opacity: 1;
 }

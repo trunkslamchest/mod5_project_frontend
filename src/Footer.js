@@ -12,9 +12,6 @@ import postgres_logo from './assets/footer_logo_postgres.png'
 import rails_logo from './assets/footer_logo_rails.png'
 import react_logo from './assets/footer_logo_react.png'
 
-
-
-
 export default class Footer extends React.Component {
 
 	state={

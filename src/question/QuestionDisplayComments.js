@@ -23,7 +23,7 @@ export default class QuestionDisplayComments extends React.Component{
 
 		const comment_card =
 			<ul>
-				<li>{comment.user_name}:
+				<li>{comment.user_name}
 					<p>{comment.comment_text}</p>
 				</li>
 			</ul>

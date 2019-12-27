@@ -2,6 +2,12 @@ import React from 'react'
 
 import QuestionDisplayComments from './QuestionDisplayComments.js'
 
+import up_vote from '../assets/up_vote1.png'
+import no_vote from '../assets/no_vote1.png'
+import down_vote from '../assets/down_vote1.png'
+
+
+
 import {
 		//  NavLink,
 		//  Link,
@@ -408,7 +414,6 @@ export default class QuestionDisplay extends React.Component{
 		// console.log(this.state)
 		// console.log(this.props)
 
-
 		const question_buttons = [
 			<button
 				key={"answer_button1"}
@@ -446,15 +451,19 @@ export default class QuestionDisplay extends React.Component{
 
 		const correct_answer_text =
 		<>
-			<h3>The correct answer was:</h3>
+			<h3>The correct answer was</h3>
 			<p>{ this.props.question.correct_answer }</p>
 		</>
 
 	const difficulty_text =
 	<>
-		<h3>Question Difficulty:</h3>
+		<h3>Question Difficulty</h3>
 		<p>{ this.props.question.difficulty }</p>
 	</>
+
+		const rate_header = <h3>Rate this question</h3>
+
+		const vote_header = <h3>Vote Totals</h3>
 
 		const vote_for_question_buttons = [
 			<button
@@ -462,21 +471,21 @@ export default class QuestionDisplay extends React.Component{
 				className="up_vote_button"
 				onClick={ this.onClickUpVoteFunctions }
 			>
-				+
+				<img src={ up_vote } alt="up_vote" />
 			</button>,
 			<button
 				key={"no_vote_button"}
 				className="no_vote_button"
 				onClick={ this.onClickNoVoteFunctions }
 			>
-				o
+				<img src={ no_vote } alt="no_vote" />
 			</button>,
 			<button
 			key={"down_vote_button"}
 			className="down_vote_button"
 			onClick={ this.onClickDownVoteFunctions }
 			>
-				-
+				<img src={ down_vote } alt="down_vote" />
 			</button>
 		]
 
@@ -514,7 +523,7 @@ export default class QuestionDisplay extends React.Component{
 				className="comment_button"
 				onClick={ this.onClickCommentFunctions }
 			>
-				Comment
+				Leave a Comment
 			</button>
 		</div>
 
@@ -588,7 +597,10 @@ export default class QuestionDisplay extends React.Component{
 					{ this.state.showDifficulty ? difficulty : ""}
 				</div>
 				<div className="question_vote">
+					{ this.state.showVoteButtons ? rate_header : ""}
+
 					{ this.state.showVoteButtons ? vote_for_question_buttons : ""}
+					{ this.state.voted ? vote_header : "" }
 					{ this.state.voted ? vote_total : "" }
 				</div>
 				<div className="question_comments">

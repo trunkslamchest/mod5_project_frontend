@@ -120,7 +120,7 @@
 }
 
 .question_vote {
-	display: flex;
+	display: column;
 	flex-direction: row;
 	justify-content: center;
 	align-items: baseline;
@@ -134,12 +134,23 @@
 	animation: fade_in .25s ease-in-out 1, blur_in .25s ease-in-out 1;
 }
 
+.question_vote h3 {
+    font-size: 15pt;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+	margin-inline-end: 0px;
+    padding: 0px 10px 0px 10px;
+    font-weight: 300;
+	animation: fade_in .25s ease-in-out 1, blur_in .25s ease-in-out 1, slide_in_from_bottom .25s ease-in-out 1;
+}
+
 .question_vote ul {
 
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	align-items: baseline;
+	align-items: center;
 	margin: 0 auto 0 auto;
 	list-style: none;
 	padding-top: 0px;
@@ -158,6 +169,11 @@
 	/* width: 20%;
 	min-width: 20%;
 	max-width: 20%; */
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
 	background-image: linear-gradient(rgb(255, 255, 255, 1),  rgb(219, 219, 219, 1) );
 	font-size: 12pt;
 	padding: 10px 20px 10px 20px;
@@ -181,7 +197,7 @@
 	font: 400 15px Roboto;
 	letter-spacing: normal;
 	margin: 5px 0px 5px 0px;
-	padding: 15px 30px 15px 30px;
+	padding: 10px 20px 10px 20px;
 	text-align: center;
 	text-decoration: none;
 	text-indent: 0px;
@@ -191,6 +207,12 @@
 	word-spacing: normal;
 	-webkit-appearance: none;
 	/* -webkit-writing-mode: horizontal-tb !important; */
+}
+
+.up_vote_button img{
+	max-width: 100%;
+	height: auto;
+	max-height: 25px;
 }
 
 .up_vote_button:hover {
@@ -221,7 +243,7 @@
 	font: 400 15px Roboto;
 	letter-spacing: normal;
 	margin: 5px 0px 5px 0px;
-	padding: 15px 30px 15px 30px;
+	padding: 10px 20px 10px 20px;
 	text-align: center;
 	text-decoration: none;
 	text-indent: 0px;
@@ -230,6 +252,12 @@
 	text-transform: none;
 	word-spacing: normal;
 	-webkit-appearance: none;
+}
+
+.no_vote_button img{
+	max-width: 100%;
+	height: auto;
+	max-height: 25px;
 }
 
 .no_vote_button:hover {
@@ -260,7 +288,7 @@
 	font: 400 15px Roboto;
 	letter-spacing: normal;
 	margin: 5px 0px 5px 0px;
-	padding: 15px 30px 15px 30px;
+	padding: 10px 20px 10px 20px;
 	text-align: center;
 	text-decoration: none;
 	text-indent: 0px;
@@ -269,6 +297,12 @@
 	text-transform: none;
 	word-spacing: normal;
 	-webkit-appearance: none;
+}
+
+.down_vote_button img{
+	max-width: 100%;
+	height: auto;
+	max-height: 25px;
 }
 
 .down_vote_button:hover {

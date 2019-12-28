@@ -86,8 +86,33 @@ export default class Home extends React.Component {
 			</NavLink>
 		]
 
-		return(
-			<div className="default_wrapper">
+		const log_in_button = [
+			<NavLink
+				exact to="/log_in"
+				key={"log_in_link"}
+				name="log_in_button"
+				interaction="click"
+				className="log_in_button"
+				// onClick={this.onClickLogInFunctions }
+			>
+				Log In To An Existing Account
+			</NavLink>
+		]
+
+		const sign_up_button = [
+			<NavLink
+				exact to="/sign_up"
+				key={"sign_up_link"}
+				name="sign_up_button"
+				interaction="click"
+				className="sign_up_button"
+				// onClick={this.onClickLogInFunctions }
+			>
+				Create A New Account
+			</NavLink>
+		]
+
+		const logged_in_home = <>
 				<div className="logo_container">
 					<img src={index_logo} alt={"logo"}/>
 				</div>
@@ -100,6 +125,21 @@ export default class Home extends React.Component {
 						{ play_by_category }
 					</div>
 				</div>
+		</>
+
+	const logged_out_home = <>
+			<div className="logo_container">
+				<img src={index_logo} alt={"logo"}/>
+			</div>
+			<div className="log_in_sign_up_container">
+				{ log_in_button }
+				{ sign_up_button }
+			</div>
+		</>
+
+		return(
+			<div className="default_wrapper">
+				{ localStorage.length === 0 ? logged_out_home : logged_in_home }
 			</div>
 		)
 	}

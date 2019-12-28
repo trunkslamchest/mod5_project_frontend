@@ -6,6 +6,8 @@ export default class DeleteProfile extends React.Component {
 	state = {
 		user_id: "",
 		deleteSuccess: false,
+		hoverConfirm: false,
+		hoverCancel: false,
 		cancel: false
 	}
 
@@ -26,7 +28,7 @@ export default class DeleteProfile extends React.Component {
 	// 	}
 	// }
 
-	onClickYes = (event) => {
+	onClickConfirm = (event) => {
 		fetch(`http://localhost:3001/users/${this.props.user_id}`, {
 			method: "DELETE"
 		})
@@ -37,10 +39,33 @@ export default class DeleteProfile extends React.Component {
 		)
 	}
 
-	onClickNo = (event) => {
+	onClickCancel = (event) => {
 		this.onClickUpdateTrafficFunctions(event)
 		this.setState({
 			cancel: true
+		})
+	}
+
+	onHoverConfirm = () => {
+		this.setState({
+			hoverConfirm: true
+		})
+	}
+
+	offHoverConfirm = () => {
+		this.setState({
+			hoverConfirm: false
+		})
+	}
+
+	onHoverCancel = () => {
+		this.setState({
+			hoverCancel: true
+		})
+	}
+	offHoverCancel = () => {
+		this.setState({
+			hoverCancel: false
 		})
 	}
 
@@ -69,24 +94,28 @@ export default class DeleteProfile extends React.Component {
 				key={"b1"}
 				name="delete_profile_form"
 				interaction="submit"
-				className="alt_button"
-				onClick={ this.onClickYes }
+				className="confirm_button"
+				onClick={ this.onClickConfirm }
+				onMouseEnter={this.onHoverConfirm}
+				onMouseLeave={this.offHoverConfirm}
 			>
-				Yes
+				{this.state.hoverConfirm ? "✔" : "Yes"}
 			</button>,
 			<button
 				key={"b2"}
 				name="delete_profile_form"
 				interaction="cancel"
-				className="alt_button"
-				onClick={ this.onClickNo }
+				className="cancel_button"
+				onClick={ this.onClickCancel }
+				onMouseEnter={this.onHoverCancel}
+				onMouseLeave={this.offHoverCancel}
 			>
-				No
+				{this.state.hoverCancel ? "✘" : "No"}
 			</button>
 		]
 
 		const delete_form = <>
-			<div className="default_header">
+			<div className="default_container_header">
 				<h3>Are you sure you want to delete your profile?</h3>
 			</div>
 			<div className="default_centered_buttons_container">

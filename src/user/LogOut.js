@@ -8,6 +8,8 @@ export default class LogOut extends React.Component {
 	state = {
 		user_id: "",
 		logOutSuccess: false,
+		hoverConfirm: false,
+		hoverCancel: false,
 		cancel: false
 	}
 
@@ -35,7 +37,7 @@ export default class LogOut extends React.Component {
 	// 	})
 	// }
 
-	onClickYes = (event) => {
+	onClickConfirm = (event) => {
 		this.onClickUpdateTrafficFunctions(event)
 		this.props.logOut(this.props.token)
 		this.setState({
@@ -43,12 +45,36 @@ export default class LogOut extends React.Component {
 		})
 	}
 
-	onClickNo = (event) => {
+	onClickCancel = (event) => {
 		this.onClickUpdateTrafficFunctions(event)
 		this.setState({
 			cancel: true
 		})
 	}
+
+	onHoverConfirm = () => {
+		this.setState({
+			hoverConfirm: true
+		})
+	}
+
+	offHoverConfirm = () => {
+		this.setState({
+			hoverConfirm: false
+		})
+	}
+
+	onHoverCancel = () => {
+		this.setState({
+			hoverCancel: true
+		})
+	}
+	offHoverCancel = () => {
+		this.setState({
+			hoverCancel: false
+		})
+	}
+
 
 	onClickFunctionsLogOut = (event) => {
 		this.onClickUpdateTrafficFunctions(event)
@@ -73,19 +99,23 @@ export default class LogOut extends React.Component {
 				key={"lo1"}
 				name="log_out_form"
 				interaction="submit"
-				className="alt_button"
-				onClick={ this.onClickYes }
+				className="confirm_button"
+				onClick={ this.onClickConfirm }
+				onMouseEnter={this.onHoverConfirm}
+				onMouseLeave={this.offHoverConfirm}
 			>
-				Yes
+				{this.state.hoverConfirm ? "✔" : "Yes"}
 			</button>,
 			<button
 				key={"lo2"}
 				name="log_out_form"
 				interaction="cancel"
-				className="alt_button"
-				onClick={ this.onClickNo }
+				className="cancel_button"
+				onClick={ this.onClickCancel }
+				onMouseEnter={this.onHoverCancel}
+				onMouseLeave={this.offHoverCancel}
 			>
-				No
+				{this.state.hoverCancel ? "✘" : "No"}
 			</button>
 		]
 

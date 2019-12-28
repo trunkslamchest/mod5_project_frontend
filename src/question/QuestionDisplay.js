@@ -346,32 +346,36 @@ export default class QuestionDisplay extends React.Component{
 		event.persist()
 		event.preventDefault()
 
-		fetch("http://localhost:3001/comments", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				user_id: this.props.user_id,
-				user_name: this.props.user_name,
-				question_id: this.props.question.id,
-				comment_text: this.state.comment_text
+		if (this.state.comment_text){
+			fetch("http://localhost:3001/comments", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({
+					user_id: this.props.user_id,
+					user_name: this.props.user_name,
+					question_id: this.props.question.id,
+					comment_text: this.state.comment_text
+				})
 			})
-		})
-		.then(response => response.json())
-		.then(res_obj => {
-			if (res_obj.errors) {
-				this.setState({
-					errors: res_obj.errors
-				})
-			} else {
-				this.setState({
-					showCommentText:false,
-					showAllComments:true,
-				})
-				this.getComments()
-			}
-		})
+			.then(response => response.json())
+			.then(res_obj => {
+				if (res_obj.errors) {
+					this.setState({
+						errors: res_obj.errors
+					})
+				} else {
+					this.setState({
+						showCommentText:false,
+						showAllComments:true,
+					})
+					this.getComments()
+				}
+			})
+		} else {
+			alert("Please Enter A Comment")
+		}
 	}
 
 	onClickNextQuestionFunctions = () => {

@@ -169,15 +169,17 @@ export default class Header extends React.Component {
 			logged_in_links
 		]
 
+		const no_header = [" "]
+
 		return(
 			<>
 				<div className="header_left">
-					{ home_link }
+					{ !!this.props.token ? home_link : no_header }
 				</div>
 				<div className="header_right">
 					{
 						{
-							false: logged_out_links,
+							false: no_header,
 							true: (() => {
 								switch(localStorage.access) {
 									case false: return guest_header;

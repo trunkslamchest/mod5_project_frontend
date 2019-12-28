@@ -28,6 +28,20 @@
 	animation: fade_in .3s ease-in-out 1, blur_in .15s ease-in-out 1;
 }
 
+.dashboard_header {
+	text-align: center;
+	padding-top: 0px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 0 auto 0 auto;
+	animation: fade_in .25s ease-in-out 1, blur_in .25s ease-in-out 1, slide_in_from_top.25s ease-in-out 1;
+}
+
+.dashboard_header h3 {
+    font: 100 20pt "Lato Light";
+}
+
 .dashboard_wrapper ul {
 	width: 100%;
 	list-style: none;
@@ -108,14 +122,6 @@
 	transition-duration: .2s, .2s;
 	transition-timing-function: ease-in-out;
 	animation: scale_out .1s ease-in-out 1, blur_out .1s ease-in-out 1;
-}
-
-.dashboard_wrapper h3 {
-	text-align: center;
-	background-image: linear-gradient(rgb(255, 255, 255, 1),  rgb(219, 219, 219, 1) );
-	padding: 10px;
-	margin: 0px 0px 0px 0px;
-	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25);
 }
 
 .dashboard_options {

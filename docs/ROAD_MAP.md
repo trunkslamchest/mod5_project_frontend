@@ -1,10 +1,6 @@
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-|-add route restrictions
-
-|-basic client side validation for forms
-
 |-terms of service agreement for sign up
 
 |-update element and page trackers
@@ -12,6 +8,8 @@
 ~
 
 |-add more questions
+
+|-facelift styling
 
 |-comments
 |	-add ability to remove comments from dashboard

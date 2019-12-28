@@ -9,9 +9,9 @@ export default class DashboardIndex extends React.Component{
 	render(){
 
 		return(
-				<div className="dashboard_greeting">
-					<h2>Welcome, {this.props.first_name}!</h2>
-				</div>
+			<div className="dashboard_header">
+				<h3 >Welcome, {this.props.first_name}!</h3>
+			</div>
 		)
 	}
 }

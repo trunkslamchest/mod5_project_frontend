@@ -1,7 +1,15 @@
 import React from 'react'
-import { Redirect } from 'react-router'
+import {
+	//  NavLink,
+	 Link,
+	 Redirect,
+	// Route,
+	// Switch,
+	//  useRouteMatch,
+	//  useParams
+} from 'react-router-dom'
 
-// import '../css/SignUp.css'
+import '../css/SignUp.css'
 
 export default class SignUp extends React.Component {
 
@@ -22,6 +30,7 @@ export default class SignUp extends React.Component {
 		sign_up_city_town: "",
 		sign_up_state: "",
 		sign_up_zip_code: "",
+		TOSagreement: false,
 		errors: []
 	}
 
@@ -52,6 +61,15 @@ export default class SignUp extends React.Component {
 		})
 	}
 
+	onChecked = (event) => {
+
+		let flip_checked = !event.target.checked
+
+		this.setState({
+			TOSagreement: !flip_checked
+		})
+	}
+
 	onSubmitSignUpFunctions = (event) => {
 		this.signUpSubmitted(event)
 		this.props.updateLogin()
@@ -60,42 +78,47 @@ export default class SignUp extends React.Component {
 	signUpSubmitted = (event) => {
 		event.persist()
 		event.preventDefault()
-		fetch("http://localhost:3001/users", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				user_name: this.state.sign_up_user_name,
-				password: this.state.sign_up_password,
-				email: this.state.sign_up_email,
-				first_name: this.state.sign_up_first_name,
-				last_name: this.state.sign_up_last_name,
-				gender: this.state.sign_up_gender,
-				birth_month: this.state.sign_up_birth_month,
-				birth_day: this.state.sign_up_birth_day,
-				birth_year: this.state.sign_up_birth_year,
-				house_number: this.state.sign_up_house_number,
-				street_name: this.state.sign_up_street_name,
-				city_town: this.state.sign_up_city_town,
-				state: this.state.sign_up_state,
-				zip_code: this.state.sign_up_zip_code,
+
+		if (!this.state.TOSagreement) {
+			alert("You must agree to the Terms of Service Agreement in order to make a new account.")
+		} else {
+			fetch("http://localhost:3001/users", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({
+					user_name: this.state.sign_up_user_name,
+					password: this.state.sign_up_password,
+					email: this.state.sign_up_email,
+					first_name: this.state.sign_up_first_name,
+					last_name: this.state.sign_up_last_name,
+					gender: this.state.sign_up_gender,
+					birth_month: this.state.sign_up_birth_month,
+					birth_day: this.state.sign_up_birth_day,
+					birth_year: this.state.sign_up_birth_year,
+					house_number: this.state.sign_up_house_number,
+					street_name: this.state.sign_up_street_name,
+					city_town: this.state.sign_up_city_town,
+					state: this.state.sign_up_state,
+					zip_code: this.state.sign_up_zip_code,
+				})
 			})
-		})
-	    .then(response => response.json())
-	    .then(res_obj => {
-			if (res_obj.errors) {
-				this.setState({
-					errors: res_obj.errors
-				})
-			} else {
-				this.onSubmitUpdateTrafficFunctions(event, res_obj)
-				this.props.setToken(res_obj)
-				this.setState({
-					loggedIn: true
-				})
-			}
-		})
+			.then(response => response.json())
+			.then(res_obj => {
+				if (res_obj.errors) {
+					this.setState({
+						errors: res_obj.errors
+					})
+				} else {
+					this.onSubmitUpdateTrafficFunctions(event, res_obj)
+					this.props.setToken(res_obj)
+					this.setState({
+						loggedIn: true
+					})
+				}
+			})
+		}
 	}
 
 	onResetFunctions = (event) => {
@@ -144,8 +167,14 @@ export default class SignUp extends React.Component {
 	}
 
 	render(){
+
+		console.log(this.state.TOSagreement)
+
 		return (
-			<>
+			<div className="default_wrapper">
+				<div className="default_container_header">
+					<h3>Create New Account</h3>
+				</div>
 				{
 			        (!!this.state.errors) ? (
 		  				<div className="default_error_report">
@@ -165,10 +194,8 @@ export default class SignUp extends React.Component {
 				}
 				{
 					!(this.state.loggedIn) ?
-						<div className="default_wrapper">
-							<div className="default_container_header">
-								<h3>Sign Up</h3>
-							</div>
+						<>
+
 							<form
 								name="sign_up_form"
 								interaction="submit"
@@ -402,6 +429,17 @@ export default class SignUp extends React.Component {
 									/>
 								</div>
 								<hr />
+								<div className="tos_agree_div">
+									<input id="TOS_agreement"
+											type="checkbox"
+											name="TOSagreement"
+											className="TOS_check"
+											checked={this.state.TOSagreement}
+											onChange={ this.onChecked }
+										/>
+										I acknowledge that I have read and agree to the <Link to="/terms_of_service"> Terms and Conditions </Link> and <Link to="/privacy"> Privacy Policy </Link> supplied by SmartApp™
+								</div>
+								<hr />
 								<div className="default_centered_buttons_container">
 									<input
 										className="alt_button"
@@ -434,11 +472,11 @@ export default class SignUp extends React.Component {
 									}
 								</div>
 							</form>
-						</div>
+						</>
 					:
 						<Redirect to='/dashboard' />
 				}
-			</>
+			</div>
 		)
 	}
 }

@@ -47,15 +47,15 @@ export default class Footer extends React.Component {
 	]
 
 	const extra_links = [
-		<NavLink
-			exact to="/about"
-			key={"about_link"}
-			name="footer_about_button"
-			interaction="click"
-			onClick={this.onClickAboutFunctions }
-		>
-		About
-		</NavLink>,
+		// <NavLink
+		// 	exact to="/about"
+		// 	key={"about_link"}
+		// 	name="footer_about_button"
+		// 	interaction="click"
+		// 	onClick={this.onClickAboutFunctions }
+		// >
+		// About
+		// </NavLink>,
 			<NavLink
 			exact to="/terms_of_service"
 			key={"tos_link"}
@@ -75,30 +75,30 @@ export default class Footer extends React.Component {
 			Privacy
 		</NavLink>,
 		<NavLink
-			exact to="/careers"
-			key={"career_link"}
-			name="footer_career_button"
+			exact to="/disclaimer"
+			key={"disclaimer_link"}
+			name="footer_disclaimer_button"
 			interaction="click"
-			onClick={this.onClickCareerFunctions }
+			// className="extra_link"
+			onClick={this.onClickDisclaimerFunctions }
 		>
-			Careers
+			Disclaimer
 		</NavLink>,
-		<NavLink
-		exact to="/contact"
-		key={"contact_link"}
-		name="footer_contact_button"
-		interaction="click"
-		// className="extra_link"
-		onClick={this.onClickContactFunctions }
-	>
-		Contact
-	</NavLink>,
+		// <NavLink
+		// 	exact to="/careers"
+		// 	key={"career_link"}
+		// 	name="footer_career_button"
+		// 	interaction="click"
+		// 	onClick={this.onClickCareerFunctions }
+		// >
+		// 	Careers
+		// </NavLink>
 	]
 
 	const footer_logos = [
 		<img src={ flatiron_logo } className="logo_rectangle" alt="The Flatiron School"/>,
 		<img src={ open_trivia_logo } className="logo_rectangle" alt="Open Trivita Database"/>,
-		<img src={ postgres_logo } className="logo_square" alt="PostgreSQL"/>,
+		<img src={ postgres_logo } className="logo_rectangle" alt="PostgreSQL"/>,
 		<img src={ rails_logo } className="logo_rectangle" alt="Ruby On Rails"/>,
 		<img src={ react_logo } className="logo_rectangle" alt="React"/>,
 

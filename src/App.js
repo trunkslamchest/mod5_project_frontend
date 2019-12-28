@@ -16,7 +16,9 @@ import QuickPlayContainer from './question/QuickPlayContainer'
 import PlayByDifficultyContainer from './question/PlayByDifficultyContainer'
 import PlayByCategoryContainer from './question/PlayByCategoryContainer'
 
-
+import TermsOfService from './docs/TermsOfService'
+import Privacy from './docs/Privacy'
+import Disclaimer from './docs/Disclaimer'
 
 import Backroom from './admin/Backroom'
 
@@ -408,6 +410,15 @@ export default class App extends React.Component {
 								access={ this.state.access }
 								update_backroom_from_header={ this.state.backroom_display }
 							/>
+						</Route>
+						<Route exact path='/terms_of_service'>
+							<TermsOfService />
+						</Route>
+						<Route exact path='/privacy'>
+							<Privacy />
+						</Route>
+						<Route exact path='/disclaimer'>
+							<Disclaimer />
 						</Route>
 						<Route component={ Error } />
 					</Switch>

@@ -8,7 +8,8 @@ import DashboardVotes from './DashboardVotes'
 import DashboardComments from './DashboardComments'
 
 import {
-        //  Link
+		//  Link
+		Redirect
         } from 'react-router-dom'
 
 import '../../css/Dashboard.css'
@@ -142,63 +143,66 @@ export default class Dashboard extends React.Component{
 					</ul>
 				</div>
 					{
-						(() => {
-							switch(this.state.display) {
-								case 'dashboard': return <DashboardIndex
-															first_name={ this.props.first_name }
-														/>;
-								case 'user_info': return <DashboardUserInfo
-															update_traffic_data={this.props.update_traffic_data }
-															update_page_data={this.props.update_page_data}
-															// ~~~~~~~~~~~~~~~~~~~~
-															user_id={ this.props.user_id }
-															user_name={ this.props.user_name }
-															email={ this.props.email }
-															access={ this.props.access }
-															// // ~~~~~~~~~~~~~~~~~~~~
-															first_name={ this.props.first_name }
-															last_name={ this.props.last_name }
-															gender={ this.props.gender }
-															// // ~~~~~~~~~~~~~~~~~~~~
-															birth_day={ this.props.birth_day }
-															birth_month={ this.props.birth_month }
-															birth_year={ this.props.birth_year }
-															// // ~~~~~~~~~~~~~~~~~~~~
-															house_number={ this.props.house_number }
-															street_name={ this.props.street_name }
-															city_town={ this.props.city_town }
-															state={ this.props.state }
-															zip_code={ this.props.zip_code }
-															// ~~~~~~~~~~~~~~~~~~~~
-															join_day={ this.props.join_day }
-															join_month={ this.props.join_month }
-															join_year={ this.props.join_year }
-														/>;
-								case 'stats': return <DashboardStats
-															user_id={ this.props.user_id }
-															update_traffic_data={this.props.update_traffic_data }
-															update_page_data={this.props.update_page_data}
-														/>;
-								case 'answers': return <DashboardAnswers
-															user_id={ this.props.user_id }
-															update_traffic_data={this.props.update_traffic_data }
-															update_page_data={this.props.update_page_data}
-														/>;
-								case 'votes': return <DashboardVotes
-															user_id={ this.props.user_id }
-															update_traffic_data={this.props.update_traffic_data }
-															update_page_data={this.props.update_page_data}
-														/>;
-								case 'comments': return <DashboardComments
-															user_id={ this.props.user_id }
-															update_traffic_data={this.props.update_traffic_data }
-															update_page_data={this.props.update_page_data}
-														/>;
-								default: return <DashboardIndex
-												first_name={ this.props.first_name }
-											/>;
-							}
-						})()
+						{
+							true: <Redirect to='/' />,
+							false: 	(() => {
+								switch(this.state.display) {
+									case 'dashboard': return <DashboardIndex
+																first_name={ this.props.first_name }
+															/>;
+									case 'user_info': return <DashboardUserInfo
+																update_traffic_data={this.props.update_traffic_data }
+																update_page_data={this.props.update_page_data}
+																// ~~~~~~~~~~~~~~~~~~~~
+																user_id={ this.props.user_id }
+																user_name={ this.props.user_name }
+																email={ this.props.email }
+																access={ this.props.access }
+																// // ~~~~~~~~~~~~~~~~~~~~
+																first_name={ this.props.first_name }
+																last_name={ this.props.last_name }
+																gender={ this.props.gender }
+																// // ~~~~~~~~~~~~~~~~~~~~
+																birth_day={ this.props.birth_day }
+																birth_month={ this.props.birth_month }
+																birth_year={ this.props.birth_year }
+																// // ~~~~~~~~~~~~~~~~~~~~
+																house_number={ this.props.house_number }
+																street_name={ this.props.street_name }
+																city_town={ this.props.city_town }
+																state={ this.props.state }
+																zip_code={ this.props.zip_code }
+																// ~~~~~~~~~~~~~~~~~~~~
+																join_day={ this.props.join_day }
+																join_month={ this.props.join_month }
+																join_year={ this.props.join_year }
+															/>;
+									case 'stats': return <DashboardStats
+																user_id={ this.props.user_id }
+																update_traffic_data={this.props.update_traffic_data }
+																update_page_data={this.props.update_page_data}
+															/>;
+									case 'answers': return <DashboardAnswers
+																user_id={ this.props.user_id }
+																update_traffic_data={this.props.update_traffic_data }
+																update_page_data={this.props.update_page_data}
+															/>;
+									case 'votes': return <DashboardVotes
+																user_id={ this.props.user_id }
+																update_traffic_data={this.props.update_traffic_data }
+																update_page_data={this.props.update_page_data}
+															/>;
+									case 'comments': return <DashboardComments
+																user_id={ this.props.user_id }
+																update_traffic_data={this.props.update_traffic_data }
+																update_page_data={this.props.update_page_data}
+															/>;
+									default: return <DashboardIndex
+													first_name={ this.props.first_name }
+												/>;
+								}
+							})()
+						}[localStorage.length === 0]
 					}
 			</div>
 		)

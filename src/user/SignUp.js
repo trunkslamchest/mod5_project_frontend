@@ -26,7 +26,7 @@ export default class SignUp extends React.Component {
 	}
 
 	componentDidMount(){
-		this.onMountAsync()
+		// this.onMountAsync()
 	}
 
 	// onMountAsync = async () => {

@@ -191,12 +191,12 @@ export default class DashboardStatsCategory extends React.Component{
 			<ul>
 				<li>Anime:</li>
 				<li>
-					{this.state.user_answers_anime ? `${ this.state.user_answers_anime }/${ this.state.all_anime_questions.length } answered` : zero_percent_answered }
+					{this.state.updatedCategories ? `${ this.state.user_answers_anime }/${ this.state.all_anime_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_anime ? ` (${((this.state.user_answers_anime / this.state.all_anime_questions.length) * 100).toFixed(2)}%)` : zero_percent }
 				</li>
 				<li>
-					{this.state.user_answers_anime_correct  ? `${ this.state.user_answers_anime_correct }/${ this.state.user_answers_anime } correct` : zero_percent_correct }
-					{this.state.user_answers_anime_correct  ? ` (${((this.state.user_answers_anime_correct / this.state.user_answers_anime ) * 100).toFixed(2)}%)` : zero_percent }
+					{this.state.updatedCategories ? `${ this.state.user_answers_anime_correct }/${ this.state.user_answers_anime } correct` : zero_percent_correct }
+					{this.state.user_answers_anime_correct ? ` (${((this.state.user_answers_anime_correct / this.state.user_answers_anime ) * 100).toFixed(2)}%)` : zero_percent }
 				</li>
 			</ul>
 
@@ -204,11 +204,11 @@ export default class DashboardStatsCategory extends React.Component{
 			<ul>
 				<li>Books:</li>
 				<li>
-					{this.state.user_answers_book ? `${ this.state.user_answers_book }/${ this.state.all_book_questions.length } answered` : zero_percent_answered }
+					{this.state.updatedCategories ? `${ this.state.user_answers_book }/${ this.state.all_book_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_book ? ` (${((this.state.user_answers_book / this.state.all_book_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
 				</li>
 				<li>
-					{this.state.user_answers_book_correct ? `${ this.state.user_answers_book_correct }/${ this.state.user_answers_book } correct` : zero_percent_correct }
+					{this.state.updatedCategories ? `${ this.state.user_answers_book_correct }/${ this.state.user_answers_book } correct` : zero_percent_correct }
 					{this.state.user_answers_book_correct ? ` (${((this.state.user_answers_book_correct / this.state.user_answers_book ) * 100).toFixed(2)}%)` : zero_percent }
 				</li>
 			</ul>
@@ -217,11 +217,11 @@ export default class DashboardStatsCategory extends React.Component{
 			<ul>
 				<li>Computers:</li>
 				<li>
-					{this.state.user_answers_computer ? `${ this.state.user_answers_computer }/${ this.state.all_computer_questions.length } answered` : zero_percent_answered }
+					{this.state.updatedCategories ? `${ this.state.user_answers_computer }/${ this.state.all_computer_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_computer ? ` (${((this.state.user_answers_computer / this.state.all_computer_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
 				</li>
 				<li>
-					{this.state.user_answers_computer_correct ? `${ this.state.user_answers_computer_correct }/${ this.state.user_answers_computer } correct` : zero_percent_correct }
+					{this.state.updatedCategories ? `${ this.state.user_answers_computer_correct }/${ this.state.user_answers_computer } correct` : zero_percent_correct }
 					{this.state.user_answers_computer_correct ? ` (${((this.state.user_answers_computer_correct / this.state.user_answers_computer ) * 100).toFixed(2)}%)` : zero_percent }
 				</li>
 			</ul>
@@ -230,11 +230,11 @@ export default class DashboardStatsCategory extends React.Component{
 			<ul>
 				<li>Film:</li>
 				<li>
-					{this.state.user_answers_film ? `${ this.state.user_answers_film }/${ this.state.all_film_questions.length } answered` : zero_percent_answered }
+					{this.state.updatedCategories ? `${ this.state.user_answers_film }/${ this.state.all_film_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_film ? ` (${((this.state.user_answers_film / this.state.all_film_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
 				</li>
 				<li>
-					{this.state.user_answers_film_correct ? `${ this.state.user_answers_film_correct }/${ this.state.user_answers_film } correct` : zero_percent_correct }
+					{this.state.updatedCategories ? `${ this.state.user_answers_film_correct }/${ this.state.user_answers_film } correct` : zero_percent_correct }
 					{this.state.user_answers_film_correct ? ` (${((this.state.user_answers_film_correct / this.state.user_answers_film ) * 100).toFixed(2)}%)` : zero_percent }
 				</li>
 			</ul>
@@ -243,11 +243,11 @@ export default class DashboardStatsCategory extends React.Component{
 			<ul>
 				<li>General Knowledge:</li>
 				<li>
-					{this.state.user_answers_general_knowledge ? `${ this.state.user_answers_general_knowledge }/${ this.state.all_general_knowledge_questions.length } answered` : zero_percent_answered }
+					{this.state.updatedCategories ? `${ this.state.user_answers_general_knowledge }/${ this.state.all_general_knowledge_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_general_knowledge ? ` (${((this.state.user_answers_general_knowledge / this.state.all_general_knowledge_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
 				</li>
 				<li>
-					{this.state.user_answers_general_knowledge_correct ? `${ this.state.user_answers_general_knowledge_correct }/${ this.state.user_answers_general_knowledge } correct` : zero_percent_correct }
+					{this.state.updatedCategories ? `${ this.state.user_answers_general_knowledge_correct }/${ this.state.user_answers_general_knowledge } correct` : zero_percent_correct }
 					{this.state.user_answers_general_knowledge_correct ? ` (${((this.state.user_answers_general_knowledge_correct / this.state.user_answers_general_knowledge ) * 100).toFixed(2)}%)` : zero_percent }
 				</li>
 			</ul>
@@ -256,11 +256,11 @@ export default class DashboardStatsCategory extends React.Component{
 			<ul>
 				<li>Geography:</li>
 				<li>
-					{this.state.user_answers_geography ? `${ this.state.user_answers_geography }/${ this.state.all_geography_questions.length } answered` : zero_percent_answered }
+					{this.state.updatedCategories ? `${ this.state.user_answers_geography }/${ this.state.all_geography_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_geography ? ` (${((this.state.user_answers_geography / this.state.all_geography_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
 				</li>
 				<li>
-					{this.state.user_answers_geography_correct ? `${ this.state.user_answers_geography_correct }/${ this.state.user_answers_geography } correct` : zero_percent_correct }
+					{this.state.updatedCategories ? `${ this.state.user_answers_geography_correct }/${ this.state.user_answers_geography } correct` : zero_percent_correct }
 					{this.state.user_answers_geography_correct ? ` (${((this.state.user_answers_geography_correct / this.state.user_answers_geography ) * 100).toFixed(2)}%)` : zero_percent }
 				</li>
 			</ul>
@@ -269,11 +269,11 @@ export default class DashboardStatsCategory extends React.Component{
 			<ul>
 				<li>History:</li>
 				<li>
-					{this.state.user_answers_history ? `${ this.state.user_answers_history }/${ this.state.all_history_questions.length } answered` : zero_percent_answered }
+					{this.state.updatedCategories ? `${ this.state.user_answers_history }/${ this.state.all_history_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_history ? ` (${((this.state.user_answers_history / this.state.all_history_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
 				</li>
 				<li>
-					{this.state.user_answers_history_correct ? `${ this.state.user_answers_history_correct }/${ this.state.user_answers_history } correct` : zero_percent_correct }
+					{this.state.updatedCategories ? `${ this.state.user_answers_history_correct }/${ this.state.user_answers_history } correct` : zero_percent_correct }
 					{this.state.user_answers_history_correct ? ` (${((this.state.user_answers_history_correct / this.state.user_answers_history ) * 100).toFixed(2)}%)` : zero_percent }
 				</li>
 			</ul>
@@ -282,11 +282,11 @@ export default class DashboardStatsCategory extends React.Component{
 			<ul>
 				<li>Music:</li>
 				<li>
-					{this.state.user_answers_music ? `${ this.state.user_answers_music }/${ this.state.all_music_questions.length } answered` : zero_percent_answered }
+					{this.state.updatedCategories ? `${ this.state.user_answers_music }/${ this.state.all_music_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_music ? ` (${((this.state.user_answers_music / this.state.all_music_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
 				</li>
 				<li>
-					{this.state.user_answers_music_correct ? `${ this.state.user_answers_music_correct }/${ this.state.user_answers_music } correct` : zero_percent_correct }
+					{this.state.updatedCategories ? `${ this.state.user_answers_music_correct }/${ this.state.user_answers_music } correct` : zero_percent_correct }
 					{this.state.user_answers_music_correct ? ` (${((this.state.user_answers_music_correct / this.state.user_answers_music ) * 100).toFixed(2)}%)` : zero_percent }
 				</li>
 			</ul>
@@ -295,11 +295,11 @@ export default class DashboardStatsCategory extends React.Component{
 			<ul>
 				<li>Mythology:</li>
 				<li>
-					{this.state.user_answers_mythology ? `${ this.state.user_answers_mythology }/${ this.state.all_mythology_questions.length } answered` : zero_percent_answered }
+					{this.state.updatedCategories ? `${ this.state.user_answers_mythology }/${ this.state.all_mythology_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_mythology ? ` (${((this.state.user_answers_mythology / this.state.all_mythology_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
 				</li>
 				<li>
-					{this.state.user_answers_mythology_correct ? `${ this.state.user_answers_mythology_correct }/${ this.state.user_answers_mythology } correct` : zero_percent_correct }
+					{this.state.updatedCategories ? `${ this.state.user_answers_mythology_correct }/${ this.state.user_answers_mythology } correct` : zero_percent_correct }
 					{this.state.user_answers_mythology_correct ? ` (${((this.state.user_answers_mythology_correct / this.state.user_answers_mythology ) * 100).toFixed(2)}%)` : zero_percent }
 				</li>
 			</ul>
@@ -308,11 +308,11 @@ export default class DashboardStatsCategory extends React.Component{
 			<ul>
 				<li>Nature:</li>
 				<li>
-					{this.state.user_answers_nature ? `${ this.state.user_answers_nature }/${ this.state.all_nature_questions.length } answered` : zero_percent_answered }
+					{this.state.updatedCategories ? `${ this.state.user_answers_nature }/${ this.state.all_nature_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_nature ? ` (${((this.state.user_answers_nature / this.state.all_nature_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
 				</li>
 				<li>
-					{this.state.user_answers_nature_correct ? `${ this.state.user_answers_nature_correct }/${ this.state.user_answers_nature } correct` : zero_percent_correct }
+					{this.state.updatedCategories ? `${ this.state.user_answers_nature_correct }/${ this.state.user_answers_nature } correct` : zero_percent_correct }
 					{this.state.user_answers_nature_correct ? ` (${((this.state.user_answers_nature_correct / this.state.user_answers_nature ) * 100).toFixed(2)}%)` : zero_percent }
 				</li>
 			</ul>
@@ -321,11 +321,11 @@ export default class DashboardStatsCategory extends React.Component{
 			<ul>
 				<li>Politics:</li>
 				<li>
-					{this.state.user_answers_politics ? `${ this.state.user_answers_politics }/${ this.state.all_politics_questions.length } answered` : zero_percent_answered }
+					{this.state.updatedCategories ? `${ this.state.user_answers_politics }/${ this.state.all_politics_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_politics ? ` (${((this.state.user_answers_politics / this.state.all_politics_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
 				</li>
 				<li>
-					{this.state.user_answers_politics_correct ? `${ this.state.user_answers_politics_correct }/${ this.state.user_answers_politics } correct` : zero_percent_correct }
+					{this.state.updatedCategories ? `${ this.state.user_answers_politics_correct }/${ this.state.user_answers_politics } correct` : zero_percent_correct }
 					{this.state.user_answers_politics_correct ? ` (${((this.state.user_answers_politics_correct / this.state.user_answers_politics ) * 100).toFixed(2)}%)` : zero_percent }
 				</li>
 			</ul>
@@ -334,11 +334,11 @@ export default class DashboardStatsCategory extends React.Component{
 			<ul>
 				<li>Science:</li>
 				<li>
-					{this.state.user_answers_science ? `${ this.state.user_answers_science }/${ this.state.all_science_questions.length } answered` : zero_percent_answered }
+					{this.state.updatedCategories ? `${ this.state.user_answers_science }/${ this.state.all_science_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_science ? ` (${((this.state.user_answers_science / this.state.all_science_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
 				</li>
 				<li>
-					{this.state.user_answers_science_correct ? `${ this.state.user_answers_science_correct }/${ this.state.user_answers_science } correct` : zero_percent_correct }
+					{this.state.updatedCategories ? `${ this.state.user_answers_science_correct }/${ this.state.user_answers_science } correct` : zero_percent_correct }
 					{this.state.user_answers_science_correct ? ` (${((this.state.user_answers_science_correct / this.state.user_answers_science ) * 100).toFixed(2)}%)` : zero_percent }
 				</li>
 			</ul>
@@ -347,11 +347,11 @@ export default class DashboardStatsCategory extends React.Component{
 			<ul>
 				<li>Sports:</li>
 				<li>
-					{this.state.user_answers_sports ? `${ this.state.user_answers_sports }/${ this.state.all_sports_questions.length } answered` : zero_percent_answered }
+					{this.state.updatedCategories ? `${ this.state.user_answers_sports }/${ this.state.all_sports_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_sports ? ` (${((this.state.user_answers_sports / this.state.all_sports_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
 				</li>
 				<li>
-					{this.state.user_answers_sports_correct ? `${ this.state.user_answers_sports_correct }/${ this.state.user_answers_sports } correct` : zero_percent_correct }
+					{this.state.updatedCategories ? `${ this.state.user_answers_sports_correct }/${ this.state.user_answers_sports } correct` : zero_percent_correct }
 					{this.state.user_answers_sports_correct ? ` (${((this.state.user_answers_sports_correct / this.state.user_answers_sports ) * 100).toFixed(2)}%)` : zero_percent }
 				</li>
 			</ul>
@@ -360,11 +360,11 @@ export default class DashboardStatsCategory extends React.Component{
 			<ul>
 				<li>Technology:</li>
 				<li>
-					{this.state.user_answers_technology ? `${ this.state.user_answers_technology }/${ this.state.all_technology_questions.length } answered` : zero_percent_answered }
+					{this.state.updatedCategories ? `${ this.state.user_answers_technology }/${ this.state.all_technology_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_technology ? ` (${((this.state.user_answers_technology / this.state.all_technology_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
 				</li>
 				<li>
-					{this.state.user_answers_technology_correct ? `${ this.state.user_answers_technology_correct }/${ this.state.user_answers_technology } correct` : zero_percent_correct }
+					{this.state.updatedCategories ? `${ this.state.user_answers_technology_correct }/${ this.state.user_answers_technology } correct` : zero_percent_correct }
 					{this.state.user_answers_technology_correct ? ` (${((this.state.user_answers_technology_correct / this.state.user_answers_technology ) * 100).toFixed(2)}%)` : zero_percent }
 				</li>
 			</ul>
@@ -373,11 +373,11 @@ export default class DashboardStatsCategory extends React.Component{
 			<ul>
 				<li>Television:</li>
 				<li>
-					{this.state.user_answers_television ? `${ this.state.user_answers_television }/${ this.state.all_television_questions.length } answered` : zero_percent_answered }
+					{this.state.updatedCategories? `${ this.state.user_answers_television }/${ this.state.all_television_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_television ? ` (${((this.state.user_answers_television / this.state.all_television_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
 				</li>
 				<li>
-					{this.state.user_answers_television_correct ? `${ this.state.user_answers_television_correct }/${ this.state.user_answers_television } correct` : zero_percent_correct }
+					{this.state.updatedCategories ? `${ this.state.user_answers_television_correct }/${ this.state.user_answers_television } correct` : zero_percent_correct }
 					{this.state.user_answers_television_correct ? ` (${((this.state.user_answers_television_correct / this.state.user_answers_television ) * 100).toFixed(2)}%)` : zero_percent }
 				</li>
 			</ul>
@@ -386,11 +386,11 @@ export default class DashboardStatsCategory extends React.Component{
 			<ul>
 				<li>Theatre:</li>
 				<li>
-					{this.state.user_answers_theatre ? `${ this.state.user_answers_theatre }/${ this.state.all_theatre_questions.length } answered` : zero_percent_answered }
+					{this.state.updatedCategories ? `${ this.state.user_answers_theatre }/${ this.state.all_theatre_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_theatre ? ` (${((this.state.user_answers_theatre / this.state.all_theatre_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
 				</li>
 				<li>
-					{this.state.user_answers_theatre_correct ? `${ this.state.user_answers_theatre_correct }/${ this.state.user_answers_theatre } correct` : zero_percent_correct }
+					{this.state.updatedCategories ? `${ this.state.user_answers_theatre_correct }/${ this.state.user_answers_theatre } correct` : zero_percent_correct }
 					{this.state.user_answers_theatre_correct ? ` (${((this.state.user_answers_theatre_correct / this.state.user_answers_theatre ) * 100).toFixed(2)}%)` : zero_percent }
 				</li>
 			</ul>
@@ -399,11 +399,11 @@ export default class DashboardStatsCategory extends React.Component{
 			<ul>
 				<li>Vehicles:</li>
 				<li>
-					{this.state.user_answers_vehicles ? `${ this.state.user_answers_vehicles }/${ this.state.all_vehicles_questions.length } answered` : zero_percent_answered }
+					{this.state.updatedCategories ? `${ this.state.user_answers_vehicles }/${ this.state.all_vehicles_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_vehicles ? ` (${((this.state.user_answers_vehicles / this.state.all_vehicles_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
 				</li>
 				<li>
-					{this.state.user_answers_vehicles_correct ? `${ this.state.user_answers_vehicles_correct }/${ this.state.user_answers_vehicles } correct` : zero_percent_correct }
+					{this.state.updatedCategories ? `${ this.state.user_answers_vehicles_correct }/${ this.state.user_answers_vehicles } correct` : zero_percent_correct }
 					{this.state.user_answers_vehicles_correct ? ` (${((this.state.user_answers_vehicles_correct / this.state.user_answers_vehicles ) * 100).toFixed(2)}%)` : zero_percent }
 				</li>
 			</ul>
@@ -412,7 +412,7 @@ export default class DashboardStatsCategory extends React.Component{
 			<ul>
 				<li>Video Games:</li>
 				<li>
-					{this.state.user_answers_video_games ? `${ this.state.user_answers_video_games }/${ this.state.all_video_games_questions.length } answered` : zero_percent_answered }
+					{this.state.updatedCategories ? `${ this.state.user_answers_video_games }/${ this.state.all_video_games_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_video_games ? ` (${((this.state.user_answers_video_games / this.state.all_video_games_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
 				</li>
 				<li>

@@ -8,4 +8,6 @@
 -dashboard stats categories page does not display total questions in a category
 unless a question has been answered in that category
 
+-dashboard showing NaN for total questions and questions by difficulty
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~

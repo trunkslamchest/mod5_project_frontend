@@ -96,12 +96,16 @@ export default class DashboardStats extends React.Component{
 		// console.log(this.state)
 		// console.log(this.state.user_answers.map(answer => parseFloat(answer.user_time)))
 
+		const average_time = <>Average Time To Answer: { this.averageTimeToAnswer() } seconds</>
+
+		const correct_answers = <>{ this.totalQuestionsCorrect() }/{Object.keys(this.state.user_answers).length} correct ({this.totalQuestionsCorrectPercent()}%)</>
+
 		const total_questions_answered =
 			<ul>
 				<li>All Questions:</li>
 				<li>{ this.totalQuestionsAnswered() }/{Object.keys(this.state.all_questions).length} answered ({this.totalQuestionsAnsweredPercent()}%)</li>
-				<li>{ this.totalQuestionsCorrect() }/{Object.keys(this.state.user_answers).length} correct ({this.totalQuestionsCorrectPercent()}%)</li>
-				<li>Average Time To Answer: { this.averageTimeToAnswer() } seconds</li>
+				<li>{ this.state.user_answers.length > 0 ? correct_answers : "0/0 correct (0.00%)" }</li>
+				<li>{ this.state.user_answers.length > 0 ? average_time : "Average Time To Answer: 0.00 seconds" }</li>
 				<li>Outta Times: { this.totalQuestionsWithNoAnswers() }</li>
 			</ul>
 

@@ -1,21 +1,13 @@
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-|-logo/icon/graphic design elements
+|-add route restrictions
 
-|-update element and page trackers
-
-~
-
-|-port to laptop
-
-~
+|-basic client side validation for forms
 
 |-terms of service agreement for sign up
 
-|-add route restrictions
-
-|-basic client side validation
+|-update element and page trackers
 
 ~
 
@@ -24,8 +16,8 @@
 |-comments
 |	-add ability to remove comments from dashboard
 
-|-personal stats page
-|	-questions incorrect(with percentage)
+|-votes
+	-add ability to change vote from dashboard
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 

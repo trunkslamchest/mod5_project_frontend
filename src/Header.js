@@ -127,7 +127,7 @@ export default class Header extends React.Component {
 		const logged_out_links = [
 			<NavLink
 				key={"h_login"}
-				to="/login"
+				to="/log_in"
 				name="header_log_in_button"
 				interaction="click"
 				className="default_header_link"
@@ -137,7 +137,7 @@ export default class Header extends React.Component {
 			</NavLink>,
 			<NavLink
 				key={"h_signup"}
-				to="/signup"
+				to="/sign_up"
 				name="header_sign_up_button"
 				interaction="click"
 				className="default_header_link"
@@ -179,8 +179,8 @@ export default class Header extends React.Component {
 						{
 							false: logged_out_links,
 							true: (() => {
-								switch(this.props.access) {
-									case 'guest': return guest_header;
+								switch(localStorage.access) {
+									case false: return guest_header;
 									case 'normal': return normal_header;
 									case 'admin': return admin_header;
 									default: return null;

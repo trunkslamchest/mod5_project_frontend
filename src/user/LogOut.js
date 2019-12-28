@@ -89,25 +89,29 @@ export default class LogOut extends React.Component {
 			</button>
 		]
 
+		const log_out_form = <>
+			<div className="default_container_header">
+				<h3>Are you sure you want to log out?</h3>
+			</div>
+			<div className="default_centered_buttons_container">
+				{
+					{
+						true: redirect_to_dash,
+						false: (() => {
+							switch(this.state.logOutSuccess) {
+								case true: return redirect_to_index;
+								case false: return confirmation_buttons;
+								default: return null;
+							}
+						})()
+					}[this.state.cancel]
+				}
+			</div>
+		</>
+
 		return(
 			<div className="default_wrapper">
-				<div className="default_container_header">
-					<h3>Are you sure you want to log out?</h3>
-				</div>
-				<div className="default_centered_buttons_container">
-					{
-						{
-							true: redirect_to_dash,
-							false: (() => {
-								switch(this.state.logOutSuccess) {
-									case true: return redirect_to_index;
-									case false: return confirmation_buttons;
-									default: return null;
-								}
-							})()
-						}[this.state.cancel]
-					}
-				</div>
+				{localStorage.length === 0 ? redirect_to_index : log_out_form }
 			</div>
 		)
 	}

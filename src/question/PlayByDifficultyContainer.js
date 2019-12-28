@@ -5,6 +5,16 @@ import QuestionDisplay from './QuestionDisplay'
 import '../css/Questions.css'
 import '../css/PlayByDifficulty.css'
 
+import {
+	//  NavLink,
+	//  Link,
+	 Redirect,
+	// Route,
+	// Switch,
+	//  useRouteMatch,
+	//  useParams
+} from 'react-router-dom'
+
 export default class PlayByDifficultyContainer extends React.Component{
 
 	state={
@@ -19,6 +29,12 @@ export default class PlayByDifficultyContainer extends React.Component{
 	}
 
 	componentDidMount(){
+		const redirect_to_index = <Redirect to="/" />
+
+		if (localStorage.length === 0) {
+			return redirect_to_index
+		}
+
 		this.setState({
 			mounted: true,
 			displaySelect: true,
@@ -143,6 +159,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 
 		const blank = <></>
 
+		const redirect_to_index = <Redirect to="/" />
+
 		const header = <><h3>Select A Difficulty</h3></>
 
 		const display_header = <>{ this.state.displaySelect ? header : blank }</>
@@ -176,6 +194,7 @@ export default class PlayByDifficultyContainer extends React.Component{
 
 		return(
 			<div className="question_wrapper">
+			{ localStorage.length === 0 ? redirect_to_index : "" }
 				{ display_header }
 				<div className="select_buttons_container">
 					{ this.state.displaySelect ? select_difficulty_buttons : blank }

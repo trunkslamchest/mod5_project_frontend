@@ -85,25 +85,29 @@ export default class DeleteProfile extends React.Component {
 			</button>
 		]
 
+		const delete_form = <>
+			<div className="default_header">
+				<h3>Are you sure you want to delete your profile?</h3>
+			</div>
+			<div className="default_centered_buttons_container">
+				{
+					{
+						true: redirect_to_dash,
+						false: (() => {
+							switch(this.state.deleteSuccess) {
+								case true: return redirect_to_index;
+								case false: return confirmation_buttons;
+								default: return null;
+							}
+						})()
+					}[this.state.cancel]
+				}
+			</div>
+		</>
+
 		return(
 			<div className="default_wrapper">
-				<div className="default_header">
-					<h3>Are you sure you want to delete your profile?</h3>
-				</div>
-				<div className="default_centered_buttons_container">
-					{
-						{
-							true: redirect_to_dash,
-							false: (() => {
-								switch(this.state.deleteSuccess) {
-									case true: return redirect_to_index;
-									case false: return confirmation_buttons;
-									default: return null;
-								}
-							})()
-						}[this.state.cancel]
-					}
-				</div>
+				{localStorage.length === 0 ? redirect_to_index : delete_form }
 			</div>
 		)
 	}

@@ -45,7 +45,7 @@ export default class App extends React.Component {
 		user_id: null,
 		user_name: null,
 		email: null,
-		access: "guest",
+		// access: "guest",
 		// ~~~~~~~~~~~~~~~~~~~~
 		first_name: null,
 		last_name: null,
@@ -184,7 +184,7 @@ export default class App extends React.Component {
 			user_id: null,
 			user_name: null,
 			email: null,
-			access: "guest",
+			// access: "guest",
 			// ~~~~~~~~~~~~~~~~~~~~
 			first_name: null,
 			last_name: null,
@@ -275,7 +275,7 @@ export default class App extends React.Component {
 								user_id={ this.state.user_id }
 							/>
 						</Route>
-						<Route exact path='/login'>
+						<Route exact path='/log_in'>
 							<LogIn
 								setToken={ this.setToken }
 								update_traffic_data={ this.update_traffic_data }
@@ -284,7 +284,7 @@ export default class App extends React.Component {
 								updateLogin={ this.updateLogin }
 							/>
 						</Route>
-						<Route exact path='/signup'>
+						<Route exact path='/sign_up'>
 							<SignUp
 								setToken={ this.setToken }
 								update_traffic_data={ this.update_traffic_data }
@@ -331,6 +331,7 @@ export default class App extends React.Component {
 								user_id= {this.state.user_id }
 								user_name={ this.state.user_name }
 								email={ this.state.email }
+								access={ this.state.access }
 								// ~~~~~~~~~~~~~~~~~~~~
 								first_name={ this.state.first_name }
 								last_name={ this.state.last_name }
@@ -354,6 +355,7 @@ export default class App extends React.Component {
 								update_page_data={ this.update_page_data }
 								// ~~~~~~~~~~~~~~~~~~~~
 								user_id={this.state.user_id }
+								access={ this.state.access }
 								log_out={ this.logOut }
 							/>
 						</Route>

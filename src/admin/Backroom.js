@@ -10,6 +10,16 @@ import DBeditMainContainer from './db_edit/DBeditMainContainer'
 
 import STanalyticsIndex from './stats/STanalyticsIndex'
 
+import {
+	//  NavLink,
+	//  Link,
+	 Redirect,
+	// Route,
+	// Switch,
+	//  useRouteMatch,
+	//  useParams
+} from 'react-router-dom'
+
 import '../css/Backroom.css'
 
 export default class Backroom extends React.Component{
@@ -63,19 +73,35 @@ export default class Backroom extends React.Component{
 				</div>
 				<div className="main_window">
 					{
-						(() => {
+						{
+							true: <Redirect to='/' />,
+							false: (() => {
 							switch(this.state.display) {
-							case 'index': return <BackroomIndex />;
-							case 'RTVusers': return <RTVusersContainer />;
-							case 'RTVpages': return <RTVpagesContainer />;
-							case 'DBedit': return <DBeditMainContainer update_db_display={ this.state.db_display } />;
-							case 'BRanalytics': return <STanalyticsIndex />;
-							default: return <BackroomIndex />;
-							}
-						})()
+								case 'index': return <BackroomIndex />;
+								case 'RTVusers': return <RTVusersContainer />;
+								case 'RTVpages': return <RTVpagesContainer />;
+								case 'DBedit': return <DBeditMainContainer update_db_display={ this.state.db_display } />;
+								case 'BRanalytics': return <STanalyticsIndex />;
+								default: return <BackroomIndex />;
+								}
+							})()
+						}[localStorage.length === 0 || localStorage.access !== 'admin']
 					}
 				</div>
 			</div>
 		)
 	}
 }
+
+// {
+// 	(() => {
+// 		switch(this.state.display) {
+// 		case 'index': return <BackroomIndex />;
+// 		case 'RTVusers': return <RTVusersContainer />;
+// 		case 'RTVpages': return <RTVpagesContainer />;
+// 		case 'DBedit': return <DBeditMainContainer update_db_display={ this.state.db_display } />;
+// 		case 'BRanalytics': return <STanalyticsIndex />;
+// 		default: return <BackroomIndex />;
+// 		}
+// 	})()
+// }

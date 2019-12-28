@@ -3,3 +3,9 @@
 
 -bundle install
 -npm install
+
+-rails db:migrate
+
+-rvm use ruby-2.6.5
+
+-rvm --default use 2.6.5

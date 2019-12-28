@@ -7,7 +7,7 @@ import '../css/Questions.css'
 import {
 		//  NavLink,
 		//  Link,
-		//  Redirect,
+		 Redirect,
 		// Route,
 		// Switch,
 		//  useRouteMatch,
@@ -18,6 +18,7 @@ export default class QuickPlayContainer extends React.Component{
 
 
 state={
+	user_id: '',
 	all_questions: [],
 	answered_questions_ids: [],
 	display: 'question',
@@ -26,6 +27,12 @@ state={
 }
 
 componentDidMount(){
+	const redirect_to_index = <Redirect to="/" />
+
+	if (localStorage.length === 0) {
+		return redirect_to_index
+	}
+
 	this.getQuestions()
 	this.onMountAsync()
 }
@@ -104,16 +111,21 @@ onMountAsync = async () => {
 		// console.log(this.state)
 		// const error = <h3>Error. Big Oof.</h3>
 
+		const getRandomQuestion = this.state.display === "question" ? this.getRandomQuestion() : blank
+
+		const redirect_to_index = <Redirect to="/" />
+
 		return(
 			<div className="question_wrapper">
-				{
+				{/* {
 				(() => {
 					switch(this.state.display) {
 						case 'question': return this.getRandomQuestion();
 						default: return blank;
 					}
 				})()
-				}
+				} */}
+				{ localStorage.length === 0 ? redirect_to_index : getRandomQuestion }
 			</div>
 		)
 	}

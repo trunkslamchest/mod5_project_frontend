@@ -61,6 +61,7 @@ export default class Footer extends React.Component {
 			key={"tos_link"}
 			name="footer_tos_button"
 			interaction="click"
+			target="_blank"
 			onClick={this.onClickTOSFunctions }
 		>
 			Terms Of Service
@@ -70,6 +71,7 @@ export default class Footer extends React.Component {
 			key={"privacy_link"}
 			name="footer_privacy_button"
 			interaction="click"
+			target="_blank"
 			onClick={this.onClickPrivacyFunctions }
 		>
 			Privacy
@@ -79,7 +81,7 @@ export default class Footer extends React.Component {
 			key={"disclaimer_link"}
 			name="footer_disclaimer_button"
 			interaction="click"
-			// className="extra_link"
+			target="_blank"
 			onClick={this.onClickDisclaimerFunctions }
 		>
 			Disclaimer

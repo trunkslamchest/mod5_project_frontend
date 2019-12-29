@@ -189,7 +189,7 @@ export default class DashboardStatsCategory extends React.Component{
 
 		const anime_questions =
 			<ul>
-				<li>Anime:</li>
+				<li>Anime</li>
 				<li>
 					{this.state.updatedCategories ? `${ this.state.user_answers_anime }/${ this.state.all_anime_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_anime ? ` (${((this.state.user_answers_anime / this.state.all_anime_questions.length) * 100).toFixed(2)}%)` : zero_percent }
@@ -202,7 +202,7 @@ export default class DashboardStatsCategory extends React.Component{
 
 		const book_questions =
 			<ul>
-				<li>Books:</li>
+				<li>Books</li>
 				<li>
 					{this.state.updatedCategories ? `${ this.state.user_answers_book }/${ this.state.all_book_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_book ? ` (${((this.state.user_answers_book / this.state.all_book_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
@@ -215,7 +215,7 @@ export default class DashboardStatsCategory extends React.Component{
 
 		const computer_questions =
 			<ul>
-				<li>Computers:</li>
+				<li>Computers</li>
 				<li>
 					{this.state.updatedCategories ? `${ this.state.user_answers_computer }/${ this.state.all_computer_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_computer ? ` (${((this.state.user_answers_computer / this.state.all_computer_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
@@ -228,7 +228,7 @@ export default class DashboardStatsCategory extends React.Component{
 
 		const film_questions =
 			<ul>
-				<li>Film:</li>
+				<li>Film</li>
 				<li>
 					{this.state.updatedCategories ? `${ this.state.user_answers_film }/${ this.state.all_film_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_film ? ` (${((this.state.user_answers_film / this.state.all_film_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
@@ -241,7 +241,7 @@ export default class DashboardStatsCategory extends React.Component{
 
 		const general_knowledge_questions =
 			<ul>
-				<li>General Knowledge:</li>
+				<li>General Knowledge</li>
 				<li>
 					{this.state.updatedCategories ? `${ this.state.user_answers_general_knowledge }/${ this.state.all_general_knowledge_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_general_knowledge ? ` (${((this.state.user_answers_general_knowledge / this.state.all_general_knowledge_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
@@ -254,7 +254,7 @@ export default class DashboardStatsCategory extends React.Component{
 
 		const geography_questions =
 			<ul>
-				<li>Geography:</li>
+				<li>Geography</li>
 				<li>
 					{this.state.updatedCategories ? `${ this.state.user_answers_geography }/${ this.state.all_geography_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_geography ? ` (${((this.state.user_answers_geography / this.state.all_geography_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
@@ -267,7 +267,7 @@ export default class DashboardStatsCategory extends React.Component{
 
 		const history_questions =
 			<ul>
-				<li>History:</li>
+				<li>History</li>
 				<li>
 					{this.state.updatedCategories ? `${ this.state.user_answers_history }/${ this.state.all_history_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_history ? ` (${((this.state.user_answers_history / this.state.all_history_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
@@ -280,7 +280,7 @@ export default class DashboardStatsCategory extends React.Component{
 
 		const music_questions =
 			<ul>
-				<li>Music:</li>
+				<li>Music</li>
 				<li>
 					{this.state.updatedCategories ? `${ this.state.user_answers_music }/${ this.state.all_music_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_music ? ` (${((this.state.user_answers_music / this.state.all_music_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
@@ -293,7 +293,7 @@ export default class DashboardStatsCategory extends React.Component{
 
 		const mythology_questions =
 			<ul>
-				<li>Mythology:</li>
+				<li>Mythology</li>
 				<li>
 					{this.state.updatedCategories ? `${ this.state.user_answers_mythology }/${ this.state.all_mythology_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_mythology ? ` (${((this.state.user_answers_mythology / this.state.all_mythology_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
@@ -306,7 +306,7 @@ export default class DashboardStatsCategory extends React.Component{
 
 		const nature_questions =
 			<ul>
-				<li>Nature:</li>
+				<li>Nature</li>
 				<li>
 					{this.state.updatedCategories ? `${ this.state.user_answers_nature }/${ this.state.all_nature_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_nature ? ` (${((this.state.user_answers_nature / this.state.all_nature_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
@@ -319,7 +319,7 @@ export default class DashboardStatsCategory extends React.Component{
 
 		const politics_questions =
 			<ul>
-				<li>Politics:</li>
+				<li>Politics</li>
 				<li>
 					{this.state.updatedCategories ? `${ this.state.user_answers_politics }/${ this.state.all_politics_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_politics ? ` (${((this.state.user_answers_politics / this.state.all_politics_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
@@ -332,7 +332,7 @@ export default class DashboardStatsCategory extends React.Component{
 
 		const science_questions =
 			<ul>
-				<li>Science:</li>
+				<li>Science</li>
 				<li>
 					{this.state.updatedCategories ? `${ this.state.user_answers_science }/${ this.state.all_science_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_science ? ` (${((this.state.user_answers_science / this.state.all_science_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
@@ -345,7 +345,7 @@ export default class DashboardStatsCategory extends React.Component{
 
 		const sports_questions =
 			<ul>
-				<li>Sports:</li>
+				<li>Sports</li>
 				<li>
 					{this.state.updatedCategories ? `${ this.state.user_answers_sports }/${ this.state.all_sports_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_sports ? ` (${((this.state.user_answers_sports / this.state.all_sports_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
@@ -358,7 +358,7 @@ export default class DashboardStatsCategory extends React.Component{
 
 		const technology_questions =
 			<ul>
-				<li>Technology:</li>
+				<li>Technology</li>
 				<li>
 					{this.state.updatedCategories ? `${ this.state.user_answers_technology }/${ this.state.all_technology_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_technology ? ` (${((this.state.user_answers_technology / this.state.all_technology_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
@@ -371,7 +371,7 @@ export default class DashboardStatsCategory extends React.Component{
 
 		const television_questions =
 			<ul>
-				<li>Television:</li>
+				<li>Television</li>
 				<li>
 					{this.state.updatedCategories? `${ this.state.user_answers_television }/${ this.state.all_television_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_television ? ` (${((this.state.user_answers_television / this.state.all_television_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
@@ -384,7 +384,7 @@ export default class DashboardStatsCategory extends React.Component{
 
 		const theatre_questions =
 			<ul>
-				<li>Theatre:</li>
+				<li>Theatre</li>
 				<li>
 					{this.state.updatedCategories ? `${ this.state.user_answers_theatre }/${ this.state.all_theatre_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_theatre ? ` (${((this.state.user_answers_theatre / this.state.all_theatre_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
@@ -397,7 +397,7 @@ export default class DashboardStatsCategory extends React.Component{
 
 		const vehicles_questions =
 			<ul>
-				<li>Vehicles:</li>
+				<li>Vehicles</li>
 				<li>
 					{this.state.updatedCategories ? `${ this.state.user_answers_vehicles }/${ this.state.all_vehicles_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_vehicles ? ` (${((this.state.user_answers_vehicles / this.state.all_vehicles_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
@@ -410,7 +410,7 @@ export default class DashboardStatsCategory extends React.Component{
 
 		const video_games_questions =
 			<ul>
-				<li>Video Games:</li>
+				<li>Video Games</li>
 				<li>
 					{this.state.updatedCategories ? `${ this.state.user_answers_video_games }/${ this.state.all_video_games_questions.length } answered` : zero_percent_answered }
 					{this.state.user_answers_video_games ? ` (${((this.state.user_answers_video_games / this.state.all_video_games_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
@@ -422,26 +422,31 @@ export default class DashboardStatsCategory extends React.Component{
 			</ul>
 
 		return(
-			<div className="dashboard_stats_category">
-				{ anime_questions }
-				{ book_questions }
-				{ computer_questions }
-				{ film_questions }
-				{ general_knowledge_questions }
-				{ geography_questions }
-				{ history_questions }
-				{ music_questions }
-				{ mythology_questions }
-				{ nature_questions }
-				{ politics_questions }
-				{ science_questions }
-				{ sports_questions }
-				{ technology_questions }
-				{ television_questions }
-				{ theatre_questions }
-				{ vehicles_questions }
-				{ video_games_questions }
-			</div>
+			<>
+				<div className="stats_header">
+					<h3> Categories </h3>
+				</div>
+				<div className="stats_category">
+					{ anime_questions }
+					{ book_questions }
+					{ computer_questions }
+					{ film_questions }
+					{ general_knowledge_questions }
+					{ geography_questions }
+					{ history_questions }
+					{ music_questions }
+					{ mythology_questions }
+					{ nature_questions }
+					{ politics_questions }
+					{ science_questions }
+					{ sports_questions }
+					{ technology_questions }
+					{ television_questions }
+					{ theatre_questions }
+					{ vehicles_questions }
+					{ video_games_questions }
+				</div>
+			</>
 		)
 	}
 }

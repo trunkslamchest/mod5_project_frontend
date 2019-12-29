@@ -168,8 +168,6 @@ export default class SignUp extends React.Component {
 
 	render(){
 
-		console.log(this.state.TOSagreement)
-
 		return (
 			<div className="default_wrapper">
 				<div className="default_container_header">
@@ -437,7 +435,7 @@ export default class SignUp extends React.Component {
 											checked={this.state.TOSagreement}
 											onChange={ this.onChecked }
 										/>
-										I acknowledge that I have read and agree to the <Link to="/terms_of_service"> Terms and Conditions </Link> and <Link to="/privacy"> Privacy Policy </Link> supplied by SmartApp™
+										I acknowledge that I have read and agree to the <Link to="/terms_of_service" target="_blank"> Terms and Conditions </Link> and <Link to="/privacy" target="_blank"> Privacy Policy </Link> statelments supplied by SmartApp™
 								</div>
 								<hr />
 								<div className="default_centered_buttons_container">

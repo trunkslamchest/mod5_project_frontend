@@ -175,7 +175,7 @@ export default class LogIn extends React.Component {
 						default: return null;
 					}
 				})(),
-				false: <Redirect to='/dashboard' />
+				false: <Redirect to='/' />
 			}[!(this.state.loggedIn)]
 		}
 	</>

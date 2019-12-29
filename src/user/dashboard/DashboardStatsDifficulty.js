@@ -102,7 +102,7 @@ export default class DashboardStatsDifficulty extends React.Component{
 
 		const easy_questions =
 			<ul>
-				<li>Easy Questions:</li>
+				<li>Easy</li>
 				<li>
 					{this.state.updatedDifficulties ? `${ this.state.user_answers_easy }/${ this.state.all_easy_questions.length } answered` : no_questions_answered }
 					{this.state.updatedDifficulties && this.state.user_answers_easy / this.state.all_easy_questions.length ? ` (${((this.state.user_answers_easy / this.state.all_easy_questions.length) * 100).toFixed(2)}%)` : zero_percent }
@@ -115,7 +115,7 @@ export default class DashboardStatsDifficulty extends React.Component{
 
 		const medium_questions =
 			<ul>
-				<li>Medium Questions:</li>
+				<li>Medium</li>
 				<li>
 					{this.state.updatedDifficulties ? `${ this.state.user_answers_medium }/${ this.state.all_medium_questions.length } answered` : no_questions_answered }
 					{this.state.updatedDifficulties && this.state.user_answers_medium / this.state.all_medium_questions.length ? ` (${((this.state.user_answers_medium / this.state.all_medium_questions.length) * 100).toFixed(2)}%)` : zero_percent }
@@ -128,7 +128,7 @@ export default class DashboardStatsDifficulty extends React.Component{
 
 		const hard_questions =
 			<ul>
-				<li>Hard Questions:</li>
+				<li>Hard</li>
 				<li>
 					{this.state.updatedDifficulties ? `${ this.state.user_answers_hard }/${ this.state.all_hard_questions.length } answered` : no_questions_answered }
 					{this.state.updatedDifficulties && this.state.user_answers_hard / this.state.all_hard_questions.length ? ` (${((this.state.user_answers_hard / this.state.all_hard_questions.length) * 100).toFixed(2)}%)` : zero_percent }
@@ -140,11 +140,16 @@ export default class DashboardStatsDifficulty extends React.Component{
 			</ul>
 
 		return(
-			<div className="dashboard_stats_difficulty">
+			<>
+			<div className="stats_header">
+				<h3> Difficulty </h3>
+			</div>
+			<div className="stats_difficulty">
 				{ easy_questions }
 				{ medium_questions }
 				{ hard_questions }
 			</div>
+			</>
 		)
 	}
 }

@@ -95,7 +95,7 @@ export default class Home extends React.Component {
 				className="log_in_button"
 				// onClick={this.onClickLogInFunctions }
 			>
-				Log In To An Existing Account
+				Log In
 			</NavLink>
 		]
 
@@ -108,7 +108,7 @@ export default class Home extends React.Component {
 				className="sign_up_button"
 				// onClick={this.onClickLogInFunctions }
 			>
-				Create A New Account
+				Sign Up
 			</NavLink>
 		]
 

@@ -1,32 +1,38 @@
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-|-terms of service agreement for sign up
+|-dashboard stats rating
 
-|-update element and page trackers
+|-facelift styling
+|	-stats
+|	-answers
+|	-votes
+|	-comments
+|	-question container
+|	-question display
 
-~
+|-responsive layout
 
 |-add more questions
 
-|-facelift styling
-
 |-comments
-|	-add ability to remove comments from dashboard
+|	-add ability to remove/edit comments from dashboard
 
-|-votes
-	-add ability to change vote from dashboard
+|-answers/votes/comments
+| 	-add filters/search bar
+
+|-update page trackers
+|-update element trackers
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-
-|-answers/votes
-| 	-add filters/search bar
 
 |-refactor dashboard tabs
 
 |-leaderboards/site wide stats
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-remove unsafe life cycle methods on dbedit questions container and dbedit users container
 
 |-sort by column for DBe
 

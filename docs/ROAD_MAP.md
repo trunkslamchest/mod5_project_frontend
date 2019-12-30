@@ -1,10 +1,8 @@
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-|-dashboard stats rating
-
 |-facelift styling
-|	-stats
+|	-info
 |	-answers
 |	-votes
 |	-comments
@@ -15,16 +13,16 @@
 
 |-add more questions
 
+|-update page trackers
+|-update element trackers
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
 |-comments
 |	-add ability to remove/edit comments from dashboard
 
 |-answers/votes/comments
 | 	-add filters/search bar
-
-|-update page trackers
-|-update element trackers
-
-~~~~~~~~~~~~~~~~~~~~~~~~~
 
 |-refactor dashboard tabs
 

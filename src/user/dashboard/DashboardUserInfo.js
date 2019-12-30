@@ -7,7 +7,7 @@ import {
 export default class DashboardUserInfo extends React.Component{
 
 	state={
-		
+
 	}
 
 	onClickEditProfileFunctions = (event) => {
@@ -101,7 +101,6 @@ export default class DashboardUserInfo extends React.Component{
 		return(
 			<>
 				<ul>
-					<li>User ID: {this.props.user_id }</li>
 					<li>User Name: {this.props.user_name }</li>
 					<li>Email Address: {this.props.email }</li>
 					<br />

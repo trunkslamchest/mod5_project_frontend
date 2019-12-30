@@ -4,6 +4,7 @@
 }
 
 .log_in_form input[type="password" i], .log_in_form input[type="text" i] {
+	width: 100%;
 	background: #FFF;
 	border: 0px;
 	padding: 2.5px;

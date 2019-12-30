@@ -3,36 +3,43 @@ import React from 'react'
 import DashboardStatsDifficulty from './DashboardStatsDifficulty'
 import DashboardStatsCategory from './DashboardStatsCategory'
 
-
-import {
-        //  Link
-        } from 'react-router-dom'
+// import {
+//         //  Link
+//         } from 'react-router-dom'
 
 export default class DashboardStats extends React.Component{
 
 	state = {
 		user: {},
-		user_questions: [],
+		// user_questions: [],
 		user_answers: [],
 		all_questions: [],
-		mounted: null
+		average_time: 0,
+		mounted: false,
+		updated_all_questions: false,
+		updated_user_answers: false,
+		updated_average_time: false,
+		updated_rating:false
 	}
 
 	componentDidMount(){
-		// this.getUser()
-		this.getAllQuestions()
-		// this.setState({
-		// 	mounted: true
-		// })
-		this.onMountAsync()
+		this.setState({
+			mounted: true
+		})
 	}
 
-	onMountAsync = async () => {
-		try {
-			await this.props.user_id;
-			this.getUser(this.props.user_id);
-		} catch(errors) {
-			console.log(errors);
+	componentDidUpdate(){
+		if(this.state.mounted && !this.state.updated_all_questions){
+			this.getAllQuestions()
+		}
+		if(this.state.mounted && !this.state.updated_user_answers){
+			this.getUser(this.props.user_id)
+		}
+		if(this.state.updated_user_answers && !this.state.updated_average_time){
+			this.getAverageTime()
+		}
+		if(this.state.updated_all_questions && !this.state.updated_rating){
+			this.getRating()
 		}
 	}
 
@@ -42,6 +49,7 @@ export default class DashboardStats extends React.Component{
 		.then(res_obj =>
 			this.setState({
 				all_questions: res_obj.data.map(question_obj => question_obj.attributes.question),
+				updated_all_questions: true
 			})
 		)
 	}
@@ -52,33 +60,13 @@ export default class DashboardStats extends React.Component{
 		.then(res_obj =>
 			this.setState({
 				user: res_obj.data.attributes,
-				user_answers: [...new Set(res_obj.data.attributes.answers.map(question_obj => question_obj))].sort()
+				user_answers: [...new Set(res_obj.data.attributes.answers.map(question_obj => question_obj))].sort(),
+				updated_user_answers: true
 			})
 		)
 	}
 
-	totalQuestionsAnswered = () => {
-		return this.state.user_answers.length
-	}
-
-	totalQuestionsAnsweredPercent = () => {
-		return ((this.state.user_answers.length / this.state.all_questions.length) * 100).toFixed(2)
-	}
-
-	totalQuestionsCorrect = () => {
-		return this.state.user_answers.filter(answer => answer.user_result === "correct").length
-	}
-
-	totalQuestionsCorrectPercent = () => {
-		return ((this.state.user_answers.filter(answer => answer.user_result === "correct").length / this.state.user_answers.length) * 100).toFixed(2)
-	}
-
-	totalQuestionsWithNoAnswers = () => {
-		let questionsWithNoAnswer = this.state.user_answers.filter(answer => answer.user_time === "0.0")
-		return questionsWithNoAnswer.length
-	}
-
-	averageTimeToAnswer = () => {
+	getAverageTime = () => {
 		let sum = 0
 		let questionTimes = this.state.user_answers.map(answer => parseFloat(answer.user_time))
 
@@ -86,30 +74,70 @@ export default class DashboardStats extends React.Component{
 			sum += (10 - time)
 		})
 
-		let averageTime = (sum / this.state.user_answers.length).toFixed(2)
+		this.setState({
+			average_time: (sum / this.state.user_answers.length).toFixed(2),
+			updated_average_time: true
+		})
+	}
 
-		return averageTime
+	getRating = () => {
+		let totalQuestionsAnsweredPercent = (this.state.user_answers.length / this.state.all_questions.length)
+		let totalQuestionsCorrectPercent = (this.state.user_answers.filter(answer => answer.user_result === "correct").length / this.state.user_answers.length)
+		let totalQuestionsWithNoAnswers = this.state.user_answers.filter(answer => answer.user_time === "0.0").length
+		let time = this.state.average_time
+
+		let question_factor = (totalQuestionsCorrectPercent + totalQuestionsAnsweredPercent) / 2.0
+
+		let no_answers_factor = totalQuestionsWithNoAnswers === 0 ? 0 : totalQuestionsWithNoAnswers * 0.25
+
+		let time_factor = (10 - time) * question_factor
+
+		let final_factor = totalQuestionsWithNoAnswers === 0 ? time_factor : time_factor - no_answers_factor
+
+		let final_rating = final_factor.toFixed(2)
+
+		this.setState({
+			rating: final_rating,
+			updated_rating: true
+		})
 	}
 
 	render(){
 
-		const average_time = <>Average Time: { this.averageTimeToAnswer() } seconds</>
+		const totalQuestions = Object.keys(this.state.all_questions).length
 
-		const correct_answers = <>{ this.totalQuestionsCorrect() }/{Object.keys(this.state.user_answers).length} correct ({this.totalQuestionsCorrectPercent()}%)</>
+		const totalQuestionsAnswered = this.state.user_answers.length
+
+		const totalQuestionsAnsweredPercent = ((this.state.user_answers.length / this.state.all_questions.length) * 100).toFixed(2)
+
+		const totalQuestionsCorrect = this.state.user_answers.filter(answer => answer.user_result === "correct").length
+
+		const totalQuestionsCorrectPercent = ((this.state.user_answers.filter(answer => answer.user_result === "correct").length / this.state.user_answers.length) * 100).toFixed(2)
+
+		const correct_answers = <>{ totalQuestionsCorrect }/{ totalQuestionsAnswered } correct ({totalQuestionsCorrectPercent}%)</>
+
+		const totalQuestionsWithNoAnswers = this.state.user_answers.filter(answer => answer.user_time === "0.0").length
+
+		const stats_rating_countdown = 
+		<>
+		<div className="stats_total_rating_coutdown">
+			<p>Answer {10 - totalQuestionsAnswered} more questions to receive a rating!</p>
+		</div>
+		</>
+		const rating = <><h1>{ this.state.rating }</h1></>
 
 		const total_questions_answered =
 		<div className="stats_total">
 			<ul>
-				{/* <li>All Questions</li> */}
-				<li>{ this.totalQuestionsAnswered() }/{Object.keys(this.state.all_questions).length} answered ({this.totalQuestionsAnsweredPercent()}%)</li>
-				<li>{ this.state.user_answers.length > 0 ? correct_answers : "0/0 correct (0.00%)" }</li>
-			<br />
-				<li>{ this.state.user_answers.length > 0 ? average_time : "Average Time: 0.00 seconds" }</li>
-				<li>Outta Times: { this.totalQuestionsWithNoAnswers() }</li>
+				<li>{ totalQuestionsAnswered }/{ totalQuestions } answered ({totalQuestionsAnsweredPercent}%)</li>
+				<li>{ totalQuestionsAnswered > 0 ? correct_answers : "0/0 correct (0.00%)" }</li>
+			 <br />
+				<li>{ this.state.user_answers.length > 0 ? `Average Time: ${this.state.average_time} seconds` : "Average Time: 0.00 seconds" }</li>
+				<li>Outta Times: { totalQuestionsWithNoAnswers }</li>
 			</ul>
 			<div className="stats_total_rating">
 				<h2>SmartApp™ Rating</h2>
-				<h1>10.0</h1>
+				{ totalQuestionsAnswered < 10 ? stats_rating_countdown : rating }
 			</div>
 		</div>
 

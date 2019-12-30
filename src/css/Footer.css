@@ -2,6 +2,7 @@
 	background-image: radial-gradient(rgba(0, 0, 102, 1),  rgb(40, 44, 52, 1) );
 	/* position: absolute; */
 	font-size: 15pt;
+	height: 100px;
 	bottom: 0px;
 	padding: 12px;
 	display: flex;

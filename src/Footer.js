@@ -98,11 +98,11 @@ export default class Footer extends React.Component {
 	]
 
 	const footer_logos = [
-		<img src={ flatiron_logo } className="logo_rectangle" alt="The Flatiron School"/>,
-		<img src={ open_trivia_logo } className="logo_rectangle" alt="Open Trivita Database"/>,
-		<img src={ postgres_logo } className="logo_rectangle" alt="PostgreSQL"/>,
-		<img src={ rails_logo } className="logo_rectangle" alt="Ruby On Rails"/>,
-		<img src={ react_logo } className="logo_rectangle" alt="React"/>,
+		<img key={"flatiron_logo"} src={ flatiron_logo } className="logo_rectangle" alt="The Flatiron School"/>,
+		<img key={"open_trivia_logo"} src={ open_trivia_logo } className="logo_rectangle" alt="Open Trivita Database"/>,
+		<img key={"postgres_logo"} src={ postgres_logo } className="logo_rectangle" alt="PostgreSQL"/>,
+		<img key={"rails_logo"} src={ rails_logo } className="logo_rectangle" alt="Ruby On Rails"/>,
+		<img key={"react_logo"} src={ react_logo } className="logo_rectangle" alt="React"/>,
 
 	]
 

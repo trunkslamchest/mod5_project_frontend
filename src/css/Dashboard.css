@@ -39,10 +39,11 @@
 }
 
 .dashboard_header h3 {
-    font: 100 20pt "Lato Light";
+    font: 100 20pt "Lato";
 }
 
 .dashboard_wrapper ul {
+	background-color: #FFF;
 	width: 100%;
 	list-style: none;
 	padding: 10px 0px 10px;
@@ -156,6 +157,7 @@
 }
 
 .stats_total {
+	background-color: #FFF;
 	width: 100%;
 	display: flex;
 	flex-direction: row;
@@ -233,6 +235,7 @@
 }
 
 .stats_difficulty ul {
+	background-color: #FFF;
 	text-align: center;
     margin-block-start: 0px;
     margin-block-end: 0px;
@@ -258,6 +261,7 @@
 }
 
 .stats_category ul {
+	background-color: #FFF;
 	max-width: 25%;
 	text-align: center;
     margin-block-start: 0px;

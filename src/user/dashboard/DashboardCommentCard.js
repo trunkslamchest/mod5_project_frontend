@@ -11,13 +11,10 @@ export default class DashboardCommentCard extends React.Component{
 		console.log(this.props)
 
 		return(
-			<>
-				<br />
+			<ul>
 				<li>Question: { this.props.question.question_desc }</li>
 				<li>Your Comment: { this.props.comment.comment_text }</li>
-				<br />
-				<hr />
-			</>
+			</ul>
 		)
 	}
 }

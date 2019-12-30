@@ -2,12 +2,15 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 |-facelift styling
-|	-info
 |	-answers
 |	-votes
 |	-comments
 |	-question container
 |	-question display
+
+|-make footer logos links
+
+|-fix footer positioning
 
 |-responsive layout
 

@@ -9,7 +9,7 @@ import {
 	//  useParams
 } from 'react-router-dom'
 
-import '../css/SignUp.css'
+import '../css/EditProfile.css'
 
 export default class SignUp extends React.Component {
 
@@ -168,39 +168,33 @@ export default class SignUp extends React.Component {
 
 	render(){
 
+		const errors = (!!this.state.errors) ?
+		( <div className="default_error_report" key={"edit_profile_error_report"}>
+				{ this.state.errors.map( error =>
+					<div className="default_error_item">
+						{ error }
+					</div>
+				)}
+		  </div> )
+	:
+		( "" )
+
 		return (
-			<div className="default_wrapper">
-				<div className="default_container_header">
+			<div className="default_wrapper" key={"sign_up_form"}>
+				<div className="alt_header">
 					<h3>Create New Account</h3>
 				</div>
-				{
-			        (!!this.state.errors) ? (
-		  				<div className="default_error_report">
-		  					{
-				              this.state.errors.map( error =>
-				                <div className="default_error_item">
-				                  { error }
-				                </div>
-				              )
-		            		}
-		  				</div>
-			        )
-			        :
-			        (
-			          ""
-			        )
-				}
+				{ errors }
 				{
 					!(this.state.loggedIn) ?
 						<>
-
 							<form
 								name="sign_up_form"
 								interaction="submit"
-								className="default_edit_form"
+								className="edit_form"
 								onSubmit={ this.onSubmitSignUpFunctions }
 							>
-								<div className="default_div">
+								<div className="edit_div">
 									<label htmlFor="sign_up_user_name">Username</label>
 									<br />
 									<input
@@ -212,8 +206,7 @@ export default class SignUp extends React.Component {
 										value={ this.state.sign_up_user_name }
 									/>
 								</div>
-								<br />
-								<div className="default_div">
+								<div className="edit_div">
 									<label htmlFor="sign_up_password">Password</label>
 									<br />
 									<input
@@ -225,8 +218,7 @@ export default class SignUp extends React.Component {
 										value={ this.state.sign_up_password }
 									/>
 								</div>
-								<br />
-								<div className="default_div">
+								<div className="edit_div">
 									<label htmlFor="sign_up_email">Email</label>
 									<br />
 									<input
@@ -238,8 +230,7 @@ export default class SignUp extends React.Component {
 										value={ this.state.sign_up_email }
 									/>
 								</div>
-								<br />
-								<div className="default_div">
+								<div className="edit_div">
 									<label htmlFor="sign_up_name">Name</label>
 									<br />
 									<input
@@ -260,8 +251,7 @@ export default class SignUp extends React.Component {
 										value={ this.state.sign_up_last_name }
 									/>
 								</div>
-								<br />
-								<div className="default_div">
+								<div className="edit_div">
 									<label htmlFor="sign_up_gender">Gender</label>
 									<br />
 									<select
@@ -276,8 +266,7 @@ export default class SignUp extends React.Component {
 										<option value="Female">Female</option>
 									</select>
 								</div>
-								<br />
-								<div className="default_div">
+								<div className="edit_div">
 									<label htmlFor="sign_up_birth">Birth Day</label>
 									<br />
 									<select
@@ -323,8 +312,7 @@ export default class SignUp extends React.Component {
 										value={ this.state.sign_up_birth_year }
 								/>
 								</div>
-								<br />
-								<div className="default_div">
+								<div className="edit_div">
 									<label htmlFor="sign_up_address">Address</label>
 									<br />
 									<input
@@ -428,17 +416,18 @@ export default class SignUp extends React.Component {
 								</div>
 								<hr />
 								<div className="tos_agree_div">
+			
 									<input id="TOS_agreement"
-											type="checkbox"
-											name="TOSagreement"
-											className="TOS_check"
-											checked={this.state.TOSagreement}
-											onChange={ this.onChecked }
-										/>
-										I acknowledge that I have read and agree to the <Link to="/terms_of_service" target="_blank"> Terms and Conditions </Link> and <Link to="/privacy" target="_blank"> Privacy Policy </Link> statelments supplied by SmartApp™
+										type="checkbox"
+										name="TOSagreement"
+										className="TOS_check"
+										checked={this.state.TOSagreement}
+										onChange={ this.onChecked }
+									/>
+										I acknowledge that I have read and agree to the <Link to="/terms_of_service" target="_blank">Terms and Conditions</Link> and <Link to="/privacy" target="_blank">Privacy Policy</Link> statelments supplied by SmartApp™
 								</div>
 								<hr />
-								<div className="default_centered_buttons_container">
+								<div className="edit_buttons_container">
 									<input
 										className="alt_button"
 										type="submit"

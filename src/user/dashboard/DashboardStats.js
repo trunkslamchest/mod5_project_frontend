@@ -118,7 +118,7 @@ export default class DashboardStats extends React.Component{
 
 		const totalQuestionsWithNoAnswers = this.state.user_answers.filter(answer => answer.user_time === "0.0").length
 
-		const stats_rating_countdown = 
+		const stats_rating_countdown =
 		<>
 		<div className="stats_total_rating_coutdown">
 			<p>Answer {10 - totalQuestionsAnswered} more questions to receive a rating!</p>
@@ -136,7 +136,7 @@ export default class DashboardStats extends React.Component{
 				<li>Outta Times: { totalQuestionsWithNoAnswers }</li>
 			</ul>
 			<div className="stats_total_rating">
-				<h2>SmartApp™ Rating</h2>
+				<h2><span>SmartApp</span>™ Rating</h2>
 				{ totalQuestionsAnswered < 10 ? stats_rating_countdown : rating }
 			</div>
 		</div>
@@ -156,7 +156,6 @@ export default class DashboardStats extends React.Component{
 		return(
 			<>
 				{ total_questions_answered }
-			<hr />
 				{ questionsAnsweredByDifficulty }
 				{ questionsAnsweredByCategory }
 			</>

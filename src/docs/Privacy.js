@@ -1,7 +1,7 @@
 import React from 'react'
 // import { Redirect } from 'react-router'
 
-import '../css/SignUp.css'
+import '../css/Docs.css'
 
 export default class Privacy extends React.Component {
 
@@ -20,8 +20,6 @@ export default class Privacy extends React.Component {
 				We are committed to protecting your personal information and your right to privacy. 
 				If you have any questions or concerns about our policy, 
 				or our practices with regards to your personal information, please contact us at (555) 123-4567.
-				</p>
-				<p>
 				When you visit our and use our services, you trust us with your personal information. 
 				We take your privacy very seriously. 
 				In this privacy policy, we seek to explain to you in the clearest way possible what information we collect, 
@@ -40,18 +38,10 @@ export default class Privacy extends React.Component {
 				<h2>WHAT INFORMATION DO WE COLLECT?</h2>
 				<h3>Personal information you disclose to us </h3>
 				<p>
-				In Short: We collect personal information that you provide to us such as name, address, contact information, passwords and security data, and payment information.
-				</p>
-				<p>
 				We collect personal information that you voluntarily provide to us when registering at the expressing an interest in obtaining information about us 
 				or our products and services, when participating in activities on the (such as posting messages in our online forums or entering competitions, contests or giveaways) 
 				or otherwise contacting us.
-				</p>
-				<p>
 				The personal information that we collect depends on the context of your interactions with us, the choices you make and the products and features you use. 
-				</p>
-				<p>
-				The personal information we collect can include the following:
 				</p>
 				<h3>Credentials</h3>
 				<p>
@@ -61,15 +51,10 @@ export default class Privacy extends React.Component {
 				<p>
 				We provide you with the option to register using social media account details. 
 				If you choose to register in this way, we will collect the Information described in the section called "HOW DO WE HANDLE YOUR SOCIAL LOGINS" below.
-				</p>
-				<p>
 				All personal information that you provide to us must be true, complete and accurate, and you must notify us of any changes to such personal information. 
 				</p>
 
 				<h3>Information automatically collected</h3>
-				<p>
-				In Short: Some information – such as IP address and/or browser and device characteristics – is collected automatically when you visit SmartApp™.
-				</p>
 				<p>
 				We automatically collect certain information when you visit, use or navigate SmartApp™. 
 				This information does not reveal your specific identity (like your name or contact information) 
@@ -83,9 +68,6 @@ export default class Privacy extends React.Component {
 				</p>
 				
 				<h2>WILL YOUR INFORMATION BE SHARED WITH ANYONE?</h2>
-				<p>
-				In Short:  We only share information with your consent, to comply with laws, to provide you with services, to protect your rights, or to fulfill business obligations.
-				</p>
 				<p>
 				We may process or share data based on the following legal basis:
 				</p>
@@ -115,9 +97,6 @@ export default class Privacy extends React.Component {
 				We may disclose your information where we believe it is necessary to investigate, prevent, 
 				or take action regarding potential violations of our policies, suspected fraud, situations involving potential threats to the safety of any person 
 				and illegal activities, or as evidence in litigation in which we are involved.
-				</p>
-				<p>
-				More specifically, we may need to process your data or share your personal information in the following situations:
 				</p>
 
 				<h3>Vendors, Consultants and Other Third-Party Service Providers</h3>
@@ -164,17 +143,11 @@ export default class Privacy extends React.Component {
 				
 				<h2>DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?</h2>
 				<p>
-				In Short:  We may use cookies and other tracking technologies to collect and store your information.  
-				</p>
-				<p>
 				We may use cookies and similar tracking technologies (like web beacons and pixels) to access or store information. 
 				Specific information about how we use such technologies and how you can refuse certain cookies is set out in our Cookie Policy.      
 				</p>
 				
 				<h2>HOW DO WE HANDLE YOUR SOCIAL LOGINS?</h2>
-				<p>
-				In Short:  If you choose to register or log in to our services using a social media account, we may have access to certain information about you.  
-				</p>
 				<p>
 				Our offer you the ability to register and login using your third party social media account details (like your Facebook or Twitter logins). 
 				Where you choose to do this, we will receive certain profile information about you from your social media provider. 
@@ -191,24 +164,18 @@ export default class Privacy extends React.Component {
 				
 				<h2>IS YOUR INFORMATION TRANSFERRED INTERNATIONALLY?</h2>
 				<p>
-				In Short:  We may transfer, store, and process your information in countries other than your own.  
-				</p>
-				<p>
 				Our servers are located on Mars. If you are accessing our from outside, 
 				please be aware that your information may be transferred to, stored, and processed by us in our facilities 
 				and by those third parties with whom we may share your personal information (see "WILL YOUR INFORMATION BE SHARED WITH ANYONE?" above), 
-				in and on other planets.
+				on other planets.
 				</p>
 				<p>
-				If you are a resident in the European Economic Area, then these countries may not have data protection or 
-				other laws as comprehensive as those in your country. 
+				If you are a resident in the European Economic Area, then these countries and/or planets may not have data protection or 
+				other laws as comprehensive as those in your country and/or planet. 
 				We will however take all necessary measures to protect your personal information in accordance with this privacy policy and applicable law.
 				</p>
 				
 				<h2>WHAT IS OUR STANCE ON THIRD-PARTY WEBSITES?</h2>
-				<p>
-				In Short:  We are not responsible for the safety of any information that you share with third-party providers who advertise, but are not affiliated with, our websites. 
-				</p>
 				<p>
 				SmartApp™ may contain advertisements from third parties that are not affiliated with us 
 				and which may link to other websites, online services or mobile applications. 
@@ -220,9 +187,6 @@ export default class Privacy extends React.Component {
 				</p>
 				
 				<h2>HOW LONG DO WE KEEP YOUR INFORMATION?</h2>
-				<p>
-				In Short:  We keep your information for as long as necessary to fulfill the purposes outlined in this privacy policy unless otherwise required by law. 
-				</p>
 				<p>
 				We will only keep your personal information for as long as it is necessary for the purposes set out in this privacy policy, 
 				unless a longer retention period is required or permitted by law (such as tax, accounting or other legal requirements). 
@@ -236,9 +200,6 @@ export default class Privacy extends React.Component {
 				
 				<h2>DO WE COLLECT INFORMATION FROM MINORS?</h2>
 				<p>
-				In Short:  We do not knowingly collect data from or market to children under 18 years of age.  
-				</p>
-				<p>
 				We do not knowingly solicit data from or market to children under 18 years of age. 
 				By using SmartApp™, you represent that you are at least 18 or that you are the parent or 
 				guardian of such a minor and consent to such minor dependent’s use of SmartApp™. 
@@ -248,9 +209,6 @@ export default class Privacy extends React.Component {
 				</p>
 				
 				<h2>WHAT ARE YOUR PRIVACY RIGHTS?</h2>
-				<p>
-				In Short:  You may review, change, or terminate your account at any time.
-				</p>
 				<p>
 				If you are resident in the European Economic Area and you believe we are unlawfully processing your personal information, 
 				you also have the right to complain to your local data protection supervisory authority. 
@@ -286,9 +244,6 @@ export default class Privacy extends React.Component {
 				
 				<h2>DO CALIFORNIA RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?</h2>
 				<p>
-				In Short:  Yes, if you are a resident of California, you are granted specific rights regarding access to your personal information.   
-				</p>
-				<p>
 				California Civil Code Section 1798.83, also known as the “Shine The Light” law, permits our users who are California residents to request 
 				and obtain from us, once a year and free of charge, information about categories of personal information (if any) 
 				we disclosed to third parties for direct marketing purposes and the names and 
@@ -306,9 +261,6 @@ export default class Privacy extends React.Component {
 				</p>
 				
 				<h2>DO WE MAKE UPDATES TO THIS POLICY?</h2>
-				<p>
-				In Short:  Yes, we will update this policy as necessary to stay compliant with relevant laws.  
-				</p>
 				<p>
 				We may update this privacy policy from time to time. The updated version will be indicated by an updated “Revised” date and 
 				the updated version will be effective as soon as it is accessible. 

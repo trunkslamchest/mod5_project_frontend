@@ -1,6 +1,8 @@
 import React from 'react'
 import { Redirect } from 'react-router'
 
+import '../../css/EditProfile.css'
+
 export default class DeleteProfile extends React.Component {
 
 	state = {
@@ -63,6 +65,7 @@ export default class DeleteProfile extends React.Component {
 			hoverCancel: true
 		})
 	}
+
 	offHoverCancel = () => {
 		this.setState({
 			hoverCancel: false
@@ -115,10 +118,9 @@ export default class DeleteProfile extends React.Component {
 		]
 
 		const delete_form = <>
-			<div className="default_container_header">
+			<div className="alt_header">
 				<h3>Are you sure you want to delete your profile?</h3>
-			</div>
-			<div className="default_centered_buttons_container">
+			<div className="delete_buttons_container">
 				{
 					{
 						true: redirect_to_dash,
@@ -131,6 +133,7 @@ export default class DeleteProfile extends React.Component {
 						})()
 					}[this.state.cancel]
 				}
+			</div>
 			</div>
 		</>
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router'
 
-// import './EditProfile.css'
+import '../../css/EditProfile.css'
 
 export default class EditProfile extends React.Component {
 
@@ -173,16 +173,19 @@ export default class EditProfile extends React.Component {
 	:
 		( "" )
 
-		const edit_form = 					!(this.state.updateSuccess) ?
+		const edit_form = !(this.state.updateSuccess) ?
 		<div className="default_wrapper" key={"edit_profile_form"}>
+			<div className="alt_header">
 				<h3>Edit Profile</h3>
+			</div>
+			{ errors }
 				<form
 					name="edit_profile_form"
-					  interaction="submit"
-					className="default_edit_form"
+					interaction="submit"
+					className="edit_form"
 					onSubmit={ this.onSubmitEditProfileFunctions }
 				>
-					<div className="default_div">
+					<div className="edit_div">
 						<label htmlFor="edit_user_name">Username</label>
 						<br />
 						<input id="edit_user_name"
@@ -193,8 +196,7 @@ export default class EditProfile extends React.Component {
 							value={ (this.state.edit_user_name === "") ? (this.props.user_name) : (this.state.edit_user_name) }
 						/>
 					</div>
-					<br />
-					<div className="default_div">
+					<div className="edit_div">
 						<label htmlFor="edit_email">Email</label>
 						<br />
 						<input id="edit_email"
@@ -205,8 +207,7 @@ export default class EditProfile extends React.Component {
 							value={ (this.state.edit_email === "") ? (this.props.email) : (this.state.edit_email) }
 						/>
 					</div>
-					<br />
-					<div className="default_div">
+					<div className="edit_div">
 						<label htmlFor="edit_name">Name</label>
 						<br />
 						<input id="edit_first_name"
@@ -225,8 +226,7 @@ export default class EditProfile extends React.Component {
 							value={ (this.state.edit_last_name === "") ? (this.props.last_name) : (this.state.edit_last_name) }
 						/>
 					</div>
-					<br />
-					<div className="default_div">
+					<div className="edit_div">
 						<label htmlFor="edit_gender">Gender</label>
 						<br />
 						<select id="edit_gender"
@@ -239,8 +239,7 @@ export default class EditProfile extends React.Component {
 							<option value="Non-Binary">Non-Binary</option>
 						</select>
 					</div>
-					<br />
-					<div className="default_div">
+					<div className="edit_div">
 						<label htmlFor="edit_birth">Birth Day</label>
 						<br />
 						<select id="edit_birth_month"
@@ -273,17 +272,16 @@ export default class EditProfile extends React.Component {
 						/>
 						<br />
 						<input id="edit_birth_year"
-							type="text"
-							minLength="4"
-							maxLength="4"
+							type="number"
+							min="1900"
+							max="2001"
 							onChange={ this.onChange }
 							name="edit_birth_year"
 							placeholder={ this.props.birth_year }
 							value={ (this.state.edit_birth_year === "") ? (this.props.birth_year) : (this.state.edit_birth_year) }
 					/>
 					</div>
-					<br />
-					<div className="default_div">
+					<div className="edit_div">
 						<label htmlFor="edit_address">Address</label>
 						<br />
 						<input id="edit_house_number"
@@ -379,8 +377,7 @@ export default class EditProfile extends React.Component {
 							value={ (this.state.edit_zip_code === "") ? (this.props.zip_code) : (this.state.edit_zip_code) }
 						/>
 					</div>
-					<hr />
-					<div className="default_centered_buttons_container">
+					<div className="edit_buttons_container">
 							<input
 								className="alt_button"
 								type="submit"
@@ -416,24 +413,22 @@ export default class EditProfile extends React.Component {
 	:
 		<Redirect to='./dashboard' />
 
-		const edit_page = [
-			errors,
-			edit_form
-		]
+		// const edit_page = [
+		// 	errors,
+		// 	edit_form
+		// ]
 
 		return(
 			<>
-{
-	(() => {
-		switch(localStorage.length === 0) {
-			case true: return <Redirect to='/' />;
-			case false: return edit_page
-			default: return <>blank</>;
-		}
-	})()
-}
-				{/* { errors }
-				{ edit_form } */}
+				{
+					(() => {
+						switch(localStorage.length === 0) {
+							case true: return <Redirect to='/' />;
+							case false: return edit_form;
+							default: return <>blank</>;
+						}
+					})()
+				}
 			</>
 		)
 	}

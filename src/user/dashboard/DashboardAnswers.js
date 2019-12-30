@@ -96,9 +96,9 @@ export default class DashboardAnswers extends React.Component{
 			: ""
 
 		return(
-			<ul>
+			<div className="dashboard_answers">
 				{ distributeCombineQuestionsAnswers }
-			</ul>
+			</div>
 		)
 	}
 }

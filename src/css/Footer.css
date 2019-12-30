@@ -1,6 +1,6 @@
 .footer {
 	background-image: radial-gradient(rgba(0, 0, 102, 1),  rgb(40, 44, 52, 1) );
-	/* position: absolute; */
+	position: fixed;
 	font-size: 15pt;
 	height: 100px;
 	bottom: 0px;

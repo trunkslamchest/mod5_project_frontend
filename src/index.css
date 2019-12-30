@@ -1,4 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto|Lato|Baloo|Oxygen|Russo+One|Abel|Barlow+Semi+Condensed|Pathway+Gothic+One);
+/* @import url(https://fonts.googleapis.com/css?family=Baloo|Oxygen|Russo+One|Abel|Barlow+Semi+Condensed|Pathway+Gothic+One); */
+
+@import url('./css/Fonts.css');
 
 * {
   margin: 0;
@@ -7,11 +9,13 @@ html, body {
   height: 100%;
 }
 
-body {
+html, body {
+  height: 100%;
   margin: 0;
   font-family:  "Lato", "Roboto",
-    "Oxygen", "Tahoma",
+    "Helvetica", "Poppins",
     sans-serif;
+  text-shadow:1px 1px 1px rgba(0,0,0,0.004) !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

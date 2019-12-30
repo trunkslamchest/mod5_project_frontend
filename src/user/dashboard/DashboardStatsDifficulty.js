@@ -87,13 +87,6 @@ export default class DashboardStatsDifficulty extends React.Component{
 
 	render(){
 
-		// {/* { this.state.user_easy_questions }/{ this.state.all_easy_questions } answered */}
-		// {/* ({ ((this.state.user_easy_questions / this.state.all_easy_questions) * 100).toFixed(2) }%) */}
-		// {/* { this.state.user_correct_easy_questions }/{ this.state.user_easy_questions } correct
-		// ({((this.state.user_correct_easy_questions / this.state.user_easy_questions) * 100).toFixed(2)}%) */}
-
-		// console.log(this.state)
-
 		const no_questions_answered = <> No questions answered! </>
 
 		const no_correct_answers = <> No correct answers! </>
@@ -141,7 +134,7 @@ export default class DashboardStatsDifficulty extends React.Component{
 
 		return(
 			<>
-			<div className="stats_header">
+			<div className="alt_header">
 				<h3> Difficulty </h3>
 			</div>
 			<div className="stats_difficulty">

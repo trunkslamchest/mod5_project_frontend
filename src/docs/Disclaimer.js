@@ -1,7 +1,7 @@
 import React from 'react'
 // import { Redirect } from 'react-router'
 
-import '../css/SignUp.css'
+import '../css/Docs.css'
 
 export default class Disclaimer extends React.Component {
 

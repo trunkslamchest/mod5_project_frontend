@@ -1,7 +1,9 @@
 import React from 'react'
 import { Redirect } from 'react-router'
 
-import '../css/LogIn.css'
+// import '../css/LogIn.css'
+import '../css/EditProfile.css'
+
 
 export default class LogIn extends React.Component {
 
@@ -99,73 +101,69 @@ export default class LogIn extends React.Component {
 	}
 
 	render(){
+		
+		const errors = (!!this.state.errors) ?
+			( <div className="default_error_report" key={"edit_profile_error_report"}>
+					{ this.state.errors.map( error =>
+						<div className="default_error_item">
+							{ error }
+						</div>
+					)}
+			  </div> )
+		:
+			( "" )
+		
 	const login_form =
 		<div className="default_wrapper">
-			<div className="default_container_header">
+			<div className="alt_header">
 				<h3>Log In</h3>
 			</div>
-			<form
-				name="log_in_form"
-				interaction="submit"
-				className="log_in_form"
-				onSubmit={ this.onSubmitLoginFunctions }
-			>
-				<div className="login_div">
-					<label htmlFor="log_in_user_name">User Name</label>
-					<br />
-					<input
-						id="log_in_user_name"
-						type="text"
-						name="user_name"
-						onChange={ this.onChange }
-						value={ this.state.user_name }
-					/>
-					<br />
-					<label htmlFor="log_in_password">Password</label>
-					<br />
-					<input
-						id="log_in_password"
-						type="password"
-						name="password"
-						onChange={ this.onChange }
-						value={ this.state.password }
-					/>
-				</div>
-				<br />
-				<div className="log_in_centered_buttons_container">
-					<input
-						className="alt_button"
-						type="submit"
-					/>
-					<input
-						type="reset"
-						name="Log In Form"
-						interaction="Cancel"
-						className="alt_button"
-						onClick={ this.onCancelFunctions }
-						value="Cancel"
-					/>
-				</div>
-			</form>
-		</div>
+			{errors}
+				<form
+					name="log_in_form"
+					interaction="submit"
+					className="edit_form"
+					onSubmit={ this.onSubmitLoginFunctions }
+				>
+					<div className="edit_div">
+						<label htmlFor="log_in_user_name">User Name</label>
+						<br />
+						<input
+							id="log_in_user_name"
+							type="text"
+							name="user_name"
+							onChange={ this.onChange }
+							value={ this.state.user_name }
+						/>
+						<br />
+						<label htmlFor="log_in_password">Password</label>
+						<br />
+						<input
+							id="log_in_password"
+							type="password"
+							name="password"
+							onChange={ this.onChange }
+							value={ this.state.password }
+						/>
+					</div>
+					<div className="edit_buttons_container">
+						<input
+							className="alt_button"
+							type="submit"
+						/>
+						<input
+							type="reset"
+							name="Log In Form"
+							interaction="Cancel"
+							className="alt_button"
+							onClick={ this.onCancelFunctions }
+							value="Cancel"
+						/>
+					</div>
+				</form>
+			</div>
+
 	return <>
-	  {
-	    (!!this.state.errors) ? (
-				<div className="default_error_report">
-					{
-	          this.state.errors.map( error =>
-	            <div className="default_error_item">
-	              { error }
-	            </div>
-	          )
-	        }
-				</div>
-	    )
-	    :
-	    (
-	      ""
-	    )
-	  }
 		{
 			{
 				true: (() => {

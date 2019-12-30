@@ -73,7 +73,6 @@ export default class DashboardUserInfo extends React.Component{
 
 	render(){
 		const age = 2019 - this.props.birth_year
-		const address = `${this.props.house_number} ${this.props.street_name}, ${this.props.city_town} ${this.props.state}, ${this.props.zip_code}`
 
 		const dashboard_edit_buttons = [
 			<Link
@@ -99,27 +98,35 @@ export default class DashboardUserInfo extends React.Component{
 		]
 
 		return(
-			<>
-				<ul>
-					<li>User Name: {this.props.user_name }</li>
-					<li>Email Address: {this.props.email }</li>
-					<br />
-					<li>First Name: { this.props.first_name }</li>
-					<li>Last Name: {this.props.last_name }</li>
-					<li>Gender: {this.props.gender }</li>
-					<br />
-					<li>Age: { age }</li>
-					<li>Birthday: { this.props.birth_month } { this.formatted_birth_day() }</li>
-					<br />
-				 	<li>Address: { address }</li>
-					<br />
-					<li>Join Date: {this.props.join_month } {this.formatted_join_day() }, { this.props.join_year }</li>
-				</ul>
-				<hr />
-				<div className="default_centered_buttons_container">
+			<div className="user_info_wrapper">
+				<div className="alt_header">
+					<h3>{ this.props.user_name }</h3>
+					<h5>{ this.props.email }</h5>
+				</div>
+				<div className="user_info_body">
+					<ul>
+						<li>{ this.props.first_name }</li>
+						<li>{this.props.last_name }</li>
+					</ul>
+					<ul>
+						<li>{this.props.gender }</li>
+						<li>{ age } years old</li>
+						<li>{ this.props.birth_month } { this.formatted_birth_day() }, { this.props.birth_year }</li>
+					</ul>
+					<ul>
+						<li>{ this.props.house_number } { this.props.street_name }</li>
+						<li>{this.props.city_town}, {this.props.state}</li>
+						<li>{ this.props.zip_code }</li>
+					</ul>
+					<ul>
+						<li>Join Date</li>
+						<li>{this.props.join_month } {this.formatted_join_day() }, { this.props.join_year }</li>
+					</ul>
+				<div className="user_info_buttons_container">
 					{ dashboard_edit_buttons }
 				</div>
-			</>
+				</div>
+			</div>
 		)
 	}
 }

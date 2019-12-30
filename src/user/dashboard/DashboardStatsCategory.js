@@ -423,7 +423,7 @@ export default class DashboardStatsCategory extends React.Component{
 
 		return(
 			<>
-				<div className="stats_header">
+				<div className="alt_header">
 					<h3> Categories </h3>
 				</div>
 				<div className="stats_category">

@@ -89,9 +89,9 @@ export default class DashboardVotes extends React.Component{
 			: ""
 
 		return(
-			<ul>
+			<div className="dashboard_votes">
 				{ distributeCombineQuestionsVotes }
-			</ul>
+			</div>
 		)
 	}
 }

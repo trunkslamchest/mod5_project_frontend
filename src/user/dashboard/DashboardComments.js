@@ -89,9 +89,9 @@ export default class DashboardComments extends React.Component{
 			: ""
 
 		return(
-			<ul>
+			<div className="dashboard_comments">
 				{ distributeCombineQuestionsComments }
-			</ul>
+			</div>
 		)
 	}
 }

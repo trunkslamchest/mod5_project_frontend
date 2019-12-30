@@ -74,23 +74,22 @@ export default class DashboardVoteCard extends React.Component{
 
 		const vote_total =
 		<>
-			<ul>
+			<div className="vote_total">
+				<ul>
 				Overall Votes:
 				<li>Up Votes: { this.calculateUpVotes() }</li>
 				<li>No Votes: { this.calculateNoVotes() }</li>
 				<li>Down Votes: { this.calculateDownVotes() }</li>
-			</ul>
+				</ul>
+			</div>
 		</>
 
 		return(
-			<>
+			<ul>
 				<li>Question: { this.props.question.question_desc }</li>
-				<li> {vote_total } </li>
+				<li> { vote_total } </li>
 				<li>Your Vote: { this.convertedVote() }</li>
-				<br />
-				<hr />
-				<br />
-			</>
+			</ul>
 		)
 	}
 }

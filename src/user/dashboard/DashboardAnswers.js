@@ -6,6 +6,8 @@ import {
         //  Link
         } from 'react-router-dom'
 
+import '../../css/DashboardAnswers.css'
+
 export default class DashboardAnswers extends React.Component{
 
 	state = {
@@ -78,25 +80,22 @@ export default class DashboardAnswers extends React.Component{
 	}
 
 	render(){
-		// console.log(this.props)
-		// console.log(this.state)
-
 		const distributeCombineQuestionsAnswers =
-		(this.state.updatedUserQuestions) ? this.state.userQuestions.map(question =>
-				this.state.userAnswers.map(answer =>
-					(question.id === answer.question_id) ?
-						<DashboardAnswersCard
-							key={answer.id}
-							question={question}
-							answer={answer}
-						/>
-					: ""
+			(this.state.updatedUserQuestions) ? this.state.userQuestions.map(question =>
+					this.state.userAnswers.map(answer =>
+						(question.id === answer.question_id) ?
+							<DashboardAnswersCard
+								key={answer.id}
+								question={question}
+								answer={answer}
+							/>
+						: ""
+					)
 				)
-			)
-			: ""
+				: ""
 
 		return(
-			<div className="dashboard_answers">
+			<div className="answers_wrapper">
 				{ distributeCombineQuestionsAnswers }
 			</div>
 		)

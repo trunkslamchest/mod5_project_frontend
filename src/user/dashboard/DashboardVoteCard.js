@@ -7,21 +7,46 @@ import {
 export default class DashboardVoteCard extends React.Component{
 
 	state={
-		allVotes: []
+		allVotes: [],
+		vote: "",
+		mounted: false,
+		updated_votes: false,
+		converted_votes: false
 	}
 
 	componentDidMount(){
-		this.getVotes()
+		this.setState({
+			mounted: true
+		})
 	}
 
-	convertedVote = () => {
-		if (this.props.vote.vote_num === 1){
-			return "Up Vote"
-		} else if (this.props.vote.vote_num === 0) {
-			return "No Vote"
-		} else {
-			return "Down Vote"
+	componentDidUpdate(){
+		if (this.state.mounted && this.state.updated_votes === false) {
+			this.getVotes()
 		}
+		if (this.state.updated_votes && this.state.converted_votes === false) {
+			this.convertVote()
+		}
+	}
+
+	convertVote = () => {
+		if (this.props.vote.vote_num === 1){
+			this.setState({
+				vote: "Up Vote",
+			})
+		} else if (this.props.vote.vote_num === 0) {
+			this.setState({
+				vote: "No Vote",
+			})
+		} else {
+			this.setState({
+				vote: "Down Vote",
+			})
+		}
+
+		this.setState({
+			converted_votes: true
+		})
 	}
 
 	getVotes = () => {
@@ -29,7 +54,8 @@ export default class DashboardVoteCard extends React.Component{
 		.then(res => res.json())
 		.then(res_obj =>
 			this.setState({
-				allVotes: res_obj.data.attributes.votes.map(vote => vote.vote_num)
+				allVotes: res_obj.data.attributes.votes.map(vote => vote.vote_num),
+				updated_votes: true
 			})
 		)
 	}
@@ -72,24 +98,30 @@ export default class DashboardVoteCard extends React.Component{
 
 	render(){
 
-		const vote_total =
-		<>
-			<div className="vote_total">
-				<ul>
-				Overall Votes:
-				<li>Up Votes: { this.calculateUpVotes() }</li>
-				<li>No Votes: { this.calculateNoVotes() }</li>
-				<li>Down Votes: { this.calculateDownVotes() }</li>
-				</ul>
-			</div>
-		</>
+		const vote_header_switch =
+			(() => {
+				switch(this.state.vote) {
+					case 'Up Vote': return "vote_card_header_upvote";
+					case 'No Vote': return "vote_card_header";
+					case 'Down Vote': return "vote_card_header_downvote";
+					default: return "vote_card_header";
+				}
+			})()
 
 		return(
-			<ul>
-				<li>Question: { this.props.question.question_desc }</li>
-				<li> { vote_total } </li>
-				<li>Your Vote: { this.convertedVote() }</li>
-			</ul>
+			<div className="vote_card">
+				<div className={ vote_header_switch }>
+					<h3>{ this.props.question.question_desc }</h3>
+				</div>
+				<h4>Overall Votes</h4>
+				<ul>
+					<li><h4>Up Votes</h4> { this.calculateUpVotes() }</li>
+					<li><h4>No Votes</h4> { this.calculateNoVotes() }</li>
+					<li><h4>Down Votes</h4> { this.calculateDownVotes() }</li>
+				</ul>
+				<span><h4>Your Vote</h4> { this.state.vote }</span>
+			</div>
 		)
 	}
 }
+

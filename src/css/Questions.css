@@ -4,95 +4,25 @@
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
-	/* justify-content: center; */
-	/* align-items: flex-start; */
 	margin: 0 auto 0 auto;
 	padding: 0px;
 	background-color: #fffdf7;
-	min-height: 90vh;
+	min-height: 85.75vh;
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
-	animation: fade_in 1s ease-in-out 1, blur_in 1s ease-in-out 1;
+	/* animation: fade_in 1s ease-in-out 1, blur_in 1s ease-in-out 1, slide_in_from_bottom .25s ease-in-out 1; */
 }
 
-.question_wrapper:after {
-	height: 150px;
-	content: "";
-	display: block;
-  }
+.question_wrapper > * {
+	animation: fade_in .2s ease-in-out 1, blur_in .25s ease-in-out 1, slide_in_from_bottom .3s ease-in-out 1;
+}
 
-.question_wrapper h3 {
+/* .question_wrapper h3 {
 	text-align: center;
 	padding: 10px;
 	margin: 0px;
 	animation: fade_in .25s ease-in-out 1, blur_in .25s ease-in-out 1, slide_in_from_bottom .25s ease-in-out 1;
-}
+} */
 
-.question_card {
-	text-align: center;
-	background-image: linear-gradient(rgb(255, 255, 255, 1),  rgb(255,253,247, 1) );
-	padding: 0px;
-	margin: 0px;
-	font-size: 20pt;
-}
-
-.question_header {
-	margin: 10px;
-}
-
-.question_desc {
-	margin: 10px;
-}
-
-.question_desc h2 {
-	text-align: center;
-	font-size: 20px;
-	margin-block-start: 0px;
-	margin-block-end: 0px;
-	margin-inline-start: 0px;
-	margin-inline-end: 0px;
-	padding: 10px;
-	margin: 0px;
-	animation: fade_in .25s ease-in-out 1, blur_in .25s ease-in-out 1, slide_in_from_bottom .25s ease-in-out 1;
-}
-
-.question_choices {
-	width: 50%;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: center;
-	margin: 0 auto 0 auto;
-}
-
-.question_choices button {
-	animation: fade_in .2s ease-in-out 1, blur_in .2s ease-in-out 1;
-}
-
-.question_correct_answer {
-	margin: 0px 10px 20px 10px;
-	animation: fade_in .5s ease-in-out 1, blur_in .5s ease-in-out 1, slide_in_from_bottom .5s ease-in-out 1;
-}
-
-.question_correct_answer h3 {
-    font-size: 20pt;
-    margin-block-start: 0px;
-    margin-block-end: 0px;
-    margin-inline-start: 0px;
-	margin-inline-end: 0px;
-    padding: 0px 10px 0px 10px;
-    font-weight: 300;
-	animation: fade_in .25s ease-in-out 1, blur_in .25s ease-in-out 1, slide_in_from_bottom .25s ease-in-out 1;
-}
-
-.question_correct_answer p {
-    font-size: 15pt;
-    margin-block-start: 0px;
-    margin-block-end: 0px;
-    margin-inline-start: 0px;
-	margin-inline-end: 0px;
-    font-weight: 300;
-	animation: fade_in .5s ease-in-out 1, blur_in .5s ease-in-out 1, slide_in_from_bottom .5s ease-in-out 1;
-}
 
 .question_difficulty {
 	margin: 0px 10px 20px 10px;
@@ -120,218 +50,10 @@
 	animation: fade_in .5s ease-in-out 1, blur_in .5s ease-in-out 1, slide_in_from_bottom .5s ease-in-out 1;
 }
 
-.question_time {
+/* .question_time {
 	margin: 10px;
 	animation: fade_in 1.5s ease-in-out 1, blur_in 1.5s ease-in-out 1, slide_in_from_bottom 1.5s ease-in-out 1;
-}
-
-.question_vote {
-	display: column;
-	flex-direction: row;
-	justify-content: center;
-	align-items: baseline;
-	margin: 0 auto 0 auto;
-	width: 60%;
-	min-width: 60%;
-	max-width: 60%;
-}
-
-.question_vote button {
-	animation: fade_in .25s ease-in-out 1, blur_in .25s ease-in-out 1;
-}
-
-.question_vote h3 {
-    font-size: 15pt;
-    margin-block-start: 0px;
-    margin-block-end: 0px;
-    margin-inline-start: 0px;
-	margin-inline-end: 0px;
-    padding: 0px 10px 0px 10px;
-    font-weight: 300;
-	animation: fade_in .25s ease-in-out 1, blur_in .25s ease-in-out 1, slide_in_from_bottom .25s ease-in-out 1;
-}
-
-.question_vote ul {
-
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	margin: 0 auto 0 auto;
-	list-style: none;
-	padding-top: 0px;
-	padding-bottom: 0px;
-	padding-left: 0px;
-	padding-right: 0px;
-    margin-block-start: 0px;
-    margin-block-end: 0px;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 0px;
-	animation: fade_in .25s ease-in-out 1, blur_in .25s ease-in-out 1;
-}
-
-.question_vote li {
-	/* width: 20%;
-	min-width: 20%;
-	max-width: 20%; */
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-
-	background-image: linear-gradient(rgb(255, 255, 255, 1),  rgb(219, 219, 219, 1) );
-	font-size: 12pt;
-	padding: 10px 20px 10px 20px;
-	margin: 0px;
-}
-
-.up_vote_button {
-	/* width: 20%;
-	min-width: 20%;
-	max-width: 20%; */
-	align-items: flex-start;
-	color: rgb(255, 255, 255, 1);
-	background-image: linear-gradient(rgb(0, 153, 51, 1),  rgb(0, 128, 43, 1) );
-	background-color: buttonface;
-	border: 0px solid;
-	border-radius: 20px 0px 0px 20px;
-	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
-	box-sizing: border-box;
-	cursor: pointer;
-	display: inline-block;
-	font: 400 15px Roboto;
-	letter-spacing: normal;
-	margin: 5px 0px 5px 0px;
-	padding: 10px 20px 10px 20px;
-	text-align: center;
-	text-decoration: none;
-	text-indent: 0px;
-	text-rendering: auto;
-	text-shadow: none;
-	text-transform: none;
-	word-spacing: normal;
-	-webkit-appearance: none;
-	/* -webkit-writing-mode: horizontal-tb !important; */
-}
-
-.up_vote_button img{
-	max-width: 100%;
-	height: auto;
-	max-height: 25px;
-}
-
-.up_vote_button:hover {
-	color: rgb(255, 245, 204, 1);
-	background-image: linear-gradient(rgb(0, 102, 34, 1),  rgb(0, 77, 26, 1) );
-	transition-property: color;
-	transition-duration: .1s, .1s;
-	transition-timing-function: ease-in-out;
-	animation: scale_in .1s ease-in-out 1;
-}
-
-.up_vote_button:active {
-	background-image: linear-gradient(rgb(0, 102, 34, 1),  rgb(0, 77, 26, 1) );
-	animation: scale_out .1s ease-in-out 1, blur_out .1s ease-in-out 1;
-}
-
-.no_vote_button {
-	align-items: flex-start;
-	color: rgb(255, 255, 255, 1);
-	background-image: linear-gradient(rgb(128, 128, 128, 1),  rgb(89, 89, 89, 1) );
-	background-color: buttonface;
-	border: 0px solid;
-	border-radius: 0px;
-	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
-	box-sizing: border-box;
-	cursor: pointer;
-	display: inline-block;
-	font: 400 15px Roboto;
-	letter-spacing: normal;
-	margin: 5px 0px 5px 0px;
-	padding: 10px 20px 10px 20px;
-	text-align: center;
-	text-decoration: none;
-	text-indent: 0px;
-	text-rendering: auto;
-	text-shadow: none;
-	text-transform: none;
-	word-spacing: normal;
-	-webkit-appearance: none;
-}
-
-.no_vote_button img{
-	max-width: 100%;
-	height: auto;
-	max-height: 25px;
-}
-
-.no_vote_button:hover {
-	color: rgb(255, 245, 204, 1);
-	background-image: linear-gradient(rgb(64, 64, 64, 1),  rgb(0, 0, 0, 1) );
-	transition-property: color;
-	transition-duration: .1s, .1s;
-	transition-timing-function: ease-in-out;
-	animation: scale_in .1s ease-in-out 1;
-}
-
-.no_vote_button:active {
-	background-image: linear-gradient(rgb(64, 64, 64, 1),  rgb(0, 0, 0, 1) );
-	animation: scale_out .1s ease-in-out 1, blur_out .1s ease-in-out 1;
-}
-
-.down_vote_button {
-	align-items: flex-start;
-	color: rgb(255, 255, 255, 1);
-	background-image: linear-gradient(rgb(204, 0, 0, 1),  rgb(153, 0, 0, 1) );
-	background-color: buttonface;
-	border: 0px solid;
-	border-radius: 0px 20px 20px 0px;
-	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
-	box-sizing: border-box;
-	cursor: pointer;
-	display: inline-block;
-	font: 400 15px Roboto;
-	letter-spacing: normal;
-	margin: 5px 0px 5px 0px;
-	padding: 10px 20px 10px 20px;
-	text-align: center;
-	text-decoration: none;
-	text-indent: 0px;
-	text-rendering: auto;
-	text-shadow: none;
-	text-transform: none;
-	word-spacing: normal;
-	-webkit-appearance: none;
-}
-
-.down_vote_button img{
-	max-width: 100%;
-	height: auto;
-	max-height: 25px;
-}
-
-.down_vote_button:hover {
-	color: rgb(255, 245, 204, 1);
-	background-image: linear-gradient(rgb(102, 0, 0, 1),  rgb(77, 0, 0, 1) );
-	transition-property: color;
-	transition-duration: .1s, .1s;
-	transition-timing-function: ease-in-out;
-	animation: scale_in .1s ease-in-out 1;
-}
-
-.down_vote_button:active {
-	background-image: linear-gradient(rgb(102, 0, 0, 1),  rgb(77, 0, 0, 1) );
-	animation: scale_out .1s ease-in-out 1, blur_out .1s ease-in-out 1;
-}
-
-.question_card {
-	width: 80%;
-	min-width: 80%;
-	max-width: 80%;
-	margin: 0px auto 0px auto;
-
-}
+} */
 
 .question_comments {
 	display: flex;

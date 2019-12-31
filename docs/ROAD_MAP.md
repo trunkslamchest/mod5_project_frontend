@@ -2,22 +2,15 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 |-facelift styling
-|	-answers
-|	-votes
-|	-comments
-|	-question container
-|	-question display
-
-|-make footer logos links
-
-|-fix footer positioning
-
-|-responsive layout
+|	-answer display
 
 |-add more questions
 
 |-update page trackers
 |-update element trackers
+
+|-responsive layout
+
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 

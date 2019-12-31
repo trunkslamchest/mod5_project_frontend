@@ -98,11 +98,11 @@ export default class Footer extends React.Component {
 	]
 
 	const footer_logos = [
-		<img key={"flatiron_logo"} src={ flatiron_logo } className="logo_rectangle" alt="The Flatiron School"/>,
-		<img key={"open_trivia_logo"} src={ open_trivia_logo } className="logo_rectangle" alt="Open Trivita Database"/>,
-		<img key={"postgres_logo"} src={ postgres_logo } className="logo_rectangle" alt="PostgreSQL"/>,
-		<img key={"rails_logo"} src={ rails_logo } className="logo_rectangle" alt="Ruby On Rails"/>,
-		<img key={"react_logo"} src={ react_logo } className="logo_rectangle" alt="React"/>,
+		<a href="https://flatironschool.com/" rel="noopener noreferrer" target="_blank"><img key={"flatiron_logo"} src={ flatiron_logo } className="logo_rectangle" alt="The Flatiron School"/></a>,
+		<a href="https://opentdb.com/" rel="noopener noreferrer" target="_blank"><img key={"open_trivia_logo"} src={ open_trivia_logo } className="logo_rectangle" alt="Open Trivita Database"/></a>,
+		<a href="https://www.postgresql.org/" rel="noopener noreferrer" target="_blank"><img key={"postgres_logo"} src={ postgres_logo } className="logo_rectangle" alt="PostgreSQL"/></a>,
+		<a href="https://rubyonrails.org/" rel="noopener noreferrer" target="_blank"><img key={"rails_logo"} src={ rails_logo } className="logo_rectangle" alt="Ruby On Rails"/></a>,
+		<a href="https://reactjs.org/" rel="noopener noreferrer" target="_blank"><img key={"react_logo"} src={ react_logo } className="logo_rectangle" alt="React"/></a>,
 
 	]
 

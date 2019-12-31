@@ -5,6 +5,9 @@ import DashboardVoteCard from './DashboardVoteCard'
 import {
         //  Link
         } from 'react-router-dom'
+		
+import '../../css/DashboardVotes.css'
+
 
 export default class DashboardVotes extends React.Component{
 
@@ -89,7 +92,7 @@ export default class DashboardVotes extends React.Component{
 			: ""
 
 		return(
-			<div className="dashboard_votes">
+			<div className="vote_wrapper">
 				{ distributeCombineQuestionsVotes }
 			</div>
 		)

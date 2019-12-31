@@ -134,7 +134,7 @@ export default class DashboardStatsDifficulty extends React.Component{
 
 		return(
 			<>
-			<div className="alt_header">
+			<div className="stats_header">
 				<h3> Difficulty </h3>
 			</div>
 			<div className="stats_difficulty">

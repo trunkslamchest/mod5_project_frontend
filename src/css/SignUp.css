@@ -1,9 +1,0 @@
-.tos_agree_div {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	font: 200 10pt "Lato";
-	margin: 20px auto 20px auto;
-}

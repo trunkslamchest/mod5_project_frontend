@@ -16,7 +16,7 @@ DEFAULT GRADIENT: background-image: linear-gradient(rgb(81, 88, 102, 1),  rgb(40
 
 OFF GREY GRADIENT: background-image: linear-gradient(rgba(255, 255, 255, 1),  rgba(247,239,244, 1) );
 
-CONFIRM: background-image: linear-gradient(rgb(0, 153, 51, 1),  rgb(0, 128, 43, 1) );
+CONFIRM: background-image: linear-gradient(rgb(0, 153, 51, 1),  rgba(0, 128, 43, 1) );
 CONFIRM_ACTIVE: background-image: linear-gradient(rgb(0, 102, 34, 1),  rgb(0, 77, 26, 1) );
 
 CANCEL: background-image: linear-gradient(rgb(204, 0, 0, 1),  rgb(153, 0, 0, 1) );

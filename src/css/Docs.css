@@ -7,18 +7,12 @@
 	flex-wrap: wrap;
 	/* justify-content: center; */
 	/* align-items: flex-start; */
-	margin: 0 auto 50px auto;
-	padding: 10px;
-	min-height: 90vh;
+	margin: 0 auto 0px auto;
+	padding: 10px 10px 150px 10px;
+	/* min-height: 90vh; */
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
 	animation: fade_in .3s ease-in-out 1, blur_in .15s ease-in-out 1;
 }
-
-.terms_wrapper:after {
-	height: 150px;
-	content: "";
-	display: block;
-  }
 
 .terms_wrapper h1 {
 	font: 700 15pt "Lato", sans-serif;

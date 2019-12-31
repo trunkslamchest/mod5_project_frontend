@@ -7,6 +7,8 @@ import DashboardStatsCategory from './DashboardStatsCategory'
 //         //  Link
 //         } from 'react-router-dom'
 
+import '../../css/DashboardStats.css'
+
 export default class DashboardStats extends React.Component{
 
 	state = {
@@ -154,11 +156,11 @@ export default class DashboardStats extends React.Component{
 			/>
 
 		return(
-			<>
+			<div className="stats_wrapper">
 				{ total_questions_answered }
 				{ questionsAnsweredByDifficulty }
 				{ questionsAnsweredByCategory }
-			</>
+			</div>
 		)
 	}
 }

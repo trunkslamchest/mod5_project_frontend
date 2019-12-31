@@ -7,14 +7,16 @@ import {
 export default class DashboardCommentCard extends React.Component{
 
 	render(){
-
-		console.log(this.props)
-
 		return(
-			<ul>
-				<li>Question: { this.props.question.question_desc }</li>
-				<li>Your Comment: { this.props.comment.comment_text }</li>
-			</ul>
+			<div className="comment_card">
+				<div className="comment_card_header">
+					<h3>{ this.props.question.question_desc }</h3>
+				</div>
+				<h4>Your Comment</h4>
+				<p>
+					{ this.props.comment.comment_text }
+				</p>
+			</div>
 		)
 	}
 }

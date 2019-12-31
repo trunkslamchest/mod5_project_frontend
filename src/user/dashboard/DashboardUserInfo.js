@@ -4,6 +4,9 @@ import {
          Link
         } from 'react-router-dom'
 
+import '../../css/DashboardUserInfo.css'
+
+
 export default class DashboardUserInfo extends React.Component{
 
 	state={

@@ -6,6 +6,7 @@ import up_vote from '../assets/up_vote1.png'
 import no_vote from '../assets/no_vote1.png'
 import down_vote from '../assets/down_vote1.png'
 
+import '../css/QuestionsDisplay.css'
 
 
 import {
@@ -24,41 +25,52 @@ export default class QuestionDisplay extends React.Component{
 
 	state = {
 		answers: [],
+		votes: [],
+		comments: [],
 		user_answer: '',
 		user_result: '',
-		time: 10.01,
-		stopTime: false,
-		getTime: false,
-		voted: false,
-		votes: [],
+		time: 10.00,
 		display: 'question',
-		showHeader: null,
-		showQuestion: null,
-		showChoices: null,
-		showTimer: null,
-		startTimer: null,
-		showAnsweredHeader: null,
-		showCorrectAnswer: null,
-		showDifficulty: null,
-		showVoteButtons: null,
-		showCommentButton: null,
-		showCommentText:null,
-		showAllComments:null,
-		comments: [],
-		showAnsweredButtons: null,
+		stopTime: false,
+		setTime: false,
+		voted: false,
+		showHeader: false,
+		showQuestion: false,
+		enableQuestion: false,
+		showChoices: false,
+		showTimer: false,
+		startTimer: false,
+		showAnsweredHeader: false,
+		showCorrectAnswer: false,
+		showDifficulty: false,
+		showVoteButtons: false,
+		showCommentButton: false,
+		showCommentText:false,
+		showAllComments:false,
+		showAnsweredButtons: false
 	}
 
 	componentDidMount(){
 		this.randomizeAnswerOrder(this.props.question)
-		this.timerFunctions()
+		// this.timerFunctions()
 		this.timerTimeout = setTimeout(() => { this.setState({ showTimer: true })}, 1000)
-		this.startTimer = setTimeout(() => { this.timerInterval = setInterval(this.timerFunctions, 10)}, 4000)
+		// this.startTimer = setTimeout(() => { this.timerInterval = setInterval(this.timerFunctions, 10)}, 5000)
 		this.headerTimeout = setTimeout(() => { this.setState({ showHeader: true })}, 2000)
 		this.questionTimeout = setTimeout(() => { this.setState({ showQuestion: true })}, 3000)
+		this.questionEnableTimeout = setTimeout(() => { this.setState({ enableQuestion: true })}, 5000)
 		this.choicesTimeout = setTimeout(() => { this.setState({ showChoices: true })}, 4000)
 	}
 
-	displayAnswered = () => {
+	displayAnsweredCorrect = () => {
+		this.answeredHeaderTimeout = setTimeout(() => { this.setState({ showAnsweredHeader: true })}, 1000)
+		// this.correctAnswerTimeout = setTimeout(() => { this.setState({ showCorrectAnswer: true })}, 1500)
+		this.difficultyTimeout = setTimeout(() => { this.setState({ showDifficulty: true })}, 2000)
+		this.voteButtonsTimeout = setTimeout(() => { this.setState({ showVoteButtons: true })}, 2500)
+		this.commentButtonTimeout = setTimeout(() => { this.setState({ showCommentButton: true })}, 3000)
+		this.answeredButtonsTimeout = setTimeout(() => { this.setState({ showAnsweredButtons: true })}, 3500)
+	}
+	
+	displayAnsweredIncorrect = () => {
 		this.answeredHeaderTimeout = setTimeout(() => { this.setState({ showAnsweredHeader: true })}, 1000)
 		this.correctAnswerTimeout = setTimeout(() => { this.setState({ showCorrectAnswer: true })}, 1500)
 		this.difficultyTimeout = setTimeout(() => { this.setState({ showDifficulty: true })}, 2000)
@@ -92,7 +104,7 @@ export default class QuestionDisplay extends React.Component{
 					display: 'answered',
 				})
 			})
-			this.displayAnswered()
+			this.displayAnsweredCorrect()
 		} else {
 			fetch("http://localhost:3001/answers", {
 				method: "POST",
@@ -115,7 +127,7 @@ export default class QuestionDisplay extends React.Component{
 					display: 'answered'
 				})
 			})
-			this.displayAnswered()
+			this.displayAnsweredIncorrect()
 		}
 	}
 
@@ -172,7 +184,7 @@ export default class QuestionDisplay extends React.Component{
 		})
 	}
 
-	getTime = (time) => {
+	setTime = (time) => {
 		this.setState({
 			time: time
 		})
@@ -183,7 +195,7 @@ export default class QuestionDisplay extends React.Component{
 		if (this.state.stopTime){
 			this.setState({
 				time: this.state.time
-			}, this.getTime(this.state.time))
+			}, this.setTime(this.state.time))
 			clearInterval(this.timerInterval)
 		}
 
@@ -389,6 +401,7 @@ export default class QuestionDisplay extends React.Component{
 		clearTimeout(this.headerTimeout)
 		clearTimeout(this.questionTimeout)
 		clearTimeout(this.choicesTimeout)
+		clearTimeout(this.questionEnableTimeout)
 		clearTimeout(this.timerTimeout)
 		clearInterval(this.startTimer)
 		clearTimeout(this.answeredHeaderTimeout)
@@ -403,6 +416,7 @@ export default class QuestionDisplay extends React.Component{
 		clearTimeout(this.headerTimeout)
 		clearTimeout(this.questionTimeout)
 		clearTimeout(this.choicesTimeout)
+		clearTimeout(this.questionEnableTimeout)
 		clearTimeout(this.timerTimeout)
 		clearInterval(this.startTimer)
 		clearTimeout(this.answeredHeaderTimeout)
@@ -422,32 +436,32 @@ export default class QuestionDisplay extends React.Component{
 			<button
 				key={"answer_button1"}
 				value={ this.state.answers[0] }
-				className="alt_button"
-				onClick={ this.onClickFunctions }
+				className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
+				onClick={ this.state.enableQuestion ? this.onClickFunctions : "" }
 			>
 				{ this.state.answers[0] }
 			</button>,
 			<button
 				key={"answer_button2"}
 				value={ this.state.answers[1] }
-				className="alt_button"
-				onClick={ this.onClickFunctions }
+				className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
+				onClick={ this.state.enableQuestion ? this.onClickFunctions : "" }
 			>
 				{ this.state.answers[1] }
 			</button>,
 			<button
 				key={"answer_button3"}
 				value={ this.state.answers[2] }
-				className="alt_button"
-				onClick={ this.onClickFunctions }
+				className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
+				onClick={ this.state.enableQuestion ? this.onClickFunctions : "" }
 			>
 				{ this.state.answers[2] }
 			</button>,
 			<button
 				key={"answer_button4"}
 				value={ this.state.answers[3] }
-				className="alt_button"
-				onClick={ this.onClickFunctions }
+				className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
+				onClick={ this.state.enableQuestion ? this.onClickFunctions : "" }
 			>
 				{ this.state.answers[3] }
 			</button>
@@ -456,14 +470,14 @@ export default class QuestionDisplay extends React.Component{
 		const correct_answer_text =
 		<>
 			<h3>The correct answer was</h3>
-			<p>{ this.props.question.correct_answer }</p>
+			<h4>{ this.props.question.correct_answer }</h4>
 		</>
 
-	const difficulty_text =
-	<>
-		<h3>Question Difficulty</h3>
-		<p>{ this.props.question.difficulty }</p>
-	</>
+		const difficulty_text =
+		<>
+			<h3>Question Difficulty</h3>
+			<h4>{ this.props.question.difficulty }</h4>
+		</>
 
 		const rate_header = <h3>Rate this question</h3>
 
@@ -495,13 +509,13 @@ export default class QuestionDisplay extends React.Component{
 
 		const blank = <></>
 
-		const header = <h3> { this.props.question ? `In ${ this.props.question.category }...` : blank }</h3>
+		const header = <h3>{ this.props.question ? `In ${ this.props.question.category }...` : blank }</h3>
 
-		const question_desc = <h2>{ this.props.question ? `${this.props.question.question_desc}`: blank }</h2>
+		const question_text = <h2>{ this.props.question ? `${this.props.question.question_desc}`: blank }</h2>
 
 		const question_choices = <>{ this.state.answers ? question_buttons : blank }</>
 
-		const time = <>{ this.state.time ? this.state.time : blank }</>
+		const time = <><h1>{ this.state.time ? this.state.time : blank }</h1></>
 
 		const answered_header = <h3> { this.state.time === 0 ? this.outtaTime() : this.state.user_result } </h3>
 
@@ -513,9 +527,9 @@ export default class QuestionDisplay extends React.Component{
 
 		const vote_total =
 			<ul>
-				<li>Up Votes: { this.state.votes.length > 0 ? this.calculateUpVotes() : blank }</li>
-				<li>No Votes: { this.state.votes.length > 0 ?this.calculateNoVotes() : blank }</li>
-				<li>Down Votes: { this.state.votes.length > 0 ? this.calculateDownVotes() : blank }</li>
+				<li><h5>Up Votes</h5> { this.state.votes.length > 0 ? this.calculateUpVotes() : blank }</li>
+				<li><h5>No Votes</h5> { this.state.votes.length > 0 ?this.calculateNoVotes() : blank }</li>
+				<li><h5>Down Votes</h5> { this.state.votes.length > 0 ? this.calculateDownVotes() : blank }</li>
 			</ul>
 
 		const comment_button =
@@ -575,45 +589,56 @@ export default class QuestionDisplay extends React.Component{
 
 		const displayQuestion =
 			<div className="question_card">
-				<div className="question_time">
-					{ this.state.showTimer ? time : ""}
+				<div className={ !this.state.showTimer ? "blank" : "question_card_timer" } >
+					<h2>Time Left</h2>
+					{ this.state.showTimer ? time : blank }
 				</div>
-				<div className="question_header">
-					{ this.state.showHeader ? header : ""}
+				<div className={ !this.state.showHeader ? "blank" : "question_card_header" }>
+					{ this.state.showHeader ? header : blank }
 				</div>
-				<div className="question_desc">
-					{ this.state.showQuestion ? question_desc : ""}
+				<div className={ !this.state.showQuestion ? "blank" : "question_card_text" }>
+					{ this.state.showQuestion ? question_text : blank }
 				</div>
-				<div className="question_choices">
-					{ this.state.showChoices ? question_choices : ""}
+				<div className={ !this.state.showChoices ? "blank" : "question_card_choices" }>
+					{ this.state.showChoices ? question_choices : blank }
 				</div>
 			</div>
 
 		const DisplayAnswer =
 			<div className="question_card">
-				<div className="question_header">
-					{ this.state.showAnsweredHeader ? answered_header : ""}
+				<div className={ this.state.showAnsweredHeader ? "question_card_answer_header" : "blank" }>
+					{ this.state.showAnsweredHeader ? answered_header : blank }
 				</div>
-				<div className="question_correct_answer">
-					{ this.state.showCorrectAnswer ? answer : ""}
+				<div className={ this.state.showCorrectAnswer ? "question_card_correct_answer" : "blank" }>
+					{ this.state.showCorrectAnswer ? answer : blank }
 				</div>
-				<div className="question_difficulty">
-					{ this.state.showDifficulty ? difficulty : ""}
+				<div className={ this.state.showDifficulty ? "question_card_difficulty" : "blank" }>
+					{ this.state.showDifficulty ? difficulty : blank }
 				</div>
-				<div className="question_vote">
-					{ this.state.showVoteButtons ? rate_header : ""}
+				<div className={ this.state.showVoteButtons ? "question_card_vote" : "blank" }>
+					<div className={ this.state.showVoteButtons ? "question_card_vote_header" : "blank" }>
+						{ this.state.showVoteButtons ? rate_header : blank }
+					</div>
+					<div className={ this.state.showVoteButtons ? "question_card_vote_buttons_container" : "blank" }>
+						{ this.state.showVoteButtons ? vote_for_question_buttons : blank }
+					</div>
+				</div>
+				<div className={ this.state.voted ? "question_card_voted" : "blank" }>
+					<div className={ this.state.voted ? "question_card_voted_header" : "blank" }>
+						{ this.state.voted ? vote_header : blank }
+					</div>
+					<div className={ this.state.voted ? "question_card_voted_totals" : "blank" }>
+						{ this.state.voted ? vote_total : blank }
+					</div>
 
-					{ this.state.showVoteButtons ? vote_for_question_buttons : ""}
-					{ this.state.voted ? vote_header : "" }
-					{ this.state.voted ? vote_total : "" }
 				</div>
 				<div className="question_comments">
-					{ this.state.showCommentButton ? comment_button : ""}
-					{ this.state.showCommentText ? comment_form : "" }
-					{ this.state.showAllComments ? all_comments : "" }
+					{ this.state.showCommentButton ? comment_button : blank }
+					{ this.state.showCommentText ? comment_form : blank }
+					{ this.state.showAllComments ? all_comments : blank }
 				</div>
 				<div className="question_next_question_button_container">
-					{ this.state.showAnsweredButtons ? next_question_button : "" }
+					{ this.state.showAnsweredButtons ? next_question_button : blank }
 				</div>
 			</div>
 

@@ -1,10 +1,9 @@
 .footer {
 	background-image: radial-gradient(rgba(0, 0, 102, 1),  rgb(40, 44, 52, 1) );
-	position: fixed;
 	font-size: 15pt;
-	height: 100px;
+	/* height: 100px; */
 	bottom: 0px;
-	padding: 12px;
+	padding: 15px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -12,6 +11,7 @@
 	color: white;
 	min-height: 150px;
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
+	z-index: 0;
 }
 
 .footer_left {
@@ -25,7 +25,6 @@
 	font-size: 10pt;
 	margin-left: 10px;
 }
-
 
 .links a{
 	color: #fff;
@@ -47,15 +46,6 @@
 	height: auto;
 	max-height: 35px;
 	margin: 5px 10px 5px 10px;
-
-}
-
-.logo_square{
-	max-width: 100%;
-	height: auto;
-	max-height: 30px;
-	margin: 5px 10px 5px 10px;
-
 
 }
 

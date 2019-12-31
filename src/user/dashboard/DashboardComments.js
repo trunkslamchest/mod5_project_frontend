@@ -6,6 +6,9 @@ import {
         //  Link
         } from 'react-router-dom'
 
+	import '../../css/DashboardComments.css'
+
+
 export default class DashboardComments extends React.Component{
 
 	state={
@@ -89,7 +92,7 @@ export default class DashboardComments extends React.Component{
 			: ""
 
 		return(
-			<div className="dashboard_comments">
+			<div className="comment_wrapper">
 				{ distributeCombineQuestionsComments }
 			</div>
 		)

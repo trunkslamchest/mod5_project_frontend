@@ -11,6 +11,7 @@
 
 .category_button {
 	-webkit-appearance: none;
+	min-width: 200px;
     /* -webkit-writing-mode: horizontal-tb !important; */
     text-rendering: auto;
     color: #FFF;

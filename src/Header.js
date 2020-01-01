@@ -156,18 +156,22 @@ export default class Header extends React.Component {
 			logged_in_links
 		]
 
-		const admin_header = [
-			user_greeting,
-			<NavLink
-				key={"h_backroom"}
-				to="/backroom"
-				className="default_header_link"
-				onClick={ this.onClickBackroomFunctions }
-			>
-				Admin Panel
-			</NavLink>,
-			logged_in_links
-		]
+		const admin_header =
+		<>
+			<>{ user_greeting }</>
+			<div className="header_nav_links">
+				<NavLink
+					key={"h_backroom"}
+					to="/backroom"
+					className="default_header_link"
+					onClick={ this.onClickBackroomFunctions }
+				>
+					Admin Panel
+				</NavLink>
+				{logged_in_links}
+			</div>
+		</>
+
 
 		const no_header = [" "]
 

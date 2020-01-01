@@ -33,7 +33,7 @@
 	text-decoration: none;
 }
 
-.logos{
+.logos {
 	display: flex;
 	flex-direction: row;
 	align-items: center;

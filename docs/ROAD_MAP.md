@@ -1,8 +1,6 @@
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-|-responsive layout
-
 |-update page trackers
 |-update element trackers
 

@@ -23,7 +23,7 @@ export default class DashboardStatsCategory extends React.Component{
 		// 	this.sortAllQuestionsByCategory()
 		// 	this.questionsAnsweredByCategory()
 		// }
-		if (this.state.mounted && !this.state.updatedAllQuestions) {
+		if (Object.keys(this.props.all_questions).length > 0 && !this.state.updatedAllQuestions) {
 			this.sortAllQuestionsByCategory()
 		}
 		if (this.state.updatedAllQuestions && !this.state.updatedCategories) {
@@ -199,7 +199,8 @@ export default class DashboardStatsCategory extends React.Component{
 
 	render(){
 
-		// console.log(this.state)
+		console.log(this.state)
+		console.log(this.props)
 
 		const zero_percent = <> (0.00%) </>
 

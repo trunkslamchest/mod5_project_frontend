@@ -16,7 +16,6 @@
 		margin-bottom: 0px;
 		margin-left: 0px;
 		margin-right: 0px;
-		/* min-height: 70vh; */
 		background-color: #fffdf7;
 		box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
 	}
@@ -33,7 +32,6 @@
 		margin-left: 0px;
 		margin-right: 0px;
 		flex-grow: 2;
-		/* min-height: 70vh; */
 		box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25);
 	}
 
@@ -135,14 +133,14 @@
 		min-height: 70vh;
 	}
 
-	.default_header_link {
+	/* .default_header_link {
 		color: #FFF;
-		font-size: 10pt;
+		font: 400 10pt 'Lato', sans-serif;
 		padding: 20px 10px 12px 10px;
 		text-decoration: none;
 		line-height: 1.2;
 		box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.5), 0 0 2.5px 0 rgba(0, 0, 0, 0.5), 0 0 2.5px 0 rgba(0, 0, 0, 0.5);
-	}
+	} */
 
 	.side_bar li {
 		font-size: 10pt;
@@ -184,6 +182,114 @@
 	.RTVpages_table td {
 		font-size: 8pt;
 		padding: 5px;
+	}
+
+}
+
+@media only screen and (max-width: 700px) {
+
+	.header_left {
+		flex-shrink: 2;
+	}
+
+	.header_left a img {
+		flex-shrink: 2;
+	}
+
+	.header_right {
+		flex-direction: column;
+		width:100%;
+		flex-wrap: wrap;
+		padding-right: 0px;
+		align-items: flex-end;
+	}
+
+	.header_greeting {
+		margin-top: 5px;
+		align-self: flex-end;
+		order: 1;
+	}
+
+	.links a{
+		font-size: 9pt;
+		margin: 0px auto 0px auto;
+		text-decoration: none;
+	}
+
+	.logos {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		font-size: 10pt;
+		margin: 15px 10px 15px 0px;
+	}
+
+	.logo_rectangle{
+		max-width: 100%;
+		height: auto;
+		max-height: 20px;
+		margin: 5px;
+	}
+
+	.dashboard_tabs ul {
+		display: block;
+	}
+
+	.dashboard_tabs li {
+		padding: 5px;
+	}
+
+	.stats_difficulty {
+		display: block;
+	}
+
+	.stats_category ul {
+		max-width: 100%;
+	}
+
+	.question_card_text h3 {
+		padding: 15px 5px 15px 5px;
+
+	}
+
+}
+
+@media only screen and (max-width: 800px) {
+
+	.quick_play_container {
+		width: 100%;
+		min-width: 100%;
+		max-width: 100%;
+	}
+
+	.other_play_container {
+		width: 100%;
+		min-width: 100%;
+		max-width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin: 0 auto 0 auto;
+		animation: fade_in .3s ease-in-out 1, blur_in .15s ease-in-out 1;
+	}
+
+	.quick_play_button {
+		width: 75%;
+		min-width: 75%;
+		max-width: 75%;
+	}
+
+	.play_by_difficulty_button {
+		width: 75%;
+		min-width: 75%;
+		max-width: 75%;
+	}
+
+	.play_by_category_button {
+		width: 75%;
+		min-width: 75%;
+		max-width: 75%;
 	}
 
 }

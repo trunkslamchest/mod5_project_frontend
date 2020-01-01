@@ -24,11 +24,6 @@ export default class DashboardComments extends React.Component{
 	}
 
 	componentDidUpdate(){
-		// if (this.state.mounted) {
-		// 	this.getUserComments()
-		// 	this.getAllQuestions()
-		// 	this.getUserQuestions()
-		// }
 		if (this.state.mounted && !this.state.updatedComments ){
 			this.setComments()
 		}
@@ -54,32 +49,6 @@ export default class DashboardComments extends React.Component{
 		})
 	}
 
-	// getUserComments = () => {
-	// 	if (this.props.user_id && this.state.updatedUserComments !== true ) {
-	// 		fetch(`http://localhost:3001/users/${this.props.user_id}`)
-	// 		.then(res => res.json())
-	// 		.then(res_obj =>
-	// 			this.setState({
-	// 				userComments: res_obj.data.attributes.comments,
-	// 				updatedUserComments: true
-	// 			})
-	// 		)
-	// 	}
-	// }
-
-	// getAllQuestions = () => {
-	// 	if (this.state.updatedUserComments && this.state.updatedAllQuestions !== true ) {
-	// 		fetch(`http://localhost:3001/questions/`)
-	// 		.then(res => res.json())
-	// 		.then(res_obj =>
-	// 			this.setState({
-	// 				allQuestions: res_obj.data.map(question_obj => question_obj.attributes.question),
-	// 				updatedAllQuestions: true
-	// 			})
-	// 		)
-	// 	}
-	// }
-
 	setUserQuestions = () => {
 		let userCommentIDs = this.state.userComments.map(comment => comment.question_id)
 		let userQuestions = this.state.allQuestions.filter(question => userCommentIDs.includes(question.id))
@@ -90,8 +59,6 @@ export default class DashboardComments extends React.Component{
 	}
 
 	render(){
-
-		// console.log(this.state)
 
 		const distributeCombineQuestionsComments =
 		(this.state.updatedUserQuestions) ? this.state.userQuestions.map(question =>

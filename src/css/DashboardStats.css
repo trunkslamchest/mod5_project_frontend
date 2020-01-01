@@ -6,7 +6,7 @@
 	width: 100%;
 	padding: 5px 0px 5px 0px;
 	background-color: rgba(255,255,255, 1);
-	background-image: linear-gradient(45deg, rgba(255, 255, 255, 1), rgba(255,255,255, 0.5), rgba(0,0,0, 0.1) );
+	background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255,255,255, 1), rgba(0,0,0, 0.025) );
 	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25);
 	z-index:8;
 }
@@ -24,7 +24,7 @@
 
 .stats_total {
 	background-color: rgba(255,255,255, 1);
-	background-image: linear-gradient(-90deg, rgba(255,255,255, 0.1), rgba(255,255,255, 0.75), rgba(0,0,0, 0.05) );
+	background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255,255,255, 1), rgba(0,0,0, 0.025) );
 	width: 100%;
 	display: flex;
 	flex-direction: row;
@@ -114,6 +114,8 @@
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 	padding-inline-start: 0px;
+	background-color: rgba(255,255,255, 1);
+	background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255,255,255, 1), rgba(0,0,0, 0.025) );
 	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25);
 }
 
@@ -144,6 +146,8 @@
     margin-inline-end: 0px;
 	padding-inline-start: 0px;
 	align-self: auto;
+	background-color: rgba(255,255,255, 1);
+	background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255,255,255, 1), rgba(0,0,0, 0.025) );
 	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25);
 }
 

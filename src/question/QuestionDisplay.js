@@ -7,17 +7,7 @@ import no_vote from '../assets/no_vote1.png'
 import down_vote from '../assets/down_vote1.png'
 
 import '../css/QuestionsDisplay.css'
-
-
-import {
-		//  NavLink,
-		//  Link,
-		//  Redirect,
-		// Route,
-		// Switch,
-		//  useRouteMatch,
-		//  useParams
-	} from 'react-router-dom'
+import '../css/QuestionsAnswered.css'
 
 var shuffle = require('shuffle-array')
 
@@ -36,7 +26,6 @@ export default class QuestionDisplay extends React.Component{
 		voted: false,
 		showHeader: false,
 		showQuestion: false,
-		enableQuestion: false,
 		showChoices: false,
 		showTimer: false,
 		startTimer: false,
@@ -47,36 +36,43 @@ export default class QuestionDisplay extends React.Component{
 		showCommentButton: false,
 		showCommentText:false,
 		showAllComments:false,
-		showAnsweredButtons: false
+		showAnsweredButton: false,
+		enableQuestion: false,
+		enableCommentButton: false,
+		enableAnsweredButton: false
 	}
 
 	componentDidMount(){
 		this.randomizeAnswerOrder(this.props.question)
-		// this.timerFunctions()
 		this.timerTimeout = setTimeout(() => { this.setState({ showTimer: true })}, 1000)
-		// this.startTimer = setTimeout(() => { this.timerInterval = setInterval(this.timerFunctions, 10)}, 5000)
+		this.startTimer = setTimeout(() => { this.timerInterval = setInterval(this.timerFunctions, 10)}, 5000)
 		this.headerTimeout = setTimeout(() => { this.setState({ showHeader: true })}, 2000)
 		this.questionTimeout = setTimeout(() => { this.setState({ showQuestion: true })}, 3000)
-		this.questionEnableTimeout = setTimeout(() => { this.setState({ enableQuestion: true })}, 5000)
+		this.enableQuestionTimeout = setTimeout(() => { this.setState({ enableQuestion: true })}, 5000)
 		this.choicesTimeout = setTimeout(() => { this.setState({ showChoices: true })}, 4000)
 	}
 
 	displayAnsweredCorrect = () => {
 		this.answeredHeaderTimeout = setTimeout(() => { this.setState({ showAnsweredHeader: true })}, 1000)
-		// this.correctAnswerTimeout = setTimeout(() => { this.setState({ showCorrectAnswer: true })}, 1500)
 		this.difficultyTimeout = setTimeout(() => { this.setState({ showDifficulty: true })}, 2000)
 		this.voteButtonsTimeout = setTimeout(() => { this.setState({ showVoteButtons: true })}, 2500)
 		this.commentButtonTimeout = setTimeout(() => { this.setState({ showCommentButton: true })}, 3000)
-		this.answeredButtonsTimeout = setTimeout(() => { this.setState({ showAnsweredButtons: true })}, 3500)
+		this.answeredButtonsTimeout = setTimeout(() => { this.setState({ showAnsweredButton: true })}, 3500)
+
+		this.enableCommentButtonTimeout = setTimeout(() => { this.setState({ enableCommentButton: true })}, 3750)
+		this.enableAnsweredButtonTimeout = setTimeout(() => { this.setState({ enableAnsweredButton: true })}, 4250)
 	}
-	
+
 	displayAnsweredIncorrect = () => {
 		this.answeredHeaderTimeout = setTimeout(() => { this.setState({ showAnsweredHeader: true })}, 1000)
 		this.correctAnswerTimeout = setTimeout(() => { this.setState({ showCorrectAnswer: true })}, 1500)
 		this.difficultyTimeout = setTimeout(() => { this.setState({ showDifficulty: true })}, 2000)
 		this.voteButtonsTimeout = setTimeout(() => { this.setState({ showVoteButtons: true })}, 2500)
 		this.commentButtonTimeout = setTimeout(() => { this.setState({ showCommentButton: true })}, 3000)
-		this.answeredButtonsTimeout = setTimeout(() => { this.setState({ showAnsweredButtons: true })}, 3500)
+		this.answeredButtonsTimeout = setTimeout(() => { this.setState({ showAnsweredButton: true })}, 3500)
+
+		this.enableCommentButtonTimeout = setTimeout(() => { this.setState({ enableCommentButton: true })}, 3750)
+		this.enableAnsweredButtonTimeout = setTimeout(() => { this.setState({ enableAnsweredButton: true })}, 4250)
 	}
 
 	onClickSelectAnswerFunctions = (event) => {
@@ -175,6 +171,10 @@ export default class QuestionDisplay extends React.Component{
 	onClickFunctions = (event) => {
 		this.onClickSelectAnswerFunctions(event)
 		this.stopTime()
+	}
+
+	onClickBlankFunctions = () => {
+
 	}
 
 	stopTime = (time) => {
@@ -401,7 +401,6 @@ export default class QuestionDisplay extends React.Component{
 		clearTimeout(this.headerTimeout)
 		clearTimeout(this.questionTimeout)
 		clearTimeout(this.choicesTimeout)
-		clearTimeout(this.questionEnableTimeout)
 		clearTimeout(this.timerTimeout)
 		clearInterval(this.startTimer)
 		clearTimeout(this.answeredHeaderTimeout)
@@ -410,6 +409,9 @@ export default class QuestionDisplay extends React.Component{
 		clearTimeout(this.voteButtonsTimeout)
 		clearTimeout(this.commentButtonTimeout)
 		clearTimeout(this.showAnsweredButtons)
+		clearTimeout(this.enableQuestionTimeout)
+		clearTimeout(this.enableCommentTimeout)
+		clearTimeout(this.enableAnsweredTimeout)
 	}
 
 	componentWillDidmount(){
@@ -425,19 +427,21 @@ export default class QuestionDisplay extends React.Component{
 		clearTimeout(this.voteButtonsTimeout)
 		clearTimeout(this.commentButtonTimeout)
 		clearTimeout(this.showAnsweredButtons)
+		clearTimeout(this.enableQuestionTimeout)
+		clearTimeout(this.enableCommentTimeout)
+		clearTimeout(this.enableAnsweredTimeout)
 	}
 
 	render(){
 
-		// console.log(this.state)
-		// console.log(this.props)
+		const blank = <></>
 
 		const question_buttons = [
 			<button
 				key={"answer_button1"}
 				value={ this.state.answers[0] }
 				className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
-				onClick={ this.state.enableQuestion ? this.onClickFunctions : "" }
+				onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
 			>
 				{ this.state.answers[0] }
 			</button>,
@@ -445,7 +449,7 @@ export default class QuestionDisplay extends React.Component{
 				key={"answer_button2"}
 				value={ this.state.answers[1] }
 				className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
-				onClick={ this.state.enableQuestion ? this.onClickFunctions : "" }
+				onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
 			>
 				{ this.state.answers[1] }
 			</button>,
@@ -453,7 +457,7 @@ export default class QuestionDisplay extends React.Component{
 				key={"answer_button3"}
 				value={ this.state.answers[2] }
 				className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
-				onClick={ this.state.enableQuestion ? this.onClickFunctions : "" }
+				onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
 			>
 				{ this.state.answers[2] }
 			</button>,
@@ -461,20 +465,18 @@ export default class QuestionDisplay extends React.Component{
 				key={"answer_button4"}
 				value={ this.state.answers[3] }
 				className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
-				onClick={ this.state.enableQuestion ? this.onClickFunctions : "" }
+				onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
 			>
 				{ this.state.answers[3] }
 			</button>
 		]
 
-		const correct_answer_text =
-		<>
+		const correct_answer_text = <>
 			<h3>The correct answer was</h3>
 			<h4>{ this.props.question.correct_answer }</h4>
 		</>
 
-		const difficulty_text =
-		<>
+		const difficulty_text = <>
 			<h3>Question Difficulty</h3>
 			<h4>{ this.props.question.difficulty }</h4>
 		</>
@@ -507,8 +509,6 @@ export default class QuestionDisplay extends React.Component{
 			</button>
 		]
 
-		const blank = <></>
-
 		const header = <h3>{ this.props.question ? `In ${ this.props.question.category }...` : blank }</h3>
 
 		const question_text = <h2>{ this.props.question ? `${this.props.question.question_desc}`: blank }</h2>
@@ -532,57 +532,54 @@ export default class QuestionDisplay extends React.Component{
 				<li><h5>Down Votes</h5> { this.state.votes.length > 0 ? this.calculateDownVotes() : blank }</li>
 			</ul>
 
-		const comment_button =
-		<div className="comment_button_container">
+		const comment_button = <>
 			<button
 				key={"comment_button"}
 				name="comment_button_name"
 				value="comment_button_value"
-				className="comment_button"
-				onClick={ this.onClickCommentFunctions }
+				className={ this.state.enableCommentButton ? "question_card_comment_button" : "question_card_comment_button_disabled" }
+				onClick={ this.state.enableCommentButton ? this.onClickCommentFunctions : this.onClickBlankFunctions }
 			>
 				Leave a Comment
 			</button>
-		</div>
+		</>
 
 		const comment_form =
 		<form
 			name="add_comment_form"
 			interaction="submit"
-			className="comment_form"
+			className="question_card_comment_form"
 			onSubmit={ this.onSubmitCommentFunctions }
 		>
-			{/* <div className="comment_div"> */}
-				<textarea
-					rows="5"
-					id="add_comment"
-					name="comment_text"
-					placeholder="Add A Comment..."
-					onChange={ this.onChangeComment }
-					value={ this.state.comment_text }
-				/>
-			{/* </div> */}
+			<textarea
+				rows="5"
+				id="add_comment"
+				name="comment_text"
+				placeholder="Add A Comment..."
+				onChange={ this.onChangeComment }
+				value={ this.state.comment_text }
+			/>
 			<div className="comment_button_container">
 				<input
-					className="comment_button"
 					type="submit"
+					className="question_card_comment_button"
 					value="Add Comment"
 				/>
 			</div>
 		</form>
 
 		const all_comments = this.state.comments.map(comment =>
-		<QuestionDisplayComments
-			key={comment.id}
-			comment={comment}
-		/>
+			<QuestionDisplayComments
+				key={comment.id}
+				comment={comment}
+			/>
 		)
 
 		const next_question_button =
 			<button
 				key={"next_question_button"}
-				className="next_question_button"
-				onClick={ this.onClickNextQuestionFunctions }
+				className={ this.state.enableAnsweredButton ? "question_card_next_question_button" : "question_card_next_question_button_disabled" }
+				onClick={ this.state.enableAnsweredButton ? this.onClickNextQuestionFunctions : this.onClickBlankFunctions }
 			>
 				Next Question
 			</button>
@@ -615,6 +612,7 @@ export default class QuestionDisplay extends React.Component{
 				<div className={ this.state.showDifficulty ? "question_card_difficulty" : "blank" }>
 					{ this.state.showDifficulty ? difficulty : blank }
 				</div>
+
 				<div className={ this.state.showVoteButtons ? "question_card_vote" : "blank" }>
 					<div className={ this.state.showVoteButtons ? "question_card_vote_header" : "blank" }>
 						{ this.state.showVoteButtons ? rate_header : blank }
@@ -623,22 +621,31 @@ export default class QuestionDisplay extends React.Component{
 						{ this.state.showVoteButtons ? vote_for_question_buttons : blank }
 					</div>
 				</div>
+
 				<div className={ this.state.voted ? "question_card_voted" : "blank" }>
 					<div className={ this.state.voted ? "question_card_voted_header" : "blank" }>
 						{ this.state.voted ? vote_header : blank }
 					</div>
+
 					<div className={ this.state.voted ? "question_card_voted_totals" : "blank" }>
 						{ this.state.voted ? vote_total : blank }
 					</div>
+				</div>
 
+				<div className={ this.state.showCommentButton || this.state.showCommentText || this.state.showAllComments ? "question_card_comment": "blank"}>
+					<div className={ this.state.showCommentButton ? "question_card_comment_button_container": "blank"}>
+						{ this.state.showCommentButton ? comment_button : blank }
+					</div>
+					<div className={ this.state.showCommentText ? "question_card_comment_text": "blank"}>
+						{ this.state.showCommentText ? comment_form : blank }
+					</div>
+					<div className={ this.state.showAllComments ? "question_card_all_comments": "blank"}>
+						{ this.state.showAllComments ? all_comments : blank }
+					</div>
 				</div>
-				<div className="question_comments">
-					{ this.state.showCommentButton ? comment_button : blank }
-					{ this.state.showCommentText ? comment_form : blank }
-					{ this.state.showAllComments ? all_comments : blank }
-				</div>
-				<div className="question_next_question_button_container">
-					{ this.state.showAnsweredButtons ? next_question_button : blank }
+
+				<div className={ this.state.showAnsweredButton ? "question_card_next_question_button_container": "blank"}>
+					{ this.state.showAnsweredButton ? next_question_button : blank }
 				</div>
 			</div>
 

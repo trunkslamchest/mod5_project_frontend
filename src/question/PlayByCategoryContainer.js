@@ -141,14 +141,11 @@ export default class PlayByDifficultyContainer extends React.Component{
 	}
 
 	render(){
-
-		// const error = <h3>Error. Big Oof.</h3>
-
 		const blank = <></>
 
 		const redirect_to_index = <Redirect to="/" />
 
-		const header = <><h3>Select A Category</h3></>
+		const header = <div className="question_wrapper_header"><h3>Select A Category</h3></div>
 
 		const display_header = <>{ this.state.displaySelect ? header : blank }</>
 

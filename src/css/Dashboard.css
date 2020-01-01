@@ -6,8 +6,8 @@
 	justify-content: flex-start;
 	margin: 0 auto 0 auto;
 	padding: 0px 0px 0px 0px;
-	background-color: rgba(102, 102, 102, 1);
-	background-image: linear-gradient(141deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.9));
+	background-color: rgba(255,255,255, 1);
+	background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255,255,255, 1), rgba(0,0,0, 0.1) );
 	min-height: 85.75vh;
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
 	animation: fade_in .3s ease-in-out 1, blur_in .15s ease-in-out 1;
@@ -21,7 +21,8 @@
 .dashboard_header {
 	width: 100%;
 	padding: 5px 0px 5px 0px;
-	background-image: linear-gradient(rgba(255, 255, 255, 1),  rgba(247,239,244, 1) );
+	background-color: rgba(255,255,255, 1);
+	background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255,255,255, 1), rgba(0,0,0, 0.1) );
 	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25);
 	animation: fade_in .4s ease-in-out 1, blur_in .2s ease-in-out 1;
 	z-index:8;
@@ -106,7 +107,8 @@
 	padding: 15px 30px 15px 30px;
 	margin: 0px;
 	flex-grow: 1;
-	background-image: linear-gradient(rgba(255, 255, 255, 1),  rgba(247,239,244, 1) );
+	background-color: rgba(255,255,255, 1);
+	background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255,255,255, 1), rgba(0,0,0, 0.01) );
 	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25);
 }
 

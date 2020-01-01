@@ -39,7 +39,6 @@ export default class Footer extends React.Component {
 			key={"f_home_link"}
 			name="footer_home_button"
 			interaction="click"
-			// className="home_link"
 			onClick={this.onClickHomeFunctions }
 		>
 			<img src={ this.state.hover ? footer_logo_hover : footer_logo } onMouseEnter={this.hoverOn}  onMouseLeave={this.hoverOff} alt="Link To Home Page"/>
@@ -47,15 +46,6 @@ export default class Footer extends React.Component {
 	]
 
 	const extra_links = [
-		// <NavLink
-		// 	exact to="/about"
-		// 	key={"about_link"}
-		// 	name="footer_about_button"
-		// 	interaction="click"
-		// 	onClick={this.onClickAboutFunctions }
-		// >
-		// About
-		// </NavLink>,
 			<NavLink
 			exact to="/terms_of_service"
 			key={"tos_link"}
@@ -85,16 +75,7 @@ export default class Footer extends React.Component {
 			onClick={this.onClickDisclaimerFunctions }
 		>
 			Disclaimer
-		</NavLink>,
-		// <NavLink
-		// 	exact to="/careers"
-		// 	key={"career_link"}
-		// 	name="footer_career_button"
-		// 	interaction="click"
-		// 	onClick={this.onClickCareerFunctions }
-		// >
-		// 	Careers
-		// </NavLink>
+		</NavLink>
 	]
 
 	const footer_logos = [
@@ -106,15 +87,7 @@ export default class Footer extends React.Component {
 
 	]
 
-	const fine_print = 
-		<>
-			 All NHL logos and marks and NHL team logos and marks depicted herein are the property of the NHL and the respective teams and may not be reproduced without the prior written consent of NHL Enterprises, L.P. © NHL 2019. All Rights Reserved. The Zamboni word mark and configuration of the Zamboni ice resurfacing machine are registered trademarks of Frank J. Zamboni & Co., Inc.© Frank J. Zamboni & Co., Inc. 2019.All Rights Reserved. Any other third party trademarks or copyrights are the property of their respective owners. All rights reserved.
-		</>
-
-	const copy_right = 
-		<>
-		© 2019 Created by Austin Smith. All rights reserved. All trademarks are property of their respective owners in the US and other countries.
-		</>
+	const fine_print = <> © 2019 Created by Austin Smith. All SmartApp™ logos and marks depicted herein are the property of SmartApp™ Enterprises and the respective employees and may not be reproduced without the prior written consent of SmartApp™ Enterprises, L.P. © SmartApp™ 2019. All Rights Reserved. The Zamboni word mark and configuration of the Zamboni ice resurfacing machine are registered trademarks of Frank J. Zamboni & Co., Inc.© Frank J. Zamboni & Co., Inc. 2019.All Rights Reserved. Any other third party trademarks or copyrights are the property of their respective owners. All rights reserved. </>
 
 		return(
 			<>
@@ -127,9 +100,6 @@ export default class Footer extends React.Component {
 					</div>
 					<div className="fine_print">
 						{ fine_print }
-					</div>
-					<div className="copy_right">
-						{ copy_right }
 					</div>
 				</div>
 				<div className="footer_right">

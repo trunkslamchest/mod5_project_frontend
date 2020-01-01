@@ -184,16 +184,16 @@ export default class SignUp extends React.Component {
 				<div className="alt_header">
 					<h3>Create New Account</h3>
 				</div>
-				{ errors }
 				{
 					!(this.state.loggedIn) ?
-						<>
+					<>
 							<form
 								name="sign_up_form"
 								interaction="submit"
 								className="edit_form"
 								onSubmit={ this.onSubmitSignUpFunctions }
 							>
+							{ errors }
 								<div className="edit_div">
 									<label htmlFor="sign_up_user_name">Username</label>
 									<br />

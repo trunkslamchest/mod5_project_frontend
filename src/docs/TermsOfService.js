@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Redirect } from 'react-router'
 
 import '../css/Docs.css'
 
@@ -16,7 +15,7 @@ export default class TermsOfService extends React.Component {
 			<h2>AGREEMENT TO TERMS</h2>
 			<p>
 			These Terms of Use constitute a legally binding agreement made between you, 
-			whether personally or on behalf of an entity (“you”) and SmartApp ("Company", “we”, “us”, or “our”), 
+			whether personally or on behalf of an entity (“you”) and SmartApp™ ("Company", “we”, “us”, or “our”), 
 			concerning your access to and use of the SmartApp™ website 
 			as well as any other media form, media channel, mobile website or mobile application related, linked, 
 			or otherwise connected thereto (collectively, SmartApp™). 

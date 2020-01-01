@@ -118,13 +118,13 @@ export default class LogIn extends React.Component {
 			<div className="alt_header">
 				<h3>Log In</h3>
 			</div>
-			{errors}
 				<form
 					name="log_in_form"
 					interaction="submit"
 					className="edit_form"
 					onSubmit={ this.onSubmitLoginFunctions }
-				>
+					>
+					{ errors }
 					<div className="edit_div">
 						<label htmlFor="log_in_user_name">User Name</label>
 						<br />

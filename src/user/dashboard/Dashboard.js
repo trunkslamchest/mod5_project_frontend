@@ -7,10 +7,7 @@ import DashboardAnswers from './DashboardAnswers'
 import DashboardVotes from './DashboardVotes'
 import DashboardComments from './DashboardComments'
 
-import {
-		//  Link
-		Redirect
-        } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 import '../../css/Dashboard.css'
 
@@ -83,8 +80,6 @@ export default class Dashboard extends React.Component{
 		)
 	}
 
-
-
 	displaySwitchToDashboard = () => {
 		this.setState({
 			display: 'dashboard'
@@ -94,6 +89,12 @@ export default class Dashboard extends React.Component{
 	displaySwitchToUserInfo = () => {
 		this.setState({
 			display: 'user_info'
+		})
+	}
+
+	displaySwitchToStats = () => {
+		this.setState({
+			display: 'stats'
 		})
 	}
 
@@ -112,12 +113,6 @@ export default class Dashboard extends React.Component{
 	displaySwitchToComments = () => {
 		this.setState({
 			display: 'comments'
-		})
-	}
-
-	displaySwitchToStats = () => {
-		this.setState({
-			display: 'stats'
 		})
 	}
 
@@ -196,7 +191,6 @@ export default class Dashboard extends React.Component{
 								case 'user_info': return <DashboardUserInfo
 																update_traffic_data={this.props.update_traffic_data }
 																update_page_data={this.props.update_page_data}
-																// ~~~~~~~~~~~~~~~~~~~~
 																user={ this.state.user }
 															/>;
 									case 'stats': return <DashboardStats

@@ -6,7 +6,8 @@ select:not(:-internal-list-box) {
 	width: 100%;
 	text-align: center;
   	margin: 0 auto 0px auto;
-	background-image: linear-gradient(rgba(255, 255, 255, 1),  rgba(247,239,244, 1) );
+	  background-color: rgba(255,255,255, 1);
+	  background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255,255,255, 1), rgba(0,0,0, 0.025) );
 	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25);
 	animation: fade_in .25s ease-in-out 1, blur_in .25s ease-in-out 1, slide_in_from_bottom.25s ease-in-out 1;
 }

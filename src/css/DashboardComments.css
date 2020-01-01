@@ -3,8 +3,8 @@
 }
 
 .comment_card {
-	background-color: rgba(255,255,255, 0.25);
-	background-image: linear-gradient(45deg, rgba(255,255,255, 0), rgba(255,255,255, 1), rgba(255,255,255, 1) );
+	background-color: rgba(255,255,255, 1);
+	background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255,255,255, 1), rgba(0,0,0, 0.025) );
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -27,8 +27,8 @@
 
 .comment_card h3 {
 	height: 100%;
-    background-color: rgba(255,255,255, 0.1);
-    background-image: linear-gradient(45deg, rgba(255,255,255, 0.25), rgba(255,255,255, 1), rgba(255,255,255, 0.1) );
+	background-color: rgba(255,255,255, 1);
+	background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255,255,255, 1), rgba(0,0,0, 0.025) );
     font: 400 10pt 'Lato', sans-serif;
 }
 

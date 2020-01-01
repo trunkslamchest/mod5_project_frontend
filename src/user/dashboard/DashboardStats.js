@@ -3,17 +3,11 @@ import React from 'react'
 import DashboardStatsDifficulty from './DashboardStatsDifficulty'
 import DashboardStatsCategory from './DashboardStatsCategory'
 
-// import {
-//         //  Link
-//         } from 'react-router-dom'
-
 import '../../css/DashboardStats.css'
 
 export default class DashboardStats extends React.Component{
 
 	state = {
-		user: {},
-		// user_questions: [],
 		user_answers: [],
 		all_questions: [],
 		average_time: 0,
@@ -31,11 +25,11 @@ export default class DashboardStats extends React.Component{
 	}
 
 	componentDidUpdate(){
-		if(this.state.mounted && !this.state.updated_all_questions){
-			this.getAllQuestions()
-		}
 		if(this.state.mounted && !this.state.updated_user_answers){
-			this.getUser(this.props.user_id)
+			this.setUser()
+		}
+		if(this.state.mounted && !this.state.updated_all_questions){
+			this.setAllQuestions()
 		}
 		if(this.state.updated_user_answers && !this.state.updated_average_time){
 			this.getAverageTime()
@@ -45,27 +39,18 @@ export default class DashboardStats extends React.Component{
 		}
 	}
 
-	getAllQuestions = () => {
-		fetch(`http://localhost:3001/questions/`)
-		.then(res => res.json())
-		.then(res_obj =>
-			this.setState({
-				all_questions: res_obj.data.map(question_obj => question_obj.attributes.question),
-				updated_all_questions: true
-			})
-		)
+	setUser = () => {
+		this.setState({
+			user_answers: this.props.user_answers,
+			updated_user_answers: true
+		})
 	}
 
-	getUser = (user_id) => {
-		fetch(`http://localhost:3001/users/${user_id}`)
-		.then(res => res.json())
-		.then(res_obj =>
-			this.setState({
-				user: res_obj.data.attributes,
-				user_answers: [...new Set(res_obj.data.attributes.answers.map(question_obj => question_obj))].sort(),
-				updated_user_answers: true
-			})
-		)
+	setAllQuestions = () => {
+		this.setState({
+			all_questions: this.props.all_questions,
+			updated_all_questions: true
+		})
 	}
 
 	getAverageTime = () => {
@@ -86,14 +71,12 @@ export default class DashboardStats extends React.Component{
 		let totalQuestionsAnsweredPercent = (this.state.user_answers.length / this.state.all_questions.length)
 		let totalQuestionsCorrectPercent = (this.state.user_answers.filter(answer => answer.user_result === "correct").length / this.state.user_answers.length)
 		let totalQuestionsWithNoAnswers = this.state.user_answers.filter(answer => answer.user_time === "0.0").length
+
 		let time = this.state.average_time
 
 		let question_factor = (totalQuestionsCorrectPercent + totalQuestionsAnsweredPercent) / 2.0
-
 		let no_answers_factor = totalQuestionsWithNoAnswers === 0 ? 0 : totalQuestionsWithNoAnswers * 0.25
-
 		let time_factor = (10 - time) * question_factor
-
 		let final_factor = totalQuestionsWithNoAnswers === 0 ? time_factor : time_factor - no_answers_factor
 
 		let final_rating = final_factor.toFixed(2)
@@ -107,18 +90,15 @@ export default class DashboardStats extends React.Component{
 	render(){
 
 		const totalQuestions = Object.keys(this.state.all_questions).length
+		const totalQuestionsWithNoAnswers = this.state.user_answers.filter(answer => answer.user_time === "0.0").length
 
 		const totalQuestionsAnswered = this.state.user_answers.length
-
 		const totalQuestionsAnsweredPercent = ((this.state.user_answers.length / this.state.all_questions.length) * 100).toFixed(2)
 
 		const totalQuestionsCorrect = this.state.user_answers.filter(answer => answer.user_result === "correct").length
-
 		const totalQuestionsCorrectPercent = ((this.state.user_answers.filter(answer => answer.user_result === "correct").length / this.state.user_answers.length) * 100).toFixed(2)
 
 		const correct_answers = <>{ totalQuestionsCorrect }/{ totalQuestionsAnswered } correct ({totalQuestionsCorrectPercent}%)</>
-
-		const totalQuestionsWithNoAnswers = this.state.user_answers.filter(answer => answer.user_time === "0.0").length
 
 		const stats_rating_countdown =
 		<>
@@ -126,6 +106,7 @@ export default class DashboardStats extends React.Component{
 			<p>Answer {10 - totalQuestionsAnswered} more questions to receive a rating!</p>
 		</div>
 		</>
+
 		const rating = <><h1>{ this.state.rating }</h1></>
 
 		const total_questions_answered =
@@ -139,25 +120,27 @@ export default class DashboardStats extends React.Component{
 			</ul>
 			<div className="stats_total_rating">
 				<h2><span>SmartApp</span>™ Rating</h2>
-				{ totalQuestionsAnswered < 10 ? stats_rating_countdown : rating }
+				{ totalQuestionsAnswered < 5 ? stats_rating_countdown : rating }
 			</div>
 		</div>
 
 		const questionsAnsweredByDifficulty =
 			<DashboardStatsDifficulty
-				user={ this.state.user }
+				user={ this.props.user }
+				user_answers={ this.props.user_answers }
 				all_questions={ this.state.all_questions }
 			/>
 
 		const questionsAnsweredByCategory =
 			<DashboardStatsCategory
-				user={ this.state.user }
+				user={ this.props.user }
+				user_answers={ this.props.user_answers }
 				all_questions={ this.state.all_questions }
 			/>
 
 		return(
 			<div className="stats_wrapper">
-				{ total_questions_answered }
+				 { total_questions_answered }
 				{ questionsAnsweredByDifficulty }
 				{ questionsAnsweredByCategory }
 			</div>

@@ -98,11 +98,11 @@ export default class Footer extends React.Component {
 	]
 
 	const footer_logos = [
-		<a href="https://flatironschool.com/" rel="noopener noreferrer" target="_blank"><img key={"flatiron_logo"} src={ flatiron_logo } className="logo_rectangle" alt="The Flatiron School"/></a>,
-		<a href="https://opentdb.com/" rel="noopener noreferrer" target="_blank"><img key={"open_trivia_logo"} src={ open_trivia_logo } className="logo_rectangle" alt="Open Trivita Database"/></a>,
-		<a href="https://www.postgresql.org/" rel="noopener noreferrer" target="_blank"><img key={"postgres_logo"} src={ postgres_logo } className="logo_rectangle" alt="PostgreSQL"/></a>,
-		<a href="https://rubyonrails.org/" rel="noopener noreferrer" target="_blank"><img key={"rails_logo"} src={ rails_logo } className="logo_rectangle" alt="Ruby On Rails"/></a>,
-		<a href="https://reactjs.org/" rel="noopener noreferrer" target="_blank"><img key={"react_logo"} src={ react_logo } className="logo_rectangle" alt="React"/></a>,
+		<a key={"flatiron_logo"} href="https://flatironschool.com/" rel="noopener noreferrer" target="_blank"><img src={ flatiron_logo } className="logo_rectangle" alt="The Flatiron School"/></a>,
+		<a key={"open_trivia_logo"} href="https://opentdb.com/" rel="noopener noreferrer" target="_blank"><img src={ open_trivia_logo } className="logo_rectangle" alt="Open Trivita Database"/></a>,
+		<a key={"postgres_logo"} href="https://www.postgresql.org/" rel="noopener noreferrer" target="_blank"><img src={ postgres_logo } className="logo_rectangle" alt="PostgreSQL"/></a>,
+		<a key={"rails_logo"} href="https://rubyonrails.org/" rel="noopener noreferrer" target="_blank"><img src={ rails_logo } className="logo_rectangle" alt="Ruby On Rails"/></a>,
+		<a key={"react_logo"} href="https://reactjs.org/" rel="noopener noreferrer" target="_blank"><img src={ react_logo } className="logo_rectangle" alt="React"/></a>,
 
 	]
 

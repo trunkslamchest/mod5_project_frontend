@@ -2,12 +2,7 @@ import React from 'react'
 
 import DashboardVoteCard from './DashboardVoteCard'
 
-import {
-        //  Link
-        } from 'react-router-dom'
-		
 import '../../css/DashboardVotes.css'
-
 
 export default class DashboardVotes extends React.Component{
 
@@ -29,53 +24,41 @@ export default class DashboardVotes extends React.Component{
 	}
 
 	componentDidUpdate(){
-		if (this.state.mounted) {
-			this.getVotes()
-			this.getAllQuestions()
-			this.getUserQuestions()
+		if (this.state.mounted && !this.state.updatedVotes ){
+			this.setVotes()
+		}
+		if (this.state.mounted && !this.state.updatedAllQuestions) {
+			this.setAllQuestions()
+		}
+		if (this.state.updatedAllQuestions && !this.state.updatedUserQuestions) {
+			this.setUserQuestions()
 		}
 	}
 
-	getVotes = () => {
-		if (this.props.user_id && this.state.updatedVotes !== true ) {
-			fetch(`http://localhost:3001/users/${this.props.user_id}`)
-			.then(res => res.json())
-			.then(res_obj =>
-				this.setState({
-					userVotes: res_obj.data.attributes.votes,
-					updatedVotes: true
-				})
-			)
-		}
+	setVotes = () => {
+		this.setState({
+			userVotes: this.props.user_votes,
+			updatedVotes: true
+		})
 	}
 
-	getAllQuestions = () => {
-		if (this.state.updatedVotes && this.state.updatedAllQuestions !== true ) {
-			fetch(`http://localhost:3001/questions/`)
-			.then(res => res.json())
-			.then(res_obj =>
-				this.setState({
-					allQuestions: res_obj.data.map(question_obj => question_obj.attributes.question),
-					updatedAllQuestions: true
-				})
-			)
-		}
+	setAllQuestions = () => {
+		this.setState({
+			allQuestions: this.props.all_questions,
+			updatedAllQuestions: true
+		})
 	}
 
-	getUserQuestions = () => {
-		if (this.state.updatedAllQuestions && this.state.updatedUserQuestions !== true ) {
+	setUserQuestions = () => {
 			let userVoteIDs = this.state.userVotes.map(vote => vote.question_id)
 			let userQuestions = this.state.allQuestions.filter(question => userVoteIDs.includes(question.id))
 			this.setState({
 				userQuestions: userQuestions,
 				updatedUserQuestions: true
 			})
-		}
 	}
 
 	render(){
-
-		// console.log(this.state)
 
 		const distributeCombineQuestionsVotes =
 		(this.state.updatedUserQuestions) ? this.state.userQuestions.map(question =>

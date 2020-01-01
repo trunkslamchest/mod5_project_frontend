@@ -74,10 +74,10 @@ export default class DashboardStatsCategory extends React.Component{
 	questionsAnsweredByCategory = () => {
 		if (this.state.updatedAllQuestions && this.state.updatedCategories !== true ) {
 
-			let user_answers = this.props.user.answers.filter(answer => answer)
+			let user_answers = this.props.user_answers.filter(answer => answer)
 			let user_answers_ids = user_answers.map(answer => answer.question_id)
 
-			let user_answers_correct = this.props.user.answers.filter(answer => answer.user_result === "correct")
+			let user_answers_correct = this.props.user_answers.filter(answer => answer.user_result === "correct")
 			let user_answers_correct_ids = user_answers_correct.map(answer => answer.question_id)
 
 			let user_answers_anime = this.state.all_anime_questions.filter(answer => user_answers_ids.includes(answer.id))

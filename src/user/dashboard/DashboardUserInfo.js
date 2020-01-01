@@ -25,17 +25,17 @@ export default class DashboardUserInfo extends React.Component{
 		const number_ends = [ "st", "nd", "rd", "th" ]
 		const number_split = localStorage.birth_day.split('').pop()
 
-		if ((parseInt(this.props.birth_day, 10) > 10) && (parseInt(this.props.birth_day, 10) < 19)) {
-			return `${this.props.birth_day}` + number_ends[3]
+		if ((parseInt(this.props.user.birth_day, 10) > 10) && (parseInt(this.props.user.birth_day, 10) < 19)) {
+			return `${this.props.user.birth_day}` + number_ends[3]
 		} else {
 			if ((number_split === '1')) {
-				return `${this.props.birth_day}` + number_ends[0]
+				return `${this.props.user.birth_day}` + number_ends[0]
 			} else if (number_split === '2') {
-				return `${this.props.birth_day}` + number_ends[1]
+				return `${this.props.user.birth_day}` + number_ends[1]
 			} else if (number_split === '3') {
-				return `${this.props.birth_day}` + number_ends[2]
+				return `${this.props.user.birth_day}` + number_ends[2]
 			} else {
-				return `${this.props.birth_day}` + number_ends[3]
+				return `${this.props.user.birth_day}` + number_ends[3]
 			}
 		}
 	}
@@ -44,24 +44,24 @@ export default class DashboardUserInfo extends React.Component{
 		const number_ends = [ "st", "nd", "rd", "th" ]
 		const number_split = localStorage.join_day.split('').pop()
 
-		if ((parseInt(this.props.join_day, 10) > 10) && (parseInt(this.props.join_day, 10) < 19)) {
-			return `${this.props.join_day}` + number_ends[3]
+		if ((parseInt(this.props.user.join_day, 10) > 10) && (parseInt(this.props.user.join_day, 10) < 19)) {
+			return `${this.props.user.join_day}` + number_ends[3]
 		} else {
 			if ((number_split === '1')) {
-				return `${this.props.join_day}` + number_ends[0]
+				return `${this.props.user.join_day}` + number_ends[0]
 			} else if (number_split === '2') {
-				return `${this.props.join_day}` + number_ends[1]
+				return `${this.props.user.join_day}` + number_ends[1]
 			} else if (number_split === '3') {
-				return `${this.props.join_day}` + number_ends[2]
+				return `${this.props.user.join_day}` + number_ends[2]
 			} else {
-				return `${this.props.join_day}` + number_ends[3]
+				return `${this.props.user.join_day}` + number_ends[3]
 			}
 		}
 	}
 
 	onClickUpdateTrafficFunctions = (event) => {
 		this.props.update_traffic_data({
-			user_id: this.props.user_id,
+			user_id: this.props.user.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
 		})
@@ -69,13 +69,13 @@ export default class DashboardUserInfo extends React.Component{
 
 	onPageLoadFunctions = (props) => {
 		this.props.update_page_data({
-			user_id: props.user_id,
+			user_id: props.user.user_id,
 			page_name: "user_dashboard"
 		})
 	}
 
 	render(){
-		const age = 2019 - this.props.birth_year
+		const age = 2019 - this.props.user.birth_year
 
 		const dashboard_edit_buttons = [
 			<Link
@@ -103,27 +103,27 @@ export default class DashboardUserInfo extends React.Component{
 		return(
 			<div className="user_info_wrapper">
 				<div className="alt_header">
-					<h3>{ this.props.user_name }</h3>
-					<h5>{ this.props.email }</h5>
+					<h3>{ this.props.user.user_name }</h3>
+					<h5>{ this.props.user.email }</h5>
 				</div>
 				<div className="user_info_body">
 					<ul>
-						<li>{ this.props.first_name }</li>
-						<li>{this.props.last_name }</li>
+						<li>{ this.props.user.first_name }</li>
+						<li>{this.props.user.last_name }</li>
 					</ul>
 					<ul>
-						<li>{this.props.gender }</li>
+						<li>{this.props.user.gender }</li>
 						<li>{ age } years old</li>
-						<li>{ this.props.birth_month } { this.formatted_birth_day() }, { this.props.birth_year }</li>
+						<li>{ this.props.user.birth_month } { this.formatted_birth_day() }, { this.props.user.birth_year }</li>
 					</ul>
 					<ul>
-						<li>{ this.props.house_number } { this.props.street_name }</li>
-						<li>{this.props.city_town}, {this.props.state}</li>
-						<li>{ this.props.zip_code }</li>
+						<li>{ this.props.user.house_number } { this.props.user.street_name }</li>
+						<li>{this.props.user.city_town}, {this.props.user.state}</li>
+						<li>{ this.props.user.zip_code }</li>
 					</ul>
 					<ul>
 						<li>Join Date</li>
-						<li>{this.props.join_month } {this.formatted_join_day() }, { this.props.join_year }</li>
+						<li>{this.props.user.join_month } {this.formatted_join_day() }, { this.props.user.join_year }</li>
 					</ul>
 				<div className="user_info_buttons_container">
 					{ dashboard_edit_buttons }

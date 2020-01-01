@@ -56,10 +56,10 @@ export default class DashboardStatsDifficulty extends React.Component{
 	questionsAnsweredByDifficulty = () => {
 		if (this.state.updatedAllQuestions && this.state.updatedDifficulties !== true ) {
 
-			let user_answers = this.props.user.answers.filter(answer => answer)
+			let user_answers = this.props.user_answers.filter(answer => answer)
 			let user_answers_ids = user_answers.map(answer => answer.question_id)
 
-			let user_answers_correct = this.props.user.answers.filter(answer => answer.user_result === "correct")
+			let user_answers_correct = this.props.user_answers.filter(answer => answer.user_result === "correct")
 			let user_answers_correct_ids = user_answers_correct.map(answer => answer.question_id)
 
 			let user_answers_easy = this.state.all_easy_questions.filter(answer => user_answers_ids.includes(answer.id))

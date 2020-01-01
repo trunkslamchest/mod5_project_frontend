@@ -103,7 +103,7 @@ export default class DashboardStats extends React.Component{
 		const stats_rating_countdown =
 		<>
 		<div className="stats_total_rating_coutdown">
-			<p>Answer {10 - totalQuestionsAnswered} more questions to receive a rating!</p>
+			<p>Answer {5 - totalQuestionsAnswered} more questions to receive a rating!</p>
 		</div>
 		</>
 
@@ -139,8 +139,8 @@ export default class DashboardStats extends React.Component{
 			/>
 
 		return(
-			<div className="stats_wrapper">
-				 { total_questions_answered }
+			<div className={ "stats_wrapper"}>
+				{ total_questions_answered }
 				{ questionsAnsweredByDifficulty }
 				{ questionsAnsweredByCategory }
 			</div>

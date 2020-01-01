@@ -1,3 +1,8 @@
+/* .blank {
+	opacity: 0;
+	visibility: hidden;
+} */
+
 .dashboard_wrapper {
 	width: 80%;
 	display: flex;

@@ -18,7 +18,7 @@ export default class DashboardVoteCard extends React.Component{
 
 	componentDidUpdate(){
 		if (this.state.mounted && this.state.updated_votes === false) {
-			this.getVotes()
+			this.getAllVotes()
 		}
 		if (this.state.updated_votes && this.state.converted_votes === false) {
 			this.convertVote()
@@ -45,7 +45,7 @@ export default class DashboardVoteCard extends React.Component{
 		})
 	}
 
-	getVotes = () => {
+	getAllVotes = () => {
 		fetch(`http://localhost:3001/questions/${this.props.question.id}`)
 		.then(res => res.json())
 		.then(res_obj =>

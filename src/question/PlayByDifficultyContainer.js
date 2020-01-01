@@ -18,10 +18,10 @@ import {
 export default class PlayByDifficultyContainer extends React.Component{
 
 	state={
-		mounted: null,
 		difficulty: "",
 		sortedQuestions: [],
 		answeredQuestionsIDs: [],
+		mounted: null,
 		displaySelect: false,
 		questionsUpdate: false,
 		updatedAnsweredQuestions: false,
@@ -42,15 +42,19 @@ export default class PlayByDifficultyContainer extends React.Component{
 	}
 
 	componentDidUpdate(){
-		if ((!this.state.displaySelect && !this.state.questionsUpdated)) {
+
+		if (!this.state.displaySelect && !this.state.questionsUpdated) {
 			this.getSortedQuestions()
 		}
+
 		if (this.state.questionsUpdated && !this.state.updatedAnsweredQuestions) {
 			this.getSortedAnsweredQuestions(this.props.user_id)
 		}
-		if(this.state.updatedAnsweredQuestions && !this.state.gotRandomQuestion) {
+
+		if (this.state.updatedAnsweredQuestions && !this.state.gotRandomQuestion) {
 			this.getRandomQuestion()
 		}
+
 	}
 
 	getSortedQuestions = () => {
@@ -79,7 +83,9 @@ export default class PlayByDifficultyContainer extends React.Component{
 
 		const all_questions_answered =
 			<>
-				<h3 key={"all_questions_answered"}> You Have Answered All the { this.state.difficulty } Questions! </h3>
+				<div className="question_wrapper_header">
+					<h3 key={"all_questions_answered"}> You Have Answered All the { this.state.difficulty } Questions! </h3>
+				</div>
 				<button
 					key={"reselect_button"}
 					className="reselect_button"
@@ -111,6 +117,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 		)
 
 		return filtered_questions.length === 0 ? headerCheck : randomQuestion
+		// return headerCheck
+
 	}
 
 	nextQuestion = (user_id) => {

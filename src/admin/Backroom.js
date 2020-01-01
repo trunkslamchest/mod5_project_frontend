@@ -92,16 +92,3 @@ export default class Backroom extends React.Component{
 		)
 	}
 }
-
-// {
-// 	(() => {
-// 		switch(this.state.display) {
-// 		case 'index': return <BackroomIndex />;
-// 		case 'RTVusers': return <RTVusersContainer />;
-// 		case 'RTVpages': return <RTVpagesContainer />;
-// 		case 'DBedit': return <DBeditMainContainer update_db_display={ this.state.db_display } />;
-// 		case 'BRanalytics': return <STanalyticsIndex />;
-// 		default: return <BackroomIndex />;
-// 		}
-// 	})()
-// }

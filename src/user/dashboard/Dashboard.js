@@ -33,11 +33,11 @@ export default class Dashboard extends React.Component{
 	}
 
 	componentDidUpdate(){
-		if (this.state.mounted && this.props.user_id && this.state.updated_user === false){
-			this.getUser(this.props.user_id)
-		}
-		if (this.state.mounted && this.props.user_id && this.state.updated_all_questions === false){
+		if (this.state.mounted && this.props.user_id && !this.state.updated_all_questions){
 			this.getAllQuestions()
+		}
+		if (this.state.updated_all_questions && this.props.user_id && !this.state.updated_user){
+			this.getUser(this.props.user_id)
 		}
 	}
 
@@ -140,6 +140,7 @@ export default class Dashboard extends React.Component{
 	}
 
 	render(){
+
 		const dashboard_tabs = [
 			<li
 				key={"dashboard_info"}
@@ -173,58 +174,70 @@ export default class Dashboard extends React.Component{
 			</li>
 		]
 
-		return(
-			<div className="dashboard_wrapper">
+		const loading =
+			<div className="loading_container">
+				<div className="loading_animation_container">
+					<div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+				</div>
+			</div>
+
+		const dashboard =
+			<>
 				<div className="dashboard_tabs">
 					<ul>
 						{ dashboard_tabs }
 					</ul>
 				</div>
+				{
 					{
-						{
-							true: <Redirect to='/' />,
-							false: 	(() => {
-								switch(this.state.display) {
-									case 'dashboard': return <DashboardIndex
-																first_name={ this.state.user.first_name }
-															/>;
+						true: <Redirect to='/' />,
+						false: 	(() => {
+							switch(this.state.display) {
+								case 'dashboard': return <DashboardIndex
+															first_name={ this.state.user.first_name }
+														/>;
 								case 'user_info': return <DashboardUserInfo
-																update_traffic_data={this.props.update_traffic_data }
-																update_page_data={this.props.update_page_data}
-																user={ this.state.user }
-															/>;
-									case 'stats': return <DashboardStats
-																user={ this.state.user }
-																user_answers={ this.state.user_answers }
-																all_questions={ this.state.all_questions }
-																update_traffic_data={this.props.update_traffic_data }
-																update_page_data={this.props.update_page_data}
-															/>;
-									case 'answers': return <DashboardAnswers
-																user_answers={ this.state.user_answers }
-																all_questions={ this.state.all_questions }
-																update_traffic_data={this.props.update_traffic_data }
-																update_page_data={this.props.update_page_data}
-															/>;
-									case 'votes': return <DashboardVotes
-																user_votes={ this.state.user_votes }
-																all_questions={ this.state.all_questions }
-																update_traffic_data={this.props.update_traffic_data }
-																update_page_data={this.props.update_page_data}
-															/>;
-									case 'comments': return <DashboardComments
-																user_comments={ this.state.user_comments }
-																all_questions={ this.state.all_questions }
-																update_traffic_data={this.props.update_traffic_data }
-																update_page_data={this.props.update_page_data}
-															/>;
-									default: return <DashboardIndex
-													first_name={ this.state.user.first_name }
-												/>;
-								}
-							})()
-						}[localStorage.length === 0]
-					}
+															update_traffic_data={this.props.update_traffic_data }
+															update_page_data={this.props.update_page_data}
+															user={ this.state.user }
+														/>;
+								case 'stats': return <DashboardStats
+															user={ this.state.user }
+															user_answers={ this.state.user_answers }
+															all_questions={ this.state.all_questions }
+															update_traffic_data={this.props.update_traffic_data }
+															update_page_data={this.props.update_page_data}
+														/>;
+								case 'answers': return <DashboardAnswers
+															user_answers={ this.state.user_answers }
+															all_questions={ this.state.all_questions }
+															update_traffic_data={this.props.update_traffic_data }
+															update_page_data={this.props.update_page_data}
+														/>;
+								case 'votes': return <DashboardVotes
+															user_votes={ this.state.user_votes }
+															all_questions={ this.state.all_questions }
+															update_traffic_data={this.props.update_traffic_data }
+															update_page_data={this.props.update_page_data}
+														/>;
+								case 'comments': return <DashboardComments
+															user_comments={ this.state.user_comments }
+															all_questions={ this.state.all_questions }
+															update_traffic_data={this.props.update_traffic_data }
+															update_page_data={this.props.update_page_data}
+														/>;
+								default: return <DashboardIndex
+												first_name={ this.state.user.first_name }
+											/>;
+							}
+						})()
+					}[localStorage.length === 0]
+				}
+			</>
+
+		return(
+			<div className="dashboard_wrapper">
+				{ this.state.updated_all_questions ? dashboard : loading }
 			</div>
 		)
 	}

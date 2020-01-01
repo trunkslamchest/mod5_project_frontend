@@ -89,6 +89,21 @@
 	}
 }
 
+@keyframes loading_pulse {
+	0% {
+		opacity: 0;
+	}
+	40% {
+		opacity: 1.0;
+	}
+	60% {
+		opacity: 1.0;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
 
 @keyframes black_to_white {
 	0% {

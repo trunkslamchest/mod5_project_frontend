@@ -23,6 +23,7 @@ export default class PlayByDifficultyContainer extends React.Component{
 		sortedQuestions: [],
 		answeredQuestionsIDs: [],
 		displaySelect: false,
+		displayQuestion: false,
 		questionsUpdated: false,
 		updatedAnsweredQuestions: false,
 		gotRandomQuestion: false,
@@ -39,6 +40,7 @@ export default class PlayByDifficultyContainer extends React.Component{
 		this.setState({
 			mounted: true,
 			displaySelect: true,
+			displayQuestion: false
 		})
 	}
 
@@ -80,7 +82,9 @@ export default class PlayByDifficultyContainer extends React.Component{
 
 		const all_questions_answered =
 			<>
-				<h3 key={"all_questions_answered"}> You Have Answered All the { this.state.category } Questions! </h3>
+				<div className="question_wrapper_header">
+					<h3 key={"all_questions_answered"}> You Have Answered All the { this.state.category } Questions! </h3>
+				</div>
 				<button
 					key={"reselect_button"}
 					className="reselect_button"
@@ -116,7 +120,7 @@ export default class PlayByDifficultyContainer extends React.Component{
 
 	nextQuestion = (user_id) => {
 		this.setState({
-			display: 'question'
+			displayQuestion: true
 		}, this.getSortedAnsweredQuestions(user_id))
 	}
 
@@ -124,7 +128,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 	onClickSelectFunctions = (event) => {
 		this.setState({
 			category: event.target.value,
-			displaySelect: false
+			displaySelect: false,
+			displayQuestion: true
 		})
 	}
 
@@ -135,8 +140,15 @@ export default class PlayByDifficultyContainer extends React.Component{
 			sortedQuestions: [],
 			answeredQuestionsIDs: [],
 			displaySelect: true,
+			displayQuestion: false,
 			questionsUpdated: false,
 			updatedAnsweredQuestions: false,
+		})
+	}
+
+	componentWillUnmount(){
+		this.setState({
+			displayQuestion: false
 		})
 	}
 
@@ -159,12 +171,28 @@ export default class PlayByDifficultyContainer extends React.Component{
 				Anime
 			</button>,
 			<button
+				key={"art_button"}
+				value={ "Art" }
+				className="category_button"
+				onClick={ this.onClickSelectFunctions }
+			>
+				Art
+			</button>,
+			<button
 				key={"books_button"}
 				value={ "Books" }
 				className="category_button"
 				onClick={ this.onClickSelectFunctions }
 			>
 				Books
+			</button>,
+			<button
+				key={"celebrities_button"}
+				value={ "Celebrities" }
+				className="category_button"
+				onClick={ this.onClickSelectFunctions }
+			>
+				Celebrities
 			</button>,
 			<button
 				key={"computers_button"}
@@ -205,6 +233,14 @@ export default class PlayByDifficultyContainer extends React.Component{
 				onClick={ this.onClickSelectFunctions }
 			>
 				History
+			</button>,
+			<button
+				key={"math_button"}
+				value={ "Math" }
+				className="category_button"
+				onClick={ this.onClickSelectFunctions }
+			>
+				Math
 			</button>,
 			<button
 				key={"music_button"}
@@ -253,14 +289,6 @@ export default class PlayByDifficultyContainer extends React.Component{
 				onClick={ this.onClickSelectFunctions }
 			>
 				Sports
-			</button>,
-			<button
-				key={"Technology_button"}
-				value={ "Technology" }
-				className="category_button"
-				onClick={ this.onClickSelectFunctions }
-			>
-				Technology
 			</button>,
 			<button
 				key={"television_button"}

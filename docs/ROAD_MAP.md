@@ -1,17 +1,12 @@
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-|-facelift styling
-|	-answer display
-
-|-add more questions
+|-responsive layout
 
 |-update page trackers
 |-update element trackers
 
-|-responsive layout
-
-
+~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 |-comments
@@ -19,8 +14,6 @@
 
 |-answers/votes/comments
 | 	-add filters/search bar
-
-|-refactor dashboard tabs
 
 |-leaderboards/site wide stats
 

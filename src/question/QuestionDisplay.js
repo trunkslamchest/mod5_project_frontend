@@ -24,6 +24,7 @@ export default class QuestionDisplay extends React.Component{
 		stopTime: false,
 		setTime: false,
 		voted: false,
+		mounted: false,
 		showHeader: false,
 		showQuestion: false,
 		showChoices: false,
@@ -43,6 +44,11 @@ export default class QuestionDisplay extends React.Component{
 	}
 
 	componentDidMount(){
+
+		this.setState({
+			mounted: true
+		})
+
 		this.randomizeAnswerOrder(this.props.question)
 		this.timerTimeout = setTimeout(() => { this.setState({ showTimer: true })}, 1000)
 		this.startTimer = setTimeout(() => { this.timerInterval = setInterval(this.timerFunctions, 10)}, 5000)
@@ -73,6 +79,30 @@ export default class QuestionDisplay extends React.Component{
 
 		this.enableCommentButtonTimeout = setTimeout(() => { this.setState({ enableCommentButton: true })}, 3750)
 		this.enableAnsweredButtonTimeout = setTimeout(() => { this.setState({ enableAnsweredButton: true })}, 4250)
+	}
+
+	displayAnsweredOuttaTime = () => {
+		this.answeredHeaderTimeout = setTimeout(() => { this.setState({ showAnsweredHeader: true })}, 1000)
+		this.difficultyTimeout = setTimeout(() => { this.setState({ showDifficulty: true })}, 2000)
+		this.voteButtonsTimeout = setTimeout(() => { this.setState({ showVoteButtons: true })}, 2500)
+		this.commentButtonTimeout = setTimeout(() => { this.setState({ showCommentButton: true })}, 3000)
+		this.answeredButtonsTimeout = setTimeout(() => { this.setState({ showAnsweredButton: true })}, 3500)
+
+		this.enableCommentButtonTimeout = setTimeout(() => { this.setState({ enableCommentButton: true })}, 3750)
+		this.enableAnsweredButtonTimeout = setTimeout(() => { this.setState({ enableAnsweredButton: true })}, 4250)
+	}
+
+	onClickFunctions = (event) => {
+		this.onClickSelectAnswerFunctions(event)
+		this.stopTime()
+
+		this.setState({
+			display: 'answered'
+		})
+	}
+
+	onClickBlankFunctions = () => {
+
 	}
 
 	onClickSelectAnswerFunctions = (event) => {
@@ -150,7 +180,7 @@ export default class QuestionDisplay extends React.Component{
 				time: "-1"
 			})
 		})
-		this.displayAnswered()
+		this.displayAnsweredOuttaTime()
 	}
 
 	randomizeAnswerOrder = (question) => {
@@ -166,15 +196,6 @@ export default class QuestionDisplay extends React.Component{
 		this.setState({
 			answers: shuffled_answers
 		})
-	}
-
-	onClickFunctions = (event) => {
-		this.onClickSelectAnswerFunctions(event)
-		this.stopTime()
-	}
-
-	onClickBlankFunctions = () => {
-
 	}
 
 	stopTime = (time) => {
@@ -414,27 +435,16 @@ export default class QuestionDisplay extends React.Component{
 		clearTimeout(this.enableAnsweredTimeout)
 	}
 
-	componentWillDidmount(){
-		clearTimeout(this.headerTimeout)
-		clearTimeout(this.questionTimeout)
-		clearTimeout(this.choicesTimeout)
-		clearTimeout(this.questionEnableTimeout)
-		clearTimeout(this.timerTimeout)
-		clearInterval(this.startTimer)
-		clearTimeout(this.answeredHeaderTimeout)
-		clearTimeout(this.correctAnswerTimeout)
-		clearTimeout(this.difficultyTimeout)
-		clearTimeout(this.voteButtonsTimeout)
-		clearTimeout(this.commentButtonTimeout)
-		clearTimeout(this.showAnsweredButtons)
-		clearTimeout(this.enableQuestionTimeout)
-		clearTimeout(this.enableCommentTimeout)
-		clearTimeout(this.enableAnsweredTimeout)
-	}
-
 	render(){
 
 		const blank = <></>
+
+		const loading =
+			<div className="loading_container">
+				<div className="loading_animation_container">
+					<div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+				</div>
+			</div>
 
 		const question_buttons = [
 			<button
@@ -584,7 +594,7 @@ export default class QuestionDisplay extends React.Component{
 				Next Question
 			</button>
 
-		const displayQuestion =
+		const question_card =
 			<div className="question_card">
 				<div className={ !this.state.showTimer ? "blank" : "question_card_timer" } >
 					<h2>Time Left</h2>
@@ -600,6 +610,9 @@ export default class QuestionDisplay extends React.Component{
 					{ this.state.showChoices ? question_choices : blank }
 				</div>
 			</div>
+
+		const displayQuestion = this.state.showTimer ? question_card : loading
+
 
 		const DisplayAnswer =
 			<div className="question_card">

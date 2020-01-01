@@ -21,6 +21,8 @@ import Privacy from './docs/Privacy'
 import Disclaimer from './docs/Disclaimer'
 
 import Backroom from './admin/Backroom'
+import TestTemp from './admin/TestTemp'
+
 
 import Error from './Error'
 
@@ -36,6 +38,7 @@ import {
 
 import './App.css'
 import './css/Response.css'
+import './css/Loading.css'
 
 export default class App extends React.Component {
 
@@ -388,6 +391,11 @@ export default class App extends React.Component {
 								user_name={ this.state.user_name }
 								access={ this.state.access }
 								update_backroom_from_header={ this.state.backroom_display }
+							/>
+						</Route>
+						<Route exact path='/backroom/test_temp'>
+							<TestTemp
+								token={ this.state.token }
 							/>
 						</Route>
 						<Route exact path='/terms_of_service'>

@@ -14,7 +14,7 @@
 }
 
 .question_wrapper > * {
-	animation: fade_in .2s ease-in-out 1, blur_in .25s ease-in-out 1, slide_in_from_bottom .3s ease-in-out 1;
+	/* animation: fade_in .2s ease-in-out 1, blur_in .25s ease-in-out 1, slide_in_from_bottom .3s ease-in-out 1; */
 }
 
 .question_wrapper_header {

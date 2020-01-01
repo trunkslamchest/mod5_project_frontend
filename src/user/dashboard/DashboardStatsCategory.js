@@ -19,29 +19,38 @@ export default class DashboardStatsCategory extends React.Component{
 	}
 
 	componentDidUpdate(){
-		if (this.state.mounted) {
+		// if (this.state.mounted) {
+		// 	this.sortAllQuestionsByCategory()
+		// 	this.questionsAnsweredByCategory()
+		// }
+		if (this.state.mounted && !this.state.updatedAllQuestions) {
 			this.sortAllQuestionsByCategory()
+		}
+		if (this.state.updatedAllQuestions && !this.state.updatedCategories) {
 			this.questionsAnsweredByCategory()
 		}
 	}
 
 	sortAllQuestionsByCategory = () => {
-		if (Object.keys(this.props.all_questions).length > 0 && this.state.updatedAllQuestions !== true ) {
-
 			let all_anime_questions = this.props.all_questions.filter(question => question.category === "Anime")
+			let all_art_questions = this.props.all_questions.filter(question => question.category === "Art")
+
 			let all_book_questions = this.props.all_questions.filter(question => question.category === "Books")
+			let all_celebrities_questions = this.props.all_questions.filter(question => question.category === "Celebrities")
+
 			let all_computer_questions = this.props.all_questions.filter(question => question.category === "Computers")
 			let all_film_questions = this.props.all_questions.filter(question => question.category === "Film")
 			let all_general_knowledge_questions = this.props.all_questions.filter(question => question.category === "General Knowledge")
 			let all_geography_questions = this.props.all_questions.filter(question => question.category === "Geography")
 			let all_history_questions = this.props.all_questions.filter(question => question.category === "History")
+			let all_math_questions = this.props.all_questions.filter(question => question.category === "Mathematics")
+
 			let all_music_questions = this.props.all_questions.filter(question => question.category === "Music")
 			let all_mythology_questions = this.props.all_questions.filter(question => question.category === "Mythology")
 			let all_nature_questions = this.props.all_questions.filter(question => question.category === "Nature")
 			let all_politics_questions = this.props.all_questions.filter(question => question.category === "Politics")
 			let all_science_questions = this.props.all_questions.filter(question => question.category === "Science")
 			let all_sports_questions = this.props.all_questions.filter(question => question.category === "Sports")
-			let all_technology_questions = this.props.all_questions.filter(question => question.category === "Technology")
 			let all_television_questions = this.props.all_questions.filter(question => question.category === "Television")
 			let all_theatre_questions = this.props.all_questions.filter(question => question.category === "Theatre")
 			let all_vehicles_questions = this.props.all_questions.filter(question => question.category === "Vehicles")
@@ -49,30 +58,31 @@ export default class DashboardStatsCategory extends React.Component{
 
 			this.setState({
 				all_anime_questions: all_anime_questions,
+				all_art_questions: all_art_questions,
 				all_book_questions: all_book_questions,
+				all_celebrities_questions: all_celebrities_questions,
 				all_computer_questions: all_computer_questions,
 				all_film_questions: all_film_questions,
 				all_general_knowledge_questions: all_general_knowledge_questions,
 				all_geography_questions: all_geography_questions,
 				all_history_questions: all_history_questions,
+				all_math_questions: all_math_questions,
 				all_music_questions: all_music_questions,
 				all_mythology_questions: all_mythology_questions,
 				all_nature_questions: all_nature_questions,
 				all_politics_questions: all_politics_questions,
 				all_science_questions: all_science_questions,
 				all_sports_questions: all_sports_questions,
-				all_technology_questions: all_technology_questions,
 				all_television_questions: all_television_questions,
 				all_theatre_questions: all_theatre_questions,
 				all_vehicles_questions: all_vehicles_questions,
 				all_video_games_questions: all_video_games_questions,
 				updatedAllQuestions: true
 			})
-		}
 	}
 
 	questionsAnsweredByCategory = () => {
-		if (this.state.updatedAllQuestions && this.state.updatedCategories !== true ) {
+		// if (this.state.updatedAllQuestions && this.state.updatedCategories !== true ) {
 
 			let user_answers = this.props.user_answers.filter(answer => answer)
 			let user_answers_ids = user_answers.map(answer => answer.question_id)
@@ -83,8 +93,14 @@ export default class DashboardStatsCategory extends React.Component{
 			let user_answers_anime = this.state.all_anime_questions.filter(answer => user_answers_ids.includes(answer.id))
 			let user_answers_anime_correct = user_answers_anime.filter(answer => user_answers_correct_ids.includes(answer.id))
 
+			let user_answers_art = this.state.all_art_questions.filter(answer => user_answers_ids.includes(answer.id))
+			let user_answers_art_correct = user_answers_art.filter(answer => user_answers_correct_ids.includes(answer.id))
+
 			let user_answers_book = this.state.all_book_questions.filter(answer => user_answers_ids.includes(answer.id))
 			let user_answers_book_correct = user_answers_book.filter(answer => user_answers_correct_ids.includes(answer.id))
+
+			let user_answers_celebrities = this.state.all_celebrities_questions.filter(answer => user_answers_ids.includes(answer.id))
+			let user_answers_celebrities_correct = user_answers_celebrities.filter(answer => user_answers_correct_ids.includes(answer.id))
 
 			let user_answers_computer = this.state.all_computer_questions.filter(answer => user_answers_ids.includes(answer.id))
 			let user_answers_computer_correct = user_answers_computer.filter(answer => user_answers_correct_ids.includes(answer.id))
@@ -100,6 +116,9 @@ export default class DashboardStatsCategory extends React.Component{
 
 			let user_answers_history = this.state.all_history_questions.filter(answer => user_answers_ids.includes(answer.id))
 			let user_answers_history_correct = user_answers_history.filter(answer => user_answers_correct_ids.includes(answer.id))
+
+			let user_answers_math = this.state.all_math_questions.filter(answer => user_answers_ids.includes(answer.id))
+			let user_answers_math_correct = user_answers_math.filter(answer => user_answers_correct_ids.includes(answer.id))
 
 			let user_answers_music = this.state.all_music_questions.filter(answer => user_answers_ids.includes(answer.id))
 			let user_answers_music_correct = user_answers_music.filter(answer => user_answers_correct_ids.includes(answer.id))
@@ -119,9 +138,6 @@ export default class DashboardStatsCategory extends React.Component{
 			let user_answers_sports = this.state.all_sports_questions.filter(answer => user_answers_ids.includes(answer.id))
 			let user_answers_sports_correct = user_answers_sports.filter(answer => user_answers_correct_ids.includes(answer.id))
 
-			let user_answers_technology = this.state.all_technology_questions.filter(answer => user_answers_ids.includes(answer.id))
-			let user_answers_technology_correct = user_answers_technology.filter(answer => user_answers_correct_ids.includes(answer.id))
-
 			let user_answers_television = this.state.all_television_questions.filter(answer => user_answers_ids.includes(answer.id))
 			let user_answers_television_correct = user_answers_television.filter(answer => user_answers_correct_ids.includes(answer.id))
 
@@ -138,8 +154,12 @@ export default class DashboardStatsCategory extends React.Component{
 				user_answers_correct: user_answers_correct.length,
 				user_answers_anime: user_answers_anime.length,
 				user_answers_anime_correct: user_answers_anime_correct.length,
+				user_answers_art: user_answers_art.length,
+				user_answers_art_correct: user_answers_art_correct.length,
 				user_answers_book: user_answers_book.length,
 				user_answers_book_correct: user_answers_book_correct.length,
+				user_answers_celebrities: user_answers_celebrities.length,
+				user_answers_celebrities_correct: user_answers_celebrities_correct.length,
 				user_answers_computer: user_answers_computer.length,
 				user_answers_computer_correct: user_answers_computer_correct.length,
 				user_answers_film: user_answers_film.length,
@@ -150,6 +170,8 @@ export default class DashboardStatsCategory extends React.Component{
 				user_answers_geography_correct: user_answers_geography_correct.length,
 				user_answers_history: user_answers_history.length,
 				user_answers_history_correct: user_answers_history_correct.length,
+				user_answers_math: user_answers_math.length,
+				user_answers_math_correct: user_answers_math_correct.length,
 				user_answers_music: user_answers_music.length,
 				user_answers_music_correct: user_answers_music_correct.length,
 				user_answers_mythology: user_answers_mythology.length,
@@ -162,8 +184,6 @@ export default class DashboardStatsCategory extends React.Component{
 				user_answers_science_correct: user_answers_science_correct.length,
 				user_answers_sports: user_answers_sports.length,
 				user_answers_sports_correct: user_answers_sports_correct.length,
-				user_answers_technology: user_answers_technology.length,
-				user_answers_technology_correct: user_answers_technology_correct.length,
 				user_answers_television: user_answers_television.length,
 				user_answers_television_correct: user_answers_television_correct.length,
 				user_answers_theatre: user_answers_theatre.length,
@@ -174,7 +194,7 @@ export default class DashboardStatsCategory extends React.Component{
 				user_answers_video_games_correct: user_answers_video_games_correct.length,
 				updatedCategories: true
 			})
-		}
+		// }
 	}
 
 	render(){
@@ -200,6 +220,19 @@ export default class DashboardStatsCategory extends React.Component{
 				</li>
 			</ul>
 
+		const art_questions =
+			<ul>
+				<li>Art</li>
+				<li>
+					{this.state.updatedCategories ? `${ this.state.user_answers_art }/${ this.state.all_art_questions.length } answered` : zero_percent_answered }
+					{this.state.user_answers_art ? ` (${((this.state.user_answers_art / this.state.all_art_questions.length) * 100).toFixed(2)}%)` : zero_percent }
+				</li>
+				<li>
+					{this.state.updatedCategories ? `${ this.state.user_answers_art_correct }/${ this.state.user_answers_art } correct` : zero_percent_correct }
+					{this.state.user_answers_art_correct ? ` (${((this.state.user_answers_art_correct / this.state.user_answers_art ) * 100).toFixed(2)}%)` : zero_percent }
+				</li>
+			</ul>
+
 		const book_questions =
 			<ul>
 				<li>Books</li>
@@ -210,6 +243,19 @@ export default class DashboardStatsCategory extends React.Component{
 				<li>
 					{this.state.updatedCategories ? `${ this.state.user_answers_book_correct }/${ this.state.user_answers_book } correct` : zero_percent_correct }
 					{this.state.user_answers_book_correct ? ` (${((this.state.user_answers_book_correct / this.state.user_answers_book ) * 100).toFixed(2)}%)` : zero_percent }
+				</li>
+			</ul>
+
+		const celebrities_questions =
+			<ul>
+				<li>Celebrities</li>
+				<li>
+					{this.state.updatedCategories ? `${ this.state.user_answers_celebrities }/${ this.state.all_celebrities_questions.length } answered` : zero_percent_answered }
+					{this.state.user_answers_celebrities ? ` (${((this.state.user_answers_celebrities / this.state.all_celebrities_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
+				</li>
+				<li>
+					{this.state.updatedCategories ? `${ this.state.user_answers_celebrities_correct }/${ this.state.user_answers_celebrities } correct` : zero_percent_correct }
+					{this.state.user_answers_celebrities_correct ? ` (${((this.state.user_answers_celebrities_correct / this.state.user_answers_celebrities ) * 100).toFixed(2)}%)` : zero_percent }
 				</li>
 			</ul>
 
@@ -277,6 +323,19 @@ export default class DashboardStatsCategory extends React.Component{
 					{this.state.user_answers_history_correct ? ` (${((this.state.user_answers_history_correct / this.state.user_answers_history ) * 100).toFixed(2)}%)` : zero_percent }
 				</li>
 			</ul>
+
+		const math_questions =
+		<ul>
+			<li>Math</li>
+			<li>
+				{this.state.updatedCategories ? `${ this.state.user_answers_math }/${ this.state.all_math_questions.length } answered` : zero_percent_answered }
+				{this.state.user_answers_math ? ` (${((this.state.user_answers_math / this.state.all_math_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
+			</li>
+			<li>
+				{this.state.updatedCategories ? `${ this.state.user_answers_math_correct }/${ this.state.user_answers_math } correct` : zero_percent_correct }
+				{this.state.user_answers_math_correct ? ` (${((this.state.user_answers_math_correct / this.state.user_answers_math ) * 100).toFixed(2)}%)` : zero_percent }
+			</li>
+		</ul>
 
 		const music_questions =
 			<ul>
@@ -356,19 +415,6 @@ export default class DashboardStatsCategory extends React.Component{
 				</li>
 			</ul>
 
-		const technology_questions =
-			<ul>
-				<li>Technology</li>
-				<li>
-					{this.state.updatedCategories ? `${ this.state.user_answers_technology }/${ this.state.all_technology_questions.length } answered` : zero_percent_answered }
-					{this.state.user_answers_technology ? ` (${((this.state.user_answers_technology / this.state.all_technology_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
-				</li>
-				<li>
-					{this.state.updatedCategories ? `${ this.state.user_answers_technology_correct }/${ this.state.user_answers_technology } correct` : zero_percent_correct }
-					{this.state.user_answers_technology_correct ? ` (${((this.state.user_answers_technology_correct / this.state.user_answers_technology ) * 100).toFixed(2)}%)` : zero_percent }
-				</li>
-			</ul>
-
 		const television_questions =
 			<ul>
 				<li>Television</li>
@@ -428,19 +474,21 @@ export default class DashboardStatsCategory extends React.Component{
 				</div>
 				<div className="stats_category">
 					{ anime_questions }
+					{ art_questions }
 					{ book_questions }
+					{ celebrities_questions }
 					{ computer_questions }
 					{ film_questions }
 					{ general_knowledge_questions }
 					{ geography_questions }
 					{ history_questions }
+					{ math_questions }
 					{ music_questions }
 					{ mythology_questions }
 					{ nature_questions }
 					{ politics_questions }
 					{ science_questions }
 					{ sports_questions }
-					{ technology_questions }
 					{ television_questions }
 					{ theatre_questions }
 					{ vehicles_questions }

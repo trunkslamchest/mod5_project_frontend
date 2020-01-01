@@ -15,17 +15,6 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 } */
 
-::selection {
-	background-color: #000;
-	color: #FFF;
-  }
-
-  input[type=number]::-webkit-inner-spin-button, 
-  input[type=number]::-webkit-outer-spin-button { 
-	-webkit-appearance: none; 
-	margin: 0; 
-  }
-
 /* html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -73,6 +62,17 @@ blockquote, q {
 	quotes: "" "";
 } */
 
+::selection {
+	background-color: #000;
+	color: #FFF;
+  }
+
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+  }
+
 .input:-internal-autofill-selected {
 	width: 25%;
 	text-rendering: auto;
@@ -102,22 +102,52 @@ blockquote, q {
 	opacity: 1;
 }
 
+.blank {
+	opacity: 0;
+	visibility: hidden;
+}
+
+.loading_container {
+	width: 100wh !important;
+	min-height: 50vh !important;
+	margin: 0px auto 0px auto;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.loading_header {
+	width: 100%;
+	padding: 10px 0px 10px 0px;
+	animation: fade_in 1s ease-in-out 1, blur_in 1s ease-in-out 1 !important;
+	animation: loading_pulse 2s linear infinite;
+	z-index:8;
+}
+
+.loading_header h3 {
+	font: 300 25pt 'Lato', sans-serif !important;
+}
+
+.loading_animation_container {
+	margin: 0px auto 0px auto !important;
+	animation: loading_pulse 1.2s ease-in-out infinite !important;
+}
+
 .main_container {
 	width: 100%;
-	/* min-height: 25vh;
-	/* height: 70vh; */
-	/* max-height:100vh; */
 	margin: 0 auto 0 auto;
 	background-color: #fff;
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
 	animation: fade_in .1s ease-in-out 1, blur_in .05s ease-in-out 1;
-	z-index: 0;
-	/* min-height: 60vh; */
 	background-image: url(assets/bg_01.png);
 	background-repeat:no-repeat;
 	background-position: center center;
 	background-attachment:fixed;
 	background-size: cover;
+	z-index: 0;
 }
 
 .main_container > * {

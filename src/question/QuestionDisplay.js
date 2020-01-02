@@ -471,7 +471,9 @@ export default class QuestionDisplay extends React.Component{
 				</div>
 			</div>
 
-		const question_buttons = [
+		const question_buttons =
+		<>
+			<div className="div1">
 			<button
 				key={"answer_button1"}
 				value={ this.state.answers[0] }
@@ -481,7 +483,7 @@ export default class QuestionDisplay extends React.Component{
 				onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
 			>
 				{ this.state.answers[0] }
-			</button>,
+			</button>
 			<button
 				key={"answer_button2"}
 				value={ this.state.answers[1] }
@@ -491,7 +493,9 @@ export default class QuestionDisplay extends React.Component{
 				onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
 			>
 				{ this.state.answers[1] }
-			</button>,
+			</button>
+			</div>
+			<div className="div2">
 			<button
 				key={"answer_button3"}
 				value={ this.state.answers[2] }
@@ -501,7 +505,7 @@ export default class QuestionDisplay extends React.Component{
 				onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
 			>
 				{ this.state.answers[2] }
-			</button>,
+			</button>
 			<button
 				key={"answer_button4"}
 				value={ this.state.answers[3] }
@@ -512,7 +516,8 @@ export default class QuestionDisplay extends React.Component{
 			>
 				{ this.state.answers[3] }
 			</button>
-		]
+			</div>
+		</>
 
 		const correct_answer_text = <>
 			<h3>The correct answer was</h3>
@@ -737,3 +742,47 @@ export default class QuestionDisplay extends React.Component{
 		)
 	}
 }
+
+
+		// const question_buttons = [
+		// 	<button
+		// 		key={"answer_button1"}
+		// 		value={ this.state.answers[0] }
+		// 		className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
+		// 		name="answer_button"
+		// 		interaction="click"
+		// 		onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
+		// 	>
+		// 		{ this.state.answers[0] }
+		// 	</button>,
+		// 	<button
+		// 		key={"answer_button2"}
+		// 		value={ this.state.answers[1] }
+		// 		className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
+		// 		name="answer_button"
+		// 		interaction="click"
+		// 		onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
+		// 	>
+		// 		{ this.state.answers[1] }
+		// 	</button>,
+		// 	<button
+		// 		key={"answer_button3"}
+		// 		value={ this.state.answers[2] }
+		// 		className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
+		// 		name="answer_button"
+		// 		interaction="click"
+		// 		onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
+		// 	>
+		// 		{ this.state.answers[2] }
+		// 	</button>,
+		// 	<button
+		// 		key={"answer_button4"}
+		// 		value={ this.state.answers[3] }
+		// 		className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
+		// 		name="answer_button"
+		// 		interaction="click"
+		// 		onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
+		// 	>
+		// 		{ this.state.answers[3] }
+		// 	</button>
+		// ]

@@ -399,13 +399,22 @@ export default class App extends React.Component {
 							/>
 						</Route>
 						<Route exact path='/terms_of_service'>
-							<TermsOfService />
+							<TermsOfService
+								update_page_data={ this.update_page_data }
+								// ~~~~~~~~~~~~~~~~~~~~
+							/>
 						</Route>
 						<Route exact path='/privacy'>
-							<Privacy />
+							<Privacy
+								update_page_data={ this.update_page_data }
+								// ~~~~~~~~~~~~~~~~~~~~
+							/>
 						</Route>
 						<Route exact path='/disclaimer'>
-							<Disclaimer />
+							<Disclaimer
+								update_page_data={ this.update_page_data }
+								// ~~~~~~~~~~~~~~~~~~~~
+							/>
 						</Route>
 						<Route component={ Error } />
 					</Switch>

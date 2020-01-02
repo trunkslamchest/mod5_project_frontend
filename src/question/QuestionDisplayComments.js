@@ -1,17 +1,4 @@
 import React from 'react'
-// import ReactTimeout from 'react-timeout'
-
-// import QuickPlayVotes from './QuickPlayVotes'
-
-import {
-		//  NavLink,
-		//  Link,
-		//  Redirect,
-		// Route,
-		// Switch,
-		//  useRouteMatch,
-		//  useParams
-	} from 'react-router-dom'
 
 export default class QuestionDisplayComments extends React.Component{
 

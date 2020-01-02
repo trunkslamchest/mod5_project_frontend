@@ -5,15 +5,7 @@ import QuestionDisplay from './QuestionDisplay'
 import '../css/Questions.css'
 import '../css/PlayByDifficulty.css'
 
-import {
-	//  NavLink,
-	//  Link,
-	 Redirect,
-	// Route,
-	// Switch,
-	//  useRouteMatch,
-	//  useParams
-} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 export default class PlayByDifficultyContainer extends React.Component{
 
@@ -60,14 +52,14 @@ export default class PlayByDifficultyContainer extends React.Component{
 	}
 
 	getSortedQuestions = () => {
-			fetch(`http://localhost:3001/questions/`)
-			.then(res => res.json())
-			.then(res_obj =>
-				this.setState({
-					sortedQuestions: res_obj.data.filter(question_obj => question_obj.attributes.question.difficulty === this.state.difficulty),
-					questionsUpdated: true,
-				})
-			)
+		fetch(`http://localhost:3001/questions/`)
+		.then(res => res.json())
+		.then(res_obj =>
+			this.setState({
+				sortedQuestions: res_obj.data.filter(question_obj => question_obj.attributes.question.difficulty === this.state.difficulty),
+				questionsUpdated: true,
+			})
+		)
 	}
 
 	getSortedAnsweredQuestions = (user_id) => {
@@ -83,19 +75,18 @@ export default class PlayByDifficultyContainer extends React.Component{
 
 	getRandomQuestion = () => {
 
-		const all_questions_answered =
-			<>
-				<div className="question_wrapper_header">
-					<h3 key={"all_questions_answered"}> You Have Answered All the { this.state.difficulty } Questions! </h3>
-				</div>
-				<button
-					key={"reselect_button"}
-					className="reselect_button"
-					onClick={ this.onClickReSelectFunctions }
-				>
-					Select Another Difficulty
-				</button>
-			</>
+		const all_questions_answered = <>
+			<div className="question_wrapper_header">
+				<h3 key={"all_questions_answered"}> You Have Answered All the { this.state.difficulty } Questions! </h3>
+			</div>
+			<button
+				key={"reselect_button"}
+				className="reselect_button"
+				onClick={ this.onClickReSelectFunctions }
+			>
+				Select Another Difficulty
+			</button>
+		</>
 
 		const headerCheck = this.state.displaySelect ? "" : all_questions_answered
 
@@ -122,8 +113,6 @@ export default class PlayByDifficultyContainer extends React.Component{
 		)
 
 		return filtered_questions.length === 0 ? headerCheck : randomQuestion
-		// return headerCheck
-
 	}
 
 	nextQuestion = (user_id) => {

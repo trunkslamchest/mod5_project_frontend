@@ -135,6 +135,10 @@
 		text-decoration: none;
 	}
 
+	.logo_rectangle{
+		max-height: 30px;
+	}
+
 	.quick_play_container {
 		width: 100%;
 		min-width: 100%;
@@ -171,16 +175,18 @@
 		max-width: 75%;
 	}
 
-	.logo_rectangle{
-		max-height: 30px;
-	}
-
 }
 
 @media only screen and (max-width: 750px) {
 
 	.default_wrapper{
 		min-height: 75vh;
+	}
+
+	.select_buttons_container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 	}
 
 	.RTV_main_window{

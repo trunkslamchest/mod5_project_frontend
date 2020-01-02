@@ -12,7 +12,6 @@
 .category_button {
 	-webkit-appearance: none;
 	min-width: 200px;
-    /* -webkit-writing-mode: horizontal-tb !important; */
     text-rendering: auto;
     color: #FFF;
 	background-image: linear-gradient(rgb(81, 88, 102, 1),  rgb(40, 44, 52, 1) );

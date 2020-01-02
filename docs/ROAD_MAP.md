@@ -1,16 +1,6 @@
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-|-update page trackers
-
-|-port to mac
-
-~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-|-update element trackers
-|	-dashboard tab li
-
 |-comments
 |	-add ability to remove/edit comments from dashboard
 

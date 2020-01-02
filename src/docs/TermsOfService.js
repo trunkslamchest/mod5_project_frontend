@@ -128,13 +128,13 @@ export default class TermsOfService extends React.Component {
 			<p>
 			As a user of SmartApp™, you agree to:
 				<ul>
-					<li>1.  Allow the ownership and sale of their first born child.</li>
+					<li>1.  Allow the ownership and sale of your first born child.</li>
 					<li>2.  Allow the sale of any data collected by the owners of Smart App.</li>
 					<li>3.  Allow the occupation of any residence or property owned by the user.</li>
 					<li>4.  Supply the owners of Smart App with bank account numbers, credit card numbers or any information pertaining to financial assets owned by the user.</li>
 					<li>5.  Yield all accountability and responsibility of SmartApp due to financial turmoil, family problems, illness, damages to property, and angry looks caused or given by SmartApp and it's employees.</li>
-					<li>6.  The complete box set of Monty Python's Flying Circus if the user has in their possession 1 or more copies of said box set.</li>
-					<li>7.  The responsibility for all financial burden and debt incurred by SmartApp and it's services.</li>
+					<li>6.  Surrender the complete box set of Monty Python's Flying Circus if the user has in their possession 1 or more copies of said box set.</li>
+					<li>7.  Waive all responsibility for any financial burden and/or debt incurred by SmartApp and it's services.</li>
 				</ul>
 			</p>
 			

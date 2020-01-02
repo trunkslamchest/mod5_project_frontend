@@ -1,6 +1,10 @@
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
+|	-on page load functions for TOS, Privacy Policy and Disclaimer
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
 |-comments
 |	-add ability to remove/edit comments from dashboard
 

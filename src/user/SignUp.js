@@ -1,8 +1,5 @@
 import React from 'react'
-import {
-	 Link,
-	 Redirect,
-} from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 import '../css/EditProfile.css'
 
@@ -155,15 +152,15 @@ export default class SignUp extends React.Component {
 	render(){
 
 		const errors = (!!this.state.errors) ?
-		( <div className="default_error_report" key={"edit_profile_error_report"}>
-				{ this.state.errors.map( error =>
-					<div className="default_error_item">
-						{ error }
-					</div>
-				)}
-		  </div> )
-	:
-		( "" )
+			( <div className="default_error_report" key={"edit_profile_error_report"}>
+					{ this.state.errors.map( error =>
+						<div className="default_error_item">
+							{ error }
+						</div>
+					)}
+			  </div> )
+			:
+			( "" )
 
 		return (
 			<div className="default_wrapper" key={"sign_up_form"}>

@@ -4,6 +4,7 @@
 
 * {
   margin: 0;
+  text-rendering: optimizeLegibility
 }
 
 html, body {

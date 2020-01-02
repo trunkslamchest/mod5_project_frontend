@@ -316,9 +316,8 @@
 		max-width: 100%;
 	}
 
-	.question_card_text h3 {
-		padding: 15px 5px 15px 5px;
-
+	.question_card_text h2 {
+		padding: 15px 10px 15px 10px;
 	}
 
 	.div1 {
@@ -347,6 +346,10 @@
 
 	.logo_rectangle{
 		max-height: 20px;
+	}
+
+	.question_card_text h2 {
+		padding: 15px 10px 15px 10px;
 	}
 
 }

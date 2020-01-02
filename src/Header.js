@@ -156,16 +156,14 @@ export default class Header extends React.Component {
 			logged_out_links
 		]
 
-		const normal_header =
-		<>
+		const normal_header = <>
 			<>{ user_greeting }</>
 			<div className="header_nav_links">
 				{logged_in_links}
 			</div>
 		</>
 
-		const admin_header =
-		<>
+		const admin_header = <>
 			<>{ user_greeting }</>
 			<div className="header_nav_links">
 				<NavLink

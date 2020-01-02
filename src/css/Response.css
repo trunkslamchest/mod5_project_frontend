@@ -187,6 +187,7 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+		align-content: center;
 	}
 
 	.RTV_main_window{
@@ -241,6 +242,22 @@
 	.RTVpages_table td {
 		font-size: 8pt;
 		padding: 5px;
+	}
+
+	.div1 {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+		align-items: center;
+	}
+
+	.div2 {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+		align-items: center;
 	}
 
 }

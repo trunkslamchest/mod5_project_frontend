@@ -211,6 +211,12 @@ export default class App extends React.Component {
 		})
 	}
 
+	update_backroom_from_header = (index_msg) => {
+		this.setState({
+			backroom_display: index_msg
+		})
+	}
+
 	update_traffic_data = (res_obj) => {
 		fetch("http://localhost:3001/traffics", {
 			method: "POST",
@@ -235,12 +241,6 @@ export default class App extends React.Component {
 				user_id: res_obj.user_id,
 				page_name: res_obj.page_name,
 			})
-		})
-	}
-
-	update_backroom_from_header = (index_msg) => {
-		this.setState({
-			backroom_display: index_msg
 		})
 	}
 

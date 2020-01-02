@@ -56,6 +56,8 @@ export default class QuestionDisplay extends React.Component{
 		this.questionTimeout = setTimeout(() => { this.setState({ showQuestion: true })}, 3000)
 		this.enableQuestionTimeout = setTimeout(() => { this.setState({ enableQuestion: true })}, 5000)
 		this.choicesTimeout = setTimeout(() => { this.setState({ showChoices: true })}, 4000)
+
+		this.onPageLoadFunctions()
 	}
 
 	displayAnsweredCorrect = () => {
@@ -94,6 +96,7 @@ export default class QuestionDisplay extends React.Component{
 
 	onClickFunctions = (event) => {
 		this.onClickSelectAnswerFunctions(event)
+		this.onClickUpdateTrafficFunctions(event)
 		this.stopTime()
 
 		this.setState({
@@ -262,6 +265,7 @@ export default class QuestionDisplay extends React.Component{
 				showVoteButtons: false
 			})
 			this.getVotes()
+			this.onClickUpdateTrafficFunctions(event)
 		})
 	}
 
@@ -285,6 +289,7 @@ export default class QuestionDisplay extends React.Component{
 				showVoteButtons: false
 			})
 			this.getVotes()
+			this.onClickUpdateTrafficFunctions(event)
 		})
 	}
 
@@ -308,6 +313,7 @@ export default class QuestionDisplay extends React.Component{
 				showVoteButtons: false
 			})
 			this.getVotes()
+			this.onClickUpdateTrafficFunctions(event)
 		})
 	}
 
@@ -359,10 +365,11 @@ export default class QuestionDisplay extends React.Component{
 
 	onClickCommentFunctions = (event) => {
 		event.persist()
-			this.setState({
-				showCommentButton: false,
-				showCommentText: true,
-			})
+		this.onClickUpdateTrafficFunctions(event)
+		this.setState({
+			showCommentButton: false,
+			showCommentText: true,
+		})
 	}
 
 	onChangeComment = (event) => {
@@ -373,6 +380,7 @@ export default class QuestionDisplay extends React.Component{
 
 	onSubmitCommentFunctions = (event) => {
 		this.addCommentSubmitted(event)
+		this.onClickUpdateTrafficFunctions(event)
 	}
 
 	addCommentSubmitted = (event) => {
@@ -411,8 +419,10 @@ export default class QuestionDisplay extends React.Component{
 		}
 	}
 
-	onClickNextQuestionFunctions = () => {
+	onClickNextQuestionFunctions = (event) => {
 		this.props.nextQuestion(this.props.user_id)
+		this.onClickUpdateTrafficFunctions(event)
+
 		this.setState({
 			display: 'question'
 		})
@@ -435,6 +445,21 @@ export default class QuestionDisplay extends React.Component{
 		clearTimeout(this.enableAnsweredTimeout)
 	}
 
+	onClickUpdateTrafficFunctions = (event) => {
+		this.props.update_traffic_data({
+			user_id: this.props.user_id,
+			interaction: event.target.attributes.interaction.value,
+			element: event.target.name
+		})
+	}
+
+	onPageLoadFunctions = () => {
+		this.props.update_page_data({
+			user_id: localStorage.user_id,
+			page_name: "question_display_engaged",
+		})
+	}
+
 	render(){
 
 		const blank = <></>
@@ -451,6 +476,8 @@ export default class QuestionDisplay extends React.Component{
 				key={"answer_button1"}
 				value={ this.state.answers[0] }
 				className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
+				name="answer_button"
+				interaction="click"
 				onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
 			>
 				{ this.state.answers[0] }
@@ -459,6 +486,8 @@ export default class QuestionDisplay extends React.Component{
 				key={"answer_button2"}
 				value={ this.state.answers[1] }
 				className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
+				name="answer_button"
+				interaction="click"
 				onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
 			>
 				{ this.state.answers[1] }
@@ -467,6 +496,8 @@ export default class QuestionDisplay extends React.Component{
 				key={"answer_button3"}
 				value={ this.state.answers[2] }
 				className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
+				name="answer_button"
+				interaction="click"
 				onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
 			>
 				{ this.state.answers[2] }
@@ -475,6 +506,8 @@ export default class QuestionDisplay extends React.Component{
 				key={"answer_button4"}
 				value={ this.state.answers[3] }
 				className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
+				name="answer_button"
+				interaction="click"
 				onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
 			>
 				{ this.state.answers[3] }
@@ -499,23 +532,47 @@ export default class QuestionDisplay extends React.Component{
 			<button
 				key={"up_vote_button"}
 				className="up_vote_button"
+				name="up_vote_button"
+				interaction="click"
 				onClick={ this.onClickUpVoteFunctions }
 			>
-				<img src={ up_vote } alt="up_vote" />
+				<img
+					src={ up_vote }
+					alt="up_vote"
+					name="up_vote_img"
+					interaction="click"
+					onClick={ this.onClickUpVoteFunctions }
+				/>
 			</button>,
 			<button
 				key={"no_vote_button"}
 				className="no_vote_button"
+				name="no_vote_button"
+				interaction="click"
 				onClick={ this.onClickNoVoteFunctions }
 			>
-				<img src={ no_vote } alt="no_vote" />
+				<img
+					src={ no_vote }
+					alt="no_vote"
+					name="no_vote_img"
+					interaction="click"
+					onClick={ this.onClickNoVoteFunctions }
+				/>
 			</button>,
 			<button
-			key={"down_vote_button"}
-			className="down_vote_button"
-			onClick={ this.onClickDownVoteFunctions }
+				key={"down_vote_button"}
+				className="down_vote_button"
+				name="down_vote_button"
+				interaction="click"
+				onClick={ this.onClickDownVoteFunctions }
 			>
-				<img src={ down_vote } alt="down_vote" />
+				<img
+				src={ down_vote }
+				alt="down_vote"
+				name="down_vote_img"
+				interaction="click"
+				onClick={ this.onClickDownVoteFunctions }
+			/>
 			</button>
 		]
 
@@ -545,8 +602,9 @@ export default class QuestionDisplay extends React.Component{
 		const comment_button = <>
 			<button
 				key={"comment_button"}
-				name="comment_button_name"
-				value="comment_button_value"
+				name="comment_button"
+				value="comment_button"
+				interaction="click"
 				className={ this.state.enableCommentButton ? "question_card_comment_button" : "question_card_comment_button_disabled" }
 				onClick={ this.state.enableCommentButton ? this.onClickCommentFunctions : this.onClickBlankFunctions }
 			>
@@ -588,6 +646,8 @@ export default class QuestionDisplay extends React.Component{
 		const next_question_button =
 			<button
 				key={"next_question_button"}
+				name="next_question_button"
+				interaction="click"
 				className={ this.state.enableAnsweredButton ? "question_card_next_question_button" : "question_card_next_question_button_disabled" }
 				onClick={ this.state.enableAnsweredButton ? this.onClickNextQuestionFunctions : this.onClickBlankFunctions }
 			>

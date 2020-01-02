@@ -17,24 +17,27 @@ import './css/Home.css'
 export default class Home extends React.Component {
 
 	componentDidMount(){
-		this.onMountAsync()
+		this.onPageLoadFunctions()
 	}
 
-	onMountAsync = async () => {
-		try {
-			await this.props
-			await this.props.user_id;
-			this.onPageLoadFunctions()
-		} catch(errors) {
-			console.log(errors);
-		}
+	onClickLogInFunctions = (event) => {
+		this.onClickUpdateTrafficFunctions(event)
 	}
 
-	onPageLoadFunctions = (user_id) => {
-		this.props.update_page_data({
-			user_id: this.props.user_id,
-			page_name: "index"
-		})
+	onClickSignUpFunctions = (event) => {
+		this.onClickUpdateTrafficFunctions(event)
+	}
+
+	onClickQuickPlayFunctions = (event) => {
+		this.onClickUpdateTrafficFunctions(event)
+	}
+
+	onClickPlayByDifficultyFunctions = (event) => {
+		this.onClickUpdateTrafficFunctions(event)
+	}
+
+	onClickPlayByCategoryFunctions = (event) => {
+		this.onClickUpdateTrafficFunctions(event)
 	}
 
 	onClickUpdateTrafficFunctions = (event) => {
@@ -42,6 +45,13 @@ export default class Home extends React.Component {
 			user_id: this.props.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
+		})
+	}
+
+	onPageLoadFunctions = () => {
+		this.props.update_page_data({
+			user_id: localStorage.user_id,
+			page_name: "index",
 		})
 	}
 
@@ -93,7 +103,7 @@ export default class Home extends React.Component {
 				name="log_in_button"
 				interaction="click"
 				className="log_in_button"
-				// onClick={this.onClickLogInFunctions }
+				onClick={this.onClickLogInFunctions }
 			>
 				Log In
 			</NavLink>
@@ -106,7 +116,7 @@ export default class Home extends React.Component {
 				name="sign_up_button"
 				interaction="click"
 				className="sign_up_button"
-				// onClick={this.onClickLogInFunctions }
+				onClick={this.onClickLogInFunctions }
 			>
 				Sign Up
 			</NavLink>
@@ -127,7 +137,7 @@ export default class Home extends React.Component {
 				</div>
 		</>
 
-	const logged_out_home = <>
+		const logged_out_home = <>
 			<div className="logo_container">
 				<img src={index_logo} alt={"logo"}/>
 			</div>

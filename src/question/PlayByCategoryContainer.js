@@ -30,7 +30,6 @@ export default class PlayByDifficultyContainer extends React.Component{
 	}
 
 	componentDidMount(){
-
 		const redirect_to_index = <Redirect to="/" />
 
 		if (localStorage.length === 0) {
@@ -42,6 +41,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 			displaySelect: true,
 			displayQuestion: false
 		})
+
+		this.onPageLoadFunctions()
 	}
 
 	componentDidUpdate(){
@@ -105,6 +106,9 @@ export default class PlayByDifficultyContainer extends React.Component{
 		let randomQuestion = filtered_questions.map(question_obj =>
 			(question_obj.id === rng.id) ?
 			<QuestionDisplay
+				update_traffic_data={ this.props.update_traffic_data }
+				update_page_data={ this.props.update_page_data }
+				// ~~~~~~~~~~~~~~~~~~~~
 				key={ question_obj.id }
 				question={ question_obj.attributes.question }
 				user_id={ this.props.user_id }
@@ -130,7 +134,7 @@ export default class PlayByDifficultyContainer extends React.Component{
 			category: event.target.value,
 			displaySelect: false,
 			displayQuestion: true
-		})
+		}, this.onClickUpdateTrafficFunctions(event))
 	}
 
 	onClickReSelectFunctions = (event) => {
@@ -152,7 +156,23 @@ export default class PlayByDifficultyContainer extends React.Component{
 		})
 	}
 
+	onClickUpdateTrafficFunctions = (event) => {
+		this.props.update_traffic_data({
+			user_id: this.props.user_id,
+			interaction: event.target.attributes.interaction.value,
+			element: event.target.name
+		})
+	}
+
+	onPageLoadFunctions = () => {
+		this.props.update_page_data({
+			user_id: localStorage.user_id,
+			page_name: "play_by_category",
+		})
+	}
+
 	render(){
+
 		const blank = <></>
 
 		const redirect_to_index = <Redirect to="/" />
@@ -166,6 +186,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 				key={"anime_button"}
 				value={ "Anime" }
 				className="category_button"
+				name="anime_button"
+				interaction="click"
 				onClick={ this.onClickSelectFunctions }
 			>
 				Anime
@@ -174,6 +196,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 				key={"art_button"}
 				value={ "Art" }
 				className="category_button"
+				name="art_button"
+				interaction="click"
 				onClick={ this.onClickSelectFunctions }
 			>
 				Art
@@ -182,6 +206,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 				key={"books_button"}
 				value={ "Books" }
 				className="category_button"
+				name="books_button"
+				interaction="click"
 				onClick={ this.onClickSelectFunctions }
 			>
 				Books
@@ -190,6 +216,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 				key={"celebrities_button"}
 				value={ "Celebrities" }
 				className="category_button"
+				name="celebrities_button"
+				interaction="click"
 				onClick={ this.onClickSelectFunctions }
 			>
 				Celebrities
@@ -198,6 +226,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 				key={"computers_button"}
 				value={ "Computers" }
 				className="category_button"
+				name="computers_button"
+				interaction="click"
 				onClick={ this.onClickSelectFunctions }
 			>
 				Computers
@@ -206,6 +236,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 				key={"film_button"}
 				value={ "Film" }
 				className="category_button"
+				name="film_button"
+				interaction="click"
 				onClick={ this.onClickSelectFunctions }
 			>
 				Film
@@ -214,6 +246,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 				key={"general_knowledge_button"}
 				value={ "General Knowledge" }
 				className="category_button"
+				name="general_knowledge_button"
+				interaction="click"
 				onClick={ this.onClickSelectFunctions }
 			>
 				General Knowledge
@@ -222,6 +256,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 				key={"geography_button"}
 				value={ "Geography" }
 				className="category_button"
+				name="geography_button"
+				interaction="click"
 				onClick={ this.onClickSelectFunctions }
 			>
 				Geography
@@ -230,6 +266,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 				key={"history_button"}
 				value={ "History" }
 				className="category_button"
+				name="history_button"
+				interaction="click"
 				onClick={ this.onClickSelectFunctions }
 			>
 				History
@@ -238,6 +276,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 				key={"math_button"}
 				value={ "Math" }
 				className="category_button"
+				name="math_button"
+				interaction="click"
 				onClick={ this.onClickSelectFunctions }
 			>
 				Math
@@ -246,6 +286,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 				key={"music_button"}
 				value={ "Music" }
 				className="category_button"
+				name="music_button"
+				interaction="click"
 				onClick={ this.onClickSelectFunctions }
 			>
 				Music
@@ -254,6 +296,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 				key={"mythology_button"}
 				value={ "Mythology" }
 				className="category_button"
+				name="mythology_button"
+				interaction="click"
 				onClick={ this.onClickSelectFunctions }
 			>
 				Mythology
@@ -262,6 +306,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 				key={"nature_button"}
 				value={ "Nature" }
 				className="category_button"
+				name="nature_button"
+				interaction="click"
 				onClick={ this.onClickSelectFunctions }
 			>
 				Nature
@@ -270,6 +316,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 				key={"politics_button"}
 				value={ "Politics" }
 				className="category_button"
+				name="politics_button"
+				interaction="click"
 				onClick={ this.onClickSelectFunctions }
 			>
 				Politics
@@ -278,6 +326,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 				key={"science_button"}
 				value={ "Science" }
 				className="category_button"
+				name="science_button"
+				interaction="click"
 				onClick={ this.onClickSelectFunctions }
 			>
 				Science
@@ -286,6 +336,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 				key={"sports_button"}
 				value={ "Sports" }
 				className="category_button"
+				name="sports_button"
+				interaction="click"
 				onClick={ this.onClickSelectFunctions }
 			>
 				Sports
@@ -294,6 +346,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 				key={"television_button"}
 				value={ "Television" }
 				className="category_button"
+				name="television_button"
+				interaction="click"
 				onClick={ this.onClickSelectFunctions }
 			>
 				Television
@@ -302,6 +356,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 				key={"theatre_button"}
 				value={ "Theatre" }
 				className="category_button"
+				name="theatre_button"
+				interaction="click"
 				onClick={ this.onClickSelectFunctions }
 			>
 				Theatre
@@ -310,6 +366,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 				key={"vehicles_button"}
 				value={ "Vehicles" }
 				className="category_button"
+				name="vehicles_button"
+				interaction="click"
 				onClick={ this.onClickSelectFunctions }
 			>
 				Vehicles
@@ -318,6 +376,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 				key={"video_games_button"}
 				value={ "Video Games" }
 				className="category_button"
+				name="video_games_button"
+				interaction="click"
 				onClick={ this.onClickSelectFunctions }
 			>
 				Video Games

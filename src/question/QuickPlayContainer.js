@@ -39,17 +39,9 @@ componentDidMount(){
 		mounted: true,
 		displayQuestion: true,
 	})
-	// this.onMountAsync()
-}
 
-// onMountAsync = async () => {
-// 	try {
-// 		await this.props.user_id;
-// 		this.getAnsweredQuestions(this.props.user_id);
-// 	} catch(errors) {
-// 		console.log(errors);
-// 	}
-// }
+	this.onPageLoadFunctions()
+}
 
 	componentDidUpdate(){
 
@@ -106,22 +98,21 @@ componentDidMount(){
 		let randomQuestion = filtered_questions.map(question_obj =>
 			(question_obj.id === rng.id) ?
 			<QuestionDisplay
+				update_traffic_data={ this.props.update_traffic_data }
+				update_page_data={ this.props.update_page_data }
+				// ~~~~~~~~~~~~~~~~~~~~
 				key={ question_obj.id }
 				question={ question_obj }
 				user_id={ this.props.user_id }
 				user_name={ this.props.user_name }
 				nextQuestion={ this.nextQuestion }
+
 			/>
 			:
 			""
 		)
 
-		// this.setState({
-		// 	updatedRandomQuestion: true
-		// })
-
 		return filtered_questions.length === 0 ? headerCheck : randomQuestion
-		// return headerCheck
 	}
 
 	nextQuestion = (user_id) => {
@@ -135,6 +126,14 @@ componentDidMount(){
 			displayQuestion: false
 		})
 	}
+
+	onPageLoadFunctions = () => {
+		this.props.update_page_data({
+			user_id: localStorage.user_id,
+			page_name: "quick_play",
+		})
+	}
+
 
 	render(){
 

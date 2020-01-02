@@ -30,6 +30,42 @@ export default class Footer extends React.Component {
 		})
 	}
 
+	onClickHomeFunctions = (event) => {
+		this.onClickUpdateTrafficFunctions(event)
+	}
+
+	onClickTOSFunctions = (event) => {
+		this.onClickUpdateTrafficFunctions(event)
+	}
+
+	onClickPrivacyFunctions = (event) => {
+		this.onClickUpdateTrafficFunctions(event)
+	}
+
+	onClickDisclaimerFunctions = (event) => {
+		this.onClickUpdateTrafficFunctions(event)
+	}
+
+	onClickFooterLinksFunctions = (event) => {
+		this.onClickUpdateTrafficFunctions(event)
+	}
+
+	onClickUpdateTrafficFunctions = (event) => {
+
+		if (localStorage.access) {
+			this.props.update_traffic_data({
+				user_id: localStorage.user_id,
+				interaction: event.target.attributes.interaction.value,
+				element: event.target.name
+			})
+		} else {
+			this.props.update_traffic_data({
+				user_id: this.props.user_id,
+				interaction: event.target.attributes.interaction.value,
+				element: event.target.name
+			})
+		}
+	}
 
 	render(){
 
@@ -41,7 +77,14 @@ export default class Footer extends React.Component {
 			interaction="click"
 			onClick={this.onClickHomeFunctions }
 		>
-			<img src={ this.state.hover ? footer_logo_hover : footer_logo } onMouseEnter={this.hoverOn}  onMouseLeave={this.hoverOff} alt="Link To Home Page"/>
+			<img
+				src={ this.state.hover ? footer_logo_hover : footer_logo }
+				name="footer_home_button"
+				interaction="click"
+				onMouseEnter={this.hoverOn}
+				onMouseLeave={this.hoverOff}
+				alt="Link To Home Page"
+			/>
 		</NavLink>
 	]
 
@@ -79,11 +122,81 @@ export default class Footer extends React.Component {
 	]
 
 	const footer_logos = [
-		<a key={"flatiron_logo"} href="https://flatironschool.com/" rel="noopener noreferrer" target="_blank"><img src={ flatiron_logo } className="logo_rectangle" alt="The Flatiron School"/></a>,
-		<a key={"open_trivia_logo"} href="https://opentdb.com/" rel="noopener noreferrer" target="_blank"><img src={ open_trivia_logo } className="logo_rectangle" alt="Open Trivita Database"/></a>,
-		<a key={"postgres_logo"} href="https://www.postgresql.org/" rel="noopener noreferrer" target="_blank"><img src={ postgres_logo } className="logo_rectangle" alt="PostgreSQL"/></a>,
-		<a key={"rails_logo"} href="https://rubyonrails.org/" rel="noopener noreferrer" target="_blank"><img src={ rails_logo } className="logo_rectangle" alt="Ruby On Rails"/></a>,
-		<a key={"react_logo"} href="https://reactjs.org/" rel="noopener noreferrer" target="_blank"><img src={ react_logo } className="logo_rectangle" alt="React"/></a>,
+		<a
+			key={"flatiron_logo"}
+			href="https://flatironschool.com/"
+			rel="noopener noreferrer"
+			target="_blank"
+		>
+			<img
+				src={ flatiron_logo }
+				className="logo_rectangle"
+				alt="The Flatiron School"
+				name="footer_flatiron_logo"
+				interaction="click"
+				onClick={ this.onClickFooterLinksFunctions }
+			/>
+		</a>,
+		<a
+			key={"open_trivia_logo"}
+			href="https://opentdb.com/"
+			rel="noopener noreferrer"
+			target="_blank"
+		>
+			<img
+				src={ open_trivia_logo }
+				className="logo_rectangle"
+				alt="Open Trivita Database"
+				name="footer_open_trivia_logo"
+				interaction="click"
+				onClick={ this.onClickFooterLinksFunctions }
+			/>
+		</a>,
+		<a
+			key={"postgres_logo"}
+			href="https://www.postgresql.org/"
+			rel="noopener noreferrer"
+			target="_blank"
+		>
+			<img
+				src={ postgres_logo }
+				className="logo_rectangle"
+				alt="PostgreSQL"
+				name="footer_postgres_logo"
+				interaction="click"
+				onClick={ this.onClickFooterLinksFunctions }
+			/>
+		</a>,
+		<a
+			key={"rails_logo"}
+			href="https://rubyonrails.org/"
+			rel="noopener noreferrer"
+			target="_blank"
+		>
+			<img
+				src={ rails_logo }
+				className="logo_rectangle"
+				alt="Ruby On Rails"
+				name="footer_rails_logo"
+				interaction="click"
+				onClick={ this.onClickFooterLinksFunctions }
+			/>
+		</a>,
+		<a
+			key={"react_logo"}
+			href="https://reactjs.org/"
+			rel="noopener noreferrer"
+			target="_blank"
+		>
+			<img
+				src={ react_logo }
+				className="logo_rectangle"
+				alt="React"
+				name="footer_react_logo"
+				interaction="click"
+				onClick={ this.onClickFooterLinksFunctions }
+			/>
+		</a>,
 
 	]
 

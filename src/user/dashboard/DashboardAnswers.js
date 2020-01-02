@@ -21,6 +21,8 @@ export default class DashboardAnswers extends React.Component{
 		this.setState({
 			mounted: true
 		})
+
+		this.onPageLoadFunctions()
 	}
 
 	componentDidUpdate(){
@@ -60,10 +62,10 @@ export default class DashboardAnswers extends React.Component{
 		}
 	}
 
-	onPageLoadFunctions = (props) => {
+	onPageLoadFunctions = () => {
 		this.props.update_page_data({
-			user_id: props.user_id,
-			page_name: "user_dashboard_answers"
+			user_id: localStorage.user_id,
+			page_name: "dashboard_answers"
 		})
 	}
 

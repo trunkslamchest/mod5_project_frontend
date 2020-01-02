@@ -1,9 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router'
 
-// import '../css/LogIn.css'
 import '../css/EditProfile.css'
-
 
 export default class LogIn extends React.Component {
 
@@ -12,22 +10,12 @@ export default class LogIn extends React.Component {
 		cancel: false,
 		user_name: "",
 		password: "",
-		errors: []
+		errors: [],
 	}
 
 	componentDidMount(){
-		// this.onMountAsync()
+		this.onPageLoadFunctions()
 	}
-
-	// onMountAsync = async () => {
-	// 	try {
-	// 		await !!this.props
-	// 		await this.props.user_id;
-	// 		await this.onPageLoadFunctions()
-	// 	} catch(errors) {
-	// 		console.log(errors);
-	// 	}
-	// }
 
 	onChange = (event) => {
 		this.setState({
@@ -95,13 +83,13 @@ export default class LogIn extends React.Component {
 
 	onPageLoadFunctions = () => {
 		this.props.update_page_data({
-			user_id: this.props.user_id,
-			page_name: "log_in"
+			user_id: localStorage.user_id,
+			page_name: "log_in",
 		})
 	}
 
 	render(){
-		
+
 		const errors = (!!this.state.errors) ?
 			( <div className="default_error_report" key={"edit_profile_error_report"}>
 					{ this.state.errors.map( error =>
@@ -112,7 +100,7 @@ export default class LogIn extends React.Component {
 			  </div> )
 		:
 			( "" )
-		
+
 	const login_form =
 		<div className="default_wrapper">
 			<div className="alt_header">

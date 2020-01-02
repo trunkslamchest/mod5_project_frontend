@@ -39,6 +39,8 @@ export default class PlayByDifficultyContainer extends React.Component{
 			mounted: true,
 			displaySelect: true,
 		})
+
+		this.onPageLoadFunctions()
 	}
 
 	componentDidUpdate(){
@@ -106,6 +108,9 @@ export default class PlayByDifficultyContainer extends React.Component{
 		let randomQuestion = filtered_questions.map(question_obj =>
 			(question_obj.id === rng.id) ?
 			<QuestionDisplay
+				update_traffic_data={ this.props.update_traffic_data }
+				update_page_data={ this.props.update_page_data }
+				// ~~~~~~~~~~~~~~~~~~~~
 				key={ question_obj.id }
 				question={ question_obj.attributes.question }
 				user_id={ this.props.user_id }
@@ -131,21 +136,21 @@ export default class PlayByDifficultyContainer extends React.Component{
 		this.setState({
 			difficulty: event.target.value,
 			displaySelect: false
-		})
+		}, this.onClickUpdateTrafficFunctions(event))
 	}
 
 	onClickMediumFunctions = (event) => {
 		this.setState({
 			difficulty: event.target.value,
 			displaySelect: false
-		})
+		}, this.onClickUpdateTrafficFunctions(event))
 	}
 
 	onClickHardFunctions = (event) => {
 		this.setState({
 			difficulty: event.target.value,
 			displaySelect: false
-		})
+		}, this.onClickUpdateTrafficFunctions(event))
 	}
 
 	onClickReSelectFunctions = (event) => {
@@ -157,6 +162,21 @@ export default class PlayByDifficultyContainer extends React.Component{
 			displaySelect: true,
 			questionsUpdated: false,
 			updatedAnsweredQuestions: false,
+		})
+	}
+
+	onClickUpdateTrafficFunctions = (event) => {
+		this.props.update_traffic_data({
+			user_id: this.props.user_id,
+			interaction: event.target.attributes.interaction.value,
+			element: event.target.name
+		})
+	}
+
+	onPageLoadFunctions = () => {
+		this.props.update_page_data({
+			user_id: localStorage.user_id,
+			page_name: "play_by_difficulty",
 		})
 	}
 
@@ -172,25 +192,31 @@ export default class PlayByDifficultyContainer extends React.Component{
 
 		const select_difficulty_buttons = [
 			<button
-				key={"easy_button1"}
+				key={"easy_button"}
 				value={ "Easy" }
 				className="easy_button"
+				name="easy_button"
+				interaction="click"
 				onClick={ this.onClickEasyFunctions }
 			>
 				Easy
 			</button>,
 			<button
-				key={"medium_button1"}
+				key={"medium_button"}
 				value={ "Medium" }
 				className="medium_button"
+				name="medium_button"
+				interaction="click"
 				onClick={ this.onClickMediumFunctions }
 			>
 				Medium
 			</button>,
 			<button
-				key={"hard_button1"}
+				key={"hard_button"}
 				value={ "Hard" }
 				className="hard_button"
+				name="hard_button"
+				interaction="click"
 				onClick={ this.onClickHardFunctions }
 			>
 				Hard

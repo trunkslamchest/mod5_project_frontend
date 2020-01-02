@@ -21,6 +21,7 @@ export default class DashboardComments extends React.Component{
 		this.setState({
 			mounted: true
 		})
+		this.onPageLoadFunctions()
 	}
 
 	componentDidUpdate(){
@@ -55,6 +56,13 @@ export default class DashboardComments extends React.Component{
 		this.setState({
 			userQuestions: userQuestions,
 			updatedUserQuestions: true
+		})
+	}
+
+	onPageLoadFunctions = () => {
+		this.props.update_page_data({
+			user_id: localStorage.user_id,
+			page_name: "dashboard_comments"
 		})
 	}
 

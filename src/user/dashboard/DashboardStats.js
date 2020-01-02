@@ -22,6 +22,8 @@ export default class DashboardStats extends React.Component{
 		this.setState({
 			mounted: true
 		})
+
+		this.onPageLoadFunctions()
 	}
 
 	componentDidUpdate(){
@@ -84,6 +86,13 @@ export default class DashboardStats extends React.Component{
 		this.setState({
 			rating: final_rating,
 			updated_rating: true
+		})
+	}
+
+	onPageLoadFunctions = () => {
+		this.props.update_page_data({
+			user_id: localStorage.user_id,
+			page_name: "dashboard_stats"
 		})
 	}
 

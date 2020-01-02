@@ -21,6 +21,8 @@ export default class DashboardVotes extends React.Component{
 		this.setState({
 			mounted: true
 		})
+
+		this.onPageLoadFunctions()
 	}
 
 	componentDidUpdate(){
@@ -56,6 +58,13 @@ export default class DashboardVotes extends React.Component{
 				userQuestions: userQuestions,
 				updatedUserQuestions: true
 			})
+	}
+
+	onPageLoadFunctions = () => {
+		this.props.update_page_data({
+			user_id: localStorage.user_id,
+			page_name: "dashboard_votes"
+		})
 	}
 
 	render(){

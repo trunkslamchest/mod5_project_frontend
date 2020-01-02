@@ -6,8 +6,6 @@ import './css/Header.css'
 import header_logo from './assets/header_logo.png'
 import header_logo_hover from './assets/header_logo_hover.png'
 
-
-
 export default class Header extends React.Component {
 
 	state={
@@ -33,7 +31,7 @@ export default class Header extends React.Component {
 	}
 
 	onClickHomeFunctions = (event) => {
-		// this.onClickUpdateTrafficFunctions(event)
+		this.onClickUpdateTrafficFunctions(event)
 	}
 
 	onClickSignUpFunctions = (event) => {
@@ -70,16 +68,23 @@ export default class Header extends React.Component {
 	}
 
 	render(){
+
 		const home_link = [
 			<NavLink
 				exact to="/"
 				key={"h_home_link"}
 				name="header_home_button"
 				interaction="click"
-				// className="home_link"
 				onClick={this.onClickHomeFunctions }
 			>
-				<img src={ this.state.hover ? header_logo_hover : header_logo } onMouseEnter={this.hoverOn}  onMouseLeave={this.hoverOff} alt="Link To Home Page"/>
+				<img
+					src={ this.state.hover ? header_logo_hover : header_logo }
+					name="header_home_button"
+					interaction="click"
+					onMouseEnter={this.hoverOn}
+					onMouseLeave={this.hoverOff}
+					alt="Link To Home Page"
+				/>
 			</NavLink>
 		]
 
@@ -95,7 +100,7 @@ export default class Header extends React.Component {
 			<NavLink
 				key={"h_question"}
 				to="/quick_play"
-				name="header_dashboard_question"
+				name="header_quick_play_button"
 				interaction="click"
 				className="default_header_link"
 				onClick={ this.onClickQuestionFunctions }
@@ -151,10 +156,13 @@ export default class Header extends React.Component {
 			logged_out_links
 		]
 
-		const normal_header = [
-			user_greeting,
-			logged_in_links
-		]
+		const normal_header =
+		<>
+			<>{ user_greeting }</>
+			<div className="header_nav_links">
+				{logged_in_links}
+			</div>
+		</>
 
 		const admin_header =
 		<>
@@ -171,7 +179,6 @@ export default class Header extends React.Component {
 				{logged_in_links}
 			</div>
 		</>
-
 
 		const no_header = [" "]
 

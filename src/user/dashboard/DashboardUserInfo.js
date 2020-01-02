@@ -9,8 +9,10 @@ import '../../css/DashboardUserInfo.css'
 
 export default class DashboardUserInfo extends React.Component{
 
-	state={
+	state={}
 
+	componentDidMount(){
+		this.onPageLoadFunctions()
 	}
 
 	onClickEditProfileFunctions = (event) => {
@@ -60,21 +62,24 @@ export default class DashboardUserInfo extends React.Component{
 	}
 
 	onClickUpdateTrafficFunctions = (event) => {
+		event.persist()
 		this.props.update_traffic_data({
-			user_id: this.props.user.user_id,
+			user_id: this.props.user.id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
 		})
 	}
 
-	onPageLoadFunctions = (props) => {
+	onPageLoadFunctions = () => {
 		this.props.update_page_data({
-			user_id: props.user.user_id,
-			page_name: "user_dashboard"
+			user_id: localStorage.user_id,
+			page_name: "dashboard_user_info"
 		})
 	}
 
 	render(){
+
+		console.log(this.props)
 		const age = 2019 - this.props.user.birth_year
 
 		const dashboard_edit_buttons = [

@@ -1,12 +1,7 @@
 import React from 'react'
 import {
-	//  NavLink,
 	 Link,
 	 Redirect,
-	// Route,
-	// Switch,
-	//  useRouteMatch,
-	//  useParams
 } from 'react-router-dom'
 
 import '../css/EditProfile.css'
@@ -35,25 +30,8 @@ export default class SignUp extends React.Component {
 	}
 
 	componentDidMount(){
-		// this.onMountAsync()
+		this.onPageLoadFunctions()
 	}
-
-	// onMountAsync = async () => {
-	// 	try {
-	// 		await !!this.props
-	// 		let user_id = await this.props.user_id;
-	// 		await this.onPageLoadFunctions(user_id)
-	// 	} catch(errors) {
-	// 		console.log(errors);
-	// 	}
-	// }
-
-	// onPageLoadFunctions = (user_id) => {
-	// 	this.props.update_page_data({
-	// 		user_id: user_id,
-	// 		page_name: "sign_up"
-	// 	})
-	// }
 
 	onChange = (event) => {
 		this.setState({
@@ -165,6 +143,14 @@ export default class SignUp extends React.Component {
 			element: event.target.name
 		})
 	}
+
+	onPageLoadFunctions = () => {
+		this.props.update_page_data({
+			user_id: localStorage.user_id,
+			page_name: "sign_up",
+		})
+	}
+
 
 	render(){
 

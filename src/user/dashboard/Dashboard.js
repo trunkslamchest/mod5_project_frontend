@@ -29,7 +29,8 @@ export default class Dashboard extends React.Component{
 		this.setState({
 			mounted: true
 		})
-		// this.onMountAsync()
+
+		this.onPageLoadFunctions()
 	}
 
 	componentDidUpdate(){
@@ -39,20 +40,6 @@ export default class Dashboard extends React.Component{
 		if (this.state.updated_all_questions && this.props.user_id && !this.state.updated_user){
 			this.getUser(this.props.user_id)
 		}
-	}
-
-	onMountAsync = async () => {
-		// try {
-		// 	let props = await this.props
-		// 	await this.props.user_id;
-		// 	// await this.onPageLoadFunctions(props)
-		// } catch(errors) {
-		// 	console.log(errors);
-		// }
-	}
-
-	UNSAFE_componentWillReceiveProps(nextProps){
-		// this.onPageLoadFunctions(nextProps)
 	}
 
 	getUser = (user_id) => {
@@ -86,34 +73,34 @@ export default class Dashboard extends React.Component{
 		})
 	}
 
-	displaySwitchToUserInfo = () => {
+	displaySwitchToUserInfo = (event) => {
 		this.setState({
 			display: 'user_info'
-		})
+		}, this.onClickUpdateTrafficFunctionsLI(event))
 	}
 
-	displaySwitchToStats = () => {
+	displaySwitchToStats = (event) => {
 		this.setState({
 			display: 'stats'
-		})
+		}, this.onClickUpdateTrafficFunctionsLI(event))
 	}
 
-	displaySwitchToAnswers = () => {
+	displaySwitchToAnswers = (event) => {
 		this.setState({
 			display: 'answers'
-		})
+		}, this.onClickUpdateTrafficFunctionsLI(event))
 	}
 
-	displaySwitchToVotes = () => {
+	displaySwitchToVotes = (event) => {
 		this.setState({
 			display: 'votes'
-		})
+		}, this.onClickUpdateTrafficFunctionsLI(event))
 	}
 
-	displaySwitchToComments = () => {
+	displaySwitchToComments = (event) => {
 		this.setState({
 			display: 'comments'
-		})
+		}, this.onClickUpdateTrafficFunctionsLI(event))
 	}
 
 	onClickEditProfileFunctions = (event) => {
@@ -132,10 +119,18 @@ export default class Dashboard extends React.Component{
 		})
 	}
 
-	onPageLoadFunctions = (props) => {
+	onClickUpdateTrafficFunctionsLI = (event) => {
+		this.props.update_traffic_data({
+			user_id: this.props.user_id,
+			interaction: event.target.attributes.interaction.value,
+			element: event.target.attributes.name.value
+		})
+	}
+
+	onPageLoadFunctions = () => {
 		this.props.update_page_data({
-			user_id: props.user_id,
-			page_name: "user_dashboard"
+			user_id: localStorage.user_id,
+			page_name: "dashboard_index",
 		})
 	}
 
@@ -144,30 +139,40 @@ export default class Dashboard extends React.Component{
 		const dashboard_tabs = [
 			<li
 				key={"dashboard_info"}
+				name="dashboard_user_info_button"
+				interaction="click"
 				onClick={ this.displaySwitchToUserInfo }
 			>
 				Info
 			</li>,
 			<li
 				key={"dashboard_stats"}
+				name="dashboard_stats_button"
+				interaction="click"
 				onClick={ this.displaySwitchToStats }
 			>
 				Stats
 			</li>,
 			<li
 				key={"dashboard_answers"}
+				name="dashboard_answers_button"
+				interaction="click"
 				onClick={ this.displaySwitchToAnswers }
 			>
 				Answers
 			</li>,
 			<li
 				key={"dashboard_votes"}
+				name="dashboard_votes_button"
+				interaction="click"
 				onClick={ this.displaySwitchToVotes }
 			>
 				Votes
 			</li>,
 			<li
 				key={"dashboard_comments"}
+				name="dashboard_comments_button"
+				interaction="click"
 				onClick={ this.displaySwitchToComments }
 			>
 				Comments
@@ -197,34 +202,39 @@ export default class Dashboard extends React.Component{
 															first_name={ this.state.user.first_name }
 														/>;
 								case 'user_info': return <DashboardUserInfo
-															update_traffic_data={this.props.update_traffic_data }
-															update_page_data={this.props.update_page_data}
+															update_traffic_data={ this.props.update_traffic_data }
+															update_page_data={ this.props.update_page_data }
+															// ~~~~~~~~~~~~~~~~~~~~
 															user={ this.state.user }
 														/>;
 								case 'stats': return <DashboardStats
+															update_traffic_data={ this.props.update_traffic_data }
+															update_page_data={ this.props.update_page_data }
+															// ~~~~~~~~~~~~~~~~~~~~
 															user={ this.state.user }
 															user_answers={ this.state.user_answers }
 															all_questions={ this.state.all_questions }
-															update_traffic_data={this.props.update_traffic_data }
-															update_page_data={this.props.update_page_data}
 														/>;
 								case 'answers': return <DashboardAnswers
+															update_traffic_data={ this.props.update_traffic_data }
+															update_page_data={ this.props.update_page_data }
+															// ~~~~~~~~~~~~~~~~~~~~
 															user_answers={ this.state.user_answers }
 															all_questions={ this.state.all_questions }
-															update_traffic_data={this.props.update_traffic_data }
-															update_page_data={this.props.update_page_data}
 														/>;
 								case 'votes': return <DashboardVotes
+															update_traffic_data={ this.props.update_traffic_data }
+															update_page_data={ this.props.update_page_data }
+															// ~~~~~~~~~~~~~~~~~~~~
 															user_votes={ this.state.user_votes }
 															all_questions={ this.state.all_questions }
-															update_traffic_data={this.props.update_traffic_data }
-															update_page_data={this.props.update_page_data}
 														/>;
 								case 'comments': return <DashboardComments
+															update_traffic_data={ this.props.update_traffic_data }
+															update_page_data={ this.props.update_page_data }
+															// ~~~~~~~~~~~~~~~~~~~~
 															user_comments={ this.state.user_comments }
 															all_questions={ this.state.all_questions }
-															update_traffic_data={this.props.update_traffic_data }
-															update_page_data={this.props.update_page_data}
 														/>;
 								default: return <DashboardIndex
 												first_name={ this.state.user.first_name }

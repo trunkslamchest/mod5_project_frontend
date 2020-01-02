@@ -17,18 +17,9 @@ export default class DeleteProfile extends React.Component {
 		this.setState({
 			user_id: this.props.user_id
 		})
-		// this.onMountAsync()
-	}
 
-	// onMountAsync = async () => {
-	// 	try {
-	// 		await this.props
-	// 		let user_id = await this.props.user_id;
-	// 		await this.onPageLoadFunctions(user_id)
-	// 	} catch(errors) {
-	// 		console.log(errors);
-	// 	}
-	// }
+		this.onPageLoadFunctions()
+	}
 
 	onClickConfirm = (event) => {
 		fetch(`http://localhost:3001/users/${this.props.user_id}`, {
@@ -72,18 +63,18 @@ export default class DeleteProfile extends React.Component {
 		})
 	}
 
-	onPageLoadFunctions = (user_id) => {
-		this.props.update_page_data({
-			user_id: user_id,
-			page_name: "Delete Profile"
-		})
-	}
-
 	onClickUpdateTrafficFunctions = (event) => {
 		this.props.update_traffic_data({
 			user_id: this.props.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
+		})
+	}
+
+	onPageLoadFunctions = () => {
+		this.props.update_page_data({
+			user_id: localStorage.user_id,
+			page_name: "delete_profile"
 		})
 	}
 

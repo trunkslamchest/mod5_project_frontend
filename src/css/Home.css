@@ -1,7 +1,8 @@
 .logo_container {
 	width: 75%;
 	margin: 30px auto 30px auto;
-	animation: fade_in .3s ease-in-out 1, blur_in .15s ease-in-out 1;
+	animation: fade_in .1s ease-in-out 1, blur_in .2s ease-in-out 1, slide_in_from_top .3s ease-in-out 1;
+
 }
 
 .logo_container img{
@@ -18,14 +19,13 @@
 	justify-content: center;
 	align-items: baseline;
 	margin: 0 auto 0 auto;
-	animation: fade_in .3s ease-in-out 1, blur_in .15s ease-in-out 1;
+	animation: fade_in .1s ease-in-out 1, blur_in .2s ease-in-out 1, slide_in_from_bottom .3s ease-in-out 1;
 }
 
 .quick_play_container {
 	width: 75%;
 	min-width: 75%;
 	max-width: 75%;
-	display: flex;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;

@@ -69,23 +69,29 @@ export default class DashboardVotes extends React.Component{
 
 	render(){
 
+		const no_votes_header =
+			<div className="dashboard_alt_header">
+				<h4> You have not voted on any questions yet!</h4>
+			</div>
+
 		const distributeCombineQuestionsVotes =
-		(this.state.updatedUserQuestions) ? this.state.userQuestions.map(question =>
-				this.state.userVotes.map(vote =>
-					(question.id === vote.question_id) ?
-						<DashboardVoteCard
-							key={vote.id}
-							question={question}
-							vote={vote}
-						/>
-					: ""
+			(this.state.updatedUserQuestions) ? this.state.userQuestions.map(question =>
+					this.state.userVotes.map(vote =>
+						(question.id === vote.question_id) ?
+							<DashboardVoteCard
+								key={vote.id}
+								question={question}
+								vote={vote}
+							/>
+						: ""
+					)
 				)
-			)
-			: ""
+				: ""
 
 		return(
 			<div className="vote_wrapper">
-				{ distributeCombineQuestionsVotes }
+				{ this.state.userVotes.length === 0 ? no_votes_header: distributeCombineQuestionsVotes }
+
 			</div>
 		)
 	}

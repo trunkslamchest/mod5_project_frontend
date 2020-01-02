@@ -70,6 +70,12 @@ export default class DashboardAnswers extends React.Component{
 	}
 
 	render(){
+
+		const no_answers_header =
+			<div className="dashboard_alt_header">
+				<h4> You have not answered any questions yet!</h4>
+			</div>
+
 		const distributeCombineQuestionsAnswers =
 			(this.state.updatedUserQuestions) ? this.state.userQuestions.map(question =>
 					this.state.userAnswers.map(answer =>
@@ -86,7 +92,7 @@ export default class DashboardAnswers extends React.Component{
 
 		return(
 			<div className="answers_wrapper">
-				{ distributeCombineQuestionsAnswers }
+				{ this.state.userAnswers.length === 0 ? no_answers_header: distributeCombineQuestionsAnswers }
 			</div>
 		)
 	}

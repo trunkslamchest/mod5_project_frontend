@@ -51,7 +51,7 @@ export default class QuestionDisplay extends React.Component{
 
 		this.randomizeAnswerOrder(this.props.question)
 		this.timerTimeout = setTimeout(() => { this.setState({ showTimer: true })}, 1000)
-		// this.startTimer = setTimeout(() => { this.timerInterval = setInterval(this.timerFunctions, 10)}, 5000)
+		this.startTimer = setTimeout(() => { this.timerInterval = setInterval(this.timerFunctions, 10)}, 5000)
 		this.headerTimeout = setTimeout(() => { this.setState({ showHeader: true })}, 2000)
 		this.questionTimeout = setTimeout(() => { this.setState({ showQuestion: true })}, 3000)
 		this.enableQuestionTimeout = setTimeout(() => { this.setState({ enableQuestion: true })}, 5000)

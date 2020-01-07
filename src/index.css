@@ -4,13 +4,13 @@
 
 * {
   margin: 0;
+  text-rendering: optimizeLegibility
 }
-/* html, body {
-  height: 100%;
-} */
 
 html, body {
   height: 100vh;
+	width: 100vw;
+  overflow-x: hidden;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -22,56 +22,7 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  top: -10px;
-  left: 0;
-  width: 100%;
-  height: 10px;
-  box-shadow: 0px 0 10px rgba(0, 0, 0, 0.8);
-  z-index: 100;
-}
-
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-} */
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
-
-.input:-internal-autofill-selected {
-	width: 25%;
-	text-rendering: auto;
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    text-align: start;
-    box-sizing: unset;
-    align-items: center;
-    white-space: normal;
-    background-color: #fff;
-    cursor: default;
-    margin: 0em;
-	color: #000;
-	line-height: 1.3;
-	padding: 5px;
-	border: 1px solid rgb(175, 175, 175, 1);
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	appearance: none;
-}
-
-::placeholder {
-	color: #000;
-	opacity: 1;
 }

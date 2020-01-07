@@ -68,23 +68,28 @@ export default class DashboardComments extends React.Component{
 
 	render(){
 
+		const no_comments_header =
+			<div className="dashboard_alt_header">
+				<h4> You have not commented on any questions yet!</h4>
+			</div>
+
 		const distributeCombineQuestionsComments =
-		(this.state.updatedUserQuestions) ? this.state.userQuestions.map(question =>
-				this.state.userComments.map(comment =>
-					(question.id === comment.question_id) ?
-						<DashboardCommentCard
-							key={comment.id}
-							question={question}
-							comment={comment}
-						/>
-					: ""
+			(this.state.updatedUserQuestions) ? this.state.userQuestions.map(question =>
+					this.state.userComments.map(comment =>
+						(question.id === comment.question_id) ?
+							<DashboardCommentCard
+								key={comment.id}
+								question={question}
+								comment={comment}
+							/>
+						: ""
+					)
 				)
-			)
-			: ""
+				: ""
 
 		return(
 			<div className="comment_wrapper">
-				{ distributeCombineQuestionsComments }
+				{ this.state.userComments.length === 0 ? no_comments_header: distributeCombineQuestionsComments }
 			</div>
 		)
 	}

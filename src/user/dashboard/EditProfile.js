@@ -154,15 +154,15 @@ export default class EditProfile extends React.Component {
 	render(){
 
 		const errors = (!!this.state.errors) ?
-		( <div className="default_error_report" key={"edit_profile_error_report"}>
-				{ this.state.errors.map( error =>
-					<div className="default_error_item">
-						{ error }
-					</div>
-				)}
-		  </div> )
-	:
-		( "" )
+			( <div className="default_error_report" key={"edit_profile_error_report"}>
+					{ this.state.errors.map( error =>
+						<div className="default_error_item">
+							{ error }
+						</div>
+					)}
+			  </div> )
+		:
+			( "" )
 
 		const edit_form = !(this.state.updateSuccess) ?
 		<div className="default_wrapper" key={"edit_profile_form"}>
@@ -403,11 +403,6 @@ export default class EditProfile extends React.Component {
 		</div>
 	:
 		<Redirect to='./dashboard' />
-
-		// const edit_page = [
-		// 	errors,
-		// 	edit_form
-		// ]
 
 		return(
 			<>

@@ -1,9 +1,5 @@
 import React from 'react'
 
-import {
-	//  Link
-	} from 'react-router-dom'
-
 export default class DashboardAnswersCard extends React.Component{
 
 	render(){
@@ -22,7 +18,7 @@ export default class DashboardAnswersCard extends React.Component{
 					<li><h4>Category</h4>{ this.props.question.category }</li>
 					<li><h4>Difficulty</h4>{ this.props.question.difficulty }</li>
 				</ul>
-				
+
 				<ul>
 					<li><h4>Correct Answer</h4>{ this.props.question.correct_answer }</li>
 					<li><h4>Your Answer</h4>{ this.props.answer.user_answer }</li>

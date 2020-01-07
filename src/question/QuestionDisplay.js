@@ -215,7 +215,6 @@ export default class QuestionDisplay extends React.Component{
 	}
 
 	timerFunctions = () => {
-
 		if (this.state.stopTime){
 			this.setState({
 				time: this.state.time
@@ -471,48 +470,60 @@ export default class QuestionDisplay extends React.Component{
 				</div>
 			</div>
 
-		const question_buttons = [
-			<button
-				key={"answer_button1"}
-				value={ this.state.answers[0] }
-				className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
-				name="answer_button"
-				interaction="click"
-				onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
-			>
-				{ this.state.answers[0] }
-			</button>,
-			<button
-				key={"answer_button2"}
-				value={ this.state.answers[1] }
-				className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
-				name="answer_button"
-				interaction="click"
-				onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
-			>
-				{ this.state.answers[1] }
-			</button>,
-			<button
-				key={"answer_button3"}
-				value={ this.state.answers[2] }
-				className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
-				name="answer_button"
-				interaction="click"
-				onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
-			>
-				{ this.state.answers[2] }
-			</button>,
-			<button
-				key={"answer_button4"}
-				value={ this.state.answers[3] }
-				className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
-				name="answer_button"
-				interaction="click"
-				onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
-			>
-				{ this.state.answers[3] }
-			</button>
-		]
+		const question_buttons = <>
+			<div className="div1">
+				<button
+					key={"answer_button1"}
+					value={ this.state.answers[0] }
+					className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
+					name="answer_button"
+					interaction="click"
+					onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
+				>
+					{ this.state.answers[0] }
+				</button>
+				<button
+					key={"answer_button2"}
+					value={ this.state.answers[1] }
+					className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
+					name="answer_button"
+					interaction="click"
+					onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
+				>
+					{ this.state.answers[1] }
+				</button>
+			</div>
+			<div className="div2">
+				<button
+					key={"answer_button3"}
+					value={ this.state.answers[2] }
+					className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
+					name="answer_button"
+					interaction="click"
+					onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
+				>
+					{ this.state.answers[2] }
+				</button>
+				<button
+					key={"answer_button4"}
+					value={ this.state.answers[3] }
+					className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
+					name="answer_button"
+					interaction="click"
+					onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
+				>
+					{ this.state.answers[3] }
+				</button>
+			</div>
+		</>
+
+		const time = <><h1>{ this.state.time ? this.state.time : blank }</h1></>
+
+		const question_text = <h2>{ this.props.question ? `${this.props.question.question_desc}`: blank }</h2>
+
+		const question_difficulty = <h3>{ this.props.question ? `In ${ this.props.question.category }...` : blank }</h3>
+
+		const question_choices = <>{ this.state.answers ? question_buttons : blank }</>
 
 		const correct_answer_text = <>
 			<h3>The correct answer was</h3>
@@ -575,14 +586,6 @@ export default class QuestionDisplay extends React.Component{
 			/>
 			</button>
 		]
-
-		const header = <h3>{ this.props.question ? `In ${ this.props.question.category }...` : blank }</h3>
-
-		const question_text = <h2>{ this.props.question ? `${this.props.question.question_desc}`: blank }</h2>
-
-		const question_choices = <>{ this.state.answers ? question_buttons : blank }</>
-
-		const time = <><h1>{ this.state.time ? this.state.time : blank }</h1></>
 
 		const answered_header = <h3> { this.state.time === 0 ? this.outtaTime() : this.state.user_result } </h3>
 
@@ -661,7 +664,7 @@ export default class QuestionDisplay extends React.Component{
 					{ this.state.showTimer ? time : blank }
 				</div>
 				<div className={ !this.state.showHeader ? "blank" : "question_card_header" }>
-					{ this.state.showHeader ? header : blank }
+					{ this.state.showHeader ? question_difficulty : blank }
 				</div>
 				<div className={ !this.state.showQuestion ? "blank" : "question_card_text" }>
 					{ this.state.showQuestion ? question_text : blank }
@@ -672,7 +675,6 @@ export default class QuestionDisplay extends React.Component{
 			</div>
 
 		const displayQuestion = this.state.showTimer ? question_card : loading
-
 
 		const DisplayAnswer =
 			<div className="question_card">
@@ -737,3 +739,47 @@ export default class QuestionDisplay extends React.Component{
 		)
 	}
 }
+
+
+		// const question_buttons = [
+		// 	<button
+		// 		key={"answer_button1"}
+		// 		value={ this.state.answers[0] }
+		// 		className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
+		// 		name="answer_button"
+		// 		interaction="click"
+		// 		onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
+		// 	>
+		// 		{ this.state.answers[0] }
+		// 	</button>,
+		// 	<button
+		// 		key={"answer_button2"}
+		// 		value={ this.state.answers[1] }
+		// 		className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
+		// 		name="answer_button"
+		// 		interaction="click"
+		// 		onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
+		// 	>
+		// 		{ this.state.answers[1] }
+		// 	</button>,
+		// 	<button
+		// 		key={"answer_button3"}
+		// 		value={ this.state.answers[2] }
+		// 		className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
+		// 		name="answer_button"
+		// 		interaction="click"
+		// 		onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
+		// 	>
+		// 		{ this.state.answers[2] }
+		// 	</button>,
+		// 	<button
+		// 		key={"answer_button4"}
+		// 		value={ this.state.answers[3] }
+		// 		className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
+		// 		name="answer_button"
+		// 		interaction="click"
+		// 		onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
+		// 	>
+		// 		{ this.state.answers[3] }
+		// 	</button>
+		// ]

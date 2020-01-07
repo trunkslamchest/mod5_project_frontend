@@ -4,6 +4,18 @@ import '../css/Docs.css'
 
 export default class Disclaimer extends React.Component {
 
+	componentDidMount(){
+		this.onPageLoadFunctions()
+
+	}
+
+	onPageLoadFunctions = () => {
+		this.props.update_page_data({
+			user_id: localStorage.user_id,
+			page_name: "disclaimer",
+		})
+	}
+
 	render(){
 
 		return(

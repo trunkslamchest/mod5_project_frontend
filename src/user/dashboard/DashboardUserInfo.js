@@ -6,7 +6,6 @@ import {
 
 import '../../css/DashboardUserInfo.css'
 
-
 export default class DashboardUserInfo extends React.Component{
 
 	state={}
@@ -79,7 +78,6 @@ export default class DashboardUserInfo extends React.Component{
 
 	render(){
 
-		console.log(this.props)
 		const age = 2019 - this.props.user.birth_year
 
 		const dashboard_edit_buttons = [

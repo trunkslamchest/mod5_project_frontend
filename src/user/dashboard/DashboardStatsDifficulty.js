@@ -1,9 +1,5 @@
 import React from 'react'
 
-import {
-        //  Link
-        } from 'react-router-dom'
-
 export default class DashboardStatsDifficulty extends React.Component{
 
 	state = {
@@ -134,14 +130,14 @@ export default class DashboardStatsDifficulty extends React.Component{
 
 		return(
 			<>
-			<div className="stats_header">
-				<h3> Difficulty </h3>
-			</div>
-			<div className="stats_difficulty">
-				{ easy_questions }
-				{ medium_questions }
-				{ hard_questions }
-			</div>
+				<div className="stats_header">
+					<h3> Difficulty </h3>
+				</div>
+				<div className="stats_difficulty">
+					{ easy_questions }
+					{ medium_questions }
+					{ hard_questions }
+				</div>
 			</>
 		)
 	}

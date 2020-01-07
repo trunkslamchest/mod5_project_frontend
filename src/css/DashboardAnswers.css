@@ -2,6 +2,18 @@
 	padding-bottom: 50px;
 }
 
+.answers_header {
+	text-align: center;
+	width: 100%;
+	padding: 15px 0px 5px 0px;
+	animation: fade_in .4s ease-in-out 1, blur_in .2s ease-in-out 1;
+	z-index:8;
+}
+
+.answers_header h3 {
+	font: 300 15pt 'Lato', sans-serif;
+}
+
 .answer_card {
 	background-color: rgba(255,255,255, 1);
 	background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255,255,255, 1), rgba(0,0,0, 0.025) );

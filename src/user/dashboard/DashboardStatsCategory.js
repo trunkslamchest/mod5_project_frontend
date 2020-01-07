@@ -1,9 +1,5 @@
 import React from 'react'
 
-import {
-        //  Link
-        } from 'react-router-dom'
-
 export default class DashboardStatsCategory extends React.Component{
 
 	state = {
@@ -19,10 +15,6 @@ export default class DashboardStatsCategory extends React.Component{
 	}
 
 	componentDidUpdate(){
-		// if (this.state.mounted) {
-		// 	this.sortAllQuestionsByCategory()
-		// 	this.questionsAnsweredByCategory()
-		// }
 		if (Object.keys(this.props.all_questions).length > 0 && !this.state.updatedAllQuestions) {
 			this.sortAllQuestionsByCategory()
 		}
@@ -82,125 +74,119 @@ export default class DashboardStatsCategory extends React.Component{
 	}
 
 	questionsAnsweredByCategory = () => {
-		// if (this.state.updatedAllQuestions && this.state.updatedCategories !== true ) {
+		let user_answers = this.props.user_answers.filter(answer => answer)
+		let user_answers_ids = user_answers.map(answer => answer.question_id)
 
-			let user_answers = this.props.user_answers.filter(answer => answer)
-			let user_answers_ids = user_answers.map(answer => answer.question_id)
+		let user_answers_correct = this.props.user_answers.filter(answer => answer.user_result === "correct")
+		let user_answers_correct_ids = user_answers_correct.map(answer => answer.question_id)
 
-			let user_answers_correct = this.props.user_answers.filter(answer => answer.user_result === "correct")
-			let user_answers_correct_ids = user_answers_correct.map(answer => answer.question_id)
+		let user_answers_anime = this.state.all_anime_questions.filter(answer => user_answers_ids.includes(answer.id))
+		let user_answers_anime_correct = user_answers_anime.filter(answer => user_answers_correct_ids.includes(answer.id))
 
-			let user_answers_anime = this.state.all_anime_questions.filter(answer => user_answers_ids.includes(answer.id))
-			let user_answers_anime_correct = user_answers_anime.filter(answer => user_answers_correct_ids.includes(answer.id))
+		let user_answers_art = this.state.all_art_questions.filter(answer => user_answers_ids.includes(answer.id))
+		let user_answers_art_correct = user_answers_art.filter(answer => user_answers_correct_ids.includes(answer.id))
 
-			let user_answers_art = this.state.all_art_questions.filter(answer => user_answers_ids.includes(answer.id))
-			let user_answers_art_correct = user_answers_art.filter(answer => user_answers_correct_ids.includes(answer.id))
+		let user_answers_book = this.state.all_book_questions.filter(answer => user_answers_ids.includes(answer.id))
+		let user_answers_book_correct = user_answers_book.filter(answer => user_answers_correct_ids.includes(answer.id))
 
-			let user_answers_book = this.state.all_book_questions.filter(answer => user_answers_ids.includes(answer.id))
-			let user_answers_book_correct = user_answers_book.filter(answer => user_answers_correct_ids.includes(answer.id))
+		let user_answers_celebrities = this.state.all_celebrities_questions.filter(answer => user_answers_ids.includes(answer.id))
+		let user_answers_celebrities_correct = user_answers_celebrities.filter(answer => user_answers_correct_ids.includes(answer.id))
 
-			let user_answers_celebrities = this.state.all_celebrities_questions.filter(answer => user_answers_ids.includes(answer.id))
-			let user_answers_celebrities_correct = user_answers_celebrities.filter(answer => user_answers_correct_ids.includes(answer.id))
+		let user_answers_computer = this.state.all_computer_questions.filter(answer => user_answers_ids.includes(answer.id))
+		let user_answers_computer_correct = user_answers_computer.filter(answer => user_answers_correct_ids.includes(answer.id))
 
-			let user_answers_computer = this.state.all_computer_questions.filter(answer => user_answers_ids.includes(answer.id))
-			let user_answers_computer_correct = user_answers_computer.filter(answer => user_answers_correct_ids.includes(answer.id))
+		let user_answers_film = this.state.all_film_questions.filter(answer => user_answers_ids.includes(answer.id))
+		let user_answers_film_correct = user_answers_film.filter(answer => user_answers_correct_ids.includes(answer.id))
 
-			let user_answers_film = this.state.all_film_questions.filter(answer => user_answers_ids.includes(answer.id))
-			let user_answers_film_correct = user_answers_film.filter(answer => user_answers_correct_ids.includes(answer.id))
+		let user_answers_general_knowledge = this.state.all_general_knowledge_questions.filter(answer => user_answers_ids.includes(answer.id))
+		let user_answers_general_knowledge_correct = user_answers_general_knowledge.filter(answer => user_answers_correct_ids.includes(answer.id))
 
-			let user_answers_general_knowledge = this.state.all_general_knowledge_questions.filter(answer => user_answers_ids.includes(answer.id))
-			let user_answers_general_knowledge_correct = user_answers_general_knowledge.filter(answer => user_answers_correct_ids.includes(answer.id))
+		let user_answers_geography = this.state.all_geography_questions.filter(answer => user_answers_ids.includes(answer.id))
+		let user_answers_geography_correct = user_answers_geography.filter(answer => user_answers_correct_ids.includes(answer.id))
 
-			let user_answers_geography = this.state.all_geography_questions.filter(answer => user_answers_ids.includes(answer.id))
-			let user_answers_geography_correct = user_answers_geography.filter(answer => user_answers_correct_ids.includes(answer.id))
+		let user_answers_history = this.state.all_history_questions.filter(answer => user_answers_ids.includes(answer.id))
+		let user_answers_history_correct = user_answers_history.filter(answer => user_answers_correct_ids.includes(answer.id))
 
-			let user_answers_history = this.state.all_history_questions.filter(answer => user_answers_ids.includes(answer.id))
-			let user_answers_history_correct = user_answers_history.filter(answer => user_answers_correct_ids.includes(answer.id))
+		let user_answers_math = this.state.all_math_questions.filter(answer => user_answers_ids.includes(answer.id))
+		let user_answers_math_correct = user_answers_math.filter(answer => user_answers_correct_ids.includes(answer.id))
 
-			let user_answers_math = this.state.all_math_questions.filter(answer => user_answers_ids.includes(answer.id))
-			let user_answers_math_correct = user_answers_math.filter(answer => user_answers_correct_ids.includes(answer.id))
+		let user_answers_music = this.state.all_music_questions.filter(answer => user_answers_ids.includes(answer.id))
+		let user_answers_music_correct = user_answers_music.filter(answer => user_answers_correct_ids.includes(answer.id))
 
-			let user_answers_music = this.state.all_music_questions.filter(answer => user_answers_ids.includes(answer.id))
-			let user_answers_music_correct = user_answers_music.filter(answer => user_answers_correct_ids.includes(answer.id))
+		let user_answers_mythology = this.state.all_mythology_questions.filter(answer => user_answers_ids.includes(answer.id))
+		let user_answers_mythology_correct = user_answers_mythology.filter(answer => user_answers_correct_ids.includes(answer.id))
 
-			let user_answers_mythology = this.state.all_mythology_questions.filter(answer => user_answers_ids.includes(answer.id))
-			let user_answers_mythology_correct = user_answers_mythology.filter(answer => user_answers_correct_ids.includes(answer.id))
+		let user_answers_nature = this.state.all_nature_questions.filter(answer => user_answers_ids.includes(answer.id))
+		let user_answers_nature_correct = user_answers_nature.filter(answer => user_answers_correct_ids.includes(answer.id))
 
-			let user_answers_nature = this.state.all_nature_questions.filter(answer => user_answers_ids.includes(answer.id))
-			let user_answers_nature_correct = user_answers_nature.filter(answer => user_answers_correct_ids.includes(answer.id))
+		let user_answers_politics = this.state.all_politics_questions.filter(answer => user_answers_ids.includes(answer.id))
+		let user_answers_politics_correct = user_answers_politics.filter(answer => user_answers_correct_ids.includes(answer.id))
 
-			let user_answers_politics = this.state.all_politics_questions.filter(answer => user_answers_ids.includes(answer.id))
-			let user_answers_politics_correct = user_answers_politics.filter(answer => user_answers_correct_ids.includes(answer.id))
+		let user_answers_science = this.state.all_science_questions.filter(answer => user_answers_ids.includes(answer.id))
+		let user_answers_science_correct = user_answers_science.filter(answer => user_answers_correct_ids.includes(answer.id))
 
-			let user_answers_science = this.state.all_science_questions.filter(answer => user_answers_ids.includes(answer.id))
-			let user_answers_science_correct = user_answers_science.filter(answer => user_answers_correct_ids.includes(answer.id))
+		let user_answers_sports = this.state.all_sports_questions.filter(answer => user_answers_ids.includes(answer.id))
+		let user_answers_sports_correct = user_answers_sports.filter(answer => user_answers_correct_ids.includes(answer.id))
 
-			let user_answers_sports = this.state.all_sports_questions.filter(answer => user_answers_ids.includes(answer.id))
-			let user_answers_sports_correct = user_answers_sports.filter(answer => user_answers_correct_ids.includes(answer.id))
+		let user_answers_television = this.state.all_television_questions.filter(answer => user_answers_ids.includes(answer.id))
+		let user_answers_television_correct = user_answers_television.filter(answer => user_answers_correct_ids.includes(answer.id))
 
-			let user_answers_television = this.state.all_television_questions.filter(answer => user_answers_ids.includes(answer.id))
-			let user_answers_television_correct = user_answers_television.filter(answer => user_answers_correct_ids.includes(answer.id))
+		let user_answers_theatre = this.state.all_theatre_questions.filter(answer => user_answers_ids.includes(answer.id))
+		let user_answers_theatre_correct = user_answers_theatre.filter(answer => user_answers_correct_ids.includes(answer.id))
 
-			let user_answers_theatre = this.state.all_theatre_questions.filter(answer => user_answers_ids.includes(answer.id))
-			let user_answers_theatre_correct = user_answers_theatre.filter(answer => user_answers_correct_ids.includes(answer.id))
+		let user_answers_vehicles = this.state.all_vehicles_questions.filter(answer => user_answers_ids.includes(answer.id))
+		let user_answers_vehicles_correct = user_answers_vehicles.filter(answer => user_answers_correct_ids.includes(answer.id))
 
-			let user_answers_vehicles = this.state.all_vehicles_questions.filter(answer => user_answers_ids.includes(answer.id))
-			let user_answers_vehicles_correct = user_answers_vehicles.filter(answer => user_answers_correct_ids.includes(answer.id))
+		let user_answers_video_games = this.state.all_video_games_questions.filter(answer => user_answers_ids.includes(answer.id))
+		let user_answers_video_games_correct = user_answers_video_games.filter(answer => user_answers_correct_ids.includes(answer.id))
 
-			let user_answers_video_games = this.state.all_video_games_questions.filter(answer => user_answers_ids.includes(answer.id))
-			let user_answers_video_games_correct = user_answers_video_games.filter(answer => user_answers_correct_ids.includes(answer.id))
-
-			this.setState({
-				user_answers_correct: user_answers_correct.length,
-				user_answers_anime: user_answers_anime.length,
-				user_answers_anime_correct: user_answers_anime_correct.length,
-				user_answers_art: user_answers_art.length,
-				user_answers_art_correct: user_answers_art_correct.length,
-				user_answers_book: user_answers_book.length,
-				user_answers_book_correct: user_answers_book_correct.length,
-				user_answers_celebrities: user_answers_celebrities.length,
-				user_answers_celebrities_correct: user_answers_celebrities_correct.length,
-				user_answers_computer: user_answers_computer.length,
-				user_answers_computer_correct: user_answers_computer_correct.length,
-				user_answers_film: user_answers_film.length,
-				user_answers_film_correct: user_answers_film_correct.length,
-				user_answers_general_knowledge: user_answers_general_knowledge.length,
-				user_answers_general_knowledge_correct: user_answers_general_knowledge_correct.length,
-				user_answers_geography: user_answers_geography.length,
-				user_answers_geography_correct: user_answers_geography_correct.length,
-				user_answers_history: user_answers_history.length,
-				user_answers_history_correct: user_answers_history_correct.length,
-				user_answers_math: user_answers_math.length,
-				user_answers_math_correct: user_answers_math_correct.length,
-				user_answers_music: user_answers_music.length,
-				user_answers_music_correct: user_answers_music_correct.length,
-				user_answers_mythology: user_answers_mythology.length,
-				user_answers_mythology_correct: user_answers_mythology_correct.length,
-				user_answers_nature: user_answers_nature.length,
-				user_answers_nature_correct: user_answers_nature_correct.length,
-				user_answers_politics: user_answers_politics.length,
-				user_answers_politics_correct: user_answers_politics_correct.length,
-				user_answers_science: user_answers_science.length,
-				user_answers_science_correct: user_answers_science_correct.length,
-				user_answers_sports: user_answers_sports.length,
-				user_answers_sports_correct: user_answers_sports_correct.length,
-				user_answers_television: user_answers_television.length,
-				user_answers_television_correct: user_answers_television_correct.length,
-				user_answers_theatre: user_answers_theatre.length,
-				user_answers_theatre_correct: user_answers_theatre_correct.length,
-				user_answers_vehicles: user_answers_vehicles.length,
-				user_answers_vehicles_correct: user_answers_vehicles_correct.length,
-				user_answers_video_games: user_answers_video_games.length,
-				user_answers_video_games_correct: user_answers_video_games_correct.length,
-				updatedCategories: true
-			})
-		// }
+		this.setState({
+			user_answers_correct: user_answers_correct.length,
+			user_answers_anime: user_answers_anime.length,
+			user_answers_anime_correct: user_answers_anime_correct.length,
+			user_answers_art: user_answers_art.length,
+			user_answers_art_correct: user_answers_art_correct.length,
+			user_answers_book: user_answers_book.length,
+			user_answers_book_correct: user_answers_book_correct.length,
+			user_answers_celebrities: user_answers_celebrities.length,
+			user_answers_celebrities_correct: user_answers_celebrities_correct.length,
+			user_answers_computer: user_answers_computer.length,
+			user_answers_computer_correct: user_answers_computer_correct.length,
+			user_answers_film: user_answers_film.length,
+			user_answers_film_correct: user_answers_film_correct.length,
+			user_answers_general_knowledge: user_answers_general_knowledge.length,
+			user_answers_general_knowledge_correct: user_answers_general_knowledge_correct.length,
+			user_answers_geography: user_answers_geography.length,
+			user_answers_geography_correct: user_answers_geography_correct.length,
+			user_answers_history: user_answers_history.length,
+			user_answers_history_correct: user_answers_history_correct.length,
+			user_answers_math: user_answers_math.length,
+			user_answers_math_correct: user_answers_math_correct.length,
+			user_answers_music: user_answers_music.length,
+			user_answers_music_correct: user_answers_music_correct.length,
+			user_answers_mythology: user_answers_mythology.length,
+			user_answers_mythology_correct: user_answers_mythology_correct.length,
+			user_answers_nature: user_answers_nature.length,
+			user_answers_nature_correct: user_answers_nature_correct.length,
+			user_answers_politics: user_answers_politics.length,
+			user_answers_politics_correct: user_answers_politics_correct.length,
+			user_answers_science: user_answers_science.length,
+			user_answers_science_correct: user_answers_science_correct.length,
+			user_answers_sports: user_answers_sports.length,
+			user_answers_sports_correct: user_answers_sports_correct.length,
+			user_answers_television: user_answers_television.length,
+			user_answers_television_correct: user_answers_television_correct.length,
+			user_answers_theatre: user_answers_theatre.length,
+			user_answers_theatre_correct: user_answers_theatre_correct.length,
+			user_answers_vehicles: user_answers_vehicles.length,
+			user_answers_vehicles_correct: user_answers_vehicles_correct.length,
+			user_answers_video_games: user_answers_video_games.length,
+			user_answers_video_games_correct: user_answers_video_games_correct.length,
+			updatedCategories: true
+		})
 	}
 
 	render(){
-
-		console.log(this.state)
-		console.log(this.props)
 
 		const zero_percent = <> (0.00%) </>
 
@@ -326,17 +312,17 @@ export default class DashboardStatsCategory extends React.Component{
 			</ul>
 
 		const math_questions =
-		<ul>
-			<li>Math</li>
-			<li>
-				{this.state.updatedCategories ? `${ this.state.user_answers_math }/${ this.state.all_math_questions.length } answered` : zero_percent_answered }
-				{this.state.user_answers_math ? ` (${((this.state.user_answers_math / this.state.all_math_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
-			</li>
-			<li>
-				{this.state.updatedCategories ? `${ this.state.user_answers_math_correct }/${ this.state.user_answers_math } correct` : zero_percent_correct }
-				{this.state.user_answers_math_correct ? ` (${((this.state.user_answers_math_correct / this.state.user_answers_math ) * 100).toFixed(2)}%)` : zero_percent }
-			</li>
-		</ul>
+			<ul>
+				<li>Math</li>
+				<li>
+					{this.state.updatedCategories ? `${ this.state.user_answers_math }/${ this.state.all_math_questions.length } answered` : zero_percent_answered }
+					{this.state.user_answers_math ? ` (${((this.state.user_answers_math / this.state.all_math_questions.length) * 100).toFixed(2)}%)` :  zero_percent }
+				</li>
+				<li>
+					{this.state.updatedCategories ? `${ this.state.user_answers_math_correct }/${ this.state.user_answers_math } correct` : zero_percent_correct }
+					{this.state.user_answers_math_correct ? ` (${((this.state.user_answers_math_correct / this.state.user_answers_math ) * 100).toFixed(2)}%)` : zero_percent }
+				</li>
+			</ul>
 
 		const music_questions =
 			<ul>

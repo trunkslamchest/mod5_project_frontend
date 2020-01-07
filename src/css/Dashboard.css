@@ -55,6 +55,39 @@
 	font: 300 10pt 'Lato', sans-serif;
 }
 
+.dashboard_alt_header {
+	width: 100%;
+	padding: 15px 0px 15px 0px;
+	animation: fade_in .4s ease-in-out 1, blur_in .2s ease-in-out 1;
+	z-index:8;
+}
+
+.dashboard_alt_header > * {
+	text-align: center;
+	padding: 0px 0px 0px 0px;
+	margin: 0px auto 0px auto;
+}
+
+.dashboard_alt_header h1 {
+	font: 400 20pt 'Lato', sans-serif;
+}
+
+.dashboard_alt_header h2 {
+	font: 400 18pt 'Lato', sans-serif;
+}
+
+.dashboard_alt_header h3 {
+	font: 300 16pt 'Lato', sans-serif;
+}
+
+.dashboard_alt_header h4 {
+	font: 300 14pt 'Lato', sans-serif;
+}
+
+.dashboard_alt_header h5 {
+	font: 300 12pt 'Lato', sans-serif;
+}
+
 .dashboard_wrapper ul {
 	width: 100%;
 	list-style: none;

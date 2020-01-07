@@ -84,9 +84,10 @@
 	min-width: 85px;
 	max-width: 85px;
 	color: #FFF;
-	font: 300 12pt 'Lato', sans-serif;
+	font: 300 15pt 'Lato', sans-serif;
 
-	padding: 18px 7.5px 18px 7.5px;
+
+	padding: 17px 20px 17px 20px;
 	text-decoration: none;
 	/* box-shadow: 0 0 1.25px 0 rgba(0, 0, 0, 0.5), 0 0 1.25px 0 rgba(0, 0, 0, 0.5), 0 0 1.25px 0 rgba(0, 0, 0, 0.5); */
 }

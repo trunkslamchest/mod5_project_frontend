@@ -17,25 +17,7 @@ export default class LogOut extends React.Component {
 		this.setState({
 			user_id: this.props.user_id
 		})
-		// this.onMountAsync()
 	}
-
-	// onMountAsync = async () => {
-	// 	try {
-	// 		await this.props
-	// 		let user_id = await this.props.user_id;
-	// 		await this.onPageLoadFunctions(user_id)
-	// 	} catch(errors) {
-	// 		console.log(errors);
-	// 	}
-	// }
-
-	// onPageLoadFunctions = (user_id) => {
-	// 	this.props.update_page_data({
-	// 		user_id: user_id,
-	// 		page_name: "log_out"
-	// 	})
-	// }
 
 	onClickConfirm = (event) => {
 		this.onClickUpdateTrafficFunctions(event)
@@ -119,7 +101,7 @@ export default class LogOut extends React.Component {
 			</button>
 		]
 
-		const log_out_form = <>
+		const log_out_form =
 			<div className="alt_header">
 				<h3>Are you sure you want to log out?</h3>
 				<div className="default_centered_buttons_container">
@@ -137,7 +119,6 @@ export default class LogOut extends React.Component {
 					}
 				</div>
 			</div>
-		</>
 
 		return(
 			<div className="default_wrapper">

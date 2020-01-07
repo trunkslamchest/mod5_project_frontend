@@ -5,15 +5,7 @@ import QuestionDisplay from './QuestionDisplay'
 import '../css/Questions.css'
 import '../css/PlayByCategory.css'
 
-import {
-	//  NavLink,
-	//  Link,
-	 Redirect,
-	// Route,
-	// Switch,
-	//  useRouteMatch,
-	//  useParams
-} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 export default class PlayByDifficultyContainer extends React.Component{
 
@@ -46,6 +38,7 @@ export default class PlayByDifficultyContainer extends React.Component{
 	}
 
 	componentDidUpdate(){
+
 		if ((!this.state.displaySelect && !this.state.questionsUpdated)) {
 			this.getSortedQuestions()
 		}
@@ -55,17 +48,18 @@ export default class PlayByDifficultyContainer extends React.Component{
 		if(this.state.updatedAnsweredQuestions && !this.state.gotRandomQuestion) {
 			this.getRandomQuestion()
 		}
+
 	}
 
 	getSortedQuestions = () => {
-			fetch(`http://localhost:3001/questions/`)
-			.then(res => res.json())
-			.then(res_obj =>
-				this.setState({
-					sortedQuestions: res_obj.data.filter(question_obj => question_obj.attributes.question.category === this.state.category),
-					questionsUpdated: true,
-				})
-			)
+		fetch(`http://localhost:3001/questions/`)
+		.then(res => res.json())
+		.then(res_obj =>
+			this.setState({
+				sortedQuestions: res_obj.data.filter(question_obj => question_obj.attributes.question.category === this.state.category),
+				questionsUpdated: true,
+			})
+		)
 	}
 
 	getSortedAnsweredQuestions = (user_id) => {
@@ -81,19 +75,18 @@ export default class PlayByDifficultyContainer extends React.Component{
 
 	getRandomQuestion = () => {
 
-		const all_questions_answered =
-			<>
-				<div className="question_wrapper_header">
-					<h3 key={"all_questions_answered"}> You Have Answered All the { this.state.category } Questions! </h3>
-				</div>
-				<button
-					key={"reselect_button"}
-					className="reselect_button"
-					onClick={ this.onClickReSelectFunctions }
-				>
-					Select Another Category
-				</button>
-			</>
+		const all_questions_answered = <>
+			<div className="question_wrapper_header">
+				<h3 key={"all_questions_answered"}> You Have Answered All the { this.state.category } Questions! </h3>
+			</div>
+			<button
+				key={"reselect_button"}
+				className="reselect_button"
+				onClick={ this.onClickReSelectFunctions }
+			>
+				Select Another Category
+			</button>
+		</>
 
 		const headerCheck = this.state.displaySelect ? "" : all_questions_answered
 
@@ -127,7 +120,6 @@ export default class PlayByDifficultyContainer extends React.Component{
 			displayQuestion: true
 		}, this.getSortedAnsweredQuestions(user_id))
 	}
-
 
 	onClickSelectFunctions = (event) => {
 		this.setState({
@@ -179,7 +171,7 @@ export default class PlayByDifficultyContainer extends React.Component{
 
 		const header = <div className="question_wrapper_header"><h3>Select A Category</h3></div>
 
-		const display_header = <>{ this.state.displaySelect ? header : blank }</>
+		const display_header = <> { this.state.displaySelect ? header : blank } </>
 
 		const select_category_buttons = [
 			<button

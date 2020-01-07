@@ -1,16 +1,7 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 import index_logo from './assets/index_logo_blue3.png'
-
-import {
-	 NavLink,
-	//  Link,
-	//  Redirect,
-	// Route,
-	// Switch,
-	//  useRouteMatch,
-	//  useParams
-} from 'react-router-dom'
 
 import './css/Home.css'
 

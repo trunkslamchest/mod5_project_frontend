@@ -4,44 +4,36 @@ import QuestionDisplay from './QuestionDisplay'
 
 import '../css/Questions.css'
 
-import {
-		//  NavLink,
-		//  Link,
-		 Redirect,
-		// Route,
-		// Switch,
-		//  useRouteMatch,
-		//  useParams
-	} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 export default class QuickPlayContainer extends React.Component{
 
 
-state={
-	user_id: '',
-	allQuestions: [],
-	answeredQuestionsIDs: [],
-	displayQuestion: false,
-	mounted: null,
-	updatedAllQuestions: false,
-	updatedAnsweredQuestions: false,
-	updatedRandomQuestion: false,
-}
-
-componentDidMount(){
-	const redirect_to_index = <Redirect to="/" />
-
-	if (localStorage.length === 0) {
-		return redirect_to_index
+	state={
+		user_id: '',
+		allQuestions: [],
+		answeredQuestionsIDs: [],
+		displayQuestion: false,
+		mounted: null,
+		updatedAllQuestions: false,
+		updatedAnsweredQuestions: false,
+		updatedRandomQuestion: false,
 	}
 
-	this.setState({
-		mounted: true,
-		displayQuestion: true,
-	})
+	componentDidMount(){
+		const redirect_to_index = <Redirect to="/" />
 
-	this.onPageLoadFunctions()
-}
+		if (localStorage.length === 0) {
+			return redirect_to_index
+		}
+
+		this.setState({
+			mounted: true,
+			displayQuestion: true,
+		})
+
+		this.onPageLoadFunctions()
+	}
 
 	componentDidUpdate(){
 

@@ -11,7 +11,7 @@
 
 .easy_button {
 	-webkit-appearance: none;
-    /* -webkit-writing-mode: horizontal-tb !important; */
+	min-width: 175px;
     text-rendering: auto;
     color: #FFF;
 	background-image: linear-gradient(rgb(81, 88, 102, 1),  rgb(40, 44, 52, 1) );
@@ -28,7 +28,7 @@
     cursor: pointer;
     background-color: buttonface;
     box-sizing: border-box;
-    margin: 10px auto 0 auto;
+    margin: 10px 5px 5px 5px;
     font: 400 15px Roboto;
     padding: 15px 30px 15px 30px;
     border: 0px solid;
@@ -55,7 +55,7 @@
 
 .medium_button {
 	-webkit-appearance: none;
-    /* -webkit-writing-mode: horizontal-tb !important; */
+	min-width: 175px;
     text-rendering: auto;
     color: #FFF;
 	background-image: linear-gradient(rgb(81, 88, 102, 1),  rgb(40, 44, 52, 1) );
@@ -72,7 +72,7 @@
     cursor: pointer;
     background-color: buttonface;
     box-sizing: border-box;
-    margin: 10px auto 0 auto;
+    margin: 10px 5px 5px 5px;
     font: 400 15px Roboto;
     padding: 15px 30px 15px 30px;
     border: 0px solid;
@@ -99,7 +99,7 @@
 
 .hard_button {
 	-webkit-appearance: none;
-    /* -webkit-writing-mode: horizontal-tb !important; */
+	min-width: 175px;
     text-rendering: auto;
     color: #FFF;
 	background-image: linear-gradient(rgb(81, 88, 102, 1),  rgb(40, 44, 52, 1) );
@@ -116,7 +116,7 @@
     cursor: pointer;
     background-color: buttonface;
     box-sizing: border-box;
-    margin: 10px auto 0 auto;
+    margin: 10px 5px 5px 5px;
     font: 400 15px Roboto;
     padding: 15px 30px 15px 30px;
     border: 0px solid;

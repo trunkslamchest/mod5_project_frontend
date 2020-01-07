@@ -1,6 +1,6 @@
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
--'guest' showing in page traffic view when navigating from login to dashboard
+-double entry for on page load for QuestionDisplay
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~

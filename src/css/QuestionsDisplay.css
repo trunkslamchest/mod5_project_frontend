@@ -1,0 +1,167 @@
+.blank {
+	opacity: 0;
+}
+
+.question_card {
+	height: auto;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: flex-start;
+	padding: 0px 0px 20px 0px;
+	margin: 0px auto 0px auto;
+}
+
+.question_card > * {
+	z-index: 3;
+}
+
+.question_card_timer {
+	width: 100%;
+	text-align: center;
+	background-color: rgba(255,255,255, 1);
+	background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255,255,255, 1), rgba(0,0,0, 0.025) );
+	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25);
+	padding: 10px 0px 0px 0px;
+	animation: slide_in_from_bottom .25s ease-in-out 1;
+}
+
+.question_card_timer h2 {
+	margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+	padding: 0px 0px 0px 0px;
+	font: 300 10pt 'Poppins', sans-serif;
+	animation: fade_in .5s ease-in-out 1, blur_in .25s ease-in-out 1;
+}
+
+.question_card_timer h1 {
+	margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+	padding: 0px 0px 10px 0px;
+	font: 300 35pt 'Lato', sans-serif;
+	animation: fade_in .5s ease-in-out 1, blur_in .25s ease-in-out 1;
+}
+
+.question_card_header {
+	text-align: center;
+	width: 100%;
+	padding: 5px 0px 5px 0px;
+	background-color: rgba(255,255,255, 1);
+	background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255,255,255, 1), rgba(0,0,0, 0.025) );
+	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25);
+	animation: slide_in_from_bottom .25s ease-in-out 1;
+}
+
+.question_card_header h3 {
+	font: 300 20pt 'Lato', sans-serif;
+	animation: fade_in .5s ease-in-out 1, blur_in .25s ease-in-out 1;
+}
+
+.question_card_text {
+	width: 100%;
+	text-align: center;
+	background-color: rgba(255,255,255, 1);
+	background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255,255,255, 1), rgba(0,0,0, 0.025) );
+	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25);
+	padding: 15px 0px 15px 0px;
+	animation: slide_in_from_bottom .25s ease-in-out 1;
+}
+
+.question_card_text h2 {
+	font: 400 12pt 'Lato', sans-serif;
+	animation: fade_in .5s ease-in-out 1, blur_in .25s ease-in-out 1;
+}
+
+.question_card_choices {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 0 auto 0 auto;
+	padding: 15px 0px 15px 0px;
+	background-color: rgba(255,255,255, 1);
+	background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255,255,255, 1), rgba(0,0,0, 0.025) );
+	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25);
+	animation: slide_in_from_bottom .1s ease-in-out 1;
+}
+
+.question_card_choices_button {
+	-webkit-appearance: none;
+	width: 300px;
+	/* height: 50px;
+	max-height: 75px; */
+    text-rendering: auto;
+    color: #FFF;
+	background-image: linear-gradient(rgb(81, 88, 102, 1),  rgb(40, 44, 52, 1) );
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+	text-decoration: none;
+    align-items: center;
+    cursor: pointer;
+    background-color: buttonface;
+    box-sizing: border-box;
+    margin: 5px;
+    font: 400 15px "Lato", sans-serif;
+    padding: 15px;
+    border: 0px solid;
+	animation: fade_in .5s ease-in-out 1, blur_in .25s ease-in-out 1;
+}
+
+.question_card_choices_button:hover {
+	color: rgb(40, 44, 52, 1);
+	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57) );
+	transition-property: color;
+	transition-duration: .1s, .1s;
+	transition-timing-function: ease-in-out;
+	animation: scale_in .1s ease-in-out 1;
+}
+
+.question_card_choices_button:active {
+	color: rgb(40, 44, 52, 1);
+	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57, 1) );
+	transition-property: color;
+	transition-duration: .1s, .1s;
+	transition-timing-function: ease-in-out;
+	animation: scale_out .1s ease-in-out 1, blur_out .1s ease-in-out 1;
+}
+
+.question_card_choices_button_disabled {
+	width: 300px;
+	/* height: 50px;
+	max-height: 75px; */
+	-webkit-appearance: none;
+    text-rendering: auto;
+    color: rgba(174,174,174, 0.0);
+	background-image: linear-gradient(rgba(174,174,174, 1),  rgba(139,139,139, 1) );
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+	text-decoration: none;
+    align-items: center;
+    cursor: default;
+    background-color: buttonface;
+    box-sizing: border-box;
+    margin: 5px;
+    font: 400 15px "Baloo", sans-serif;
+    padding: 15px;
+    border: 0px solid;
+}

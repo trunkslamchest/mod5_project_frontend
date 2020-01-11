@@ -1,9 +1,16 @@
 
 <p align="center"><img width=75% src="https://github.com/trunkslamchest/mod5_project_frontend/blob/dev-win64-0.6/src/assets/index_logo_blue3.png"></p>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-![CSS](https://img.shields.io/badge/CSS-3.0-1572B6) ![HTML](https://img.shields.io/badge/HTML-5.2-E34F26) ![Javascript](https://img.shields.io/badge/Javascript-1.8.5-F7DF1E) ![PostgresQL](https://img.shields.io/badge/Postgresql-12.1-336791) ![ReactJS](https://img.shields.io/badge/React.JS-16.12.0-61DAFB) ![Ruby](https://img.shields.io/badge/Ruby-2.6.5-CC342D) ![Ruby On Rails](https://img.shields.io/badge/Ruby%20On%20Rails-6.0.2.1-cc0600)
-&nbsp;
+<p align="center">
+  <img align="center" src="https://img.shields.io/badge/CSS-3.0-1572B6">
+  <img align="center" src="https://img.shields.io/badge/HTML-5.2-E34F26">
+  <img align="center" src="https://img.shields.io/badge/Javascript-1.8.5-F7DF1E">
+  <img align="center" src="https://img.shields.io/badge/Postgresql-12.1-336791">
+  <img align="center" src="https://img.shields.io/badge/React.JS-16.12.0-61DAFB">
+  <img align="center" src="https://img.shields.io/badge/Ruby-2.6.5-CC342D">
+  <img align="center" src="https://img.shields.io/badge/Ruby%20On%20Rails-6.0.2.1-cc0600">
+</p>
+
 
 <p align="center">
   <img align="center" src="https://img.shields.io/badge/Status-Work%20In%20Progress-000000">
@@ -101,7 +108,7 @@
   - Run `rails db:create mod5-fp` to create a local PostgresQL database
   - Run `rails db:migrate` to create the tables/columns required for proper SmartApp functionality
   - Run `rails db:seed` to populate the columns with rows of "real" data
-  
+  - Create a file called `.env` in the backend directory (/root/backend/) and add `HMAC_SECRET = "<insert secret string here>"` and `MOD5-FP-BACKEND_DATABASE_PASSWORD = "hockey"` to the file
 
 &nbsp;
   ### First Start

@@ -1,117 +1,114 @@
-import React from 'react'
+import React, { useEffect, useCallback } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import index_logo from './assets/index_logo_blue3.png'
 
 import './css/Home.css'
 
-export default class Home extends React.Component {
+const Home = (props) => {
 
-	componentDidMount(){
-		this.onPageLoadFunctions()
+	const { update_page_data } = props
+
+	// componentDidMount(){
+	// 	onPageLoadFunctions()
+	// }
+
+	const onClickLogInFunctions = (event) => {
+		onClickUpdateTrafficFunctions(event)
 	}
 
-	onClickLogInFunctions = (event) => {
-		this.onClickUpdateTrafficFunctions(event)
+	const onClickSignUpFunctions = (event) => {
+		onClickUpdateTrafficFunctions(event)
 	}
 
-	onClickSignUpFunctions = (event) => {
-		this.onClickUpdateTrafficFunctions(event)
+	const onClickQuickPlayFunctions = (event) => {
+		onClickUpdateTrafficFunctions(event)
 	}
 
-	onClickQuickPlayFunctions = (event) => {
-		this.onClickUpdateTrafficFunctions(event)
+	const onClickPlayByDifficultyFunctions = (event) => {
+		onClickUpdateTrafficFunctions(event)
 	}
 
-	onClickPlayByDifficultyFunctions = (event) => {
-		this.onClickUpdateTrafficFunctions(event)
+	const onClickPlayByCategoryFunctions = (event) => {
+		onClickUpdateTrafficFunctions(event)
 	}
 
-	onClickPlayByCategoryFunctions = (event) => {
-		this.onClickUpdateTrafficFunctions(event)
-	}
-
-	onClickUpdateTrafficFunctions = (event) => {
-		this.props.update_traffic_data({
-			user_id: this.props.user_id,
+	const onClickUpdateTrafficFunctions = (event) => {
+		props.update_traffic_data({
+			user_id: props.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
 		})
 	}
 
-	onPageLoadFunctions = () => {
-		this.props.update_page_data({
+	const onPageLoadFunctions = useCallback(() => {
+		update_page_data({
 			user_id: localStorage.user_id,
 			page_name: "index",
 		})
-	}
+	}, [update_page_data])
 
-	render(){
+	useEffect(() => {onPageLoadFunctions()})
 
-		const quick_play_button = [
+		const quick_play_button =
 			<NavLink
 				exact to="/quick_play"
 				key={"quick_play_link"}
 				name="quick_play_button"
 				interaction="click"
 				className="quick_play_button"
-				onClick={this.onClickQuickPlayFunctions }
+				onClick={onClickQuickPlayFunctions }
 			>
 				Quick Play
 			</NavLink>
-		]
 
-		const play_by_difficulty = [
+		const play_by_difficulty =
 			<NavLink
 				exact to="/play_by_difficulty"
 				key={"play_by_difficulty_link"}
 				name="play_by_difficulty_button"
 				interaction="click"
 				className="play_by_difficulty_button"
-				onClick={this.onClickPlayByDifficultyFunctions }
+				onClick={onClickPlayByDifficultyFunctions }
 			>
 				Play By Difficulty
 			</NavLink>
-		]
 
-		const play_by_category = [
+		const play_by_category =
 			<NavLink
 				exact to="/play_by_category"
 				key={"play_by_category_link"}
 				name="play_by_category_button"
 				interaction="click"
 				className="play_by_category_button"
-				onClick={this.onClickPlayByCategoryFunctions }
+				onClick={onClickPlayByCategoryFunctions }
 			>
 				Play By Category
 			</NavLink>
-		]
 
-		const log_in_button = [
+		const log_in_button =
 			<NavLink
 				exact to="/log_in"
 				key={"log_in_link"}
 				name="log_in_button"
 				interaction="click"
 				className="log_in_button"
-				onClick={this.onClickLogInFunctions }
+				onClick={onClickLogInFunctions }
 			>
 				Log In
 			</NavLink>
-		]
 
-		const sign_up_button = [
+		const sign_up_button =
 			<NavLink
 				exact to="/sign_up"
 				key={"sign_up_link"}
 				name="sign_up_button"
 				interaction="click"
 				className="sign_up_button"
-				onClick={this.onClickLogInFunctions }
+				onClick={onClickSignUpFunctions }
 			>
 				Sign Up
 			</NavLink>
-		]
 
 		const logged_in_home = <>
 				<div className="logo_container">
@@ -143,5 +140,7 @@ export default class Home extends React.Component {
 				{ localStorage.length === 0 ? logged_out_home : logged_in_home }
 			</div>
 		)
-	}
+
 }
+
+export default Home

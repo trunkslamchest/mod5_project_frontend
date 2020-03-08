@@ -41,14 +41,14 @@ const Home = (props) => {
 		})
 	}
 
-	const onPageLoadFunctions = useCallback(() => {
+	const onPageLoadFunctions = useCallback((temp) => {
 		update_page_data({
 			user_id: localStorage.user_id,
 			page_name: "index",
-		})
+		}, console.log(temp))
 	}, [update_page_data])
 
-	useEffect(() => {onPageLoadFunctions()})
+	useEffect(() => {onPageLoadFunctions()}, [onPageLoadFunctions])
 
 		const quick_play_button =
 			<NavLink

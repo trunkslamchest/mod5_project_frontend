@@ -7,7 +7,7 @@
 
 <p align="center">
   <img align="center" src="https://img.shields.io/badge/Status-Work%20In%20Progress-000000">
-  <a href="https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.6"><img align="center" src="https://img.shields.io/badge/Most%20Recent%20Branch-dev--win64--0.6-000000"></a>
+  <a href="https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.7"><img align="center" src="https://img.shields.io/badge/Most%20Recent%20Branch-dev--win64--0.7-000000"></a>
   <a href="https://github.com/trunkslamchest/mod5_project_backend/"><img align="center" src="https://img.shields.io/badge/Backend%20Repository%20-Click%20Here-000000"></a>
 
 </p> 
@@ -133,19 +133,19 @@
 
 # Summary Of Files
   ### Internal File Structure
-  - [docs](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.6/docs): Documents for Development Purposes
-  - [public](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.6/public): Various Assets for General Purposes
-  - [src](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.6/src): Root Frontend
-    - [admin](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.6/src/admin): Administrative Panel
-      - [db_edit](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.6/src/admin/db_edit): In Browser Database Editor
-      - [rtv](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.6/src/admin/rtv): Real Time Traffic Viewer
-    - [assets](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.6/src/assets): Art Assets
-    - [css](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.6/src/css): CSS stylesheets
-    - [docs](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.6/src/docs): Terms Of Service/Privacy Policy/Disclaimer
-    - [question](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.6/src/question): Core Gameplay Loop Functionality
-    - [user](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.6/src/user): All files pertaining to User Specific Actions
-      - [dashboard](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.6/src/user/dashboard): User Dashboard Functionality
-  - [package.json](https://github.com/trunkslamchest/mod5_project_frontend/blob/dev-win64-0.6/package.json): Prerequisite Modules/Dependancies
+  - [docs](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.7/docs): Documents for Development Purposes
+  - [public](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.7/public): Various Assets for General Purposes
+  - [src](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.7/src): Root Frontend
+    - [admin](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.7/src/admin): Administrative Panel
+      - [db_edit](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.7/src/admin/db_edit): In Browser Database Editor
+      - [rtv](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.7/src/admin/rtv): Real Time Traffic Viewer
+    - [assets](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.7/src/assets): Art Assets
+    - [css](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.7/src/css): CSS stylesheets
+    - [docs](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.7/src/docs): Terms Of Service/Privacy Policy/Disclaimer
+    - [question](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.7/src/question): Core Gameplay Loop Functionality
+    - [user](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.7/src/user): All files pertaining to User Specific Actions
+      - [dashboard](https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.7/src/user/dashboard): User Dashboard Functionality
+  - [package.json](https://github.com/trunkslamchest/mod5_project_frontend/blob/dev-win64-0.7/package.json): Prerequisite Modules/Dependancies
   
 &nbsp;
 

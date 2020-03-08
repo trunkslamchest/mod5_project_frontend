@@ -1,9 +1,8 @@
 import React from 'react'
 import RTVusersRow from './RTVusersRow'
 
-export default class RTVusersList extends React.Component{
-	render(){
-		const distribute_RTV_data = this.props.RTV_users_data.map( RTV_users_obj =>
+const RTVusersList = (props) => {
+		const distribute_RTV_data = props.RTV_users_data.map( RTV_users_obj =>
 			<RTVusersRow
 				key={RTV_users_obj.id}
 				RTV_users_obj={RTV_users_obj}
@@ -28,5 +27,7 @@ export default class RTVusersList extends React.Component{
 				{ RTVusers_table }
 			</>
 		)
-	}
+
 }
+
+export default RTVusersList

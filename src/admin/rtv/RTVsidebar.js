@@ -2,44 +2,45 @@ import React from 'react'
 
 import '../../css/RTVsidebar.css'
 
-export default class RTVsidebar extends React.Component{
+const RTVsidebar = (props) => {
 
-	onClickRTVusersFunctions = () => {
-		this.props.showRTVusers()
+	const onClickRTVusersFunctions = () => {
+		props.showRTVusers()
 	}
 
-	onClickRTVpagesFunctions = () => {
-		this.props.showRTVpages()
+	const onClickRTVpagesFunctions = () => {
+		props.showRTVpages()
 	}
 
-	onClickDBeditFunctions = () => {
+	const onClickDBeditFunctions = () => {
 		let db_index_msg = "index"
-		this.props.update_db_view_from_sidebar(db_index_msg)
-		this.props.showDBedit()
+		props.update_db_view_from_sidebar(db_index_msg)
+		props.showDBedit()
 	}
 
-	onClickAnalyticsFunctions = () => {
-		this.props.showBRanalytics()
+	const onClickAnalyticsFunctions = () => {
+		props.showBRanalytics()
 	}
 
-	render(){
-		return(
-			<div className="side_bar">
-				<ul>
-					<li onClick={ this.onClickRTVusersFunctions }>
-						Real Time User Traffic
-					</li>
-					<li onClick={ this.onClickRTVpagesFunctions }>
-						Real Time Page Traffic
-					</li>
-					<li onClick={ this.onClickDBeditFunctions }>
-						Database Editor
-					</li>
-					<li onClick={ this.onClickAnalyticsFunctions }>
-						Statistical Analytics
-					</li>
-				</ul>
-			</div>
-		)
-	}
+	return(
+		<div className="side_bar">
+			<ul>
+				<li onClick={ onClickRTVusersFunctions }>
+					Real Time User Traffic
+				</li>
+				<li onClick={ onClickRTVpagesFunctions }>
+					Real Time Page Traffic
+				</li>
+				<li onClick={ onClickDBeditFunctions }>
+					Database Editor
+				</li>
+				<li onClick={ onClickAnalyticsFunctions }>
+					Statistical Analytics
+				</li>
+			</ul>
+		</div>
+	)
+
 }
+
+export default RTVsidebar

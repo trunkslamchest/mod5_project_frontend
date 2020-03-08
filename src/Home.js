@@ -7,7 +7,7 @@ import './css/Home.css'
 
 const Home = (props) => {
 
-	const { update_page_data } = props
+	const { update_page_data, update_traffic_data } = props
 
 	// componentDidMount(){
 	// 	onPageLoadFunctions()
@@ -34,7 +34,7 @@ const Home = (props) => {
 	}
 
 	const onClickUpdateTrafficFunctions = (event) => {
-		props.update_traffic_data({
+		update_traffic_data({
 			user_id: props.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name

@@ -1,18 +1,19 @@
 import React from 'react'
 
-export default class DashboardCommentCard extends React.Component{
+const DashboardCommentCard = (props) => {
 
-	render(){
 		return(
 			<div className="comment_card">
 				<div className="comment_card_header">
-					<h3>{ this.props.question.question_desc }</h3>
+					<h3>{ props.question.question_desc }</h3>
 				</div>
 				<h4>Your Comment</h4>
 				<p>
-					{ this.props.comment.comment_text }
+					{ props.comment.comment_text }
 				</p>
 			</div>
 		)
-	}
+
 }
+
+export default DashboardCommentCard

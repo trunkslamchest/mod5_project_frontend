@@ -1,15 +1,15 @@
 import React from 'react'
 
-export default class DashboardIndex extends React.Component{
-
-	render(){
+const DashboardIndex = (props) => {
 
 		return(
 			<div className="dasboard_index">
 				<div className="alt_header">
-					<h3>Welcome, {this.props.first_name}!</h3>
+					<h3>Welcome, {props.first_name}!</h3>
 				</div>
 			</div>
 		)
-	}
+
 }
+
+export default DashboardIndex

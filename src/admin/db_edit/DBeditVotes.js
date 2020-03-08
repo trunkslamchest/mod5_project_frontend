@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default class DBeditVotes extends React.Component{
-	render(){
-		return(
-			<h3>DB Edit Votes Template</h3>
-		)
-	}
+const DBeditVotes = (props) => {
+	return(
+		<h3>DB Edit Votes Template</h3>
+	)
 }
+
+export default DBeditVotes

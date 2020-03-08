@@ -3,6 +3,7 @@ import React from 'react'
 export default class DBeditDeleteQuestion extends React.Component {
 
 	state = {
+		errors: false
 	}
 
 	onClickYes = () => {

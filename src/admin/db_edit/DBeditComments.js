@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default class DBeditComments extends React.Component{
-	render(){
-		return(
-			<h3>DB Edit Comments Template</h3>
-		)
-	}
+const DBeditComments = (props) => {
+	return(
+		<h3>DB Edit Comments Template</h3>
+	)
 }
+
+export default DBeditComments

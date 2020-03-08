@@ -1,36 +1,37 @@
 import React from 'react'
 
-export default class DBeditUsersTable extends React.Component{
+const DBeditUsersTable = (props) => {
 
-	onClickTableRowFunctions = () => {
-		this.props.displaySwitchToUserInfo(this.props.user.attributes.user)
+	const onClickTableRowFunctions = () => {
+		props.displaySwitchToUserInfo(props.user.attributes.user)
 	}
 
-	render(){
+	const user = props.user.attributes.user
 
-		const user = this.props.user.attributes.user
+	const DBedit_table =
+		<tr onClick={ onClickTableRowFunctions } className="DBedit_sub_row">
+			<td>{user.id}</td>
+			<td>{user.user_name}</td>
+			<td>{user.email}</td>
+			<td>{user.first_name}</td>
+			<td>{user.last_name}</td>
+			<td>{user.gender}</td>
+			<td>{user.birth_day}</td>
+			<td>{user.birth_month}</td>
+			<td>{user.birth_year}</td>
+			<td>{user.house_number}</td>
+			<td>{user.street_name}</td>
+			<td>{user.city_town}</td>
+			<td>{user.state}</td>
+			<td>{user.zip_code}</td>
+		</tr>
 
-		const DBedit_table =
-			<tr onClick={ this.onClickTableRowFunctions } className="DBedit_sub_row">
-				<td>{user.id}</td>
-				<td>{user.user_name}</td>
-				<td>{user.email}</td>
-				<td>{user.first_name}</td>
-				<td>{user.last_name}</td>
-				<td>{user.gender}</td>
-				<td>{user.birth_day}</td>
-				<td>{user.birth_month}</td>
-				<td>{user.birth_year}</td>
-				<td>{user.house_number}</td>
-				<td>{user.street_name}</td>
-				<td>{user.city_town}</td>
-				<td>{user.state}</td>
-				<td>{user.zip_code}</td>
-			</tr>
-		return(
-			<>
-				{ DBedit_table }
-			</>
-		)
-	}
+	return(
+		<>
+			{ DBedit_table }
+		</>
+	)
+
 }
+
+export default DBeditUsersTable

@@ -1,0 +1,225 @@
+.quick_play_button {
+	width: 100%;
+	min-width: 100%;
+	max-width: 100%;
+	-webkit-appearance: none;
+	text-rendering: auto;
+	color: #FFF;
+	background-image: linear-gradient(rgb(81, 88, 102, 1),  rgb(40, 44, 52, 1) );
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	align-items: flex-start;
+	cursor: pointer;
+	background-color: buttonface;
+	box-sizing: border-box;
+	margin: 5px 0px 5px 0px;
+	font: 400 15px Roboto;
+	padding: 15px 30px 15px 30px;
+	border: 0px solid;
+}
+
+.quick_play_button:hover {
+	color: rgb(40, 44, 52, 1);
+	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57, 1) );
+	transition-property: color;
+	transition-duration: .1s, .1s;
+	transition-timing-function: ease-in-out;
+	animation: scale_in .1s ease-in-out 1;
+}
+
+.quick_play_button:active {
+	color: rgb(40, 44, 52, 1);
+	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57, 1) );
+	transition-property: color;
+	transition-duration: .1s, .1s;
+	transition-timing-function: ease-in-out;
+	animation: scale_out .1s ease-in-out 1, blur_out .1s ease-in-out 1;
+}
+
+.play_by_difficulty_button {
+	width: 50%;
+	min-width: 50%;
+	max-width: 50%;
+	-webkit-appearance: none;
+	text-rendering: auto;
+	color: #FFF;
+	background-image: linear-gradient(rgb(81, 88, 102, 1),  rgb(40, 44, 52, 1) );
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	align-items: flex-start;
+	cursor: pointer;
+	background-color: buttonface;
+	box-sizing: border-box;
+	margin: 5px 0px 5px 0px;
+	font: 400 15px Roboto;
+	padding: 15px 30px 15px 30px;
+	border: 0px solid;
+}
+
+.play_by_difficulty_button:hover {
+	color: rgb(40, 44, 52, 1);
+	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57, 1) );
+	transition-property: color;
+	transition-duration: .1s, .1s;
+	transition-timing-function: ease-in-out;
+	animation: scale_in .1s ease-in-out 1;
+}
+
+.play_by_difficulty_button:active {
+	color: rgb(40, 44, 52, 1);
+	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57, 1) );
+	transition-property: color;
+	transition-duration: .1s, .1s;
+	transition-timing-function: ease-in-out;
+	animation: scale_out .1s ease-in-out 1, blur_out .1s ease-in-out 1;
+}
+
+.play_by_category_button {
+	width: 50%;
+	min-width: 50%;
+	max-width: 50%;
+	-webkit-appearance: none;
+	text-rendering: auto;
+	color: #FFF;
+	background-image: linear-gradient(rgb(81, 88, 102, 1),  rgb(40, 44, 52, 1) );
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	align-items: flex-start;
+	cursor: pointer;
+	background-color: buttonface;
+	box-sizing: border-box;
+	margin: 5px 0px 5px 0px;
+	font: 400 15px Roboto;
+	padding: 15px 30px 15px 30px;
+	border: 0px solid;
+}
+
+.play_by_category_button:hover {
+	color: rgb(40, 44, 52, 1);
+	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57, 1) );
+	transition-property: color;
+	transition-duration: .1s, .1s;
+	transition-timing-function: ease-in-out;
+	animation: scale_in .1s ease-in-out 1;
+}
+
+.play_by_category_button:active {
+	color: rgb(40, 44, 52, 1);
+	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57, 1) );
+	transition-property: color;
+	transition-duration: .1s, .1s;
+	transition-timing-function: ease-in-out;
+	animation: scale_out .1s ease-in-out 1, blur_out .1s ease-in-out 1;
+}
+
+.log_in_button {
+	width: 100%;
+	min-width: 100%;
+	max-width: 100%;
+	-webkit-appearance: none;
+	border-radius: 50px 50px 0px 0px;
+	text-rendering: auto;
+	color: #FFF;
+	background-image: radial-gradient(rgb(81, 88, 102, 1),  rgb(40, 44, 52, 1) );
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	align-items: flex-start;
+	cursor: pointer;
+	background-color: buttonface;
+	box-sizing: border-box;
+	margin: 0px;
+	font: 400 15px Roboto;
+	padding: 15px 30px 15px 30px;
+	border: 0px solid;
+}
+
+.log_in_button:hover {
+	color: rgb(40, 44, 52, 1);
+	background-image: linear-gradient( rgba(211, 143, 57, 1), rgb(245, 167, 66, 1) );
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
+	transition-property: color, box-shadow;
+	transition-duration: .1s, .1s;
+	transition-timing-function: ease-in-out;
+	animation: scale_in .1s ease-in-out 1;
+}
+
+.log_in_button:active {
+	color: rgb(40, 44, 52, 1);
+	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57, 1) );
+	transition-property: color;
+	transition-duration: .1s, .1s;
+	transition-timing-function: ease-in-out;
+	animation: scale_out .1s ease-in-out 1, blur_out .1s ease-in-out 1;
+}
+
+.sign_up_button {
+	width: 100%;
+	min-width: 100%;
+	max-width: 100%;
+	-webkit-appearance: none;
+	text-rendering: auto;
+	color: #FFF;
+	border-radius: 0px 0px 50px 50px;
+	background-image: radial-gradient(rgb(81, 88, 102, 1),  rgb(40, 44, 52, 1) );
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	align-items: flex-start;
+	cursor: pointer;
+	background-color: buttonface;
+	box-sizing: border-box;
+	margin: 0px;
+	font: 400 15px Roboto;
+	padding: 15px 30px 15px 30px;
+	border: 0px solid;
+}
+
+.sign_up_button:hover {
+	color: rgb(40, 44, 52, 1);
+	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgba(211, 143, 57, 1) );
+	transition-property: color;
+	transition-duration: .1s, .1s;
+	transition-timing-function: ease-in-out;
+	animation: scale_in .1s ease-in-out 1;
+}
+
+.sign_up_button:active {
+	color: rgb(40, 44, 52, 1);
+	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57, 1) );
+	transition-property: color;
+	transition-duration: .1s, .1s;
+	transition-timing-function: ease-in-out;
+	animation: scale_out .1s ease-in-out 1, blur_out .1s ease-in-out 1;
+}

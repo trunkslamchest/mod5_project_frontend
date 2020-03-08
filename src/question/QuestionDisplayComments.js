@@ -1,12 +1,10 @@
 import React from 'react'
 
-export default class QuestionDisplayComments extends React.Component{
-
-	render(){
+const QuestionDisplayComments = (props) => {
 
 		const blank = <></>
 
-		const comment = this.props.comment ? this.props.comment : blank
+		const comment = props.comment ? props.comment : blank
 
 		const comment_card =
 			<ul>
@@ -21,5 +19,8 @@ export default class QuestionDisplayComments extends React.Component{
 				{ comment_card }
 			</>
 		)
-	}
+
 }
+
+
+export default QuestionDisplayComments

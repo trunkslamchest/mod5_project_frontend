@@ -2,7 +2,11 @@ import React from 'react'
 
 import DashboardVoteCard from './DashboardVoteCard'
 
+import { TrafficUpdate } from '../../utility/trafficFunctions'
+
 import '../../css/DashboardVotes.css'
+
+var sendTraffic = new TrafficUpdate()
 
 export default class DashboardVotes extends React.Component{
 
@@ -61,7 +65,7 @@ export default class DashboardVotes extends React.Component{
 	}
 
 	onPageLoadFunctions = () => {
-		this.props.update_page_data({
+		sendTraffic.pageUpdate({
 			user_id: localStorage.user_id,
 			page_name: "dashboard_votes"
 		})

@@ -9,7 +9,15 @@ import DashboardComments from './DashboardComments'
 
 import { Redirect } from 'react-router-dom'
 
+import { TrafficUpdate } from '../../utility/trafficFunctions'
+import { UserUpdate } from '../../utility/userFunctions'
+import { QuestionUpdate } from '../../utility/questionFunctions'
+
 import '../../css/Dashboard.css'
+
+var sendTraffic = new TrafficUpdate()
+var sendUserUpdate = new UserUpdate()
+var sendQuestionUpdate = new QuestionUpdate()
 
 export default class Dashboard extends React.Component{
 
@@ -43,8 +51,7 @@ export default class Dashboard extends React.Component{
 	}
 
 	getUser = (user_id) => {
-		fetch(`http://localhost:3001/users/${user_id}`)
-		.then(res => res.json())
+		sendUserUpdate.getUser(user_id)
 		.then(res_obj =>
 			this.setState({
 				user: res_obj.data.attributes.user,
@@ -57,8 +64,7 @@ export default class Dashboard extends React.Component{
 	}
 
 	getAllQuestions = () => {
-		fetch(`http://localhost:3001/questions/`)
-		.then(res => res.json())
+		sendQuestionUpdate.getAllQuestions()
 		.then(res_obj =>
 			this.setState({
 				all_questions: res_obj.data.map(question_obj => question_obj.attributes.question),
@@ -112,7 +118,7 @@ export default class Dashboard extends React.Component{
 	}
 
 	onClickUpdateTrafficFunctions = (event) => {
-		this.props.update_traffic_data({
+		sendTraffic.elementUpdate({
 			user_id: this.props.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
@@ -120,7 +126,7 @@ export default class Dashboard extends React.Component{
 	}
 
 	onClickUpdateTrafficFunctionsLI = (event) => {
-		this.props.update_traffic_data({
+		sendTraffic.elementUpdate({
 			user_id: this.props.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.attributes.name.value
@@ -128,7 +134,7 @@ export default class Dashboard extends React.Component{
 	}
 
 	onPageLoadFunctions = () => {
-		this.props.update_page_data({
+		sendTraffic.pageUpdate({
 			user_id: localStorage.user_id,
 			page_name: "dashboard_index",
 		})
@@ -199,14 +205,11 @@ export default class Dashboard extends React.Component{
 						false: 	(() => {
 							switch(this.state.display) {
 								case 'dashboard': return <DashboardIndex
-															first_name={ this.state.user.first_name }
-														/>;
+																		first_name={ this.state.user.first_name }
+																	/>;
 								case 'user_info': return <DashboardUserInfo
-															update_traffic_data={ this.props.update_traffic_data }
-															update_page_data={ this.props.update_page_data }
-															// ~~~~~~~~~~~~~~~~~~~~
-															user={ this.state.user }
-														/>;
+																		user={ this.state.user }
+																	/>;
 								case 'stats': return <DashboardStats
 															update_traffic_data={ this.props.update_traffic_data }
 															update_page_data={ this.props.update_page_data }
@@ -237,8 +240,8 @@ export default class Dashboard extends React.Component{
 															all_questions={ this.state.all_questions }
 														/>;
 								default: return <DashboardIndex
-												first_name={ this.state.user.first_name }
-											/>;
+													first_name={ this.state.user.first_name }
+												/>;
 							}
 						})()
 					}[localStorage.length === 0]

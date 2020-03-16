@@ -1,10 +1,12 @@
 import React from 'react'
 
-import {
-         Link
-        } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
+import { TrafficUpdate } from '../../utility/trafficFunctions'
 
 import '../../css/DashboardUserInfo.css'
+
+var sendTraffic = new TrafficUpdate()
 
 export default class DashboardUserInfo extends React.Component{
 
@@ -62,7 +64,7 @@ export default class DashboardUserInfo extends React.Component{
 
 	onClickUpdateTrafficFunctions = (event) => {
 		event.persist()
-		this.props.update_traffic_data({
+		sendTraffic.elementUpdate({
 			user_id: this.props.user.id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
@@ -70,7 +72,7 @@ export default class DashboardUserInfo extends React.Component{
 	}
 
 	onPageLoadFunctions = () => {
-		this.props.update_page_data({
+		sendTraffic.pageUpdate({
 			user_id: localStorage.user_id,
 			page_name: "dashboard_user_info"
 		})

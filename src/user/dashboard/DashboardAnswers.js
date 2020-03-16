@@ -2,7 +2,11 @@ import React from 'react'
 
 import DashboardAnswersCard from './DashboardAnswersCard'
 
+import { TrafficUpdate } from '../../utility/trafficFunctions'
+
 import '../../css/DashboardAnswers.css'
+
+var sendTraffic = new TrafficUpdate()
 
 export default class DashboardAnswers extends React.Component{
 
@@ -63,7 +67,7 @@ export default class DashboardAnswers extends React.Component{
 	}
 
 	onPageLoadFunctions = () => {
-		this.props.update_page_data({
+		sendTraffic.pageUpdate({
 			user_id: localStorage.user_id,
 			page_name: "dashboard_answers"
 		})

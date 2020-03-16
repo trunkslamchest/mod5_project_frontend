@@ -1,7 +1,13 @@
 import React from 'react'
 import { Redirect } from 'react-router'
 
+import { TrafficUpdate } from '../../utility/trafficFunctions'
+import { UserUpdate } from '../../utility/userFunctions'
+
 import '../../css/EditProfile.css'
+
+var sendTraffic = new TrafficUpdate()
+var sendUserUpdate = new UserUpdate()
 
 export default class DeleteProfile extends React.Component {
 
@@ -22,9 +28,7 @@ export default class DeleteProfile extends React.Component {
 	}
 
 	onClickConfirm = (event) => {
-		fetch(`http://localhost:3001/users/${this.props.user_id}`, {
-			method: "DELETE"
-		})
+		sendUserUpdate.deleteUser(this.props.user_id)
 		.then(
 			this.setState({
 				deleteSuccess: true
@@ -64,7 +68,7 @@ export default class DeleteProfile extends React.Component {
 	}
 
 	onClickUpdateTrafficFunctions = (event) => {
-		this.props.update_traffic_data({
+		sendTraffic.elementUpdate({
 			user_id: this.props.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
@@ -72,7 +76,7 @@ export default class DeleteProfile extends React.Component {
 	}
 
 	onPageLoadFunctions = () => {
-		this.props.update_page_data({
+		sendTraffic.pageUpdate({
 			user_id: localStorage.user_id,
 			page_name: "delete_profile"
 		})

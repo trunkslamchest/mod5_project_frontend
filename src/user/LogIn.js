@@ -2,12 +2,12 @@ import React from 'react'
 import { Redirect } from 'react-router'
 
 import { TrafficUpdate } from '../utility/trafficFunctions'
-import { LogInUpdate } from '../utility/logInFunctions'
+import { UserUpdate } from '../utility/userFunctions'
 
 import '../css/EditProfile.css'
 
 var sendTraffic = new TrafficUpdate()
-var sendLogIn = new LogInUpdate()
+var sendUserUpdate = new UserUpdate()
 
 export default class LogIn extends React.Component {
 
@@ -38,7 +38,7 @@ export default class LogIn extends React.Component {
 		event.preventDefault()
 		event.persist()
 
-		sendLogIn.submit(this.state.user_name, this.state.password)
+		sendUserUpdate.logInSubmit(this.state.user_name, this.state.password)
 		.then(res_obj => {
 			if (res_obj.errors) {
 				this.setState({ errors: res_obj.errors })

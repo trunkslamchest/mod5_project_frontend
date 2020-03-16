@@ -260,27 +260,18 @@ export default class App extends React.Component {
 					<Switch>
 						<Route exact path='/'>
 							<Home
-								update_traffic_data={ this.update_traffic_data }
-								update_page_data={ this.update_page_data }
-								// ~~~~~~~~~~~~~~~~~~~~
 								user_id={ this.state.user_id }
 							/>
 						</Route>
 						<Route exact path='/log_in'>
 							<LogIn
 								setToken={ this.setToken }
-								update_traffic_data={ this.update_traffic_data }
-								update_page_data={ this.update_page_data }
-								// ~~~~~~~~~~~~~~~~~~~~
 								updateLogin={ this.updateLogin }
 							/>
 						</Route>
 						<Route exact path='/sign_up'>
 							<SignUp
 								setToken={ this.setToken }
-								update_traffic_data={ this.update_traffic_data }
-								update_page_data={ this.update_page_data }
-								// ~~~~~~~~~~~~~~~~~~~~
 								updateLogin={ this.updateLogin }
 							/>
 						</Route>

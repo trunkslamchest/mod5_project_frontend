@@ -2,12 +2,18 @@ import React from 'react'
 
 import QuestionDisplayComments from './QuestionDisplayComments.js'
 
+import { TrafficUpdate } from '../utility/trafficFunctions'
+import { QuestionUpdate } from '../utility/questionFunctions'
+
+import '../css/QuestionsDisplay.css'
+import '../css/QuestionsAnswered.css'
+
 import up_vote from '../assets/up_vote1.png'
 import no_vote from '../assets/no_vote1.png'
 import down_vote from '../assets/down_vote1.png'
 
-import '../css/QuestionsDisplay.css'
-import '../css/QuestionsAnswered.css'
+var sendTraffic = new TrafficUpdate()
+var sendQuestionUpdate = new QuestionUpdate()
 
 var shuffle = require('shuffle-array')
 
@@ -110,72 +116,50 @@ export default class QuestionDisplay extends React.Component{
 
 	onClickSelectAnswerFunctions = (event) => {
 		event.persist()
+
 		this.stopTime()
+
+		let answerObj = {
+			user_id: this.props.user_id,
+			question_id: this.props.question.id,
+			answer: event.target.value,
+			time: this.state.time
+		}
+
 		if (event.target.value === this.props.question.correct_answer) {
-			fetch("http://localhost:3001/answers", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json"
-				},
-				body: JSON.stringify({
-					user_id: this.props.user_id,
-					question_id: this.props.question.id,
-					user_answer: event.target.value,
-					user_result: "correct",
-					user_time: this.state.time
+			sendQuestionUpdate.answerUpdate(answerObj, 'correct')
+				.then(() => {
+					this.setState({
+						user_answer: event.target.value,
+						user_result: 'Correct!',
+						display: 'answered',
+					})
 				})
-			})
-			.then(response => response.json())
-			.then(res_obj => {
-				this.setState({
-					user_answer: event.target.value,
-					user_result: 'Correct!',
-					display: 'answered',
-				})
-			})
 			this.displayAnsweredCorrect()
 		} else {
-			fetch("http://localhost:3001/answers", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json"
-				},
-				body: JSON.stringify({
-					user_id: this.props.user_id,
-					question_id: this.props.question.id,
-					user_answer: event.target.value,
-					user_result: "incorrect",
-					user_time: this.state.time
+			sendQuestionUpdate.answerUpdate(answerObj, 'incorrect')
+				.then(() => {
+					this.setState({
+						user_answer: event.target.value,
+						user_result: 'Incorrect!',
+						display: 'answered'
+					})
 				})
-			})
-			.then(response => response.json())
-			.then(res_obj => {
-				this.setState({
-					user_answer: event.target.value,
-					user_result: 'Incorrect!',
-					display: 'answered'
-				})
-			})
 			this.displayAnsweredIncorrect()
 		}
 	}
 
 	outtaTime = () => {
-		fetch("http://localhost:3001/answers", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				user_id: this.props.user_id,
-				question_id: this.props.question.id,
-				user_answer: 'No Answer',
-				user_result: "Outta Time",
-				user_time: "0.0"
-			})
-		})
-		.then(response => response.json())
-		.then(res_obj => {
+
+		let answerObj = {
+			user_id: this.props.user_id,
+			question_id: this.props.question.id,
+			answer: 'No Answer',
+			time: "0.0"
+		}
+
+		sendQuestionUpdate.answerUpdate(answerObj, 'No Answer')
+		.then(() => {
 			this.setState({
 				user_answer: 'No Answer',
 				user_result: 'Outta Time!',
@@ -235,8 +219,7 @@ export default class QuestionDisplay extends React.Component{
 	}
 
 	getVotes = () => {
-		fetch(`http://localhost:3001/questions/${this.props.question.id}`)
-		.then(res => res.json())
+		sendQuestionUpdate.getSingleQuestion(this.props.question.id)
 		.then(res_obj =>
 			this.setState({
 				votes: res_obj.data.attributes.votes.map(vote => vote.vote_num)
@@ -246,19 +229,15 @@ export default class QuestionDisplay extends React.Component{
 
 	onClickUpVoteFunctions = (event) => {
 		event.persist()
-		fetch("http://localhost:3001/votes", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				user_id: this.props.user_id,
-				question_id: this.props.question.id,
-				vote_num: 1
-			})
-		})
-		.then(response => response.json())
-		.then(res_obj => {
+
+		let voteObj = {
+			user_id: this.props.user_id,
+			question_id: this.props.question.id,
+			vote_num: 1
+		}
+
+		sendQuestionUpdate.voteUpdate(voteObj)
+		.then(() => {
 			this.setState({
 				voted: true,
 				showVoteButtons: false
@@ -270,19 +249,15 @@ export default class QuestionDisplay extends React.Component{
 
 	onClickNoVoteFunctions = (event) => {
 		event.persist()
-		fetch("http://localhost:3001/votes", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				user_id: this.props.user_id,
-				question_id: this.props.question.id,
-				vote_num: 0
-			})
-		})
-		.then(response => response.json())
-		.then(res_obj => {
+
+		let voteObj = {
+			user_id: this.props.user_id,
+			question_id: this.props.question.id,
+			vote_num: 0
+		}
+
+		sendQuestionUpdate.voteUpdate(voteObj)
+		.then(() => {
 			this.setState({
 				voted: true,
 				showVoteButtons: false
@@ -294,19 +269,15 @@ export default class QuestionDisplay extends React.Component{
 
 	onClickDownVoteFunctions = (event) => {
 		event.persist()
-		fetch("http://localhost:3001/votes", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				user_id: this.props.user_id,
-				question_id: this.props.question.id,
-				vote_num: -1
-			})
-		})
-		.then(response => response.json())
-		.then(res_obj => {
+
+		let voteObj = {
+			user_id: this.props.user_id,
+			question_id: this.props.question.id,
+			vote_num: -1
+		}
+
+		sendQuestionUpdate.voteUpdate(voteObj)
+		.then(() => {
 			this.setState({
 				voted: true,
 				showVoteButtons: false
@@ -353,8 +324,7 @@ export default class QuestionDisplay extends React.Component{
 	}
 
 	getComments = () => {
-		fetch(`http://localhost:3001/questions/${this.props.question.id}`)
-		.then(res => res.json())
+		sendQuestionUpdate.getSingleQuestion(this.props.question.id)
 		.then(res_obj =>
 			this.setState({
 				comments: res_obj.data.attributes.comments.map(comment => comment)
@@ -386,20 +356,15 @@ export default class QuestionDisplay extends React.Component{
 		event.persist()
 		event.preventDefault()
 
+		let commentObj = {
+			user_id: this.props.user_id,
+			user_name: this.props.user_name,
+			question_id: this.props.question.id,
+			comment_text: this.state.comment_text
+		}
+
 		if (this.state.comment_text){
-			fetch("http://localhost:3001/comments", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json"
-				},
-				body: JSON.stringify({
-					user_id: this.props.user_id,
-					user_name: this.props.user_name,
-					question_id: this.props.question.id,
-					comment_text: this.state.comment_text
-				})
-			})
-			.then(response => response.json())
+			sendQuestionUpdate.commentUpdate(commentObj)
 			.then(res_obj => {
 				if (res_obj.errors) {
 					this.setState({
@@ -445,7 +410,7 @@ export default class QuestionDisplay extends React.Component{
 	}
 
 	onClickUpdateTrafficFunctions = (event) => {
-		this.props.update_traffic_data({
+		sendTraffic.elementUpdate({
 			user_id: this.props.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
@@ -453,7 +418,7 @@ export default class QuestionDisplay extends React.Component{
 	}
 
 	onPageLoadFunctions = () => {
-		this.props.update_page_data({
+		sendTraffic.pageUpdate({
 			user_id: localStorage.user_id,
 			page_name: "question_display_engaged",
 		})
@@ -598,11 +563,11 @@ export default class QuestionDisplay extends React.Component{
 		const vote_total =
 			<ul>
 				<li><h5>Up Votes</h5> { this.state.votes.length > 0 ? this.calculateUpVotes() : blank }</li>
-				<li><h5>No Votes</h5> { this.state.votes.length > 0 ?this.calculateNoVotes() : blank }</li>
+				<li><h5>No Votes</h5> { this.state.votes.length > 0 ? this.calculateNoVotes() : blank }</li>
 				<li><h5>Down Votes</h5> { this.state.votes.length > 0 ? this.calculateDownVotes() : blank }</li>
 			</ul>
 
-		const comment_button = <>
+		const comment_button =
 			<button
 				key={"comment_button"}
 				name="comment_button"
@@ -613,31 +578,30 @@ export default class QuestionDisplay extends React.Component{
 			>
 				Leave a Comment
 			</button>
-		</>
 
 		const comment_form =
-		<form
-			name="add_comment_form"
-			interaction="submit"
-			className="question_card_comment_form"
-			onSubmit={ this.onSubmitCommentFunctions }
-		>
-			<textarea
-				rows="5"
-				id="add_comment"
-				name="comment_text"
-				placeholder="Add A Comment..."
-				onChange={ this.onChangeComment }
-				value={ this.state.comment_text }
-			/>
-			<div className="comment_button_container">
-				<input
-					type="submit"
-					className="question_card_comment_button"
-					value="Add Comment"
+			<form
+				name="add_comment_form"
+				interaction="submit"
+				className="question_card_comment_form"
+				onSubmit={ this.onSubmitCommentFunctions }
+			>
+				<textarea
+					rows="5"
+					id="add_comment"
+					name="comment_text"
+					placeholder="Add A Comment..."
+					onChange={ this.onChangeComment }
+					value={ this.state.comment_text }
 				/>
-			</div>
-		</form>
+				<div className="comment_button_container">
+					<input
+						type="submit"
+						className="question_card_comment_button"
+						value="Add Comment"
+					/>
+				</div>
+			</form>
 
 		const all_comments = this.state.comments.map(comment =>
 			<QuestionDisplayComments
@@ -739,47 +703,3 @@ export default class QuestionDisplay extends React.Component{
 		)
 	}
 }
-
-
-		// const question_buttons = [
-		// 	<button
-		// 		key={"answer_button1"}
-		// 		value={ this.state.answers[0] }
-		// 		className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
-		// 		name="answer_button"
-		// 		interaction="click"
-		// 		onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
-		// 	>
-		// 		{ this.state.answers[0] }
-		// 	</button>,
-		// 	<button
-		// 		key={"answer_button2"}
-		// 		value={ this.state.answers[1] }
-		// 		className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
-		// 		name="answer_button"
-		// 		interaction="click"
-		// 		onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
-		// 	>
-		// 		{ this.state.answers[1] }
-		// 	</button>,
-		// 	<button
-		// 		key={"answer_button3"}
-		// 		value={ this.state.answers[2] }
-		// 		className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
-		// 		name="answer_button"
-		// 		interaction="click"
-		// 		onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
-		// 	>
-		// 		{ this.state.answers[2] }
-		// 	</button>,
-		// 	<button
-		// 		key={"answer_button4"}
-		// 		value={ this.state.answers[3] }
-		// 		className={this.state.enableQuestion ? "question_card_choices_button" : "question_card_choices_button_disabled" }
-		// 		name="answer_button"
-		// 		interaction="click"
-		// 		onClick={ this.state.enableQuestion ? this.onClickFunctions : this.onClickBlankFunctions }
-		// 	>
-		// 		{ this.state.answers[3] }
-		// 	</button>
-		// ]

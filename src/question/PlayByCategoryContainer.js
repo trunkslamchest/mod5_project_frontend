@@ -7,6 +7,14 @@ import '../css/PlayByCategory.css'
 
 import { Redirect } from 'react-router-dom'
 
+import { TrafficUpdate } from '../utility/trafficFunctions'
+import { QuestionUpdate } from '../utility/questionFunctions'
+import { UserUpdate } from '../utility/userFunctions'
+
+var sendTraffic = new TrafficUpdate()
+var sendQuestionUpdate = new QuestionUpdate()
+var sendUserUpdate = new UserUpdate()
+
 export default class PlayByDifficultyContainer extends React.Component{
 
 	state={
@@ -38,7 +46,6 @@ export default class PlayByDifficultyContainer extends React.Component{
 	}
 
 	componentDidUpdate(){
-
 		if ((!this.state.displaySelect && !this.state.questionsUpdated)) {
 			this.getSortedQuestions()
 		}
@@ -52,8 +59,7 @@ export default class PlayByDifficultyContainer extends React.Component{
 	}
 
 	getSortedQuestions = () => {
-		fetch(`http://localhost:3001/questions/`)
-		.then(res => res.json())
+		sendQuestionUpdate.getAllQuestions()
 		.then(res_obj =>
 			this.setState({
 				sortedQuestions: res_obj.data.filter(question_obj => question_obj.attributes.question.category === this.state.category),
@@ -63,8 +69,7 @@ export default class PlayByDifficultyContainer extends React.Component{
 	}
 
 	getSortedAnsweredQuestions = (user_id) => {
-		fetch(`http://localhost:3001/users/${user_id}`)
-		.then(res => res.json())
+		sendUserUpdate.getUser(user_id)
 		.then(res_obj =>
 			this.setState({
 				answeredQuestionsIDs: [...new Set(res_obj.data.attributes.answers.map(question_obj => question_obj.question_id))].sort(),
@@ -74,7 +79,6 @@ export default class PlayByDifficultyContainer extends React.Component{
 	}
 
 	getRandomQuestion = () => {
-
 		const all_questions_answered = <>
 			<div className="question_wrapper_header">
 				<h3 key={"all_questions_answered"}> You Have Answered All the { this.state.category } Questions! </h3>
@@ -99,9 +103,6 @@ export default class PlayByDifficultyContainer extends React.Component{
 		let randomQuestion = filtered_questions.map(question_obj =>
 			(question_obj.id === rng.id) ?
 			<QuestionDisplay
-				update_traffic_data={ this.props.update_traffic_data }
-				update_page_data={ this.props.update_page_data }
-				// ~~~~~~~~~~~~~~~~~~~~
 				key={ question_obj.id }
 				question={ question_obj.attributes.question }
 				user_id={ this.props.user_id }
@@ -149,7 +150,7 @@ export default class PlayByDifficultyContainer extends React.Component{
 	}
 
 	onClickUpdateTrafficFunctions = (event) => {
-		this.props.update_traffic_data({
+		sendTraffic.elementUpdate({
 			user_id: this.props.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
@@ -157,7 +158,7 @@ export default class PlayByDifficultyContainer extends React.Component{
 	}
 
 	onPageLoadFunctions = () => {
-		this.props.update_page_data({
+		sendTraffic.pageUpdate({
 			user_id: localStorage.user_id,
 			page_name: "play_by_category",
 		})

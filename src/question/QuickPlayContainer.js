@@ -2,12 +2,20 @@ import React from 'react'
 
 import QuestionDisplay from './QuestionDisplay'
 
+import { TrafficUpdate } from '../utility/trafficFunctions'
+import { QuestionUpdate } from '../utility/questionFunctions'
+import { UserUpdate } from '../utility/userFunctions'
+
+
 import '../css/Questions.css'
 
 import { Redirect } from 'react-router-dom'
 
-export default class QuickPlayContainer extends React.Component{
+var sendTraffic = new TrafficUpdate()
+var sendQuestionUpdate = new QuestionUpdate()
+var sendUserUpdate = new UserUpdate()
 
+export default class QuickPlayContainer extends React.Component{
 
 	state={
 		user_id: '',
@@ -36,7 +44,6 @@ export default class QuickPlayContainer extends React.Component{
 	}
 
 	componentDidUpdate(){
-
 		if (this.state.mounted && !this.state.updatedAllQuestions) {
 			this.getQuestions()
 		}
@@ -51,8 +58,7 @@ export default class QuickPlayContainer extends React.Component{
 	}
 
 	getQuestions = () => {
-		fetch(`http://localhost:3001/questions/`)
-		.then(res => res.json())
+		sendQuestionUpdate.getAllQuestions()
 		.then(res_obj =>
 			this.setState({
 				allQuestions: res_obj.data.map(question_obj => question_obj.attributes.question),
@@ -62,8 +68,7 @@ export default class QuickPlayContainer extends React.Component{
 	}
 
 	getAnsweredQuestions = (user_id) => {
-		fetch(`http://localhost:3001/users/${user_id}`)
-		.then(res => res.json())
+		sendUserUpdate.getUser(user_id)
 		.then(res_obj =>
 			this.setState({
 				answeredQuestionsIDs: [...new Set(res_obj.data.attributes.answers.map(question_obj => question_obj.question_id))].sort(),
@@ -90,9 +95,6 @@ export default class QuickPlayContainer extends React.Component{
 		let randomQuestion = filtered_questions.map(question_obj =>
 			(question_obj.id === rng.id) ?
 			<QuestionDisplay
-				update_traffic_data={ this.props.update_traffic_data }
-				update_page_data={ this.props.update_page_data }
-				// ~~~~~~~~~~~~~~~~~~~~
 				key={ question_obj.id }
 				question={ question_obj }
 				user_id={ this.props.user_id }
@@ -120,7 +122,7 @@ export default class QuickPlayContainer extends React.Component{
 	}
 
 	onPageLoadFunctions = () => {
-		this.props.update_page_data({
+		sendTraffic.pageUpdate({
 			user_id: localStorage.user_id,
 			page_name: "quick_play",
 		})

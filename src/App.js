@@ -277,18 +277,12 @@ export default class App extends React.Component {
 						</Route>
 						<Route exact path='/dashboard'>
 							<Dashboard
-								update_traffic_data={ this.update_traffic_data }
-								update_page_data={ this.update_page_data }
-								// ~~~~~~~~~~~~~~~~~~~~
 								user_id={ this.state.user_id }
 							/>
 						</Route>
 						<Route exact path='/edit_profile'>
 							<EditProfile
 								setToken={ this.setToken }
-								update_traffic_data={ this.update_traffic_data }
-								update_page_data={ this.update_page_data }
-								// ~~~~~~~~~~~~~~~~~~~~
 								user_id= {this.state.user_id }
 								user_name={ this.state.user_name }
 								email={ this.state.email }
@@ -312,9 +306,6 @@ export default class App extends React.Component {
 						<Route exact path='/delete_profile'>
 							<DeleteProfile
 								setToken={ this.setToken }
-								update_traffic_data={ this.update_traffic_data }
-								update_page_data={ this.update_page_data }
-								// ~~~~~~~~~~~~~~~~~~~~
 								user_id={this.state.user_id }
 								access={ this.state.access }
 								log_out={ this.logOut }
@@ -322,9 +313,6 @@ export default class App extends React.Component {
 						</Route>
 						<Route exact path='/quick_play'>
 							<QuickPlayContainer
-								update_traffic_data={ this.update_traffic_data }
-								update_page_data={ this.update_page_data }
-								// ~~~~~~~~~~~~~~~~~~~~
 								user_id={ this.state.user_id }
 								user_name={ this.state.user_name }
 								first_name={ this.state.first_name }
@@ -332,9 +320,6 @@ export default class App extends React.Component {
 						</Route>
 						<Route exact path='/play_by_difficulty'>
 							<PlayByDifficultyContainer
-								update_traffic_data={ this.update_traffic_data }
-								update_page_data={ this.update_page_data }
-								// ~~~~~~~~~~~~~~~~~~~~
 								user_id={ this.state.user_id }
 								user_name={ this.state.user_name }
 								first_name={ this.state.first_name }
@@ -342,9 +327,6 @@ export default class App extends React.Component {
 						</Route>
 						<Route exact path='/play_by_category'>
 							<PlayByCategoryContainer
-								update_traffic_data={ this.update_traffic_data }
-								update_page_data={ this.update_page_data }
-								// ~~~~~~~~~~~~~~~~~~~~
 								user_id={ this.state.user_id }
 								user_name={ this.state.user_name }
 								first_name={ this.state.first_name }
@@ -352,9 +334,6 @@ export default class App extends React.Component {
 						</Route>
 						<Route exact path='/log_out'>
 							<LogOut
-								update_traffic_data={ this.update_traffic_data }
-								update_page_data={ this.update_page_data }
-								// ~~~~~~~~~~~~~~~~~~~~
 								token={ this.state.token }
 								user_id={ this.state.user_id }
 								user_name={ this.state.user_name }

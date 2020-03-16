@@ -22,5 +22,4 @@ const QuestionDisplayComments = (props) => {
 
 }
 
-
 export default QuestionDisplayComments

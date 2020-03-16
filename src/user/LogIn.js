@@ -1,7 +1,13 @@
 import React from 'react'
 import { Redirect } from 'react-router'
 
+import { TrafficUpdate } from '../utility/trafficFunctions'
+import { LogInUpdate } from '../utility/logInFunctions'
+
 import '../css/EditProfile.css'
+
+var sendTraffic = new TrafficUpdate()
+var sendLogIn = new LogInUpdate()
 
 export default class LogIn extends React.Component {
 
@@ -31,42 +37,27 @@ export default class LogIn extends React.Component {
 	logInSubmitted = (event) => {
 		event.preventDefault()
 		event.persist()
-		fetch("http://localhost:3001/login", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				user_name: this.state.user_name,
-				password: this.state.password
-			})
-		})
-		.then(response => response.json())
+
+		sendLogIn.submit(this.state.user_name, this.state.password)
 		.then(res_obj => {
 			if (res_obj.errors) {
-				this.setState({
-					errors: res_obj.errors
-				})
+				this.setState({ errors: res_obj.errors })
 			} else {
 				this.onPageLoadFunctions()
 				this.onSubmitUpdateTrafficFunctions(event, res_obj)
 				this.props.setToken(res_obj)
-				this.setState({
-					loggedIn: true
-				})
+				this.setState({ loggedIn: true })
 			}
 		})
 	}
 
 	onCancelFunctions = (event) => {
 		this.onClickUpdateTrafficFunctions(event)
-		this.setState({
-			cancel: true
-		})
+		this.setState({ cancel: true })
 	}
 
 	onClickUpdateTrafficFunctions = (event) => {
-		this.props.update_traffic_data({
+		sendTraffic.elementUpdate({
 			user_id: this.props.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
@@ -74,7 +65,7 @@ export default class LogIn extends React.Component {
 	}
 
 	onSubmitUpdateTrafficFunctions = (event, res_obj) => {
-		this.props.update_traffic_data({
+		sendTraffic.elementUpdate({
 			user_id: res_obj.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
@@ -82,7 +73,7 @@ export default class LogIn extends React.Component {
 	}
 
 	onPageLoadFunctions = () => {
-		this.props.update_page_data({
+		sendTraffic.pageUpdate({
 			user_id: localStorage.user_id,
 			page_name: "log_in",
 		})

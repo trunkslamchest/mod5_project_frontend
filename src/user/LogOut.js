@@ -1,7 +1,11 @@
 import React from 'react'
 import { Redirect } from 'react-router'
 
+import { TrafficUpdate } from '../utility/trafficFunctions'
+
 import '../css/LogOut.css'
+
+var sendTraffic = new TrafficUpdate()
 
 export default class LogOut extends React.Component {
 
@@ -64,7 +68,7 @@ export default class LogOut extends React.Component {
 	}
 
 	onClickUpdateTrafficFunctions = (event) => {
-		this.props.update_traffic_data({
+		sendTraffic.elementUpdate({
 			user_id: this.props.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name

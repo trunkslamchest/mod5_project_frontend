@@ -216,32 +216,32 @@ export default class App extends React.Component {
 		})
 	}
 
-	update_traffic_data = (res_obj) => {
-		fetch("http://localhost:3001/traffics", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				user_id: res_obj.user_id,
-				interaction: res_obj.interaction,
-				element: res_obj.element
-			})
-		})
-	}
+	// update_traffic_data = (res_obj) => {
+	// 	fetch("http://localhost:3001/traffics", {
+	// 		method: "POST",
+	// 		headers: {
+	// 			"Content-Type": "application/json"
+	// 		},
+	// 		body: JSON.stringify({
+	// 			user_id: res_obj.user_id,
+	// 			interaction: res_obj.interaction,
+	// 			element: res_obj.element
+	// 		})
+	// 	})
+	// }
 
-	update_page_data = (res_obj) => {
-		fetch("http://localhost:3001/pages", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-				body: JSON.stringify({
-				user_id: res_obj.user_id,
-				page_name: res_obj.page_name,
-			})
-		})
-	}
+	// update_page_data = (res_obj) => {
+	// 	fetch("http://localhost:3001/pages", {
+	// 		method: "POST",
+	// 		headers: {
+	// 			"Content-Type": "application/json"
+	// 		},
+	// 			body: JSON.stringify({
+	// 			user_id: res_obj.user_id,
+	// 			page_name: res_obj.page_name,
+	// 		})
+	// 	})
+	// }
 
 	render(){
 		return (
@@ -355,22 +355,13 @@ export default class App extends React.Component {
 							/>
 						</Route>
 						<Route exact path='/terms_of_service'>
-							<TermsOfService
-								update_page_data={ this.update_page_data }
-								// ~~~~~~~~~~~~~~~~~~~~
-							/>
+							<TermsOfService />
 						</Route>
 						<Route exact path='/privacy'>
-							<Privacy
-								update_page_data={ this.update_page_data }
-								// ~~~~~~~~~~~~~~~~~~~~
-							/>
+							<Privacy />
 						</Route>
 						<Route exact path='/disclaimer'>
-							<Disclaimer
-								update_page_data={ this.update_page_data }
-								// ~~~~~~~~~~~~~~~~~~~~
-							/>
+							<Disclaimer />
 						</Route>
 						<Route component={ E404 } />
 					</Switch>

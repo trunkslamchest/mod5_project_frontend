@@ -1,6 +1,10 @@
 import React from 'react'
 
+import { TrafficUpdate } from '../utility/trafficFunctions'
+
 import '../css/Docs.css'
+
+var sendTraffic = new TrafficUpdate()
 
 export default class TermsOfService extends React.Component {
 
@@ -10,7 +14,7 @@ export default class TermsOfService extends React.Component {
 	}
 
 	onPageLoadFunctions = () => {
-		this.props.update_page_data({
+		sendTraffic.pageUpdate({
 			user_id: localStorage.user_id,
 			page_name: "terms_of_service",
 		})
@@ -23,7 +27,7 @@ export default class TermsOfService extends React.Component {
 			<h1>TERMS OF USE</h1>
 
 			<span>Last updated December 28, 2019</span>
-			
+
 			<h2>AGREEMENT TO TERMS</h2>
 			<p>
 			These Terms of Use constitute a legally binding agreement made between you, 

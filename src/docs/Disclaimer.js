@@ -1,6 +1,10 @@
 import React from 'react'
 
+import { TrafficUpdate } from '../utility/trafficFunctions'
+
 import '../css/Docs.css'
+
+var sendTraffic = new TrafficUpdate()
 
 export default class Disclaimer extends React.Component {
 
@@ -10,7 +14,7 @@ export default class Disclaimer extends React.Component {
 	}
 
 	onPageLoadFunctions = () => {
-		this.props.update_page_data({
+		sendTraffic.pageUpdate({
 			user_id: localStorage.user_id,
 			page_name: "disclaimer",
 		})

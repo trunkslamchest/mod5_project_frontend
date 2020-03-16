@@ -1,8 +1,8 @@
 import React from 'react'
 
-import './css/Error.css'
+import './Error.css'
 
-const Error = (props) => {
+const E404 = (props) => {
 	return(
 		<div className="alt_container">
 			<div className="alt_wrapper">
@@ -12,4 +12,4 @@ const Error = (props) => {
 	)
 }
 
-export default Error
+export default E404

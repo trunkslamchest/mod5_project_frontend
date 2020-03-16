@@ -1,16 +1,20 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-import './css/Footer.css'
+import { TrafficUpdate } from '../utility/trafficFunctions'
 
-import footer_logo from './assets/footer_logo.png'
-import footer_logo_hover from './assets/footer_logo_hover.png'
+import './Footer.css'
 
-import flatiron_logo from './assets/footer_logo_flatiron.png'
-import open_trivia_logo from './assets/footer_logo_open_trivia.png'
-import postgres_logo from './assets/footer_logo_postgres.png'
-import rails_logo from './assets/footer_logo_rails.png'
-import react_logo from './assets/footer_logo_react.png'
+import footer_logo from '../assets/footer_logo.png'
+import footer_logo_hover from '../assets/footer_logo_hover.png'
+
+import flatiron_logo from '../assets/footer_logo_flatiron.png'
+import open_trivia_logo from '../assets/footer_logo_open_trivia.png'
+import postgres_logo from '../assets/footer_logo_postgres.png'
+import rails_logo from '../assets/footer_logo_rails.png'
+import react_logo from '../assets/footer_logo_react.png'
+
+var sendTraffic = new TrafficUpdate()
 
 export default class Footer extends React.Component {
 
@@ -52,19 +56,19 @@ export default class Footer extends React.Component {
 
 	onClickUpdateTrafficFunctions = (event) => {
 
+		let userID
+
 		if (localStorage.access) {
-			this.props.update_traffic_data({
-				user_id: localStorage.user_id,
-				interaction: event.target.attributes.interaction.value,
-				element: event.target.name
-			})
+			userID = localStorage.user_id
 		} else {
-			this.props.update_traffic_data({
-				user_id: this.props.user_id,
-				interaction: event.target.attributes.interaction.value,
-				element: event.target.name
-			})
+			userID = this.props.user_id
 		}
+
+		sendTraffic.elementUpdate({
+			user_id: userID,
+			interaction: event.target.attributes.interaction.value,
+			element: event.target.name
+		})
 	}
 
 	render(){

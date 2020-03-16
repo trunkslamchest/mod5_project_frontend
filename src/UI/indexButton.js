@@ -10,6 +10,7 @@ const indexButton = (props) => {
 			name={props.buttonName}
 			interaction={props.interaction}
 			className={props.classType}
+			onClick={props.onClick}
 		>
 			{props.children}
 		</NavLink>

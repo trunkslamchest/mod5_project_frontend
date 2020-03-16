@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Header from './Header'
-import Home from './Home'
+import Home from './index/Home'
 import Footer from './Footer'
 
 import LogIn from './user/LogIn'

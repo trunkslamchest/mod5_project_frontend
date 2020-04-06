@@ -2,12 +2,9 @@ import React from 'react'
 import { Redirect } from 'react-router'
 
 import trafficFunctions from '../../utility/trafficFunctions'
-
-import { UserUpdate } from '../../utility/userFunctions'
+import userFunctions from '../../utility/userFunctions'
 
 import './EditProfile.css'
-
-var sendUserUpdate = new UserUpdate()
 
 export default class EditProfile extends React.Component {
 
@@ -68,7 +65,7 @@ export default class EditProfile extends React.Component {
 		event.persist()
 		event.preventDefault()
 
-		let editProfileObj = {
+		let userObj = {
 			user_name: event.target["edit_user_name"].value,
 			email: event.target["edit_email"].value,
 			first_name: event.target["edit_first_name"].value,
@@ -84,10 +81,12 @@ export default class EditProfile extends React.Component {
 			zip_code: event.target["edit_zip_code"].value
 		}
 
-		sendUserUpdate.editProfileSubmit(this.props.user_id, editProfileObj)
+		userFunctions('patch', `http://localhost:3001/users/${this.props.user_id}`, userObj)
 		.then(res_obj => {
 			if (res_obj.errors) {
-				this.setState({ errors: res_obj.errors })
+				this.setState({
+					errors: res_obj.errors
+				})
 			} else {
 				this.onSubmitTrafficFunctions(event, res_obj)
 				this.props.setToken(res_obj)

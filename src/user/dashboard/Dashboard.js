@@ -10,13 +10,12 @@ import DashboardComments from './DashboardComments'
 import { Redirect } from 'react-router-dom'
 
 import trafficFunctions from '../../utility/trafficFunctions'
+import userFunctions from '../../utility/userFunctions'
 
-import { UserUpdate } from '../../utility/userFunctions'
 import { QuestionUpdate } from '../../utility/questionFunctions'
 
 import './Dashboard.css'
 
-var sendUserUpdate = new UserUpdate()
 var sendQuestionUpdate = new QuestionUpdate()
 
 export default class Dashboard extends React.Component{
@@ -24,7 +23,6 @@ export default class Dashboard extends React.Component{
 	state = {
 		display: '',
 		all_questions: [],
-		user: [],
 		user_answers: [],
 		user_votes: [],
 		user_comments: [],
@@ -40,19 +38,26 @@ export default class Dashboard extends React.Component{
 	}
 
 	componentDidUpdate(){
-		if (this.state.mounted && this.props.user_id && !this.state.updated_all_questions){
+
+		if (this.state.mounted && this.props.user_id && !this.state.loaded){
+			this.setState({
+				loaded: true,
+				display: 'dashboard'
+			})
+		}
+
+		if (this.state.loaded && !this.state.updated_all_questions){
 			this.getAllQuestions()
 		}
-		if (this.state.updated_all_questions && this.props.user_id && !this.state.updated_user){
-			this.getUser(this.props.user_id)
+		if (this.state.updated_all_questions && !this.state.updated_user){
+			this.getUserStats(this.props.user_id)
 		}
 	}
 
-	getUser = (user_id) => {
-		sendUserUpdate.getUser(user_id)
+	getUserStats = (user_id) => {
+		userFunctions('get', `http://localhost:3001/users/${user_id}`)
 		.then(res_obj =>
 			this.setState({
-				user: res_obj.data.attributes.user,
 				user_answers: res_obj.data.attributes.answers,
 				user_votes: res_obj.data.attributes.votes,
 				user_comments: res_obj.data.attributes.comments,
@@ -197,11 +202,35 @@ export default class Dashboard extends React.Component{
 						false: 	(() => {
 							switch(this.state.display) {
 								case 'dashboard': return <DashboardIndex
-																		first_name={ this.state.user.first_name }
-																	/>;
+															first_name={ this.props.first_name }
+														/>;
 								case 'user_info': return <DashboardUserInfo
-																		user={ this.state.user }
-																	/>;
+															update_traffic_data={ this.props.update_traffic_data }
+															update_page_data={ this.props.update_page_data }
+															// ~~~~~~~~~~~~~~~~~~~~
+															user_id= {this.props.user_id }
+															user_name={ this.props.user_name }
+															email={ this.props.email }
+															access={ this.props.access }
+															// ~~~~~~~~~~~~~~~~~~~~
+															first_name={ this.props.first_name }
+															last_name={ this.props.last_name }
+															gender={ this.props.gender }
+															// ~~~~~~~~~~~~~~~~~~~~
+															birth_day={ this.props.birth_day }
+															birth_month={ this.props.birth_month }
+															birth_year={ this.props.birth_year }
+															// ~~~~~~~~~~~~~~~~~~~~
+															house_number={ this.props.house_number }
+															street_name={ this.props.street_name }
+															city_town={ this.props.city_town }
+															state={ this.props.state }
+															zip_code={ this.props.zip_code }
+															// ~~~~~~~~~~~~~~~~~~~~
+															join_day={this.props.join_day}
+															join_month={this.props.join_month}
+															join_year={this.props.join_year}
+														/>;
 								case 'stats': return <DashboardStats
 															update_traffic_data={ this.props.update_traffic_data }
 															update_page_data={ this.props.update_page_data }
@@ -231,9 +260,7 @@ export default class Dashboard extends React.Component{
 															user_comments={ this.state.user_comments }
 															all_questions={ this.state.all_questions }
 														/>;
-								default: return <DashboardIndex
-													first_name={ this.state.user.first_name }
-												/>;
+								default: return <></>;
 							}
 						})()
 					}[localStorage.length === 0]

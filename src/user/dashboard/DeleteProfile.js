@@ -2,12 +2,9 @@ import React from 'react'
 import { Redirect } from 'react-router'
 
 import trafficFunctions from '../../utility/trafficFunctions'
-
-import { UserUpdate } from '../../utility/userFunctions'
+import userFunctions from '../../utility/userFunctions'
 
 import './EditProfile.css'
-
-var sendUserUpdate = new UserUpdate()
 
 export default class DeleteProfile extends React.Component {
 
@@ -23,7 +20,7 @@ export default class DeleteProfile extends React.Component {
 	}
 
 	onClickConfirm = (event) => {
-		sendUserUpdate.deleteUser(this.props.user_id)
+		userFunctions('delete', `http://localhost:3001/users/${this.props.user_id}`)
 		.then(
 			this.setState({ deleteSuccess: true }, this.props.log_out(), this.onClickTrafficFunctions(event))
 		)

@@ -8,12 +8,11 @@ import './PlayByDifficulty.css'
 import { Redirect } from 'react-router-dom'
 
 import trafficFunctions from '../utility/trafficFunctions'
+import userFunctions from '../utility/userFunctions'
 
 import { QuestionUpdate } from '../utility/questionFunctions'
-import { UserUpdate } from '../utility/userFunctions'
 
 var sendQuestionUpdate = new QuestionUpdate()
-var sendUserUpdate = new UserUpdate()
 
 export default class PlayByDifficultyContainer extends React.Component{
 
@@ -69,7 +68,7 @@ export default class PlayByDifficultyContainer extends React.Component{
 	}
 
 	getSortedAnsweredQuestions = (user_id) => {
-		sendUserUpdate.getUser(user_id)
+		userFunctions('get', `http://localhost:3001/users/${user_id}`)
 		.then(res_obj =>
 			this.setState({
 				answeredQuestionsIDs: [...new Set(res_obj.data.attributes.answers.map(question_obj => question_obj.question_id))].sort(),

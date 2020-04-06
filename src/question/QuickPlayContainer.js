@@ -3,17 +3,15 @@ import React from 'react'
 import QuestionDisplay from './QuestionDisplay'
 
 import trafficFunctions from '../utility/trafficFunctions'
+import userFunctions from '../utility/userFunctions'
 
 import { QuestionUpdate } from '../utility/questionFunctions'
-import { UserUpdate } from '../utility/userFunctions'
-
 
 import './Questions.css'
 
 import { Redirect } from 'react-router-dom'
 
 var sendQuestionUpdate = new QuestionUpdate()
-var sendUserUpdate = new UserUpdate()
 
 export default class QuickPlayContainer extends React.Component{
 
@@ -68,7 +66,7 @@ export default class QuickPlayContainer extends React.Component{
 	}
 
 	getAnsweredQuestions = (user_id) => {
-		sendUserUpdate.getUser(user_id)
+		userFunctions('get', `http://localhost:3001/users/${user_id}`)
 		.then(res_obj =>
 			this.setState({
 				answeredQuestionsIDs: [...new Set(res_obj.data.attributes.answers.map(question_obj => question_obj.question_id))].sort(),

@@ -27,7 +27,7 @@ export default class DashboardStats extends React.Component{
 
 	componentDidUpdate(){
 		if(this.state.mounted && !this.state.updated_user_answers){
-			this.setUser()
+			this.setUserAnswers()
 		}
 		if(this.state.mounted && !this.state.updated_all_questions){
 			this.setAllQuestions()
@@ -40,7 +40,7 @@ export default class DashboardStats extends React.Component{
 		}
 	}
 
-	setUser = () => {
+	setUserAnswers = () => {
 		this.setState({
 			user_answers: this.props.user_answers,
 			updated_user_answers: true

@@ -69,6 +69,10 @@ export default class App extends React.Component {
 		join_month: null,
 		join_year: null,
 		// ~~~~~~~~~~~~~~~~~~~~
+		// user_answers: null,
+		// user_votes: null,
+		// user_comments: null,
+		// ~~~~~~~~~~~~~~~~~~~~
 		backroom_display: null
 	}
 
@@ -103,6 +107,10 @@ export default class App extends React.Component {
 				join_day: localStorage.join_day,
 				join_month: localStorage.join_month,
 				join_year: localStorage.join_year,
+				// ~~~~~~~~~~~~~~~~~~~~
+				// user_answers: localStorage.user_answers,
+				// user_votes: localStorage.user_votes,
+				// user_comments: localStorage.user_comments
 			})
 		}
 	}
@@ -121,6 +129,9 @@ export default class App extends React.Component {
 		.then(res => res.json())
 		.then(res_obj => {
 			let current_user = res_obj.data.attributes.user
+			// let user_answers = res_obj.data.attributes.answers
+			// let user_votes = res_obj.data.attributes.votes
+			// let user_comments =  res_obj.data.attributes.comments
 
 			localStorage.user_name = current_user.user_name
 			localStorage.email = current_user.email
@@ -143,6 +154,11 @@ export default class App extends React.Component {
 			localStorage.join_day = current_user.join_day
 			localStorage.join_month = current_user.join_month
 			localStorage.join_year = current_user.join_year
+			// ~~~~~~~~~~~~~~~~~~~~
+			// localStorage.user_answers = user_answers
+			// localStorage.user_votes = user_votes
+			// localStorage.user_comments = user_comments
+
 
 			this.setState({
 				user_id: user_id,
@@ -167,6 +183,11 @@ export default class App extends React.Component {
 				join_day: current_user.join_day,
 				join_month: current_user.join_month,
 				join_year: current_user.join_year,
+			// ~~~~~~~~~~~~~~~~~~~~
+				// user_answers: res_obj.data.attributes.answers,
+				// user_votes: res_obj.data.attributes.votes,
+				// user_comments: res_obj.data.attributes.comments
+
 			})
 		})
 	}
@@ -207,6 +228,10 @@ export default class App extends React.Component {
 			join_day: null,
 			join_month: null,
 			join_year: null,
+			// ~~~~~~~~~~~~~~~~~~~~
+			// user_answers: null,
+			// user_votes: null,
+			// user_comments: null,
 		})
 	}
 
@@ -217,6 +242,8 @@ export default class App extends React.Component {
 	}
 
 	render(){
+
+		console.log(this.state)
 		return (
 			<>
 				<div className="header">
@@ -250,7 +277,28 @@ export default class App extends React.Component {
 						</Route>
 						<Route exact path='/dashboard'>
 							<Dashboard
-								user_id={ this.state.user_id }
+								user_id= {this.state.user_id }
+								user_name={ this.state.user_name }
+								email={ this.state.email }
+								access={ this.state.access }
+								// ~~~~~~~~~~~~~~~~~~~~
+								first_name={ this.state.first_name }
+								last_name={ this.state.last_name }
+								gender={ this.state.gender }
+								// ~~~~~~~~~~~~~~~~~~~~
+								birth_day={ this.state.birth_day }
+								birth_month={ this.state.birth_month }
+								birth_year={ this.state.birth_year }
+								// ~~~~~~~~~~~~~~~~~~~~
+								house_number={ this.state.house_number }
+								street_name={ this.state.street_name }
+								city_town={ this.state.city_town }
+								state={ this.state.state }
+								zip_code={ this.state.zip_code }
+								// ~~~~~~~~~~~~~~~~~~~~
+								join_day={this.state.join_day}
+								join_month={this.state.join_month}
+								join_year={this.state.join_year}
 							/>
 						</Route>
 						<Route exact path='/edit_profile'>

@@ -2,11 +2,9 @@ import React from 'react'
 import { Redirect } from 'react-router'
 
 import trafficFunctions from '../utility/trafficFunctions'
-import { UserUpdate } from '../utility/userFunctions'
+import authFunctions from '../utility/authFunctions'
 
 import './LogIn.css'
-
-var sendUserUpdate = new UserUpdate()
 
 export default class LogIn extends React.Component {
 
@@ -37,14 +35,19 @@ export default class LogIn extends React.Component {
 		event.preventDefault()
 		event.persist()
 
-		sendUserUpdate.logInSubmit(this.state.user_name, this.state.password)
+		let logInObj = {
+			user_name: this.state.user_name,
+			password: this.state.password
+		}
+
+		authFunctions('logIn', 'http://localhost:3001/login', logInObj)
 		.then(res_obj => {
 			if (res_obj.errors) {
 				this.setState({ errors: res_obj.errors })
 			} else {
-				this.onPageLoadFunctions()
 				this.onSubmitTrafficFunctions(event, res_obj)
 				this.props.setToken(res_obj)
+				this.props.updateLogin()
 				this.setState({ loggedIn: true })
 			}
 		})

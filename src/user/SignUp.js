@@ -2,11 +2,9 @@ import React from 'react'
 import { Link, Redirect } from 'react-router-dom'
 
 import trafficFunctions from '../utility/trafficFunctions'
-import { UserUpdate } from '../utility/userFunctions'
+import userFunctions from '../utility/userFunctions'
 
 import './SignUp.css'
-
-var sendUserUpdate = new UserUpdate()
 
 export default class SignUp extends React.Component {
 
@@ -53,38 +51,35 @@ export default class SignUp extends React.Component {
 		event.persist()
 		event.preventDefault()
 
-		let signUpObj = {
-			user_name: this.state.sign_up_user_name,
-			password: this.state.sign_up_password,
-			email: this.state.sign_up_email,
-			first_name: this.state.sign_up_first_name,
-			last_name: this.state.sign_up_last_name,
-			gender: this.state.sign_up_gender,
-			birth_month: this.state.sign_up_birth_month,
-			birth_day: this.state.sign_up_birth_day,
-			birth_year: this.state.sign_up_birth_year,
-			house_number: this.state.sign_up_house_number,
-			street_name: this.state.sign_up_street_name,
-			city_town: this.state.sign_up_city_town,
-			state: this.state.sign_up_state,
-			zip_code: this.state.sign_up_zip_code,
-		}
-
 		if (!this.state.TOSagreement) {
 			alert("You must agree to the Terms of Service Agreement in order to make a new account.")
 		} else {
-			sendUserUpdate.signUpSubmit(signUpObj)
+
+			let signUpObj = {
+				user_name: this.state.sign_up_user_name,
+				password: this.state.sign_up_password,
+				email: this.state.sign_up_email,
+				first_name: this.state.sign_up_first_name,
+				last_name: this.state.sign_up_last_name,
+				gender: this.state.sign_up_gender,
+				birth_month: this.state.sign_up_birth_month,
+				birth_day: this.state.sign_up_birth_day,
+				birth_year: this.state.sign_up_birth_year,
+				house_number: this.state.sign_up_house_number,
+				street_name: this.state.sign_up_street_name,
+				city_town: this.state.sign_up_city_town,
+				state: this.state.sign_up_state,
+				zip_code: this.state.sign_up_zip_code
+			}
+
+			userFunctions('signUp', 'http://localhost:3001/users', signUpObj)
 			.then(res_obj => {
 				if (res_obj.errors) {
-					this.setState({
-						errors: res_obj.errors
-					})
+					this.setState({ errors: res_obj.errors })
 				} else {
-					this.onSubmitUpdateTrafficFunctions(event, res_obj)
+					this.onSubmitTrafficFunctions(event, res_obj)
 					this.props.setToken(res_obj)
-					this.setState({
-						loggedIn: true
-					})
+					this.setState({ loggedIn: true })
 				}
 			})
 		}

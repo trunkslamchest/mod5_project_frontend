@@ -1,0 +1,116 @@
+select:not(:-internal-list-box) {
+	overflow: hidden !important;
+}
+
+.sign_up_form {
+	width: 100%;
+	text-align: center;
+	margin: 0 auto 0px auto;
+	background-color: rgba(255,255,255, 1);
+	background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255,255,255, 1), rgba(0,0,0, 0.025) );
+	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25);
+	animation: fade_in .25s ease-in-out 1, blur_in .25s ease-in-out 1, slide_in_from_bottom.25s ease-in-out 1;
+}
+
+.sign_up_form label {
+	animation: fade_in .4s ease-in-out 1, blur_in .2s ease-in-out 1;
+}
+
+.sign_up_div {
+	margin: 10px 0px 10px 0px;
+}
+
+.sign_up_div > * {
+	font: 400 12px "Helvetica", sans-serif;
+	padding: 10px;
+	width: 50%;
+	max-width: 350px;
+	line-height: 1.25;
+	border-radius: 0px 0px 5px 0px;
+	margin: 0px 0px 0px 0px;
+	border: 1px solid rgb(175, 175, 175, 1);
+	animation: fade_in .4s ease-in-out 1, blur_in .2s ease-in-out 1 scale_in .1 ease-in-out 1;
+}
+
+.sign_up_div label {
+	font: 300 10pt 'Poppins', sans-serif;
+	border: 0px;
+}
+
+.sign_up_div select {
+	text-rendering: auto;
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	text-align: start;
+	box-sizing: unset;
+	align-items: center;
+	white-space: normal;
+	background-color: #fff;
+	cursor: pointer;
+	color: #000;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+.sign_up_buttons_container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: baseline;
+	margin: 20px auto 20px auto;
+	animation: fade_in .3s ease-in-out 1, blur_in .15s ease-in-out 1;
+}
+
+
+.tos_agree_div {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	font: 400 12px "Helvetica", sans-serif;
+	margin: 20px auto 20px auto;
+}
+
+.tos_agree_div input[type="checkbox" i] {
+	margin: 0px 0px 0px 0px;
+	padding: 10px;
+	height: 35px;
+	width: 35px;
+	font: 300 10pt 'Poppins', sans-serif;
+}
+
+.tos_agree_div a {
+	color: rgba(4,108,196, 1);
+	margin: 0px 2.5px 0px 2.5px;
+	text-decoration: none;
+}
+
+.tos_agree_div a:active {
+	color: rgba(244, 166, 66, 1);
+	text-shadow: 1px 1px 4px rgba(244, 166, 66, 1);
+	margin: 0px 2.5px 0px 2.5px;
+	text-decoration: none;
+	transition-property: color, text-shadow;
+	transition-duration: .1s, .1s;
+	transition-timing-function: ease-in-out;
+}
+
+.tos_agree_div a:hover {
+	color: rgba(244, 166, 66, 1);
+	text-shadow: 1px 1px 2px rgba(244, 166, 66, 1);
+	margin: 0px 2.5px 0px 2.5px;
+	text-decoration: none;
+	transition-property: color, text-shadow;
+	transition-duration: .1s, .1s;
+	transition-timing-function: ease-in-out;
+}
+
+.tos_agree_div a:visited {
+	text-decoration: none;
+	margin: 0px 2.5px 0px 2.5px;
+}

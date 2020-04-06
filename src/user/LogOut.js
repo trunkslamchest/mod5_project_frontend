@@ -1,78 +1,59 @@
 import React from 'react'
 import { Redirect } from 'react-router'
 
-import { TrafficUpdate } from '../utility/trafficFunctions'
+import trafficFunctions from '../utility/trafficFunctions'
 
-import '../css/LogOut.css'
-
-var sendTraffic = new TrafficUpdate()
+import './LogOut.css'
 
 export default class LogOut extends React.Component {
 
 	state = {
-		user_id: "",
 		logOutSuccess: false,
 		hoverConfirm: false,
 		hoverCancel: false,
 		cancel: false
 	}
 
-	componentDidMount(){
-		this.setState({
-			user_id: this.props.user_id
-		})
-	}
-
 	onClickConfirm = (event) => {
-		this.onClickUpdateTrafficFunctions(event)
+		this.onClickTrafficFunctions(event)
 		this.props.logOut(this.props.token)
-		this.setState({
-			logOutSuccess: true
-		})
+		this.setState({ logOutSuccess: true })
 	}
 
 	onClickCancel = (event) => {
-		this.onClickUpdateTrafficFunctions(event)
-		this.setState({
-			cancel: true
-		})
+		this.onClickTrafficFunctions(event)
+		this.setState({ cancel: true })
 	}
 
 	onHoverConfirm = () => {
-		this.setState({
-			hoverConfirm: true
-		})
+		this.setState({ hoverConfirm: true })
 	}
 
 	offHoverConfirm = () => {
-		this.setState({
-			hoverConfirm: false
-		})
+		this.setState({ hoverConfirm: false })
 	}
 
 	onHoverCancel = () => {
-		this.setState({
-			hoverCancel: true
-		})
+		this.setState({ hoverCancel: true })
 	}
 
 	offHoverCancel = () => {
-		this.setState({
-			hoverCancel: false
-		})
+		this.setState({ hoverCancel: false })
 	}
 
 	onClickFunctionsLogOut = (event) => {
-		this.onClickUpdateTrafficFunctions(event)
+		this.onClickTrafficFunctions(event)
 		this.props.logOut(this.props.token)
 	}
 
-	onClickUpdateTrafficFunctions = (event) => {
-		sendTraffic.elementUpdate({
+	onClickTrafficFunctions = (event) => {
+		let elementInfo = {
 			user_id: this.props.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
-		})
+		}
+
+		trafficFunctions('element', 'http://localhost:3001/traffics', elementInfo)
 	}
 
 	render(){

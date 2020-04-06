@@ -1,12 +1,11 @@
 import React from 'react'
 import { Link, Redirect } from 'react-router-dom'
 
-import { TrafficUpdate } from '../utility/trafficFunctions'
+import trafficFunctions from '../utility/trafficFunctions'
 import { UserUpdate } from '../utility/userFunctions'
 
-import '../css/EditProfile.css'
+import './SignUp.css'
 
-var sendTraffic = new TrafficUpdate()
 var sendUserUpdate = new UserUpdate()
 
 export default class SignUp extends React.Component {
@@ -14,6 +13,7 @@ export default class SignUp extends React.Component {
 	state = {
 		logIn: false,
 		cancel: false,
+		TOSagreement: false,
 		sign_up_user_name: "",
 		sign_up_password: "",
 		sign_up_email: "",
@@ -28,7 +28,6 @@ export default class SignUp extends React.Component {
 		sign_up_city_town: "",
 		sign_up_state: "",
 		sign_up_zip_code: "",
-		TOSagreement: false,
 		errors: []
 	}
 
@@ -37,18 +36,12 @@ export default class SignUp extends React.Component {
 	}
 
 	onChange = (event) => {
-		this.setState({
-			[event.target.name]: event.target.value
-		})
+		this.setState({ [event.target.name]: event.target.value })
 	}
 
 	onChecked = (event) => {
-
 		let flip_checked = !event.target.checked
-
-		this.setState({
-			TOSagreement: !flip_checked
-		})
+		this.setState({ TOSagreement: !flip_checked })
 	}
 
 	onSubmitSignUpFunctions = (event) => {
@@ -121,34 +114,37 @@ export default class SignUp extends React.Component {
 
 	onCancelFunctions = (event) => {
 		this.onClickUpdateTrafficFunctions(event)
-		this.setState({
-			cancel: true
-		})
+		this.setState({ cancel: true })
 	}
 
-	onClickUpdateTrafficFunctions = (event) => {
-		sendTraffic.elementUpdate({
+	onClickTrafficFunctions = (event) => {
+		let elementInfo = {
 			user_id: this.props.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
-		})
+		}
+
+		trafficFunctions('element', 'http://localhost:3001/traffics', elementInfo)
 	}
 
 	onSubmitUpdateTrafficFunctions = (event, res_obj) => {
-		sendTraffic.elementUpdate({
+		let elementInfo = {
 			user_id: res_obj.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
-		})
+		}
+
+		trafficFunctions('element', 'http://localhost:3001/traffics', elementInfo)
 	}
 
 	onPageLoadFunctions = () => {
-		sendTraffic.pageUpdate({
+		let pageInfo = {
 			user_id: localStorage.user_id,
-			page_name: "sign_up",
-		})
-	}
+			page_name: 'sign_up',
+		}
 
+		trafficFunctions('page', 'http://localhost:3001/pages', pageInfo)
+	}
 
 	render(){
 

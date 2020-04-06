@@ -1,12 +1,11 @@
 import React from 'react'
 import { Redirect } from 'react-router'
 
-import { TrafficUpdate } from '../utility/trafficFunctions'
+import trafficFunctions from '../utility/trafficFunctions'
 import { UserUpdate } from '../utility/userFunctions'
 
-import '../css/EditProfile.css'
+import './LogIn.css'
 
-var sendTraffic = new TrafficUpdate()
 var sendUserUpdate = new UserUpdate()
 
 export default class LogIn extends React.Component {
@@ -44,7 +43,7 @@ export default class LogIn extends React.Component {
 				this.setState({ errors: res_obj.errors })
 			} else {
 				this.onPageLoadFunctions()
-				this.onSubmitUpdateTrafficFunctions(event, res_obj)
+				this.onSubmitTrafficFunctions(event, res_obj)
 				this.props.setToken(res_obj)
 				this.setState({ loggedIn: true })
 			}
@@ -52,31 +51,37 @@ export default class LogIn extends React.Component {
 	}
 
 	onCancelFunctions = (event) => {
-		this.onClickUpdateTrafficFunctions(event)
+		this.onClickTrafficFunctions(event)
 		this.setState({ cancel: true })
 	}
 
-	onClickUpdateTrafficFunctions = (event) => {
-		sendTraffic.elementUpdate({
+	onClickTrafficFunctions = (event) => {
+		let elementInfo = {
 			user_id: this.props.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
-		})
+		}
+
+		trafficFunctions('element', 'http://localhost:3001/traffics', elementInfo)
 	}
 
-	onSubmitUpdateTrafficFunctions = (event, res_obj) => {
-		sendTraffic.elementUpdate({
+	onSubmitTrafficFunctions = (event, res_obj) => {
+		let elementInfo = {
 			user_id: res_obj.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
-		})
+		}
+
+		trafficFunctions('element', 'http://localhost:3001/traffics', elementInfo)
 	}
 
 	onPageLoadFunctions = () => {
-		sendTraffic.pageUpdate({
+		let pageInfo = {
 			user_id: localStorage.user_id,
-			page_name: "log_in",
-		})
+			page_name: 'log_in',
+		}
+
+		trafficFunctions('page', 'http://localhost:3001/pages', pageInfo)
 	}
 
 	render(){

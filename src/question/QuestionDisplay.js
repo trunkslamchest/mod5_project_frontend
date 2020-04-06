@@ -3,8 +3,7 @@ import React from 'react'
 import QuestionDisplayComments from './QuestionDisplayComments.js'
 
 import trafficFunctions from '../utility/trafficFunctions'
-
-import { QuestionUpdate } from '../utility/questionFunctions'
+import questionFunctions from '../utility/questionFunctions'
 
 import './QuestionDisplay.css'
 import './QuestionAnswered.css'
@@ -12,8 +11,6 @@ import './QuestionAnswered.css'
 import up_vote from '../assets/up_vote1.png'
 import no_vote from '../assets/no_vote1.png'
 import down_vote from '../assets/down_vote1.png'
-
-var sendQuestionUpdate = new QuestionUpdate()
 
 var shuffle = require('shuffle-array')
 
@@ -104,7 +101,6 @@ export default class QuestionDisplay extends React.Component{
 	}
 
 	onClickBlankFunctions = () => {
-
 	}
 
 	onClickSelectAnswerFunctions = (event) => {
@@ -112,15 +108,19 @@ export default class QuestionDisplay extends React.Component{
 
 		this.stopTime()
 
-		let answerObj = {
-			user_id: this.props.user_id,
-			question_id: this.props.question.id,
-			answer: event.target.value,
-			time: this.state.time
-		}
+		let answerObj
 
 		if (event.target.value === this.props.question.correct_answer) {
-			sendQuestionUpdate.answerUpdate(answerObj, 'correct')
+
+			answerObj = {
+				user_id: this.props.user_id,
+				question_id: this.props.question.id,
+				user_answer: event.target.value,
+				user_result:'correct',
+				user_time: this.state.time
+			}
+
+			questionFunctions('post', 'http://localhost:3001/answers', answerObj)
 				.then(() => {
 					this.setState({
 						user_answer: event.target.value,
@@ -130,7 +130,16 @@ export default class QuestionDisplay extends React.Component{
 				})
 			this.displayAnsweredCorrect()
 		} else {
-			sendQuestionUpdate.answerUpdate(answerObj, 'incorrect')
+
+			answerObj = {
+				user_id: this.props.user_id,
+				question_id: this.props.question.id,
+				user_answer: event.target.value,
+				user_result:'incorrect',
+				user_time: this.state.time
+			}
+
+			questionFunctions('post', 'http://localhost:3001/answers', answerObj)
 				.then(() => {
 					this.setState({
 						user_answer: event.target.value,
@@ -147,11 +156,12 @@ export default class QuestionDisplay extends React.Component{
 		let answerObj = {
 			user_id: this.props.user_id,
 			question_id: this.props.question.id,
-			answer: 'No Answer',
-			time: "0.0"
+			user_answer: 'No Answer',
+			user_result: 'No Answer',
+			user_time: "0.0"
 		}
 
-		sendQuestionUpdate.answerUpdate(answerObj, 'No Answer')
+		questionFunctions('post', 'http://localhost:3001/answers', answerObj)
 		.then(() => {
 			this.setState({
 				user_answer: 'No Answer',
@@ -208,7 +218,7 @@ export default class QuestionDisplay extends React.Component{
 	}
 
 	getVotes = () => {
-		sendQuestionUpdate.getSingleQuestion(this.props.question.id)
+		questionFunctions('get', `http://localhost:3001/questions/${this.props.question.id}`)
 		.then(res_obj =>
 			this.setState({
 				votes: res_obj.data.attributes.votes.map(vote => vote.vote_num)
@@ -225,7 +235,7 @@ export default class QuestionDisplay extends React.Component{
 			vote_num: 1
 		}
 
-		sendQuestionUpdate.voteUpdate(voteObj)
+		questionFunctions('post', 'http://localhost:3001/votes', voteObj)
 		.then(() => {
 			this.setState({
 				voted: true,
@@ -245,7 +255,7 @@ export default class QuestionDisplay extends React.Component{
 			vote_num: 0
 		}
 
-		sendQuestionUpdate.voteUpdate(voteObj)
+		questionFunctions('post', 'http://localhost:3001/votes', voteObj)
 		.then(() => {
 			this.setState({
 				voted: true,
@@ -265,7 +275,7 @@ export default class QuestionDisplay extends React.Component{
 			vote_num: -1
 		}
 
-		sendQuestionUpdate.voteUpdate(voteObj)
+		questionFunctions('post', 'http://localhost:3001/votes', voteObj)
 		.then(() => {
 			this.setState({
 				voted: true,
@@ -313,7 +323,7 @@ export default class QuestionDisplay extends React.Component{
 	}
 
 	getComments = () => {
-		sendQuestionUpdate.getSingleQuestion(this.props.question.id)
+		questionFunctions('get', `http://localhost:3001/questions/${this.props.question.id}`)
 		.then(res_obj =>
 			this.setState({ comments: res_obj.data.attributes.comments.map(comment => comment) })
 		)
@@ -349,7 +359,7 @@ export default class QuestionDisplay extends React.Component{
 		}
 
 		if (this.state.comment_text){
-			sendQuestionUpdate.commentUpdate(commentObj)
+			questionFunctions('post', 'http://localhost:3001/comments', commentObj)
 			.then(res_obj => {
 				if (res_obj.errors) {
 					this.setState({

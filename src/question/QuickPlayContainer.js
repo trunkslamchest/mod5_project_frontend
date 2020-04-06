@@ -1,17 +1,14 @@
 import React from 'react'
 
+import { Redirect } from 'react-router-dom'
+
 import QuestionDisplay from './QuestionDisplay'
 
 import trafficFunctions from '../utility/trafficFunctions'
 import userFunctions from '../utility/userFunctions'
-
-import { QuestionUpdate } from '../utility/questionFunctions'
+import questionFunctions from '../utility/questionFunctions'
 
 import './Questions.css'
-
-import { Redirect } from 'react-router-dom'
-
-var sendQuestionUpdate = new QuestionUpdate()
 
 export default class QuickPlayContainer extends React.Component{
 
@@ -56,7 +53,7 @@ export default class QuickPlayContainer extends React.Component{
 	}
 
 	getQuestions = () => {
-		sendQuestionUpdate.getAllQuestions()
+		questionFunctions('get', 'http://localhost:3001/questions')
 		.then(res_obj =>
 			this.setState({
 				allQuestions: res_obj.data.map(question_obj => question_obj.attributes.question),

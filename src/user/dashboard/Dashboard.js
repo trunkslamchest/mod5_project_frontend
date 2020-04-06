@@ -11,12 +11,9 @@ import { Redirect } from 'react-router-dom'
 
 import trafficFunctions from '../../utility/trafficFunctions'
 import userFunctions from '../../utility/userFunctions'
-
-import { QuestionUpdate } from '../../utility/questionFunctions'
+import questionFunctions from '../../utility/questionFunctions'
 
 import './Dashboard.css'
-
-var sendQuestionUpdate = new QuestionUpdate()
 
 export default class Dashboard extends React.Component{
 
@@ -67,7 +64,7 @@ export default class Dashboard extends React.Component{
 	}
 
 	getAllQuestions = () => {
-		sendQuestionUpdate.getAllQuestions()
+		questionFunctions('get', 'http://localhost:3001/questions')
 		.then(res_obj =>
 			this.setState({
 				all_questions: res_obj.data.map(question_obj => question_obj.attributes.question),

@@ -1,61 +1,38 @@
-export function QuestionUpdate() {
+;(function(env) {
 
-	this.getAllQuestions = function() {
-		return fetch(`http://localhost:3001/questions/`)
-		.then(res => res.json())
+	var questionFunctions = function(method, url, obj){
+		var init = new questionFunctions.init(method, url, obj)
+		return init[method]
 	}
 
-	this.getSingleQuestion = function(questionID) {
-		return fetch(`http://localhost:3001/questions/${questionID}`)
-		.then(res => res.json())
+	questionFunctions.init = function(method, url, obj){
+		this[method] = this[method](url, obj)
 	}
 
-	this.answerUpdate = function(answerObj, resultString) {
-		return fetch("http://localhost:3001/answers", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				user_id: answerObj.user_id,
-				question_id: answerObj.question_id,
-				user_answer: answerObj.answer,
-				user_result: resultString,
-				user_time: answerObj.time
+	questionFunctions.prototype = {
+
+		get: function(url) {
+			return fetch(url)
+			.then(res => res.json())
+		},
+
+		post: function(url, obj) {
+			return fetch(url, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify(obj)
 			})
-		})
-		.then(res => res.json())
+			.then(res => res.json())
+		}
+
 	}
 
-	this.voteUpdate = function(voteObj) {
-		return fetch("http://localhost:3001/votes", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				user_id: voteObj.user_id,
-				question_id: voteObj.question_id,
-				vote_num: voteObj.vote_num
-			})
-		})
-		.then(response => response.json())
-	}
+	questionFunctions.init.prototype = questionFunctions.prototype
 
-	this.commentUpdate = function(commentObj) {
-			return fetch("http://localhost:3001/comments", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				user_id: commentObj.user_id,
-				user_name: commentObj.user_name,
-				question_id: commentObj.question_id,
-				comment_text: commentObj.comment_text
-			})
-		})
-		.then(response => response.json())
-	}
+	env.questionFunctions = questionFunctions
 
-}
+	module.exports = questionFunctions
+
+})(typeof window === "undefined" ? global : window)

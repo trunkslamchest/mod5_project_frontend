@@ -1,18 +1,15 @@
 import React from 'react'
 
-import QuestionDisplay from './QuestionDisplay'
-
-import './Questions.css'
-import './PlayByDifficulty.css'
-
 import { Redirect } from 'react-router-dom'
+
+import QuestionDisplay from './QuestionDisplay'
 
 import trafficFunctions from '../utility/trafficFunctions'
 import userFunctions from '../utility/userFunctions'
+import questionFunctions from '../utility/questionFunctions'
 
-import { QuestionUpdate } from '../utility/questionFunctions'
-
-var sendQuestionUpdate = new QuestionUpdate()
+import './Questions.css'
+import './PlayByDifficulty.css'
 
 export default class PlayByDifficultyContainer extends React.Component{
 
@@ -58,7 +55,7 @@ export default class PlayByDifficultyContainer extends React.Component{
 	}
 
 	getSortedQuestions = () => {
-		sendQuestionUpdate.getAllQuestions()
+		questionFunctions('get', 'http://localhost:3001/questions')
 		.then(res_obj =>
 			this.setState({
 				sortedQuestions: res_obj.data.filter(question_obj => question_obj.attributes.question.difficulty === this.state.difficulty),

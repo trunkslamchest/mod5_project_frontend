@@ -22,10 +22,7 @@
 				headers: {
 					"Content-Type": "application/json"
 				},
-					body: JSON.stringify({
-						user_id: pageInfo.user_id,
-						page_name: pageInfo.page_name,
-				})
+					body: JSON.stringify(pageInfo)
 			})
 		},
 
@@ -35,11 +32,7 @@
 				headers: {
 					"Content-Type": "application/json"
 				},
-					body: JSON.stringify({
-					user_id: elementInfo.user_id,
-					interaction: elementInfo.interaction,
-					element: elementInfo.element
-				})
+					body: JSON.stringify(elementInfo)
 			})
 		}
 

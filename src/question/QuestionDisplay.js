@@ -55,7 +55,7 @@ export default class QuestionDisplay extends React.Component{
 		this.enableQuestionTimeout = setTimeout(() => { this.setState({ enableQuestion: true })}, 5000)
 		this.choicesTimeout = setTimeout(() => { this.setState({ showChoices: true })}, 4000)
 
-		this.onPageLoadFunctions()
+		// this.onPageLoadFunctions()
 	}
 
 	displayAnsweredCorrect = () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { TrafficUpdate } from '../utility/trafficFunctions'
+import trafficFunctions from '../utility/trafficFunctions'
 
 import './Footer.css'
 
@@ -13,8 +13,6 @@ import open_trivia_logo from '../assets/footer_logo_open_trivia.png'
 import postgres_logo from '../assets/footer_logo_postgres.png'
 import rails_logo from '../assets/footer_logo_rails.png'
 import react_logo from '../assets/footer_logo_react.png'
-
-var sendTraffic = new TrafficUpdate()
 
 export default class Footer extends React.Component {
 
@@ -64,11 +62,13 @@ export default class Footer extends React.Component {
 			userID = this.props.user_id
 		}
 
-		sendTraffic.elementUpdate({
+		let elementInfo = {
 			user_id: userID,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
-		})
+		}
+
+		trafficFunctions('element', 'http://localhost:3001/traffics', elementInfo)
 	}
 
 	render(){

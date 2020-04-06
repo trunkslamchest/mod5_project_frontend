@@ -1,14 +1,12 @@
 import React, { useEffect, useCallback } from 'react'
 
-import { TrafficUpdate } from '../utility/trafficFunctions'
+import trafficFunctions from '../utility/trafficFunctions'
 
 import index_logo from '../assets/index_logo_blue3.png'
 
 import IndexButton from '../UI/indexButton'
 
 import './Home.css'
-
-var sendTraffic = new TrafficUpdate()
 
 const Home = (props) => {
 
@@ -33,18 +31,22 @@ const Home = (props) => {
 	}
 
 	const onClickUpdateTrafficFunctions = (event) => {
-		sendTraffic.elementUpdate({
+		let elementInfo = {
 			user_id: localStorage.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
-		})
+		}
+
+		trafficFunctions('element', 'http://localhost:3001/traffics', elementInfo)
 	}
 
 	const onPageLoadFunctions = useCallback(() => {
-		sendTraffic.pageUpdate({
+		var pageInfo = {
 			user_id: localStorage.user_id,
-			page_name: "index",
-		})
+			page_name: 'index',
+		}
+
+		trafficFunctions('page', 'http://localhost:3001/pages', pageInfo)
 	}, [])
 
 	useEffect(() => {onPageLoadFunctions()}, [onPageLoadFunctions])

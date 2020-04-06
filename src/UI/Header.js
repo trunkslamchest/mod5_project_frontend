@@ -1,14 +1,12 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { TrafficUpdate } from '../utility/trafficFunctions'
+import trafficFunctions from '../utility/trafficFunctions'
 
 import './Header.css'
 
 import header_logo from '../assets/header_logo.png'
 import header_logo_hover from '../assets/header_logo_hover.png'
-
-var sendTraffic = new TrafficUpdate()
 
 export default class Header extends React.Component {
 
@@ -58,11 +56,13 @@ export default class Header extends React.Component {
 	}
 
 	onClickUpdateTrafficFunctions = (event) => {
-		sendTraffic.elementUpdate({
+		let elementInfo = {
 			user_id: this.props.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
-		})
+		}
+
+		trafficFunctions('element', 'http://localhost:3001/traffics', elementInfo)
 	}
 
 	render(){

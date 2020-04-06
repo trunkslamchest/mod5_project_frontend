@@ -2,16 +2,16 @@ import React from 'react'
 
 import QuestionDisplay from './QuestionDisplay'
 
-import { TrafficUpdate } from '../utility/trafficFunctions'
+import trafficFunctions from '../utility/trafficFunctions'
+
 import { QuestionUpdate } from '../utility/questionFunctions'
 import { UserUpdate } from '../utility/userFunctions'
 
 
-import '../css/Questions.css'
+import './Questions.css'
 
 import { Redirect } from 'react-router-dom'
 
-var sendTraffic = new TrafficUpdate()
 var sendQuestionUpdate = new QuestionUpdate()
 var sendUserUpdate = new UserUpdate()
 
@@ -110,22 +110,20 @@ export default class QuickPlayContainer extends React.Component{
 	}
 
 	nextQuestion = (user_id) => {
-		this.setState({
-			displayQuestion: true
-		}, this.getAnsweredQuestions(user_id))
+		this.setState({ displayQuestion: true }, this.getAnsweredQuestions(user_id))
 	}
 
 	componentWillUnmount(){
-		this.setState({
-			displayQuestion: false
-		})
+		this.setState({ displayQuestion: false })
 	}
 
 	onPageLoadFunctions = () => {
-		sendTraffic.pageUpdate({
+		let pageInfo = {
 			user_id: localStorage.user_id,
-			page_name: "quick_play",
-		})
+			page_name: 'quick_play',
+		}
+
+		trafficFunctions('page', 'http://localhost:3001/pages', pageInfo)
 	}
 
 

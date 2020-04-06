@@ -2,16 +2,16 @@ import React from 'react'
 
 import QuestionDisplay from './QuestionDisplay'
 
-import '../css/Questions.css'
-import '../css/PlayByDifficulty.css'
+import './Questions.css'
+import './PlayByDifficulty.css'
 
 import { Redirect } from 'react-router-dom'
 
-import { TrafficUpdate } from '../utility/trafficFunctions'
+import trafficFunctions from '../utility/trafficFunctions'
+
 import { QuestionUpdate } from '../utility/questionFunctions'
 import { UserUpdate } from '../utility/userFunctions'
 
-var sendTraffic = new TrafficUpdate()
 var sendQuestionUpdate = new QuestionUpdate()
 var sendUserUpdate = new UserUpdate()
 
@@ -117,30 +117,28 @@ export default class PlayByDifficultyContainer extends React.Component{
 	}
 
 	nextQuestion = (user_id) => {
-		this.setState({
-			display: 'question'
-		}, this.getSortedAnsweredQuestions(user_id))
+		this.setState({ display: 'question' }, this.getSortedAnsweredQuestions(user_id))
 	}
 
 	onClickEasyFunctions = (event) => {
 		this.setState({
 			difficulty: event.target.value,
 			displaySelect: false
-		}, this.onClickUpdateTrafficFunctions(event))
+		}, this.onClickTrafficFunctions(event))
 	}
 
 	onClickMediumFunctions = (event) => {
 		this.setState({
 			difficulty: event.target.value,
 			displaySelect: false
-		}, this.onClickUpdateTrafficFunctions(event))
+		}, this.onClickTrafficFunctions(event))
 	}
 
 	onClickHardFunctions = (event) => {
 		this.setState({
 			difficulty: event.target.value,
 			displaySelect: false
-		}, this.onClickUpdateTrafficFunctions(event))
+		}, this.onClickTrafficFunctions(event))
 	}
 
 	onClickReSelectFunctions = (event) => {
@@ -155,19 +153,23 @@ export default class PlayByDifficultyContainer extends React.Component{
 		})
 	}
 
-	onClickUpdateTrafficFunctions = (event) => {
-		sendTraffic.elementUpdate({
+	onClickTrafficFunctions = (event) => {
+		let elementInfo = {
 			user_id: this.props.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
-		})
+		}
+
+		trafficFunctions('element', 'http://localhost:3001/traffics', elementInfo)
 	}
 
 	onPageLoadFunctions = () => {
-		sendTraffic.pageUpdate({
+		let pageInfo = {
 			user_id: localStorage.user_id,
-			page_name: "play_by_difficulty",
-		})
+			page_name: 'play_by_difficulty',
+		}
+
+		trafficFunctions('page', 'http://localhost:3001/pages', pageInfo)
 	}
 
 	render(){

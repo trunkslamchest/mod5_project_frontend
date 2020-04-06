@@ -2,17 +2,17 @@ import React from 'react'
 
 import QuestionDisplayComments from './QuestionDisplayComments.js'
 
-import { TrafficUpdate } from '../utility/trafficFunctions'
+import trafficFunctions from '../utility/trafficFunctions'
+
 import { QuestionUpdate } from '../utility/questionFunctions'
 
-import '../css/QuestionsDisplay.css'
-import '../css/QuestionsAnswered.css'
+import './QuestionDisplay.css'
+import './QuestionAnswered.css'
 
 import up_vote from '../assets/up_vote1.png'
 import no_vote from '../assets/no_vote1.png'
 import down_vote from '../assets/down_vote1.png'
 
-var sendTraffic = new TrafficUpdate()
 var sendQuestionUpdate = new QuestionUpdate()
 
 var shuffle = require('shuffle-array')
@@ -30,7 +30,6 @@ export default class QuestionDisplay extends React.Component{
 		stopTime: false,
 		setTime: false,
 		voted: false,
-		mounted: false,
 		showHeader: false,
 		showQuestion: false,
 		showChoices: false,
@@ -50,10 +49,6 @@ export default class QuestionDisplay extends React.Component{
 	}
 
 	componentDidMount(){
-
-		this.setState({
-			mounted: true
-		})
 
 		this.randomizeAnswerOrder(this.props.question)
 		this.timerTimeout = setTimeout(() => { this.setState({ showTimer: true })}, 1000)
@@ -102,12 +97,10 @@ export default class QuestionDisplay extends React.Component{
 
 	onClickFunctions = (event) => {
 		this.onClickSelectAnswerFunctions(event)
-		this.onClickUpdateTrafficFunctions(event)
+		this.onClickTrafficFunctions(event)
 		this.stopTime()
 
-		this.setState({
-			display: 'answered'
-		})
+		this.setState({ display: 'answered' })
 	}
 
 	onClickBlankFunctions = () => {
@@ -180,9 +173,7 @@ export default class QuestionDisplay extends React.Component{
 
 		const shuffled_answers = shuffle(question_answers)
 
-		this.setState({
-			answers: shuffled_answers
-		})
+		this.setState({ answers: shuffled_answers })
 	}
 
 	stopTime = (time) => {
@@ -193,9 +184,7 @@ export default class QuestionDisplay extends React.Component{
 	}
 
 	setTime = (time) => {
-		this.setState({
-			time: time
-		})
+		this.setState({ time: time })
 	}
 
 	timerFunctions = () => {
@@ -243,7 +232,7 @@ export default class QuestionDisplay extends React.Component{
 				showVoteButtons: false
 			})
 			this.getVotes()
-			this.onClickUpdateTrafficFunctions(event)
+			this.onClickTrafficFunctions(event)
 		})
 	}
 
@@ -263,7 +252,7 @@ export default class QuestionDisplay extends React.Component{
 				showVoteButtons: false
 			})
 			this.getVotes()
-			this.onClickUpdateTrafficFunctions(event)
+			this.onClickTrafficFunctions(event)
 		})
 	}
 
@@ -283,7 +272,7 @@ export default class QuestionDisplay extends React.Component{
 				showVoteButtons: false
 			})
 			this.getVotes()
-			this.onClickUpdateTrafficFunctions(event)
+			this.onClickTrafficFunctions(event)
 		})
 	}
 
@@ -326,15 +315,13 @@ export default class QuestionDisplay extends React.Component{
 	getComments = () => {
 		sendQuestionUpdate.getSingleQuestion(this.props.question.id)
 		.then(res_obj =>
-			this.setState({
-				comments: res_obj.data.attributes.comments.map(comment => comment)
-			})
+			this.setState({ comments: res_obj.data.attributes.comments.map(comment => comment) })
 		)
 	}
 
 	onClickCommentFunctions = (event) => {
 		event.persist()
-		this.onClickUpdateTrafficFunctions(event)
+		this.onClickTrafficFunctions(event)
 		this.setState({
 			showCommentButton: false,
 			showCommentText: true,
@@ -342,14 +329,12 @@ export default class QuestionDisplay extends React.Component{
 	}
 
 	onChangeComment = (event) => {
-		this.setState({
-			[event.target.name]: event.target.value
-		})
+		this.setState({ [event.target.name]: event.target.value })
 	}
 
 	onSubmitCommentFunctions = (event) => {
 		this.addCommentSubmitted(event)
-		this.onClickUpdateTrafficFunctions(event)
+		this.onClickTrafficFunctions(event)
 	}
 
 	addCommentSubmitted = (event) => {
@@ -385,11 +370,9 @@ export default class QuestionDisplay extends React.Component{
 
 	onClickNextQuestionFunctions = (event) => {
 		this.props.nextQuestion(this.props.user_id)
-		this.onClickUpdateTrafficFunctions(event)
+		this.onClickTrafficFunctions(event)
 
-		this.setState({
-			display: 'question'
-		})
+		this.setState({ display: 'question' })
 	}
 
 	componentWillUnmount(){
@@ -409,19 +392,23 @@ export default class QuestionDisplay extends React.Component{
 		clearTimeout(this.enableAnsweredTimeout)
 	}
 
-	onClickUpdateTrafficFunctions = (event) => {
-		sendTraffic.elementUpdate({
+	onClickTrafficFunctions = (event) => {
+		let elementInfo = {
 			user_id: this.props.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
-		})
+		}
+
+		trafficFunctions('element', 'http://localhost:3001/traffics', elementInfo)
 	}
 
 	onPageLoadFunctions = () => {
-		sendTraffic.pageUpdate({
+		let pageInfo = {
 			user_id: localStorage.user_id,
-			page_name: "question_display_engaged",
-		})
+			page_name: 'question_display_engaged',
+		}
+
+		trafficFunctions('page', 'http://localhost:3001/pages', pageInfo)
 	}
 
 	render(){

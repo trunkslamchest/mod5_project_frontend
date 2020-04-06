@@ -1,18 +1,18 @@
 import React, { useEffect, useCallback } from 'react'
 
-import { TrafficUpdate } from '../utility/trafficFunctions'
+import trafficFunctions from '../utility/trafficFunctions'
 
-import './Error.css'
-
-var sendTraffic = new TrafficUpdate()
+import './E404.css'
 
 const E404 = (props) => {
 
 	const onPageLoadFunctions = useCallback(() => {
-		sendTraffic.pageUpdate({
+		var pageInfo = {
 			user_id: localStorage.user_id,
-			page_name: "404 Error",
-		})
+			page_name: '404_error',
+		}
+
+		trafficFunctions('page', 'http://localhost:3001/pages', pageInfo)
 	}, [])
 
 	useEffect(() => {onPageLoadFunctions()}, [onPageLoadFunctions])

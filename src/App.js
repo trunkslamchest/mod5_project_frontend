@@ -36,8 +36,8 @@ import {
 	} from 'react-router-dom'
 
 import './App.css'
-import './css/Response.css'
-import './css/Loading.css'
+import './UI/Response.css'
+import './UI/Loading.css'
 
 export default class App extends React.Component {
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import '../../css/RTVsidebar.css'
+import './RTVsidebar.css'
 
 const RTVsidebar = (props) => {
 

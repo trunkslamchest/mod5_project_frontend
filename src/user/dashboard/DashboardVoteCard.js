@@ -11,9 +11,7 @@ export default class DashboardVoteCard extends React.Component{
 	}
 
 	componentDidMount(){
-		this.setState({
-			mounted: true
-		})
+		this.setState({ mounted: true })
 	}
 
 	componentDidUpdate(){
@@ -27,22 +25,14 @@ export default class DashboardVoteCard extends React.Component{
 
 	convertVote = () => {
 		if (this.props.vote.vote_num === 1){
-			this.setState({
-				vote: "Up Vote",
-			})
+			this.setState({ vote: "Up Vote" })
 		} else if (this.props.vote.vote_num === 0) {
-			this.setState({
-				vote: "No Vote",
-			})
+			this.setState({ vote: "No Vote" })
 		} else {
-			this.setState({
-				vote: "Down Vote",
-			})
+			this.setState({ vote: "Down Vote" })
 		}
 
-		this.setState({
-			converted_votes: true
-		})
+		this.setState({ converted_votes: true })
 	}
 
 	getAllVotes = () => {

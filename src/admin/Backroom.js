@@ -20,7 +20,7 @@ import {
 	//  useParams
 } from 'react-router-dom'
 
-import '../css/Backroom.css'
+import './Backroom.css'
 
 export default class Backroom extends React.Component{
 

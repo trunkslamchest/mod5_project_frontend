@@ -1,5 +1,5 @@
 
-WHITE: rgba(255, 255, 255, 1)
+/* WHITE: rgba(255, 255, 255, 1)
 LIGHT ORANGE: rgba(244, 166, 66, 1)
 DARK ORANGE: rgba(211, 143, 57, 1)
 LIGHT BLUE: rgba(0, 0, 102, 1)
@@ -24,38 +24,38 @@ CANCEL_ACTIVE: background-image: linear-gradient(rgb(102, 0, 0, 1),  rgb(77, 0, 
 
 CHECKMARK ✓ ✔
 XMARK ✗ ✘
-TRADEMARK ™ ℠ ® ©
+TRADEMARK ™ ℠ ® © */
 
-.container {
+/* .container {
 	display: flex; /* or inline-flex */
-	flex-direction: row | row-reverse | column | column-reverse;
+/*	flex-direction: row | row-reverse | column | column-reverse;
 	flex-wrap: nowrap | wrap | wrap-reverse;
 	justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly | start | end | left | right ... + safe | unsafe;
 	align-items: stretch | flex-start | flex-end | center | baseline | first baseline | last baseline | start | end | self-start | self-end + ... safe | unsafe;
 	align-content: flex-start | flex-end | center | space-between | space-around | space-evenly | stretch | start | end | baseline | first baseline | last baseline + ... safe | unsafe;
-}
+} */
 
-.item {
+/* .item {
 	align-self: auto | flex-start | flex-end | center | baseline | stretch;
 	order: <integer>; /* default is 0 */
-	flex-grow: <number>; /* default 0 */
-	flex-shrink: <number>; /* default 1 */
-	flex-basis: <length> | auto; /* default auto */
-}
+/*	flex-grow: <number>; /* default 0 */
+/*	flex-shrink: <number>; /* default 1 */
+/*	flex-basis: <length> | auto; /* default auto */
+/* } */
 
-.container {
+/* .container {
 	display: flex;
 	flex-direction: ;
 	flex-wrap: ;
 	justify-content: ;
 	align-items: ;
 	align-content: ;
-}
+} */
 
-.item {
+/* .item {
 	align-self: ;
 	order: ;
 	flex-grow: ;
 	flex-shrink: ;
 	flex-basis: ;
-}
+} */

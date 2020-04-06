@@ -1,10 +1,8 @@
 import React from 'react'
 
-import { TrafficUpdate } from '../utility/trafficFunctions'
+import trafficFunctions from '../utility/trafficFunctions'
 
-import '../css/Docs.css'
-
-var sendTraffic = new TrafficUpdate()
+import './Docs.css'
 
 export default class Privacy extends React.Component {
 
@@ -14,10 +12,12 @@ export default class Privacy extends React.Component {
 	}
 
 	onPageLoadFunctions = () => {
-		sendTraffic.pageUpdate({
+		let pageInfo = {
 			user_id: localStorage.user_id,
-			page_name: "privacy_policy",
-		})
+			page_name: 'privacy_policy',
+		}
+
+		trafficFunctions('page', 'http://localhost:3001/pages', pageInfo)
 	}
 
 	render(){

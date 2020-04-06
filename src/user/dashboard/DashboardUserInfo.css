@@ -1,0 +1,41 @@
+.user_info_wrapper {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	padding-bottom: 20px;
+	animation: fade_in .4s ease-in-out 1, blur_in .2s ease-in-out 1;
+}
+
+.user_info_body {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	margin: 0px 0px 10px 0px;
+	padding: 0px;
+	background-color: rgba(255,255,255, 1);
+	background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255,255,255, 1), rgba(0,0,0, 0.025) );
+	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25);
+}
+
+.user_info_body ul {
+	min-width: 250px !important;
+	width: 25% !important;
+}
+
+.user_info_body li {
+	text-align:center;
+	margin-top: -5px;
+	font: 300 12pt 'Poppins', sans-serif;
+}
+
+.user_info_buttons_container {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: baseline;
+	margin: 20px auto 20px auto;
+	animation: fade_in .3s ease-in-out 1, blur_in .15s ease-in-out 1;
+}

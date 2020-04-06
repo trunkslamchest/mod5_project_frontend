@@ -2,11 +2,9 @@ import React from 'react'
 
 import DashboardAnswersCard from './DashboardAnswersCard'
 
-import { TrafficUpdate } from '../../utility/trafficFunctions'
+import trafficFunctions from '../../utility/trafficFunctions'
 
-import '../../css/DashboardAnswers.css'
-
-var sendTraffic = new TrafficUpdate()
+import './DashboardAnswers.css'
 
 export default class DashboardAnswers extends React.Component{
 
@@ -22,9 +20,7 @@ export default class DashboardAnswers extends React.Component{
 	}
 
 	componentDidMount(){
-		this.setState({
-			mounted: true
-		})
+		this.setState({ mounted: true })
 
 		this.onPageLoadFunctions()
 	}
@@ -67,10 +63,12 @@ export default class DashboardAnswers extends React.Component{
 	}
 
 	onPageLoadFunctions = () => {
-		sendTraffic.pageUpdate({
+		var pageInfo = {
 			user_id: localStorage.user_id,
-			page_name: "dashboard_answers"
-		})
+			page_name: 'dashboard_user_answers',
+		}
+
+		trafficFunctions('page', 'http://localhost:3001/pages', pageInfo)
 	}
 
 	render(){

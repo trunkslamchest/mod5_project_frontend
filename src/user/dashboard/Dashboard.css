@@ -1,0 +1,168 @@
+.dashboard_wrapper {
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	margin: 0 auto 0 auto;
+	padding: 0px 0px 0px 0px;
+	background-color: rgba(255,255,255, 1);
+	background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255,255,255, 1), rgba(0,0,0, 0.1) );
+	min-height: 85.75vh;
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
+	animation: fade_in .3s ease-in-out 1, blur_in .15s ease-in-out 1;
+}
+
+.dashboard_wrapper > * {
+	padding-inline-start: 0px;
+	animation: fade_in .2s ease-in-out 1, blur_in .25s ease-in-out 1, slide_in_from_bottom .3s ease-in-out 1;
+}
+
+.dashboard_header {
+	width: 100%;
+	padding: 5px 0px 5px 0px;
+	background-color: rgba(255,255,255, 1);
+	background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255,255,255, 1), rgba(0,0,0, 0.1) );
+	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25);
+	animation: fade_in .4s ease-in-out 1, blur_in .2s ease-in-out 1;
+	z-index:8;
+}
+
+.dashboard_header > * {
+	text-align: center;
+	padding: 0px 0px 0px 0px;
+	margin: 0px auto 0px auto;
+}
+
+.dashboard_header h2 {
+	font: 400 20pt 'Lato', sans-serif;
+}
+
+.dashboard_header h3 {
+	font: 300 20pt 'Lato', sans-serif;
+}
+
+.dashboard_header h4 {
+	font: 300 15pt 'Lato', sans-serif;
+}
+
+.dashboard_header h5 {
+	font: 300 10pt 'Lato', sans-serif;
+}
+
+.dashboard_alt_header {
+	width: 100%;
+	padding: 15px 0px 15px 0px;
+	animation: fade_in .4s ease-in-out 1, blur_in .2s ease-in-out 1;
+	z-index:8;
+}
+
+.dashboard_alt_header > * {
+	text-align: center;
+	padding: 0px 0px 0px 0px;
+	margin: 0px auto 0px auto;
+}
+
+.dashboard_alt_header h1 {
+	font: 400 20pt 'Lato', sans-serif;
+}
+
+.dashboard_alt_header h2 {
+	font: 400 18pt 'Lato', sans-serif;
+}
+
+.dashboard_alt_header h3 {
+	font: 300 16pt 'Lato', sans-serif;
+}
+
+.dashboard_alt_header h4 {
+	font: 300 14pt 'Lato', sans-serif;
+}
+
+.dashboard_alt_header h5 {
+	font: 300 12pt 'Lato', sans-serif;
+}
+
+.dashboard_wrapper ul {
+	width: 100%;
+	list-style: none;
+	padding: 10px 0px 10px 0px;
+	margin: 0px;
+
+	animation: fade_in .25s ease-in-out 1, blur_in .25s ease-in-out 1, slide_in_from_bottom.25s ease-in-out 1;
+}
+
+.dashboard_wrapper hr {
+	margin: 0px;
+	animation: fade_in .25s ease-in-out 1, blur_in .25s ease-in-out 1, slide_in_from_bottom.25s ease-in-out 1;
+}
+
+.dashboard_greeting {
+	animation: fade_in .25s ease-in-out 1, blur_in .25s ease-in-out 1, slide_in_from_bottom.25s ease-in-out 1;
+}
+
+.dashboard_tabs {
+	width: 100%;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	z-index: 9;
+}
+
+.dashboard_tabs ul {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: flex-start;
+	align-content: flex-start;
+	list-style: none;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	animation: fade_in .25s ease-in-out 1, blur_in .25s ease-in-out 1, slide_in_from_top.25s ease-in-out 1;
+}
+
+.dashboard_tabs li {
+	text-align: center;
+	font-size: 12pt;
+	cursor: pointer;
+	padding: 15px 30px 15px 30px;
+	margin: 0px;
+	flex-grow: 1;
+	background-color: rgba(255,255,255, 1);
+	background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255,255,255, 1), rgba(0,0,0, 0.01) );
+	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2.5px 0 rgba(0, 0, 0, 0.25);
+}
+
+.dashboard_tabs li:hover {
+	color: #FFF;
+	background-image: linear-gradient(rgb(81, 88, 102, 1),  rgb(40, 44, 52, 1) );
+	transition-property: color;
+	transition-duration: .2s, .2s;
+	transition-timing-function: ease-in-out;
+}
+
+.dashboard_tabs li:active {
+	color:rgb(40, 44, 52, 1);
+	background-image: linear-gradient(rgb(245, 167, 66, 1),  rgb(212, 144, 57, 1) );
+	transition-property: color;
+	transition-duration: .2s, .2s;
+	transition-timing-function: ease-in-out;
+	animation: scale_out .1s ease-in-out 1, blur_out .1s ease-in-out 1;
+}
+
+.dashboard_buttons_container {
+	padding: 0px 0px 0px 10px;
+	margin: 0 auto 0 auto;
+}

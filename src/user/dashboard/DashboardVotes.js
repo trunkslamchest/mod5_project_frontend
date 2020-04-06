@@ -2,11 +2,9 @@ import React from 'react'
 
 import DashboardVoteCard from './DashboardVoteCard'
 
-import { TrafficUpdate } from '../../utility/trafficFunctions'
+import trafficFunctions from '../../utility/trafficFunctions'
 
-import '../../css/DashboardVotes.css'
-
-var sendTraffic = new TrafficUpdate()
+import './DashboardVotes.css'
 
 export default class DashboardVotes extends React.Component{
 
@@ -22,9 +20,7 @@ export default class DashboardVotes extends React.Component{
 	}
 
 	componentDidMount(){
-		this.setState({
-			mounted: true
-		})
+		this.setState({ mounted: true })
 
 		this.onPageLoadFunctions()
 	}
@@ -65,10 +61,12 @@ export default class DashboardVotes extends React.Component{
 	}
 
 	onPageLoadFunctions = () => {
-		sendTraffic.pageUpdate({
+		var pageInfo = {
 			user_id: localStorage.user_id,
-			page_name: "dashboard_votes"
-		})
+			page_name: 'dashboard_user_votes',
+		}
+
+		trafficFunctions('page', 'http://localhost:3001/pages', pageInfo)
 	}
 
 	render(){

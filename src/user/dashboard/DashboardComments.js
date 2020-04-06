@@ -2,11 +2,9 @@ import React from 'react'
 
 import DashboardCommentCard from './DashboardCommentCard'
 
-import { TrafficUpdate } from '../../utility/trafficFunctions'
+import trafficFunctions from '../../utility/trafficFunctions'
 
-import '../../css/DashboardComments.css'
-
-var sendTraffic = new TrafficUpdate()
+import './DashboardComments.css'
 
 export default class DashboardComments extends React.Component{
 
@@ -22,9 +20,7 @@ export default class DashboardComments extends React.Component{
 	}
 
 	componentDidMount(){
-		this.setState({
-			mounted: true
-		})
+		this.setState({ mounted: true })
 		this.onPageLoadFunctions()
 	}
 
@@ -64,10 +60,12 @@ export default class DashboardComments extends React.Component{
 	}
 
 	onPageLoadFunctions = () => {
-		sendTraffic.pageUpdate({
+		var pageInfo = {
 			user_id: localStorage.user_id,
-			page_name: "dashboard_comments"
-		})
+			page_name: 'dashboard_user_comments',
+		}
+
+		trafficFunctions('page', 'http://localhost:3001/pages', pageInfo)
 	}
 
 	render(){

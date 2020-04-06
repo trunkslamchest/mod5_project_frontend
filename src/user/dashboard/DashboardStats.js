@@ -3,11 +3,9 @@ import React from 'react'
 import DashboardStatsDifficulty from './DashboardStatsDifficulty'
 import DashboardStatsCategory from './DashboardStatsCategory'
 
-import { TrafficUpdate } from '../../utility/trafficFunctions'
+import trafficFunctions from '../../utility/trafficFunctions'
 
-import '../../css/DashboardStats.css'
-
-var sendTraffic = new TrafficUpdate()
+import './DashboardStats.css'
 
 export default class DashboardStats extends React.Component{
 
@@ -23,10 +21,7 @@ export default class DashboardStats extends React.Component{
 	}
 
 	componentDidMount(){
-		this.setState({
-			mounted: true
-		})
-
+		this.setState({ mounted: true })
 		this.onPageLoadFunctions()
 	}
 
@@ -94,10 +89,12 @@ export default class DashboardStats extends React.Component{
 	}
 
 	onPageLoadFunctions = () => {
-		sendTraffic.pageUpdate({
+		var pageInfo = {
 			user_id: localStorage.user_id,
-			page_name: "dashboard_stats"
-		})
+			page_name: 'dashboard_user_stats',
+		}
+
+		trafficFunctions('page', 'http://localhost:3001/pages', pageInfo)
 	}
 
 	render(){

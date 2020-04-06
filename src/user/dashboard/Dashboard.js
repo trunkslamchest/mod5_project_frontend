@@ -9,13 +9,13 @@ import DashboardComments from './DashboardComments'
 
 import { Redirect } from 'react-router-dom'
 
-import { TrafficUpdate } from '../../utility/trafficFunctions'
+import trafficFunctions from '../../utility/trafficFunctions'
+
 import { UserUpdate } from '../../utility/userFunctions'
 import { QuestionUpdate } from '../../utility/questionFunctions'
 
-import '../../css/Dashboard.css'
+import './Dashboard.css'
 
-var sendTraffic = new TrafficUpdate()
 var sendUserUpdate = new UserUpdate()
 var sendQuestionUpdate = new QuestionUpdate()
 
@@ -34,9 +34,7 @@ export default class Dashboard extends React.Component{
 	}
 
 	componentDidMount(){
-		this.setState({
-			mounted: true
-		})
+		this.setState({ mounted: true })
 
 		this.onPageLoadFunctions()
 	}
@@ -74,70 +72,64 @@ export default class Dashboard extends React.Component{
 	}
 
 	displaySwitchToDashboard = () => {
-		this.setState({
-			display: 'dashboard'
-		})
+		this.setState({ display: 'dashboard' })
 	}
 
 	displaySwitchToUserInfo = (event) => {
-		this.setState({
-			display: 'user_info'
-		}, this.onClickUpdateTrafficFunctionsLI(event))
+		this.setState({ display: 'user_info' }, this.onClickTrafficFunctionsLI(event))
 	}
 
 	displaySwitchToStats = (event) => {
-		this.setState({
-			display: 'stats'
-		}, this.onClickUpdateTrafficFunctionsLI(event))
+		this.setState({ display: 'stats' }, this.onClickTrafficFunctionsLI(event))
 	}
 
 	displaySwitchToAnswers = (event) => {
-		this.setState({
-			display: 'answers'
-		}, this.onClickUpdateTrafficFunctionsLI(event))
+		this.setState({ display: 'answers' }, this.onClickTrafficFunctionsLI(event))
 	}
 
 	displaySwitchToVotes = (event) => {
-		this.setState({
-			display: 'votes'
-		}, this.onClickUpdateTrafficFunctionsLI(event))
+		this.setState({ display: 'votes' }, this.onClickTrafficFunctionsLI(event))
 	}
 
 	displaySwitchToComments = (event) => {
-		this.setState({
-			display: 'comments'
-		}, this.onClickUpdateTrafficFunctionsLI(event))
+		this.setState({ display: 'comments' }, this.onClickTrafficFunctionsLI(event))
 	}
 
 	onClickEditProfileFunctions = (event) => {
-		this.onClickUpdateTrafficFunctions(event)
+		this.onClickTrafficFunctions(event)
 	}
 
 	onClickDeleteProfileFunctions = (event) => {
-		this.onClickUpdateTrafficFunctions(event)
+		this.onClickTrafficFunctions(event)
 	}
 
-	onClickUpdateTrafficFunctions = (event) => {
-		sendTraffic.elementUpdate({
+	onClickTrafficFunctions = (event) => {
+		let elementInfo = {
 			user_id: this.props.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.name
-		})
+		}
+
+		trafficFunctions('element', 'http://localhost:3001/traffics', elementInfo)
 	}
 
-	onClickUpdateTrafficFunctionsLI = (event) => {
-		sendTraffic.elementUpdate({
+	onClickTrafficFunctionsLI = (event) => {
+		let elementInfo = {
 			user_id: this.props.user_id,
 			interaction: event.target.attributes.interaction.value,
 			element: event.target.attributes.name.value
-		})
+		}
+
+		trafficFunctions('element', 'http://localhost:3001/traffics', elementInfo)
 	}
 
 	onPageLoadFunctions = () => {
-		sendTraffic.pageUpdate({
+		let pageInfo = {
 			user_id: localStorage.user_id,
-			page_name: "dashboard_index",
-		})
+			page_name: 'dashboard_index',
+		}
+
+		trafficFunctions('page', 'http://localhost:3001/pages', pageInfo)
 	}
 
 	render(){

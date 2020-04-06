@@ -1,18 +1,17 @@
 import React from 'react'
 import { Redirect } from 'react-router'
 
-import { TrafficUpdate } from '../../utility/trafficFunctions'
+import trafficFunctions from '../../utility/trafficFunctions'
+
 import { UserUpdate } from '../../utility/userFunctions'
 
-import '../../css/EditProfile.css'
+import './EditProfile.css'
 
-var sendTraffic = new TrafficUpdate()
 var sendUserUpdate = new UserUpdate()
 
 export default class DeleteProfile extends React.Component {
 
 	state = {
-		user_id: "",
 		deleteSuccess: false,
 		hoverConfirm: false,
 		hoverCancel: false,
@@ -20,66 +19,54 @@ export default class DeleteProfile extends React.Component {
 	}
 
 	componentDidMount(){
-		this.setState({
-			user_id: this.props.user_id
-		})
-
 		this.onPageLoadFunctions()
 	}
 
 	onClickConfirm = (event) => {
 		sendUserUpdate.deleteUser(this.props.user_id)
 		.then(
-			this.setState({
-				deleteSuccess: true
-			}, this.props.log_out(), this.onClickUpdateTrafficFunctions(event))
+			this.setState({ deleteSuccess: true }, this.props.log_out(), this.onClickTrafficFunctions(event))
 		)
 	}
 
 	onClickCancel = (event) => {
-		this.onClickUpdateTrafficFunctions(event)
-		this.setState({
-			cancel: true
-		})
+		this.onClickTrafficFunctions(event)
+		this.setState({ cancel: true })
 	}
 
 	onHoverConfirm = () => {
-		this.setState({
-			hoverConfirm: true
-		})
+		this.setState({ hoverConfirm: true })
 	}
 
 	offHoverConfirm = () => {
-		this.setState({
-			hoverConfirm: false
-		})
+		this.setState({ hoverConfirm: false })
 	}
 
 	onHoverCancel = () => {
-		this.setState({
-			hoverCancel: true
-		})
+		this.setState({ hoverCancel: true })
 	}
 
 	offHoverCancel = () => {
-		this.setState({
-			hoverCancel: false
-		})
+		this.setState({ hoverCancel: false })
 	}
 
-	onClickUpdateTrafficFunctions = (event) => {
-		sendTraffic.elementUpdate({
+	onClickTrafficFunctions = (event) => {
+		let elementInfo = {
 			user_id: this.props.user_id,
 			interaction: event.target.attributes.interaction.value,
-			element: event.target.name
-		})
+			element: event.target.attributes.name.value
+		}
+
+		trafficFunctions('element', 'http://localhost:3001/traffics', elementInfo)
 	}
 
 	onPageLoadFunctions = () => {
-		sendTraffic.pageUpdate({
+		let pageInfo = {
 			user_id: localStorage.user_id,
-			page_name: "delete_profile"
-		})
+			page_name: 'delete_profile',
+		}
+
+		trafficFunctions('page', 'http://localhost:3001/pages', pageInfo)
 	}
 
 	render(){

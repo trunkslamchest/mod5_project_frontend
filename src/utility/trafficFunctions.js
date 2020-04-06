@@ -14,7 +14,6 @@ export function TrafficUpdate() {
 		})
 	}
 
-
 	this.pageUpdate = function(res_obj) {
 		fetch("http://localhost:3001/pages", {
 			method: "POST",

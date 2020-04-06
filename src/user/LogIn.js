@@ -96,7 +96,7 @@ export default class LogIn extends React.Component {
 							{ error }
 						</div>
 					)}
-			  </div> )
+				</div> )
 		:
 			( "" )
 

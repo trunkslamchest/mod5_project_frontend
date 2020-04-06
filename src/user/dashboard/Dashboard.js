@@ -229,31 +229,19 @@ export default class Dashboard extends React.Component{
 															join_year={this.props.join_year}
 														/>;
 								case 'stats': return <DashboardStats
-															update_traffic_data={ this.props.update_traffic_data }
-															update_page_data={ this.props.update_page_data }
-															// ~~~~~~~~~~~~~~~~~~~~
 															user={ this.state.user }
 															user_answers={ this.state.user_answers }
 															all_questions={ this.state.all_questions }
 														/>;
 								case 'answers': return <DashboardAnswers
-															update_traffic_data={ this.props.update_traffic_data }
-															update_page_data={ this.props.update_page_data }
-															// ~~~~~~~~~~~~~~~~~~~~
 															user_answers={ this.state.user_answers }
 															all_questions={ this.state.all_questions }
 														/>;
 								case 'votes': return <DashboardVotes
-															update_traffic_data={ this.props.update_traffic_data }
-															update_page_data={ this.props.update_page_data }
-															// ~~~~~~~~~~~~~~~~~~~~
 															user_votes={ this.state.user_votes }
 															all_questions={ this.state.all_questions }
 														/>;
 								case 'comments': return <DashboardComments
-															update_traffic_data={ this.props.update_traffic_data }
-															update_page_data={ this.props.update_page_data }
-															// ~~~~~~~~~~~~~~~~~~~~
 															user_comments={ this.state.user_comments }
 															all_questions={ this.state.all_questions }
 														/>;

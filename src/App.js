@@ -173,9 +173,7 @@ export default class App extends React.Component {
 	}
 
 	updateLogin = () => {
-		this.setState({
-			loggedIn: !this.state.loggedIn
-		})
+		this.setState({ loggedIn: !this.state.loggedIn })
 	}
 
 	logOut = () => {

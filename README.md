@@ -2,12 +2,12 @@
 <p align="center"><img width=75% src="https://github.com/trunkslamchest/mod5_project_frontend/blob/dev-win64-0.6/src/assets/index_logo_blue3.png"></p>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-![CSS](https://img.shields.io/badge/CSS-3.0-1572B6) ![HTML](https://img.shields.io/badge/HTML-5.2-E34F26) ![Javascript](https://img.shields.io/badge/Javascript-1.8.5-F7DF1E) ![PostgresQL](https://img.shields.io/badge/Postgresql-12.1-336791) ![ReactJS](https://img.shields.io/badge/React.JS-16.12.0-61DAFB) ![Ruby](https://img.shields.io/badge/Ruby-2.6.5-CC342D) ![Ruby On Rails](https://img.shields.io/badge/Ruby%20On%20Rails-6.0.2.1-cc0600)
+![CSS](https://img.shields.io/badge/CSS-3.0-1572B6) ![HTML](https://img.shields.io/badge/HTML-5.2-E34F26) ![Javascript](https://img.shields.io/badge/Javascript-1.8.5-F7DF1E) ![PostgresQL](https://img.shields.io/badge/Postgresql-12.1-336791) ![ReactJS](https://img.shields.io/badge/React.JS-16.13.1-61DAFB) ![Ruby](https://img.shields.io/badge/Ruby-2.6.5-CC342D) ![Ruby On Rails](https://img.shields.io/badge/Ruby%20On%20Rails-6.0.3.2-cc0600)
 &nbsp;
 
 <p align="center">
   <img align="center" src="https://img.shields.io/badge/Status-Work%20In%20Progress-000000">
-  <a href="https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.6"><img align="center" src="https://img.shields.io/badge/Most%20Recent%20Branch-dev--win64--0.6-000000"></a>
+  <a href="https://github.com/trunkslamchest/mod5_project_frontend/tree/dev-win64-0.72"><img align="center" src="https://img.shields.io/badge/Most%20Recent%20Branch-dev--win64--0.72-000000"></a>
   <a href="https://github.com/trunkslamchest/mod5_project_backend/"><img align="center" src="https://img.shields.io/badge/Backend%20Repository%20-Click%20Here-000000"></a>
 
 </p> 
